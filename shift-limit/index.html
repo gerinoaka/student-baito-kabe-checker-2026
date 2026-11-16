@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>時給×シフト逆算計算機2026｜年収の壁まであと何時間働ける？</title>
+<meta name="description" content="時給と今までの累計収入を入れると、136万・150万・178万の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかを計算。令和8年分（2026年）対応の無料ツール。最終確認日2026-11-17。">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b5fa5">
+<link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/">
+<meta property="og:title" content="時給×シフト逆算計算機2026｜年収の壁まであと何時間働ける？">
+<meta property="og:description" content="時給と今までの累計収入を入れると、136万・150万・178万の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかを計算。令和8年分（2026年）対応の無料ツール。最終確認日2026-11-17。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="学生バイトお役立ちツール">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M8 22V10h4v12zm6 0V14h4v8zm6 0V8h4v14z' fill='%23fff'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"時給×シフト逆算計算機（令和8年分）","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/","description":"時給と今までの累計収入を入れると、136万・150万・178万の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかを計算。令和8年分（2026年）対応の無料ツール。最終確認日2026-11-17。","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"dateModified":"2026-11-17","isPartOf":{"@type":"WebSite","name":"学生バイトお役立ちツール","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"年収の壁を超えないように、あと何時間働けますか？","acceptedAnswer":{"@type":"Answer","text":"壁の金額からこれまでの累計収入を引いた残りを、残り月数で割り、時給で割って求めます。月の上限額は残り枠÷残り月数（円未満切捨）、月の時間は月の上限額÷時給（時間未満切捨）、週の時間は月の時間×12÷52（小数1位まで切捨）で計算します。"}},
+{"@type":"Question","name":"150万円の壁は通勤手当を含みますか？","acceptedAnswer":{"@type":"Answer","text":"親の健保の扶養の150万円（19〜22歳は150万円未満）は、通勤手当を含めた年間収入で判定される扱いです（一部確認。健保組合で要確認）。136万円と178万円は、非課税の通勤手当を除いた給与収入で数えます。"}},
+{"@type":"Question","name":"12月分の給与が翌年1月払いのときは、今年の収入に入りますか？","acceptedAnswer":{"@type":"Answer","text":"所得税の給与収入は、支給日（支払を受けた日）が属する年で数えます。12月分が翌年1月払いなら翌年分、11月分が12月払いなら今年分です。健保の扶養の年間収入は見込み年収で判定され、数え方が異なります。"}},
+{"@type":"Question","name":"留学生は週何時間まで働けますか？","acceptedAnswer":{"@type":"Answer","text":"資格外活動許可を受けた留学生は、原則として週28時間以内です（学校の長期休業期間は1日8時間以内）。一部確認の情報のため、在籍する学校や出入国在留管理庁でご確認ください。"}},
+{"@type":"Question","name":"深夜や残業の割増があると計算はずれますか？","acceptedAnswer":{"@type":"Answer","text":"ずれます。深夜・残業・休日は割増賃金で時給が上がるため、この計算機の時間より早く壁に届きます。余裕を持って計画してください。"}}
+]}</script>
+<style>
+:root{--bg:#fff;--fg:#1f2933;--pri:#0b5fa5;--ok:#146c43;--okb:#e6f4ea;--ng:#b42318;--ngb:#fdecea;--wn:#8a5a00;--wnb:#fff4d6;--ln:#d0d7de;--cd:#f6f8fa}
+@media(prefers-color-scheme:dark){:root{--bg:#12171d;--fg:#e6edf3;--pri:#6cb6ff;--ok:#56d364;--okb:#12261a;--ng:#ff8a80;--ngb:#3a1816;--wn:#e3b341;--wnb:#33280a;--ln:#3a444e;--cd:#1a2129}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 "Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,sans-serif}
+.w{max-width:720px;margin:0 auto;padding:0 16px 40px}
+h1{font-size:1.4rem;line-height:1.4;margin:20px 0 8px}
+h2{font-size:1.2rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:2px solid var(--pri)}
+h3{font-size:1.05rem;margin:14px 0 4px}
+a{color:var(--pri)}
+ul,ol{padding-left:1.3em}
+.note,.warn{border-radius:6px;padding:8px 12px;margin:12px 0;font-size:.92rem}
+.note{background:var(--wnb);color:var(--wn);border:1px solid var(--wn)}
+.warn{background:var(--ngb);color:var(--ng);border:1px solid var(--ng);font-weight:700}
+.note ul{margin:0;padding-left:1.1em}
+fieldset{border:1px solid var(--ln);border-radius:6px;margin:0 0 14px;padding:8px 12px}
+legend{font-weight:700;padding:0 4px}
+.rd{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer}
+.rd input{width:22px;height:22px;margin:0}
+.fld{margin:0 0 14px}
+label.l{display:block;font-weight:700;margin-bottom:4px}
+input[type=text]{width:100%;min-height:48px;padding:8px 12px;font-size:16px;border:1px solid var(--ln);border-radius:6px;background:var(--bg);color:var(--fg)}
+input[aria-invalid=true]{border-color:var(--ng);border-width:2px}
+.hint{font-size:.85rem;margin:4px 0 0;opacity:.85}
+.err{color:var(--ng);background:var(--ngb);border-radius:4px;padding:4px 8px;margin:4px 0 0;font-size:.9rem;font-weight:700}
+.err::before{content:"\26A0  "}
+.cb{display:flex;align-items:center;gap:8px;min-height:44px;margin:0 0 14px}
+.cb input{width:22px;height:22px;margin:0}
+button{min-height:48px;font:inherit;font-weight:700;border-radius:6px;border:2px solid var(--pri);padding:0 16px;cursor:pointer}
+.pri{background:var(--pri);color:var(--bg);width:100%;margin-bottom:10px}
+.sec{background:var(--bg);color:var(--pri);width:100%;margin-bottom:10px}
+button:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+.sum{background:var(--cd);border:1px solid var(--ln);border-radius:6px;padding:10px 14px}
+.sum p{margin:2px 0}.big{font-size:1.25rem;font-weight:700}
+.tw{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;min-width:400px;font-size:.88rem}
+th,td{border:1px solid var(--ln);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--cd)}
+caption{text-align:left;font-weight:700;padding:4px 0}
+tr.is-current td,tr.is-current th{font-weight:700;background:var(--wnb);border-left:4px solid var(--pri)}
+.src{font-size:.82rem;word-break:break-all}
+.faq h3{margin-top:14px}.faq p{margin:4px 0}
+footer{font-size:.85rem;opacity:.85;margin-top:24px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.navb{display:flex;flex-wrap:wrap;gap:0 14px;margin:6px 0 0;padding:0;font-size:.9rem}
+.navb a{display:inline-flex;align-items:center;min-height:44px}
+.navb a[aria-current=page]{font-weight:700;color:var(--fg);text-decoration:none}
+.tools{margin:32px 0 0}
+.tl{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.tl a{display:block;min-height:44px;padding:10px 12px;border:1px solid var(--ln);border-radius:6px;background:var(--cd);color:var(--fg);text-decoration:none}
+.tl a strong{display:block;color:var(--pri)}
+.tl a span{font-size:.88rem}
+.tl a[aria-current=page]{border:2px solid var(--pri)}
+.pr-card{border:1px solid var(--ln);border-radius:6px;padding:10px 14px;margin:10px 0;background:var(--cd)}
+.pr-card h4{margin:6px 0;font-size:1rem}
+.pr-card p{margin:4px 0}
+.pr-tag{display:inline-block;font-size:.75rem;font-weight:700;border:1px solid var(--fg);border-radius:4px;padding:0 6px}
+.pr-cta,.sh{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:6px;background:var(--pri);color:var(--bg);font-weight:700;text-decoration:none;text-align:center}
+.shw{margin:10px 0 2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class="w">
+<header>
+<h1>時給×シフト逆算計算機（令和8年分・2026年）</h1>
+<p>時給とこれまでの累計収入を入れると、選んだ年収の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかが分かります。</p>
+<div class="note" role="note"><ul>
+<li>対象: 令和8年分（2026年1〜12月の収入）</li>
+<li>最終確認日: 2026-11-17</li>
+<li>この計算は目安です。時給の割増や支払日で実際の収入は変わります。</li></ul></div>
+<div class="warn" id="yearWarn" role="note" hidden>このページは令和8年分（2026年の収入）用です。今年分の制度は変更されている可能性があります。必ず最新の公式情報をご確認ください。</div>
+<nav class="navb" aria-label="学生バイトお役立ちツール">
+<a href="../">壁チェッカー</a>
+<a href="../kakemochi/">掛け持ち還付</a>
+<a href="./" aria-current="page">シフト逆算</a>
+</nav>
+</header>
+<main>
+<section id="input">
+<h2>条件を入れる</h2>
+<form id="f" novalidate>
+<fieldset><legend>目指す壁（超えたくないライン）</legend>
+<label class="rd"><input type="radio" name="wall" id="w136" value="w136"> 136万円（親の扶養控除ライン・以下）</label>
+<label class="rd"><input type="radio" name="wall" id="w150" value="w150" checked> 150万円（親の健保の扶養・19〜22歳・未満）</label>
+<label class="rd"><input type="radio" name="wall" id="w178" value="w178"> 178万円（本人の所得税が0円のライン・以下）</label>
+<p class="err" id="e-wall" role="alert" hidden></p></fieldset>
+<div class="fld"><label class="l" for="hourly">時給（円）</label>
+<input id="hourly" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 1,200" aria-describedby="e-hourly h-hourly">
+<p class="err" id="e-hourly" role="alert" hidden></p>
+<p class="hint" id="h-hourly">基本の時給を入れます。深夜・残業の割増は含めません。</p></div>
+<div class="fld"><label class="l" for="cum">これまでの累計給与収入（円）</label>
+<input id="cum" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 800,000" aria-describedby="e-cum h-cum">
+<p class="err" id="e-cum" role="alert" hidden></p>
+<p class="hint" id="h-cum">今年1月から今日までに支払われた給与の合計（税込・賞与を含む）。非課税の通勤手当は含めません。</p></div>
+<div class="fld"><label class="l" for="left">残り月数</label>
+<input id="left" type="text" inputmode="numeric" autocomplete="off" aria-describedby="e-left h-left">
+<p class="err" id="e-left" role="alert" hidden></p>
+<p class="hint" id="h-left">今年中にこれから給与が支払われる月数（支給日の数）で数えます。12月分の給与が翌年1月払いなら、その分は数えません（翌年分の収入）。締め日・支払日は勤務先にご確認ください。</p></div>
+<div class="fld"><label class="l" for="commute">月の通勤手当（円・任意）</label>
+<input id="commute" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 10,000" aria-describedby="e-commute h-commute">
+<p class="err" id="e-commute" role="alert" hidden></p>
+<p class="hint" id="h-commute">150万円の壁を選んだときだけ使います（月額×12を年間の通勤手当として加えます）。136万・178万では使いません。</p></div>
+<label class="cb"><input type="checkbox" id="intl"><span>留学生（在留資格「留学」・資格外活動許可あり）</span></label>
+<button type="submit" class="pri" id="go">計算する</button>
+<button type="button" class="sec" id="rst">入力をリセット</button>
+</form>
+</section>
+
+<section id="result" hidden aria-live="polite">
+<h2 id="resultH" tabindex="-1">計算結果</h2>
+<h3>選んだ壁の結果</h3>
+<div class="sum"><p class="big" id="rBig"></p><p id="rSub"></p></div>
+<ul id="rWarn"></ul>
+<h3>3つの壁を比べる</h3>
+<div class="tw"><table><caption>同じ条件で3つの壁を比べる</caption><thead><tr><th>壁</th><th>月の収入上限</th><th>月の時間</th><th>週の時間</th></tr></thead><tbody id="cBody"></tbody></table></div>
+<ul class="tl">
+<li><a href="../"><strong>年収の壁チェッカーで4つの壁をまとめて判定する</strong></a></li>
+<li><a href="../kakemochi/"><strong>掛け持ちの場合は還付チェッカーへ</strong></a></li></ul>
+</section>
+
+<section id="diff">
+<h2>壁ごとの数え方の違い</h2>
+<div class="tw"><table><thead><tr><th>壁</th><th>判定する値</th><th>通勤手当</th><th>境界</th></tr></thead><tbody>
+<tr><td>136万</td><td>給与収入（暦年の支給日基準）</td><td>非課税分は含めない</td><td>136万円以下</td></tr>
+<tr><td>150万</td><td>見込み年収（通勤手当込み）</td><td>含める（一部確認）</td><td>150万円未満</td></tr>
+<tr><td>178万</td><td>給与収入（暦年の支給日基準）</td><td>非課税分は含めない</td><td>178万円以下</td></tr>
+</tbody></table></div>
+<p>136万円を超えても、19〜22歳は159万円まで親の控除額は同じ63万円（特定親族特別控除）です。</p>
+<p>178万円以下なら本人の所得税は0円ですが、親の控除は178万円より前に減り始めます。</p>
+</section>
+
+<section id="cautions">
+<h2>使う前の注意</h2>
+<ul>
+<li>12月分の給与が1月払いなら翌年分です。所得税の収入は、給与が支払われる日（支給日）が属する年で数えます。</li>
+<li>深夜・残業・休日の割増で時給が上がるため、実際はこの計算より早く壁に届きます。余裕を持って計画してください。</li>
+<li>留学生（資格外活動許可あり）は週28時間以内です。複数のバイトを掛け持ちする場合は合算です。長期休業期間の扱いは学校・出入国在留管理庁で確認してください（一部確認）。</li>
+<li>学生でない場合、週の所定労働時間20時間以上かつ従業員51人以上の勤務先では社会保険の対象になります。学生は原則対象外です。</li>
+<li>住民税（119万円）はこの計算機の対象外です。年収の壁チェッカーで確認してください。</li></ul>
+</section>
+
+<section id="faq" class="faq">
+<h2>よくある質問</h2>
+<h3>年収の壁を超えないように、あと何時間働けますか？</h3>
+<p>壁の金額からこれまでの累計収入を引いた残りを、残り月数で割り、時給で割って求めます。月の上限額は残り枠÷残り月数（円未満切捨）、月の時間は月の上限額÷時給（時間未満切捨）、週の時間は月の時間×12÷52（小数1位まで切捨）で計算します。</p>
+<h3>150万円の壁は通勤手当を含みますか？</h3>
+<p>親の健保の扶養の150万円（19〜22歳は150万円未満）は、通勤手当を含めた年間収入で判定される扱いです（一部確認。健保組合で要確認）。136万円と178万円は、非課税の通勤手当を除いた給与収入で数えます。</p>
+<h3>12月分の給与が翌年1月払いのときは、今年の収入に入りますか？</h3>
+<p>所得税の給与収入は、支給日（支払を受けた日）が属する年で数えます。12月分が翌年1月払いなら翌年分、11月分が12月払いなら今年分です。健保の扶養の年間収入は見込み年収で判定され、数え方が異なります。</p>
+<h3>留学生は週何時間まで働けますか？</h3>
+<p>資格外活動許可を受けた留学生は、原則として週28時間以内です（学校の長期休業期間は1日8時間以内）。一部確認の情報のため、在籍する学校や出入国在留管理庁でご確認ください。</p>
+<h3>深夜や残業の割増があると計算はずれますか？</h3>
+<p>ずれます。深夜・残業・休日は割増賃金で時給が上がるため、この計算機の時間より早く壁に届きます。余裕を持って計画してください。</p>
+</section>
+
+<section id="sources">
+<h2>根拠となる一次情報</h2>
+<p>最終確認日: 2026-11-17</p>
+<ul class="src">
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1199 基礎控除</a></li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1410 給与所得控除</a></li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1180 扶養控除</a></li>
+<li><a href="https://www.nenkin.go.jp/oshirase/taisetu/2025/202508/0819.html" target="_blank" rel="noopener noreferrer">日本年金機構 被扶養者の認定（150万円未満）</a></li>
+<li><a href="https://www.mhlw.go.jp/web/t_doc?dataId=00tc9349&amp;dataType=1&amp;pageNo=1" target="_blank" rel="noopener noreferrer">厚生労働省 被扶養者の年間収入の判定</a></li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2509.htm" target="_blank" rel="noopener noreferrer">国税庁 No.2509 給与等の収入すべき時期</a></li>
+<li><a href="https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri07_00003.html" target="_blank" rel="noopener noreferrer">出入国在留管理庁 留学生の資格外活動（本文は一部確認）</a></li></ul>
+</section>
+
+<section id="future">
+<h2>令和9年分以降について</h2>
+<ul><li>令和9年分（2027年の収入）: 令和8年分と同じ特例が適用される見込みですが、公式情報で必ず確認してください。</li>
+<li>令和10年分以降: 特例の終了により基準額が変わります（要確認）。このツールは令和8年分のみ対応です。</li></ul>
+</section>
+</main>
+<section class="tools" aria-labelledby="toolsH">
+<h2 id="toolsH">学生バイトお役立ちツール</h2>
+<ul class="tl">
+<li><a href="../"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span></a></li>
+<li><a href="../kakemochi/"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span></a></li>
+<li><a href="./" aria-current="page"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span></a></li>
+</ul>
+</section>
+<footer>
+<section id="disclaimer">
+<h2>免責事項</h2>
+<ul><li>本ツールは学生本人・保護者向けの情報提供であり、税務・社会保険の個別の助言ではありません。結果は目安です。</li>
+<li>制度は改正されることがあり、各制度の運用は勤務先・健康保険組合・市区町村で異なります。最終判断は勤務先・健康保険組合・市区町村・税務署へご確認ください。</li>
+<li>給与のみの学生を想定しています。副業・利子など他の所得がある場合は対象外です。</li>
+<li>本ツールの時間は目安であり、勤怠・給与の確定を保証しません。</li>
+<li>本ツールの利用により生じた損害について、運営者は責任を負いません。</li>
+<li>最終確認日: 2026-11-17。対象: 令和8年分（2026年1〜12月の収入）。</li></ul>
+</section>
+<section id="privacy">
+<h2>プライバシーポリシー</h2>
+<ul><li>入力された金額・年齢区分などは、お使いの端末内（ブラウザ）で計算するだけで、運営者のサーバーへ送信・保存しません。</li>
+<li>本ページはクッキー等で入力内容を保存しません。</li>
+<li>広告配信を行う場合、Google AdSense などの第三者配信事業者がクッキーを使って広告を表示することがあります。広告設定は <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">https://adssettings.google.com</a> から変更できます。</li>
+<li>アクセス解析を導入する場合は、本ポリシーを更新します。</li>
+<li>広告・アフィリエイトを含みます。広告枠には「広告」「PR」と表示します。</li>
+<li>PRカード（広告）のリンク先は広告主のサイトです。クリック後は、そのサイトのプライバシーポリシーが適用されます。</li>
+<li>連絡先: gakusei.kabe.checker@gmail.com</li></ul>
+</section>
+</footer>
+</div>
+
+<script src="../links-config.js"></script>
+<script id="logic">
+const SHIFT=(function(){
+'use strict';
+const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-17'};
+const WALLS={
+ w136:{limit:1360000,cap:1360000,unit:'ika',useCommute:false},
+ w150:{limit:1500000,cap:1499999,unit:'miman',useCommute:true},
+ w178:{limit:1780000,cap:1780000,unit:'ika',useCommute:false}};
+const isInt=function(n){return typeof n==='number'&&Number.isInteger(n);};
+function comma(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function fmtYen(n){return comma(n)+'円';}
+function parseYen(s){
+ if(s===null||s===undefined)return null;
+ let t=String(s).replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);});
+ t=t.replace(/[,，\s　]/g,'').replace(/円$/,'');
+ if(t==='')return null;
+ return /^\d+$/.test(t)?Number(t):NaN;}
+function weeklyFromMonthly(hoursMonth){
+ return {weekly:Math.floor(hoursMonth*120/52)/10,over28:hoursMonth*12>1456};}
+function defaultMonthsLeft(year,month){return year===2026?Math.max(1,12-month):12;}
+function calcShift(o){
+ const errors=[];o=o||{};
+ const W=Object.prototype.hasOwnProperty.call(WALLS,o.wall)?WALLS[o.wall]:null;
+ if(!W)errors.push({field:'wall',message:'目指す壁を選んでください。'});
+ const H=o.hourly;
+ if(H===null||H===undefined)errors.push({field:'hourly',message:'時給を入力してください。'});
+ else if(!isInt(H)||H<1||H>=100000)errors.push({field:'hourly',message:'時給は1円以上100,000円未満の整数で入力してください。'});
+ let cum=o.cum;if(cum===undefined||cum===null)cum=0;
+ if(!isInt(cum)||cum<0||cum>=100000000)errors.push({field:'cum',message:'累計は0以上1億円未満の整数（円）で入力してください。'});
+ const ml=o.monthsLeft;
+ if(!isInt(ml)||ml<1||ml>12)errors.push({field:'monthsLeft',message:'残り月数は1〜12の整数で入力してください。'});
+ let cm=o.commute;if(cm===undefined||cm===null)cm=0;
+ if(!isInt(cm)||cm<0||cm>=100000000)errors.push({field:'commute',message:'通勤手当は0以上の整数（円）で入力してください。'});
+ if(errors.length)return {ok:false,errors:errors};
+ const commuteYear=W.useCommute?cm*12:0;
+ const slot=W.cap-cum-commuteYear;
+ let status,exceeded=false,monthlyLimit=0,hoursMonth=0,weeklyHours=0;
+ if(slot<=0){status='reached';exceeded=slot<0;}
+ else{status='room';monthlyLimit=Math.floor(slot/ml);hoursMonth=Math.floor(monthlyLimit/H);weeklyHours=weeklyFromMonthly(hoursMonth).weekly;}
+ return {ok:true,wall:o.wall,basis:W.useCommute?'Y':'X',limit:W.limit,cap:W.cap,commuteYear:commuteYear,slot:slot,status:status,exceeded:exceeded,monthsLeft:ml,
+  monthlyLimit:monthlyLimit,hoursMonth:hoursMonth,weeklyHours:weeklyHours,intl:{checked:!!o.intl,over28:weeklyFromMonthly(hoursMonth).over28}};}
+return {calcShift:calcShift,weeklyFromMonthly:weeklyFromMonthly,defaultMonthsLeft:defaultMonthsLeft,WALLS:WALLS,parseYen:parseYen,fmtYen:fmtYen,DATA:DATA};
+})();
+</script>
+<script id="ui">
+(function(){
+'use strict';
+const K=SHIFT,$=function(id){return document.getElementById(id);};
+function h(t,c,x,k){const e=document.createElement(t);if(c)e.className=c;if(x!==null&&x!==undefined)e.textContent=x;(k||[]).forEach(function(n){e.appendChild(n);});return e;}
+const NAMES={w136:'136万円',w150:'150万円',w178:'178万円'};
+const EID={wall:['e-wall',null],hourly:['e-hourly','hourly'],cum:['e-cum','cum'],monthsLeft:['e-left','left'],commute:['e-commute','commute']};
+let judged=false,shown=[];
+function clearErr(){shown.forEach(function(p){const e=$(p[0]);e.textContent='';e.hidden=true;if(p[1])$(p[1]).removeAttribute('aria-invalid');});shown=[];}
+function showErr(f,msg){const p=EID[f];const e=$(p[0]);e.textContent=msg;e.hidden=false;if(p[1])$(p[1]).setAttribute('aria-invalid','true');shown.push(p);}
+function wk(w){return String(w);}
+function render(inp,r){
+ const big=$('rBig'),sub=$('rSub');
+ if(r.status==='room'){
+  big.textContent='残り'+r.monthsLeft+'か月で、月'+r.hoursMonth+'時間・週'+wk(r.weeklyHours)+'時間まで';
+  sub.textContent='月の収入上限の目安: '+K.fmtYen(r.monthlyLimit)+'（時給'+K.fmtYen(inp.hourly)+'の場合）';}
+ else if(!r.exceeded){big.textContent='すでに到達しています';sub.textContent='これ以上の給与は壁を超える可能性があります。';}
+ else{big.textContent='すでに壁を超えています';sub.textContent='この壁を超えない計画はできません。次の壁の結果も見てください。';}
+ const tb=$('cBody');tb.textContent='';
+ ['w136','w150','w178'].forEach(function(w){
+  const x=K.calcShift({wall:w,hourly:inp.hourly,cum:inp.cum,monthsLeft:inp.monthsLeft,commute:inp.commute,intl:inp.intl});
+  const th=h('th',null,NAMES[w]+(w==='w150'?'（未満）':'（以下）'));
+  let cells;
+  if(x.status==='room')cells=[K.fmtYen(x.monthlyLimit),x.hoursMonth+'時間',wk(x.weeklyHours)+'時間'];
+  else{const s=x.exceeded?'超過済み':'到達済み';cells=[s,s,s];}
+  const tr=h('tr',null,null,[th].concat(cells.map(function(c){return h('td',null,c);})));
+  if(w===inp.wall){tr.className='is-current';tr.setAttribute('aria-current','true');}
+  tb.appendChild(tr);});
+ const wl=$('rWarn');wl.textContent='';
+ if(r.intl.checked&&r.intl.over28)wl.appendChild(h('li',null,'このペースだと留学生の週28時間の上限を超えます。週28時間以内に収めてください（学校の長期休業期間は別の扱い）。'));
+ if(inp.wall==='w150')wl.appendChild(h('li',null,'150万円は通勤手当を含めて数えます。健保組合により運用が異なるため、親の勤務先または健保組合でご確認ください。'));}
+function run(focus){
+ clearErr();
+ const sel=document.querySelector('input[name=wall]:checked');
+ const inp={wall:sel?sel.value:null,hourly:K.parseYen($('hourly').value),cum:K.parseYen($('cum').value),monthsLeft:K.parseYen($('left').value),commute:K.parseYen($('commute').value),intl:$('intl').checked};
+ const r=K.calcShift(inp);
+ if(!r.ok){r.errors.forEach(function(e){showErr(e.field,e.message);});$('result').hidden=true;return;}
+ judged=true;$('result').hidden=false;render(inp,r);
+ if(focus){const hd=$('resultH');hd.focus({preventScroll:true});
+  hd.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}}
+function initLeft(){
+ const d=new Date(),n=K.defaultMonthsLeft(d.getFullYear(),d.getMonth()+1);
+ $('left').defaultValue=String(n);$('left').value=String(n);}
+initLeft();
+if(new Date().getFullYear()>=2027)$('yearWarn').hidden=false;
+$('f').addEventListener('submit',function(e){e.preventDefault();run(true);});
+$('f').addEventListener('input',function(){if(judged)run(false);});
+$('f').addEventListener('change',function(){if(judged)run(false);});
+$('rst').addEventListener('click',function(){
+ $('f').reset();judged=false;$('result').hidden=true;clearErr();initLeft();});
+})();
+</script>
+</body>
+</html>

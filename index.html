@@ -14,9 +14,10 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://gerinoaka.github.io/student-baito-kabe-checker-2026/">
 <meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="学生バイトお役立ちツール">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M8 22V10h4v12zm6 0V14h4v8zm6 0V8h4v14z' fill='%23fff'/%3E%3C/svg%3E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"学生バイト「年収の壁」チェッカー（令和8年分）","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"dateModified":"2026-11-16"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"学生バイト「年収の壁」チェッカー（令和8年分）","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/","description":"大学生・高校生のバイト年収を入れるだけで、令和8年分（2026年）の所得税178万円・親の特定親族特別控除・健保の扶養150万円・住民税の壁を判定。あと何万円稼げるかも分かる無料ツール。最終確認日2026-11-16。","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"dateModified":"2026-11-17","isPartOf":{"@type":"WebSite","name":"学生バイトお役立ちツール","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"学生バイトの年収の壁は令和8年分でいくらですか？","acceptedAnswer":{"@type":"Answer","text":"令和8年分（2026年の収入）は、本人の所得税が178万円以下で0円、親の扶養控除は136万円以下、親の特定親族特別控除は159万円以下まで満額63万円で197万円超は0円、親の健保の扶養は19〜22歳で150万円未満（それ以外は130万円未満）、住民税の非課税は119万円以下が目安（1級地・単身）です。"}},
 {"@type":"Question","name":"103万円の壁はいつまで？大学生は扶養でいくらまで稼げますか？","acceptedAnswer":{"@type":"Answer","text":"令和8年分から本人の所得税がかからないラインは178万円（令和7年分は160万円）に変わります。ただし扶養には所得税・親の控除・健康保険など複数の基準があり、ツールで年収を入れるとまとめて確認できます。"}},
@@ -24,7 +25,7 @@
 {"@type":"Question","name":"勤労学生控除は163万円まで使えますか？178万円との違いは？","acceptedAnswer":{"@type":"Answer","text":"給与のみなら合計所得89万円以下（給与収入163万円以下）が適用の上限です。ただし令和8年分の所得税は178万円以下なら控除なしでも0円のため、給与のみの学生では所得税への追加効果はありません。住民税の所得割に効く制度です。"}},
 {"@type":"Question","name":"特定親族特別控除とは？136万円を超えると親の扶養から外れますか？","acceptedAnswer":{"@type":"Answer","text":"19歳以上23歳未満の子の給与収入が136万円を超えると特定扶養控除から特定親族特別控除に切り替わり、159万円までは控除額は満額63万円のままです。その後段階的に減り、197万円を超えると0円になります。"}},
 {"@type":"Question","name":"健保の扶養の150万円に通勤手当は含まれますか？","acceptedAnswer":{"@type":"Answer","text":"通勤手当は含めて判定するとされています（解釈を含むため、加入する健康保険組合で要確認）。このツールは給与に年間通勤手当を足して判定します。"}},
-{"@type":"Question","name":"掛け持ちバイトの確定申告は必要ですか？","acceptedAnswer":{"@type":"Answer","text":"年末調整されない給与がある場合などは確定申告が必要になる場合があります。国税庁のタックスアンサーまたは税務署でご確認ください。"}}
+{"@type":"Question","name":"掛け持ちバイトの確定申告は必要ですか？","acceptedAnswer":{"@type":"Answer","text":"年末調整されない給与がある場合などは確定申告が必要になる場合があります。国税庁のタックスアンサーまたは税務署でご確認ください。還付の目安は「掛け持ちバイトの源泉徴収・還付金チェッカー」で計算できます。"}}
 ]}</script>
 <style>
 :root{--bg:#fff;--fg:#1f2933;--pri:#0b5fa5;--ok:#146c43;--okb:#e6f4ea;--ng:#b42318;--ngb:#fdecea;--wn:#8a5a00;--wnb:#fff4d6;--ln:#d0d7de;--cd:#f6f8fa}
@@ -94,7 +95,22 @@ tr.is-current td,tr.is-current th{font-weight:700;background:var(--wnb);border-l
 .faq h3{margin-top:14px}.faq p{margin:4px 0}
 footer{font-size:.85rem;opacity:.85;margin-top:24px}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-</style>
+.navb{display:flex;flex-wrap:wrap;gap:0 14px;margin:6px 0 0;padding:0;font-size:.9rem}
+.navb a{display:inline-flex;align-items:center;min-height:44px}
+.navb a[aria-current=page]{font-weight:700;color:var(--fg);text-decoration:none}
+.tools{margin:32px 0 0}
+.tl{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.tl a{display:block;min-height:44px;padding:10px 12px;border:1px solid var(--ln);border-radius:6px;background:var(--cd);color:var(--fg);text-decoration:none}
+.tl a strong{display:block;color:var(--pri)}
+.tl a span{font-size:.88rem}
+.tl a[aria-current=page]{border:2px solid var(--pri)}
+.pr-card{border:1px solid var(--ln);border-radius:6px;padding:10px 14px;margin:10px 0;background:var(--cd)}
+.pr-card h4{margin:6px 0;font-size:1rem}
+.pr-card p{margin:4px 0}
+.pr-tag{display:inline-block;font-size:.75rem;font-weight:700;border:1px solid var(--fg);border-radius:4px;padding:0 6px}
+.pr-cta,.sh{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:6px;background:var(--pri);color:var(--bg);font-weight:700;text-decoration:none;text-align:center}
+.shw{margin:10px 0 2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
 </head>
 <body>
 <div class="w">
@@ -106,6 +122,11 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <li>最終確認日: 2026-11-16</li>
 <li>この結果は目安です。最終判断は勤務先・健康保険組合・市区町村・税務署へご確認ください。</li></ul></div>
 <div class="warn" id="yearWarn" role="note" hidden>このページは令和8年分（2026年の収入）用です。今年分の制度は変更されている可能性があります。必ず最新の公式情報をご確認ください。</div>
+<nav class="navb" aria-label="学生バイトお役立ちツール">
+<a href="./" aria-current="page">壁チェッカー</a>
+<a href="kakemochi/">掛け持ち還付</a>
+<a href="shift-limit/">シフト逆算</a>
+</nav>
 </header>
 <main>
 <section id="input">
@@ -149,6 +170,8 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <section id="result" hidden aria-live="polite">
 <h2 id="resultH" tabindex="-1">判定結果</h2>
 <div class="sum"><p class="big" id="rCount"></p><p id="rNext"></p></div>
+<p class="shw"><a id="shareX" class="sh" href="https://x.com/intent/tweet" target="_blank" rel="noopener noreferrer">X で判定結果をシェア<span class="sr"> （新しいタブで開きます）</span></a></p>
+<p class="hint">押すと X の投稿画面が開きます。投稿文には金額・年齢は入りません。投稿前に内容を確認できます。</p>
 <div class="mt" aria-hidden="true">
 <div class="bar"></div>
 <div class="tk" style="left:59.5%"></div><div class="tk" style="left:68%"></div><div class="tk" style="left:75%"></div><div class="tk" style="left:79.5%"></div><div class="tk" style="left:81.5%"></div><div class="tk" style="left:89%"></div><div class="tk" style="left:98.5%"></div>
@@ -156,22 +179,17 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <ul class="lg" aria-label="ものさしの目盛り"><li>119万 住民税の目安</li><li>136万 親の扶養控除ライン</li><li>150万 健保の扶養（19〜22歳）</li><li>159万 満額控除の上限</li><li>163万 勤労学生控除の上限</li><li>178万 本人の所得税</li><li>197万 親の特別控除が0円になる</li></ul>
 <h3>一覧</h3>
 <div class="tw"><table><thead><tr><th>壁</th><th>基準（令和8年分）</th><th>判定</th><th>あと</th><th>信頼度</th></tr></thead><tbody id="rBody"></tbody></table></div>
+<div id="nextActs" hidden>
+<h3>次のおすすめアクション</h3>
+<p id="kkLink" hidden><a href="kakemochi/">掛け持ちの還付チェッカーへ（還付の目安を計算する）</a></p>
+<div id="prCards"></div>
+<p class="hint" id="prNote" hidden>「PR」は広告（アフィリエイト）です。リンク先では各サービスの規約・年齢条件をご確認ください。</p>
+</div>
 <div id="rCards"></div>
 <!-- AD-SLOT-1: AdSense ディスプレイ（レスポンシブ）。結果表示後のみ見える。コードを入れたら hidden を外す -->
 <div class="ad-slot" data-slot="after-result" role="complementary" aria-label="広告" hidden><span class="ad-label">広告</span></div>
 </section>
 
-<!-- AFFILIATE: 審査・提携後に有効化。実リンク無し -->
-<aside id="aff" hidden>
-<h2>PR 手続き・お金まわりに役立つサービス</h2>
-<p>本ページには広告（アフィリエイト）が含まれます。</p>
-<ul>
-<li><a href="#" data-aff="TODO-kakutei" rel="sponsored nofollow noopener">確定申告・年末調整をスマホで済ませる（確定申告アプリ）</a></li>
-<li><a href="#" data-aff="TODO-kakeibo" rel="sponsored nofollow noopener">収入と支出を管理する家計簿アプリ</a></li>
-<li><a href="#" data-aff="TODO-baito" rel="sponsored nofollow noopener">シフト・勤務先を探すバイト求人サイト</a></li>
-<li><a href="#" data-aff="TODO-card" rel="sponsored nofollow noopener">学生向けクレジットカード・決済サービス（18歳未満の方は対象外）</a></li></ul></aside>
-<!-- NOTE-LINK: 補足解説（有料 note）への誘導。URL未定のため hidden -->
-<p hidden>PR 詳しい解説は note で（準備中・有料記事）</p>
 <section id="tiers">
 <h2>親の特定親族特別控除 段階表（令和8年分・所得税）</h2>
 <p id="tierNote" hidden>この表は19〜22歳の場合のみ該当します。</p>
@@ -221,7 +239,7 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <h3>健保の扶養の150万円に通勤手当は含まれますか？</h3>
 <p>通勤手当は含めて判定するとされています（解釈を含むため、加入する健康保険組合で要確認）。このツールは給与に年間通勤手当を足して判定します。</p>
 <h3>掛け持ちバイトの確定申告は必要ですか？</h3>
-<p>年末調整されない給与がある場合などは確定申告が必要になる場合があります。国税庁のタックスアンサーまたは税務署でご確認ください。</p>
+<p>年末調整されない給与がある場合などは確定申告が必要になる場合があります。国税庁のタックスアンサーまたは税務署でご確認ください。還付の目安は「<a href="kakemochi/">掛け持ちバイトの源泉徴収・還付金チェッカー</a>」で計算できます。</p>
 </section>
 
 <!-- AD-SLOT-2: AdSense ディスプレイ（レスポンシブ）。コードを入れたら hidden を外す -->
@@ -251,9 +269,9 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <li><a href="https://www.city.chiba.jp/zaiseikyoku/zeimu/kazeikanri/zeiseikaiseijuminzei2027.html" target="_blank" rel="noopener noreferrer">千葉市 住民税の税制改正</a></li>
 <li><a href="https://www.city.minato.tokyo.jp/kazei/2025_zeiseikaisei_01.html" target="_blank" rel="noopener noreferrer">港区 令和8年度の住民税の改正</a></li>
 <li><a href="https://www.nenkin.go.jp/oshirase/taisetu/kojin/2026/202606/0617.html" target="_blank" rel="noopener noreferrer">日本年金機構 級地別の非課税限度額</a></li></ul>
-<h3>確定申告・年末調整</h3><ul>
+<h3>確定申告・還付申告・年末調整</h3><ul>
 <li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1900.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1900 給与所得者で確定申告が必要な人</a></li>
-<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2665.htm" target="_blank" rel="noopener noreferrer">国税庁 No.2665 年末調整の対象となる人</a></li></ul>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2030.htm" target="_blank" rel="noopener noreferrer">国税庁 No.2030 還付申告</a></li></ul>
 </section>
 
 <section id="future">
@@ -262,6 +280,14 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <li>令和10年分以降: 特例の終了により基準額が変わります（要確認）。このツールは令和8年分のみ対応です。</li></ul>
 </section>
 </main>
+<section class="tools" aria-labelledby="toolsH">
+<h2 id="toolsH">学生バイトお役立ちツール</h2>
+<ul class="tl">
+<li><a href="./" aria-current="page"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span></a></li>
+<li><a href="kakemochi/"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span></a></li>
+<li><a href="shift-limit/"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span></a></li>
+</ul>
+</section>
 <footer>
 <section id="disclaimer">
 <h2>免責事項</h2>
@@ -278,11 +304,14 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <li>広告配信を行う場合、Google AdSense などの第三者配信事業者がクッキーを使って広告を表示することがあります。広告設定は <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">https://adssettings.google.com</a> から変更できます。</li>
 <li>アクセス解析を導入する場合は、本ポリシーを更新します。</li>
 <li>広告・アフィリエイトを含みます。広告枠には「広告」「PR」と表示します。</li>
+<li>「X で判定結果をシェア」ボタンを押したときだけ、X（x.com）の投稿画面へ移動し、投稿文（超えた壁の数と名前のみ。金額・年齢は含みません）とこのページのURLが渡されます。ボタンを押さない限り、外部へ送信しません。</li>
+<li>PRカード（広告）のリンク先は広告主のサイトです。クリック後は、そのサイトのプライバシーポリシーが適用されます。</li>
 <li>連絡先: gakusei.kabe.checker@gmail.com</li></ul>
 </section>
 </footer>
 </div>
 
+<script src="links-config.js"></script>
 <script id="logic">
 const KABE=(function(){
 'use strict';
@@ -294,6 +323,7 @@ const TOKUTEI_TIERS=[
 {max:1840000,kind:'tokubetsu',amount:210000},{max:1890000,kind:'tokubetsu',amount:110000},
 {max:1940000,kind:'tokubetsu',amount:60000},{max:1970000,kind:'tokubetsu',amount:30000},
 {max:Infinity,kind:'none',amount:0}];
+const PR_A_MARGIN=100000,PR_B_X=1500000;
 const AGES=['u15','a16_18','a19_22','a23p'];
 const isInt=function(n){return typeof n==='number'&&Number.isInteger(n);};
 function comma(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
@@ -352,7 +382,27 @@ function estimateAnnual(o){
  if(!isInt(o.monthly)||o.monthly<0)errors.push({field:'monthly',message:'見込み月収は0以上の整数（円）で入力してください。'});
  if(errors.length)return {ok:false,errors:errors};
  return {ok:true,value:o.cumulative+o.monthsLeft*o.monthly};}
-return {judge:judge,estimateAnnual:estimateAnnual,parseYen:parseYen,fmtMan:fmtMan,fmtYen:fmtYen,TOKUTEI_TIERS:TOKUTEI_TIERS,DATA:{TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-16'}};
+function prPlan(r){
+ const minor=r.ageGroup==='u15'||r.ageGroup==='a16_18';
+ const nb=r.summary.nextBoundary;
+ return {
+  a:r.summary.exceededCount===0&&!minor&&nb!==null&&nb.remain>=PR_A_MARGIN,
+  b:r.X>PR_B_X||r.health.status==='ng'||r.multiJob===true,
+  kakemochi:r.multiJob===true};}
+function buildShare(r){
+ const order=['所得税','親の控除','健保の扶養','住民税'];
+ const hit=[r.tax.status==='over',r.parent.amount<r.parent.fullAmount,r.health.status==='ng',r.jumin.status==='over'];
+ const names=order.filter(function(x,i){return hit[i];});
+ const n=r.summary.exceededCount;
+ let body;
+ if(n===0)body='🎉 学生バイトの年収の壁チェック：4つの壁はすべてセーフでした！';
+ else if(n>=4)body='😱 学生バイトの年収の壁チェック：4つの壁をすべて超えていました…！';
+ else body='🤔 学生バイトの年収の壁チェック：4つの壁のうち'+n+'つを超えていました（'+names.join('・')+'）';
+ const text=body+'\nあなたも判定してみて👇';
+ const tags=DATA.HASHTAGS.join(',');
+ const href='https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(DATA.CANON)+'&hashtags='+DATA.HASHTAGS.map(encodeURIComponent).join(',');
+ return {text:text,url:DATA.CANON,hashtags:tags,href:href};}const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-16',CANON:'https://gerinoaka.github.io/student-baito-kabe-checker-2026/',HASHTAGS:['年収の壁','学生バイト','年収の壁チェッカー']};
+return {judge:judge,estimateAnnual:estimateAnnual,prPlan:prPlan,buildShare:buildShare,parseYen:parseYen,fmtMan:fmtMan,fmtYen:fmtYen,TOKUTEI_TIERS:TOKUTEI_TIERS,DATA:DATA};
 })();
 </script>
 <script id="ui">
@@ -368,7 +418,7 @@ n1177:['国税庁No.1177','https://www.nta.go.jp/taxes/shiraberu/taxanswer/shoto
 n1180:['国税庁No.1180','https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm'],
 n1175:['国税庁No.1175','https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1175.htm'],
 n1900:['国税庁No.1900','https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1900.htm'],
-n2665:['国税庁No.2665','https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2665.htm'],
+n2030:['国税庁No.2030','https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2030.htm'],
 ngy:['名古屋市','https://www.city.nagoya.jp/kurashi/zeikin/1037356/1011880/1011899/1045304.html'],
 chb:['千葉市','https://www.city.chiba.jp/zaiseikyoku/zeimu/kazeikanri/zeiseikaiseijuminzei2027.html'],
 mnt:['港区','https://www.city.minato.tokyo.jp/kazei/2025_zeiseikaisei_01.html'],
@@ -453,12 +503,33 @@ function render(r){
   e:['163万円は控除を使える「上限（制度の要件）」で、所得税が0円になる上限ではありません。令和8年分の所得税は178万円以下なら控除なしでも0円のため、給与のみの学生では所得税への追加効果はありません。','効果が出るのは主に住民税の所得割です（目安: 143万円以下で所得割0）。'],
   n:['要件: 学校教育法上の学校等に在学していること、給与以外の所得が10万円以下であること。このツールでは学校要件を判定しません（要確認）。','甲欄（扶養控除等申告書の勤労学生欄）での申告が必要です。乙欄や掛け持ちの従たる勤務先では適用されません。','住民税の控除額26万円は一部確認です。','控除額（所得税）は27万円です。令和7年分の要件は給与収入150万円以下でした。'],
   s:['n1175','ngy','chb'],k:'勤務先（年末調整）・市区町村・税務署'}));
- const fe=r.multiJob?['年末調整は原則、扶養控除等申告書を出した1か所でのみ行われます。','年末調整されなかった給与がある場合、確定申告が必要になる場合があります（国税庁・税務署で確認）。','乙欄で源泉徴収されている場合、年収178万円以下なら確定申告で還付される可能性があります（個別の判断は要確認）。']:['掛け持ちや、扶養控除等申告書を出していない勤務先がある場合は、確定申告が必要になる場合があります。'];
- cd.appendChild(card({t:'確定申告・年末調整の注意',b:'目安・要確認',c:'wn',p:r.multiJob?'△ 掛け持ちあり（要確認）':'△ 要確認',e:fe,s:['n1900','n2665'],k:'税務署'}));
+ const fe=r.multiJob?['年末調整は、扶養控除等申告書を出した勤務先で行われるのが一般的です（国税庁・勤務先で要確認）。','年末調整されなかった給与がある場合、確定申告が必要になる場合があります（国税庁・税務署で確認）。','乙欄で源泉徴収されている場合、年収178万円以下なら確定申告で還付される可能性があります（個別の判断は要確認）。']:['掛け持ちや、扶養控除等申告書を出していない勤務先がある場合は、確定申告が必要になる場合があります。'];
+ cd.appendChild(card({t:'確定申告・年末調整の注意',b:'目安・要確認',c:'wn',p:r.multiJob?'△ 掛け持ちあり（要確認）':'△ 要確認',e:fe,s:['n1900','n2030'],k:'税務署'}));
+ if(r.multiJob){const fc=cd.lastChild,la=h('p',null,null,[h('a',null,'還付の目安を計算する（掛け持ちバイトの還付チェッカー）')]);la.firstChild.href='kakemochi/';fc.appendChild(la);}
  document.querySelectorAll('#tierTbl tr[data-tier]').forEach(function(tr){
   const cur=r.ageGroup==='a19_22'&&Number(tr.getAttribute('data-tier'))===p.tierIndex;
   tr.classList.toggle('is-current',cur);if(cur)tr.setAttribute('aria-current','true');else tr.removeAttribute('aria-current');});
- $('tierNote').hidden=r.ageGroup==='a19_22';}
+ $('tierNote').hidden=r.ageGroup==='a19_22';
+ $('shareX').href=K.buildShare(r).href;
+ renderNext(r);}
+const PR_LEAD={
+ tanpatsu:'いまは壁に余裕があります。壁を超えない範囲で、スキマ時間に稼ぐ方法もあります。※稼ぎすぎると壁を超えるので、累計の収入を確認しながら使いましょう。',
+ kakutei:'150万円超・掛け持ち・健保のラインを超える場合は、確定申告や税金の管理が必要になることがあります。',
+ note:'壁の数え方と申告の流れを詳しく知りたい方へ。'};
+function prCard(key){
+ const L=(typeof window.KABE_LINKS==='object'&&window.KABE_LINKS)?window.KABE_LINKS[key]:null;
+ if(!L||typeof L.url!=='string'||!/^https:\/\//.test(L.url)||typeof L.title!=='string'||typeof L.cta!=='string')return null;
+ const a=h('a','pr-cta',L.cta);a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
+ return h('div','pr-card',null,[h('span','pr-tag',typeof L.label==='string'&&L.label?L.label:'PR'),h('h4',null,L.title),h('p',null,PR_LEAD[key]),h('p',null,typeof L.desc==='string'?L.desc:''),a]);}
+function renderNext(r){
+ const p=K.prPlan(r),host=$('prCards');host.textContent='';
+ const cards=[];
+ if(p.a){const c=prCard('tanpatsu');if(c)cards.push(c);}
+ if(p.b){const c=prCard('kakutei')||prCard('note');if(c)cards.push(c);}
+ cards.forEach(function(c){host.appendChild(c);});
+ $('kkLink').hidden=!p.kakemochi;
+ $('prNote').hidden=cards.length===0;
+ $('nextActs').hidden=!(p.kakemochi||cards.length>0);}
 function a0(p){
  if(p.reason==='under16')return '－ 対象外';
  if(p.amount===0)return '× なし';
