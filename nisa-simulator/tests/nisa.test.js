@@ -101,7 +101,7 @@ t('x-sister', () => {
 t('x-sitemap', () => {
   const sm = fs.readFileSync(path.join(root, '..', 'sitemap.xml'), 'utf8');
   const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 6);
+  assert.strictEqual(locs.length, 13);
   assert.ok(locs.includes(BASE));
   assert.ok(sm.includes('<lastmod>2026-11-17</lastmod>'));
   assert.ok(!fs.existsSync(path.join(root, 'sitemap.xml')));

@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>奨学金（JASSO）返済シミュレーター｜月額・完済年齢を計算</title>
+<meta name="description" content="奨学金（JASSO）の借入総額から、卒業後の毎月の返還額・返還回数・完済年齢・総返還額をすぐ計算。第一種（無利子）・第二種（有利子）・併用に対応し、毎月の返還額から完済までの期間も逆算できます。令和8年度の返還年数算出表をもとにした目安です。">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f8fafc">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+<!-- 公開URL: https://gerinoaka.github.io/student-baito-kabe-checker-2026/scholarship/ （canonical と og:url の2か所） -->
+<link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/scholarship/">
+<meta property="og:title" content="奨学金（JASSO）返済シミュレーター｜月額・完済年齢を計算">
+<meta property="og:description" content="奨学金（JASSO）の借入総額から、卒業後の毎月の返還額・返還回数・完済年齢・総返還額をすぐ計算。第一種（無利子）・第二種（有利子）・併用に対応し、毎月の返還額から完済までの期間も逆算できます。令和8年度の返還年数算出表をもとにした目安です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gerinoaka.github.io/student-baito-kabe-checker-2026/scholarship/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="学生バイトお役立ちツール">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M6 15l10-8 10 8v10H6z' fill='%23fff'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"奨学金（JASSO）返済シミュレーター（令和8年度）","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/scholarship/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"奨学金（JASSO）の返済は、毎月いくらくらいになりますか？","acceptedAnswer":{"@type":"Answer","text":"借入総額と、第一種（無利子）か第二種（有利子）かで決まります。例えば第一種で総額300万円なら、返還年数は17年（204回）、月額は14,705円です。第二種は利率に応じた利息が加わります。実際の額は JASSO の返還のてびきや返還例で確認してください。"}},{"@type":"Question","name":"奨学金は何歳で完済できますか？","acceptedAnswer":{"@type":"Answer","text":"貸与が終わった月の翌月から数えて7か月目に返還が始まり、その後は毎月返します。完済は、貸与終了時の年齢に、7か月と返還回数を足した時点が目安です。例えば22歳3月に貸与が終わり156回（13年）で返す場合、最後の返還は35歳6か月ごろです。留年・早期終了・返還の猶予などは考慮していません。"}},{"@type":"Question","name":"返還年数はどう決まりますか？","acceptedAnswer":{"@type":"Answer","text":"貸与総額に応じて、JASSO の算出表で決まります。総額を区分ごとの基準額で割り、小数点以下を切り捨てた年数が返還年数で、月賦の返還回数は年数×12回です。総額が340万円を超えると20年になります。表どおりのため、総額が増えて年数が短くなる箇所があります（20万円は6年、20万1円は5年）。全16区分はこのページの算出表で確認できます。"}},{"@type":"Question","name":"第一種と第二種の違いは何ですか？","acceptedAnswer":{"@type":"Answer","text":"第一種は無利子、第二種は有利子で、どちらも返還が必要です。第二種は在学中は利子がつきません。第二種の利率は貸与終了時に決まり、基本月額分の上限は年3.0%です。利率固定方式と、おおむね5年ごとに見直す利率見直し方式があり、申込時に選びます。"}},{"@type":"Question","name":"第一種と第二種の両方を借りている場合はどう計算しますか？","acceptedAnswer":{"@type":"Answer","text":"併用を選び、それぞれの借入総額を入れてください。JASSO のページには、貸与終了月が同じ場合は返還年数を合算した総額で算出すると書かれています。このツールは、合算した総額で返還年数を決め、第一種と第二種をそれぞれの借入額で計算して月額を足します。この計算方法はツール側の解釈による目安で、月賦と半年賦併用の配分は計算しません。"}},{"@type":"Question","name":"計算結果が JASSO の返還例と少し違うのはなぜですか？","acceptedAnswer":{"@type":"Answer","text":"第二種は、元利均等返還の標準的な式（月利は年利÷12）で計算しています。JASSO が公表している返還例と比べると、0.4〜1.2%ほど低く出ることがあります。据置期間（返還開始まで）の利息などの扱いが、公開されている情報から確認できていないためです。このツールの数字は目安とし、正確な額は JASSO の返還シミュレーションや返還のてびきで確認してください。"}},{"@type":"Question","name":"毎月の返還額から、完済までの期間を計算できますか？","acceptedAnswer":{"@type":"Answer","text":"「月額から期間」を選び、毎月返せる額を入れると、返還回数と完済の時期が出ます。ただし実際の返還は算出表で決まるため、表と違う額での試算は、早く返した場合などの目安です。毎月の額が第二種の利息以下だと完済できないため、その場合は結果を出しません。"}},{"@type":"Question","name":"返すのが難しくなったときはどうすればよいですか？","acceptedAnswer":{"@type":"Answer","text":"月々の返還額を減らす減額返還や、返還期限を延ばす返還期限猶予の制度があります。第一種（2017年度以降の採用者）には所得連動返還方式もあります。このツールでは計算しないため、条件や期間は JASSO の案内で確認してください。"}}]}</script>
+<style>
+/*ds:start v1*/
+:root{color-scheme:light dark;
+--bg:#f8fafc;--card:#fff;--soft:#f1f5f9;--fg:#0f172a;--sub:#475569;
+--primary:#1a56c4;--on-primary:#fff;--primary-soft:#e8f0fd;
+--track:#e2e8f0;--tick:#64748b;
+--ok-bg:#dcfce7;--ok-fg:#166534;--ng-bg:#fee2e2;--ng-fg:#991b1b;--wn-bg:#fef3c7;--wn-fg:#92400e;--nt-bg:#e2e8f0;--nt-fg:#334155;
+--ok:#15803d;--wn:#b45309;--ng:#dc2626;
+--shadow:0 1px 2px rgba(15,23,42,.04),0 4px 16px rgba(15,23,42,.05);
+--shadow-hero:0 1px 2px rgba(15,23,42,.05),0 10px 28px rgba(15,23,42,.08);
+--r-card:20px;--r-in:16px;--r-pill:999px;
+--s1:8px;--s2:16px;--s3:20px;--s4:24px;--s5:32px;
+--ring:#1a56c4;--t:.18s}
+@media(prefers-color-scheme:dark){:root{
+--bg:#0b1220;--card:#111a2e;--soft:#16213a;--fg:#e5edf8;--sub:#a9b6c9;
+--primary:#60a5fa;--on-primary:#0b1220;--primary-soft:#172554;
+--track:#26324a;--tick:#94a3b8;
+--ok-bg:#14532d;--ok-fg:#bbf7d0;--ng-bg:#7f1d1d;--ng-fg:#fecaca;--wn-bg:#78350f;--wn-fg:#fde68a;--nt-bg:#1e293b;--nt-fg:#cbd5e1;
+--ok:#4ade80;--wn:#fbbf24;--ng:#f87171;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+--shadow-hero:0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.4);
+--ring:#93c5fd}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;-webkit-tap-highlight-color:transparent}
+.w{max-width:640px;margin:0 auto;padding:0 16px 96px}
+h1{font-size:1.375rem;line-height:1.4;font-weight:700;margin:12px 0 8px;letter-spacing:.01em;font-feature-settings:"palt"}
+h2{font-size:1.05rem;font-weight:700;margin:0 0 8px}
+h3{font-size:1rem;margin:14px 0 4px}
+.ct{font-size:1.05rem;font-weight:700;margin:0 0 12px;font-feature-settings:"palt"}
+summary h2,summary h3{display:inline;font-size:1.05rem;margin:0;font-feature-settings:"palt"}
+a{color:var(--primary)}
+ul,ol{padding-left:1.3em}
+button{font:inherit;border:0;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;z-index:9;padding:8px 12px;background:var(--primary);color:var(--on-primary)}
+.skip:focus{left:0}
+.navb{display:flex;gap:8px;margin:12px -16px 0;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.navb::-webkit-scrollbar{display:none}
+.navb a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-size:.875rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.navb a[aria-current=page]{background:var(--primary);color:var(--on-primary)}
+.band{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:0 0 var(--s2);font-size:.85rem;line-height:1.5}
+.band a{flex:none;display:inline-flex;align-items:center;min-height:44px;margin:-8px 0;color:var(--wn-fg);font-weight:700;white-space:nowrap}
+.warn{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.9rem;font-weight:700}
+.note{background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.875rem}
+.card{background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);padding:var(--s3);margin:0 0 var(--s2)}
+.rc{box-shadow:var(--shadow-hero);padding:var(--s4)}
+.panel{background:var(--soft);border-radius:var(--r-in);padding:var(--s2)}
+@media(max-width:400px){.card{padding:var(--s2)}.rc{padding:var(--s3)}}
+.kpi-l{margin:0;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.big{margin:2px 0 4px;font-size:2.25rem;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+.big small{margin-left:4px;font-size:1rem;font-weight:700;letter-spacing:0}
+@media(min-width:400px){.big{font-size:2.5rem}}
+.mid{margin:2px 0;font-size:1.375rem;font-weight:700;line-height:1.3}
+.sumline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 4px}
+.stats{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0 0;padding:0}
+.stats[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.stats>*{min-width:0;margin:0;padding:8px 12px;border-radius:var(--r-in);background:var(--soft)}
+.stats dt,.stats .k{display:block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.stats dd,.stats .v{display:block;margin:0;font-weight:700}
+.hint{font-size:.875rem;line-height:1.6;color:var(--sub);margin:6px 0 0}
+.stale{font-size:.875rem;color:var(--sub);margin:8px 0 0}
+.confirm{font-size:.875rem;color:var(--sub);margin:12px 0 0}
+.confirm a,.risk a{display:inline-flex;align-items:center;min-height:44px}
+.risk{margin:12px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--wn-bg);color:var(--wn-fg);font-size:.875rem;line-height:1.6}
+.risk a{color:var(--wn-fg);font-weight:700}
+.safe{margin:8px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--ok-bg);color:var(--ok-fg);font-size:.875rem;font-weight:700;line-height:1.6}
+.pill{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:2px 12px;border-radius:var(--r-pill);font-weight:700;font-size:.9rem;line-height:1.3}
+.pill--ok{background:var(--ok-bg);color:var(--ok-fg)}
+.pill--ng{background:var(--ng-bg);color:var(--ng-fg)}
+.pill--wn{background:var(--wn-bg);color:var(--wn-fg)}
+.pill--nt{background:var(--nt-bg);color:var(--nt-fg)}
+.dot{margin-left:8px;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.75rem;font-weight:700}
+.fld{margin:0 0 var(--s2)}
+label.l{display:block;font-weight:700;margin:0 0 6px}
+.num{position:relative}
+.num input{display:block;width:100%;min-height:56px;margin:0;padding:0 44px 0 16px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;-moz-appearance:textfield;appearance:textfield}
+.num input::-webkit-outer-spin-button,.num input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.num .unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--sub);font-weight:700;pointer-events:none}
+.num--sm input{min-height:48px;font-size:1.125rem;text-align:right}
+.num input[aria-invalid=true],.stepper input[aria-invalid=true],textarea[aria-invalid=true]{box-shadow:inset 0 0 0 2px var(--ng)}
+select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit}
+textarea{display:block;width:100%;min-height:168px;padding:12px 14px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;line-height:1.7;resize:vertical}
+.err{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:6px 12px;margin:8px 0 0;font-size:.9rem;font-weight:700}
+.err::before{content:"\26A0  "}
+.range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:4px 0 0;padding:0;background:transparent;cursor:pointer;--pct:0%}
+.range::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-moz-range-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range::-moz-range-thumb{box-sizing:border-box;width:28px;height:28px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range.is-empty::-webkit-slider-thumb{border-color:var(--tick)}
+.range.is-empty::-moz-range-thumb{border-color:var(--tick)}
+.range:disabled{opacity:.5;cursor:not-allowed}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 0}
+.chips[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.chips[data-cols="6"]{grid-template-columns:repeat(6,1fr)}
+@media(max-width:359px){.chips[data-cols="4"]{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:374px){.chips[data-cols="6"]{grid-template-columns:repeat(3,1fr)}}
+.chip{min-height:44px;min-width:44px;padding:0 6px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-weight:700;white-space:nowrap;transition:background var(--t),color var(--t)}
+.chip[aria-pressed=true]{background:var(--primary);color:var(--on-primary)}
+.chip[aria-pressed=true]::before{content:"\2713  "}
+.chips[data-cols="6"] .chip[aria-pressed=true]::before{content:"\2713"}
+.seg-group{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;border:0;margin:0 0 var(--s2);padding:0;min-width:0}
+.seg-group[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.seg-group[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.seg-group legend{padding:0;margin:0 0 8px;font-weight:700}
+.seg{position:relative;display:block;min-width:0}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.seg span{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:48px;padding:6px 8px;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font-weight:700;font-size:.95rem;text-align:center;line-height:1.35;cursor:pointer;transition:background var(--t),color var(--t)}
+.seg small{font-size:.8rem;font-weight:400}
+.seg input:checked+span{background:var(--primary);color:var(--on-primary)}
+.seg input:checked+span::before{content:"\2713";position:absolute;top:4px;right:8px;font-size:.75rem}
+.seg input:focus-visible+span{outline:3px solid var(--ring);outline-offset:2px}
+.stepper{display:flex;align-items:center;gap:12px}
+.stepper button{flex:none;width:52px;height:52px;border-radius:50%;background:var(--soft);color:var(--fg);font-size:1.5rem;font-weight:700;line-height:1}
+.stepper input{width:72px;min-height:52px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;text-align:center}
+.stepper .unit{color:var(--sub);font-weight:700}
+.cb{display:flex;align-items:center;gap:10px;min-height:44px;margin:0 0 var(--s1)}
+.cb input{flex:none;width:22px;height:22px;margin:0;accent-color:var(--primary)}
+.cb--sw input{-webkit-appearance:none;appearance:none;position:relative;width:46px;height:28px;border-radius:14px;background:var(--tick);cursor:pointer;transition:background var(--t)}
+.cb--sw input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--card);transition:left var(--t)}
+.cb--sw input:checked{background:var(--primary)}
+.cb--sw input:checked::after{left:21px}
+.btn,.btn-ghost,.sh,.pr-cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;padding:0 16px;border-radius:var(--r-in);font-weight:700;text-decoration:none;text-align:center}
+.btn{background:var(--primary);color:var(--on-primary)}
+.btn-ghost{background:var(--soft);color:var(--primary)}
+.btn-text{min-height:44px;padding:0 12px;background:none;color:var(--primary);font-weight:700}
+.sh{background:var(--fg);color:var(--bg)}
+.go-row{display:grid;gap:8px;margin-top:var(--s2)}
+.gauge{position:relative;height:64px;margin:12px 12px 4px}
+.g-now{position:absolute;top:0;white-space:nowrap;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.8rem;font-weight:700;line-height:1.5}
+.g-track{position:absolute;left:0;right:0;top:28px;height:14px;border-radius:7px;background:var(--track);overflow:hidden}
+.g-fill{width:0;height:100%;border-radius:7px;background:var(--ok);transition:width var(--t)}
+.g-fill[data-tone=wn]{background:var(--wn)}
+.g-fill[data-tone=ng]{background:var(--ng)}
+.g-tick{position:absolute;top:24px;width:2px;height:22px;margin-left:-1px;background:var(--tick)}
+.g-thumb{position:absolute;top:24px;left:0;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--card);border:4px solid var(--primary);transition:left var(--t)}
+.g-labels{position:absolute;left:0;right:0;top:48px;height:16px;font-size:.72rem;line-height:16px;color:var(--sub)}
+.g-labels span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.gauge--bar{height:40px;margin:8px 0 4px}
+.gauge--bar .g-track{top:0}
+.gauge--bar .g-tick{top:-4px}
+.gauge--bar .g-labels{top:20px}
+.g-cap{margin:6px 0 0;font-size:.875rem;color:var(--sub)}
+.acc{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2)}
+.acc>summary{display:flex;align-items:center;gap:8px;min-height:56px;padding:0 20px;cursor:pointer;list-style:none;font-weight:700}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary::after{content:"";flex:none;margin:0 4px 4px auto;width:9px;height:9px;border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg);transition:transform var(--t)}
+.acc[open]>summary::after{margin-bottom:-4px;transform:rotate(-135deg)}
+.acc-body,.acc>section{padding:0 20px 20px}
+.acc-list{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2);overflow:hidden}
+.acc-list>.acc{margin:0;border-radius:0;background:none}
+.acc-list>.acc:not(:first-child){border-top:1px solid var(--soft)}
+.acc--inline{background:var(--soft);border-radius:var(--r-in)}
+.acc--inline>summary{min-height:48px;padding:0 16px}
+.acc--inline>.acc-body{padding:0 16px 16px}
+@media(max-width:400px){.acc>summary{padding:0 16px}.acc-body,.acc>section{padding:0 16px 16px}}
+.tw{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;width:100%;min-width:400px;font-size:.88rem}
+th,td{padding:8px 10px;text-align:left;vertical-align:top}
+th{color:var(--sub);font-weight:700}
+td.n{text-align:right;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--soft)}
+caption{text-align:left;font-weight:700;padding:4px 0}
+.faq h3{margin:14px 0 0}
+.faq p{margin:4px 0}
+dl.g dt{font-weight:700;margin:12px 0 0}
+dl.g dd{margin:2px 0 0}
+.shw{margin:0 0 4px}
+.pr-wrap{margin-top:var(--s3)}
+.pr-note{margin:0 0 8px;font-size:.875rem;line-height:1.6;color:var(--sub)}
+.pr-card{background:var(--soft);border-radius:var(--r-in);padding:var(--s2);margin:12px 0 0}
+.pr-card h3,.pr-card h4{margin:6px 0;font-size:1rem}
+.pr-card p{margin:4px 0;font-size:.9rem}
+.pr-tag{display:inline-block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.pr-tag::before{content:"\3010"}
+.pr-tag::after{content:"\3011"}
+.pr-disc{display:inline;margin:0 0 0 4px;font-size:.8125rem;color:var(--sub)}
+.pr-cta{min-height:48px;margin-top:10px;background:var(--card);color:var(--primary)}
+.ad-slot{min-height:250px;margin:0 0 var(--s2);display:flex;align-items:flex-start;justify-content:center;border-radius:var(--r-in)}
+.ad-label{font-size:.75rem;color:var(--sub);padding:4px}
+.rel{margin:var(--s5) 0 0}
+.rel-t{margin:0 0 8px;font-size:1.05rem;font-weight:700;font-feature-settings:"palt"}
+.rel .tools,.rel .sisters{background:var(--card);border-radius:var(--r-card);padding:8px;margin:0 0 var(--s2)}
+.rel h2{margin:8px 12px 4px;font-size:.8125rem;color:var(--sub)}
+.tl{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.tl a{position:relative;display:block;min-height:56px;padding:10px 36px 10px 12px;border-radius:var(--r-in);color:var(--fg);text-decoration:none;transition:background var(--t)}
+.tl a::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;margin-top:-4px;border-top:2px solid var(--sub);border-right:2px solid var(--sub);transform:rotate(45deg)}
+.tl a:hover{background:var(--soft)}
+.tl a strong{display:block;font-size:.95rem;line-height:1.5}
+.tl a span{display:block;font-size:.8125rem;color:var(--sub)}
+.tl a[aria-current=page]{background:var(--primary-soft)}
+.tl a[aria-current=page]::after{display:none}
+footer{font-size:.85rem;color:var(--sub);margin-top:var(--s4)}
+.foot-links{margin:0 0 var(--s1)}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px}
+footer h2{font-size:1rem;margin:12px 0 6px}
+.livebar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:640px;min-height:56px;margin:0 auto;padding:0 16px env(safe-area-inset-bottom);background:var(--card);box-shadow:0 -4px 16px rgba(15,23,42,.12);font-weight:700}
+.livebar button{flex:none;min-height:44px;padding:0 16px;border-radius:var(--r-pill);background:var(--primary);color:var(--on-primary);font-weight:700}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+/*ds:end*/
+.chart{display:block;width:100%;height:auto;margin:12px 0 0}
+.ax{fill:var(--sub);font-size:10px}
+.gl{stroke:var(--track)}
+.ar{fill:var(--primary-soft)}
+.ln{fill:none;stroke:var(--primary);stroke-width:2}
+.tn{display:block;font-size:.8rem;font-weight:400;color:var(--sub);margin-top:2px}
+.card :is(p,dd,td) a{display:inline-flex;align-items:center;min-height:44px}
+.sp{margin-top:var(--s2)}
+.ym{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div class="w">
+<header>
+<nav class="navb" aria-label="サイト内ツール">
+<a href="../">年収の壁</a>
+<a href="./" aria-current="page">奨学金返済</a>
+<a href="#toolsH">ほかのツール</a>
+</nav>
+<h1>奨学金（JASSO）返済シミュレーター</h1>
+<div class="band" role="note"><span>目安です。対象：令和8年度の返還年数算出表・貸与利率／最終確認日 2026-11-17</span><a href="#legal" data-open="legal">免責</a></div>
+<noscript><p class="warn">このツールはJavaScriptが必要です。有効にしてご利用ください。</p></noscript>
+</header>
+<main id="main">
+<section id="input" class="card">
+<h2 class="ct">借りた奨学金を入れる</h2>
+<fieldset class="seg-group" data-cols="3"><legend>奨学金の種類</legend>
+<label class="seg"><input type="radio" name="kind" id="kind1" checked><span>第一種<small>無利子</small></span></label>
+<label class="seg"><input type="radio" name="kind" id="kind2"><span>第二種<small>有利子</small></span></label>
+<label class="seg"><input type="radio" name="kind" id="kindB"><span>併用<small>両方借りた</small></span></label></fieldset>
+<div id="w1">
+<div class="fld"><label class="l" for="p1">第一種の借入総額（円）</label>
+<div class="num"><input id="p1" type="text" inputmode="numeric" autocomplete="off" value="3000000" aria-describedby="e-p1 h-p"><span class="unit">円</span></div>
+<p class="err" id="e-p1" role="alert" hidden></p>
+<label class="sr" for="p1Range">第一種の借入総額のスライダー</label>
+<input type="range" class="range" id="p1Range" min="0" max="6000000" step="10000" value="3000000">
+<div class="chips" id="p1Chips" data-cols="4" data-t="p1">
+<button type="button" class="chip" aria-pressed="false" data-v="1000000" aria-label="100万円">100万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="2000000" aria-label="200万円">200万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="3000000" aria-label="300万円">300万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="4000000" aria-label="400万円">400万</button></div></div>
+</div>
+<div id="w2" hidden>
+<div class="fld"><label class="l" for="p2">第二種の借入総額（円）</label>
+<div class="num"><input id="p2" type="text" inputmode="numeric" autocomplete="off" value="2400000" aria-describedby="e-p2 h-p"><span class="unit">円</span></div>
+<p class="err" id="e-p2" role="alert" hidden></p>
+<label class="sr" for="p2Range">第二種の借入総額のスライダー</label>
+<input type="range" class="range" id="p2Range" min="0" max="9600000" step="10000" value="2400000">
+<div class="chips" id="p2Chips" data-cols="4" data-t="p2">
+<button type="button" class="chip" aria-pressed="false" data-v="1000000" aria-label="100万円">100万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="2000000" aria-label="200万円">200万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="3000000" aria-label="300万円">300万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="4000000" aria-label="400万円">400万</button></div></div>
+</div>
+<p class="hint" id="h-p">貸与された総額（毎月の貸与額×月数の合計）です。単一の種類は3万円以上、併用は合計3万円以上で計算します。</p>
+</section>
+
+<section id="result" aria-labelledby="resultH" data-state="ready" data-stale="false">
+<p id="liveSr" class="sr" aria-live="polite" aria-atomic="true"></p>
+<div class="card rc" id="resultCard">
+<h2 class="ct" id="resultH">試算結果（目安）</h2>
+<p class="sumline"><span class="pill pill--ok" id="stdBadge">○ 算出表どおりの標準期間</span> <span class="pill pill--wn" id="estBadge" hidden>△ 目安（第二種）</span></p>
+<p class="kpi-l" id="rLabel">毎月の返還額（目安）</p>
+<p class="big" id="rBig"></p>
+<p class="hint" id="rSub"></p>
+<dl class="stats" id="stats" data-cols="2">
+<div id="cM" hidden><dt>毎月の返還額</dt><dd id="stM"></dd></div>
+<div id="cN"><dt>返還回数</dt><dd id="stN"></dd></div>
+<div id="cEnd"><dt>完済予定（目安）</dt><dd id="stEnd"></dd><span class="tn" id="stEndYm"></span></div>
+<div id="cTotal"><dt>総返還額</dt><dd id="stTotal"></dd></div>
+<div id="cInt" hidden><dt>利息総額</dt><dd id="stInt"></dd></div>
+</dl>
+<p class="hint" id="startNote"></p>
+<p class="hint" id="breakdown" hidden></p>
+<p class="hint" id="rateNote" hidden></p>
+<div id="chartBox">
+<svg id="chart" class="chart" viewBox="0 0 320 150" role="img" aria-label="返還の残高の推移"></svg>
+<p class="hint">横軸は年齢の目安、縦軸は返還していない残りの金額です</p>
+</div>
+<p class="warn" id="noPay" hidden></p>
+<p class="risk" id="estNote" role="note" hidden>第二種（有利子）の額は目安です。JASSO公式の返還シミュレーション／返還例より少し低めに出る場合があります（据置期間の利息などの扱いのため）。正確な額は JASSO 公式で確認してください。<a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/kappu/sample/daigaku.html" target="_blank" rel="noopener noreferrer">JASSOの返還例</a></p>
+<p class="hint" id="floorNote">第一種の月額は、総額÷回数の小数点以下を切り捨てた額です。最終回で調整される場合あり（目安）。</p>
+<p class="hint" id="capNote" hidden></p>
+<p class="stale" id="staleNote" hidden>入力が途中のため、直前の結果を表示しています</p>
+<p class="confirm">確認先は JASSO（<a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/henkan_kikan/index.html" target="_blank" rel="noopener noreferrer">返還年数算出表</a>）。<a href="#basis" data-open="basisAcc">計算の前提</a></p>
+<p class="hint">給付型奨学金は返還不要です。このツールは貸与型（返還が必要なもの）が対象です。</p>
+<p class="hint" id="konnan">返還が難しいときは、減額返還・返還期限猶予などの制度があります（このツールでは計算しません）。第一種（2017年度以降の採用者）には所得連動返還方式もあります。<a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/index.html" target="_blank" rel="noopener noreferrer">JASSOの案内</a></p>
+<p class="hint" id="nextLinks">返還額を引いた毎月使えるお金は <a href="../living-cost-simulator/">手取り＆一人暮らし生活費シミュレーター</a>、余裕資金での積立は <a href="../nisa-simulator/">新NISA積立シミュレーター</a> で試算できます。</p>
+</div>
+</section>
+
+<section id="cond" class="card">
+<h2 class="ct">返し方を変えてみる</h2>
+<fieldset class="seg-group" data-cols="2"><legend>計算のしかた</legend>
+<label class="seg"><input type="radio" name="mode" id="modeTerm" checked><span>期間から月額<small>返す年数で月々の額を出す</small></span></label>
+<label class="seg"><input type="radio" name="mode" id="modePay"><span>月額から期間<small>毎月返せる額で完済時期を出す</small></span></label></fieldset>
+<div id="wTerm">
+<fieldset class="seg-group" data-cols="2"><legend>返還年数</legend>
+<label class="seg"><input type="radio" name="term" id="tStd" checked><span>標準<small>算出表どおり</small></span></label>
+<label class="seg"><input type="radio" name="term" id="tCustom"><span>短くする<small>早く返す場合の目安</small></span></label></fieldset>
+<div id="wYears" hidden>
+<div class="fld"><label class="l" for="years">返還年数（年）</label>
+<div class="num num--sm"><input id="years" type="text" inputmode="numeric" autocomplete="off" value="10" aria-describedby="e-years"><span class="unit">年</span></div>
+<p class="err" id="e-years" role="alert" hidden></p>
+<label class="sr" for="yearsRange">返還年数のスライダー</label>
+<input type="range" class="range" id="yearsRange" min="1" max="20" step="1" value="10">
+<div class="chips" id="yChips" data-cols="4" data-t="years">
+<button type="button" class="chip" aria-pressed="false" data-v="5" aria-label="5年">5年</button>
+<button type="button" class="chip" aria-pressed="false" data-v="10" aria-label="10年">10年</button>
+<button type="button" class="chip" aria-pressed="false" data-v="15" aria-label="15年">15年</button>
+<button type="button" class="chip" aria-pressed="false" data-v="20" aria-label="20年">20年</button></div>
+<p class="hint">標準の年数が上限です。</p></div>
+</div>
+</div>
+<div id="wPay" hidden>
+<div class="fld"><label class="l" for="monthly">毎月の返還額（円）</label>
+<div class="num"><input id="monthly" type="text" inputmode="numeric" autocomplete="off" value="20000" aria-describedby="e-monthly"><span class="unit">円</span></div>
+<p class="err" id="e-monthly" role="alert" hidden></p>
+<label class="sr" for="monthlyRange">毎月の返還額のスライダー</label>
+<input type="range" class="range" id="monthlyRange" min="1000" max="100000" step="1000" value="20000">
+<div class="chips" id="mChips" data-cols="4" data-t="monthly">
+<button type="button" class="chip" aria-pressed="false" data-v="10000" aria-label="1万円">1万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="20000" aria-label="2万円">2万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="30000" aria-label="3万円">3万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="50000" aria-label="5万円">5万</button></div>
+<p class="hint">実際の返還は算出表で決まります。任意の額での試算は目安です。</p></div>
+</div>
+<details class="acc acc--inline sp" id="advanced"><summary>細かい設定（利率・年齢・貸与終了年月）</summary>
+<div class="acc-body">
+<div id="wRate" hidden>
+<div class="fld"><label class="l" for="rate">第二種の利率（年・%）</label>
+<div class="num num--sm"><input id="rate" type="text" inputmode="decimal" autocomplete="off" value="3.000" aria-describedby="e-rate"><span class="unit">%</span></div>
+<p class="err" id="e-rate" role="alert" hidden></p>
+<div class="chips" id="rChips" data-cols="3" data-t="rate">
+<button type="button" class="chip" aria-pressed="false" data-v="3.000" aria-label="年利3.000%">3.000%</button>
+<button type="button" class="chip" aria-pressed="false" data-v="2.274" aria-label="年利2.274%">2.274%</button>
+<button type="button" class="chip" aria-pressed="false" data-v="1.874" aria-label="年利1.874%">1.874%</button></div>
+<p class="hint">貸与終了時に決まります。固定は令和8年7〜10月終了の水準、見直しは同年10月・4月終了の水準の例です。基本月額の上限は年3.0%です。</p>
+<p class="note" id="rateWarn" hidden>基本月額の上限は年3.0%です。増額部分は上限を超えることがあります。</p></div>
+</div>
+<div class="fld"><label class="l" for="age">貸与が終わる月の年齢（歳）</label>
+<div class="num num--sm"><input id="age" type="text" inputmode="numeric" autocomplete="off" value="22" aria-describedby="e-age"><span class="unit">歳</span></div>
+<p class="err" id="e-age" role="alert" hidden></p></div>
+<div class="fld"><label class="l" for="endY">貸与終了の年月</label>
+<div class="ym"><div class="num num--sm"><input id="endY" type="text" inputmode="numeric" autocomplete="off" value="2027" aria-describedby="e-endY"><span class="unit">年</span></div>
+<label class="sr" for="endM">貸与終了の月</label>
+<select id="endM"><option value="1">1月</option><option value="2">2月</option><option value="3" selected>3月</option><option value="4">4月</option><option value="5">5月</option><option value="6">6月</option><option value="7">7月</option><option value="8">8月</option><option value="9">9月</option><option value="10">10月</option><option value="11">11月</option><option value="12">12月</option></select></div>
+<p class="err" id="e-endY" role="alert" hidden></p></div>
+<p class="hint">返還開始は貸与終了月の翌月から数えて7か月目です。留年・早期終了・進学による猶予などは考慮しません。</p>
+</div></details>
+</section>
+
+<div class="acc-list">
+<details class="acc" id="tableAcc"><summary><h2>返還の推移（年ごとの表）</h2></summary>
+<section id="table"><div class="tw"><table><caption>年ごとの残高（目安）</caption>
+<thead><tr><th scope="col">返還から</th><th scope="col">年月と年齢</th><th scope="col">残高</th></tr></thead><tbody id="tblBody"></tbody></table></div></section></details>
+<details class="acc" id="bandsAcc"><summary><h2>返還年数の算出表（全16区分）</h2></summary>
+<section id="bands"><div class="tw"><table><caption>返還年数算出表（令和8年度）</caption>
+<thead><tr><th scope="col">区分</th><th scope="col">貸与総額</th><th scope="col">基準額</th></tr></thead><tbody>
+<tr><td class="n">1</td><td>200,000円以下</td><td class="n">30,000円</td></tr>
+<tr><td class="n">2</td><td>200,001円〜400,000円</td><td class="n">40,000円</td></tr>
+<tr><td class="n">3</td><td>400,001円〜500,000円</td><td class="n">50,000円</td></tr>
+<tr><td class="n">4</td><td>500,001円〜600,000円</td><td class="n">60,000円</td></tr>
+<tr><td class="n">5</td><td>600,001円〜700,000円</td><td class="n">70,000円</td></tr>
+<tr><td class="n">6</td><td>700,001円〜900,000円</td><td class="n">80,000円</td></tr>
+<tr><td class="n">7</td><td>900,001円〜1,100,000円</td><td class="n">90,000円</td></tr>
+<tr><td class="n">8</td><td>1,100,001円〜1,300,000円</td><td class="n">100,000円</td></tr>
+<tr><td class="n">9</td><td>1,300,001円〜1,500,000円</td><td class="n">110,000円</td></tr>
+<tr><td class="n">10</td><td>1,500,001円〜1,700,000円</td><td class="n">120,000円</td></tr>
+<tr><td class="n">11</td><td>1,700,001円〜1,900,000円</td><td class="n">130,000円</td></tr>
+<tr><td class="n">12</td><td>1,900,001円〜2,100,000円</td><td class="n">140,000円</td></tr>
+<tr><td class="n">13</td><td>2,100,001円〜2,300,000円</td><td class="n">150,000円</td></tr>
+<tr><td class="n">14</td><td>2,300,001円〜2,500,000円</td><td class="n">160,000円</td></tr>
+<tr><td class="n">15</td><td>2,500,001円〜3,400,000円</td><td class="n">170,000円</td></tr>
+<tr><td class="n">16</td><td>3,400,001円以上</td><td class="n">総額の1/20（20年固定）</td></tr>
+</tbody></table></div>
+<p class="hint">上限は含みます。表どおりのため、総額が増えて年数が短くなる箇所があります（200,000円は6年、200,001円は5年。1,500,000円は13年、1,500,001円は12年）。丸めや補正はしません。</p></section></details>
+<details class="acc" id="basisAcc"><summary><h2>計算の前提と確認先</h2></summary>
+<section id="basis">
+<ul>
+<li>返還は月賦のみ・定額返還を前提にします。所得連動返還・減額返還・返還期限猶予・半年賦併用は計算しません。</li>
+<li>返還年数は算出表（全16区分）で決めます。第二種にも同じ表を使います（JASSOの返還例で再現できることを確認済みです。表の適用対象の明文は確認できていません）。</li>
+<li>第一種の月額は、総額÷回数の小数点以下を切り捨てた額です。総返還額は借入総額と同額で、最終回で調整される場合があります（目安）。</li>
+<li>第二種は元利均等・月利は年利÷12の標準式です。月額は四捨五入、総返還額は月額×回数です。利息の起算日・据置期間の利息・端数処理・最終回の調整は確認できていないため、JASSOの返還例より少し低めに出る場合があります。補正はしていません。</li>
+<li>初回の返還は貸与終了月の翌月から数えて7か月目、最終回は初回の（回数−1）か月後です。年齢は貸与終了月の時点の年齢から月単位で数えます。</li>
+<li>令和8年度の第二種の利率（基本月額）: 固定 令和8年4月 2.722%・5月 2.922%・6月 2.922%・7〜10月 3.000%／見直し 4月 1.874%・5月 2.000%・6月 1.900%・7月 2.000%・8月 2.200%・9月 2.400%・10月 2.274%。11月〜翌3月終了分は確認できていません。増額部分は基本利率に0.2%などが加わるため対象外です。</li>
+<li>併用は、合算した総額で返還年数を決め、各奨学金を自分の元本で計算して足す解釈です。</li>
+<li>逆算モードは算出表に従わない任意の額での試算です。返還が50年（600回）を超える場合は計算しません。</li>
+<li>確認先: JASSO（返還のてびき・返還例・利率のページ）。最終確認日 2026-11-17。</li>
+</ul>
+</section></details>
+</div>
+
+<div class="card" id="actions">
+<p class="shw"><a id="shareX" class="sh" href="https://x.com/intent/tweet" target="_blank" rel="noopener noreferrer">結果をXでシェア<span class="sr">（新しいタブで開きます）</span></a></p>
+<p class="hint">投稿文に金額・年齢は入りません。</p>
+<div class="pr-wrap">
+<h3 class="ct">PR・おすすめ</h3>
+<fieldset class="seg-group" data-cols="2"><legend>年齢（任意）</legend>
+<label class="seg"><input type="radio" name="age" id="ageU"><span>18歳未満</span></label>
+<label class="seg"><input type="radio" name="age" id="ageA"><span>18歳以上<small>高校生を除く</small></span></label></fieldset>
+<p class="hint">年齢で表示するPR情報が変わります。入力は保存しません。</p>
+<p class="hint" id="prMsg"></p>
+<p class="pr-note" id="prCond" hidden>広告を含みます。申込条件・特典は各社公式で確認してください。</p>
+<!-- PR枠: ここに prCards を描画 -->
+<div id="prCards"></div>
+</div>
+</div>
+<!-- AD-SLOT-1: 広告コードを入れたら hidden を外す（PRの下） -->
+<div class="ad-slot" data-slot="after-result" role="complementary" aria-label="広告" hidden><span class="ad-label">広告</span></div>
+
+<div class="acc-list">
+<details class="acc" id="aboutAcc"><summary><h2>このツールでわかること</h2></summary>
+<div class="acc-body"><p>借入総額から、卒業後の毎月の返還額・返還回数・完済年齢・総返還額をすぐ計算します。第一種（無利子）・第二種（有利子）・併用に対応し、「奨学金は何歳で完済できる？」「JASSOの返還は月いくら？」を目安で確認できます。入力はこの端末の中だけで計算し、送信しません。</p></div></details>
+<details class="acc"><summary><h2>よくある質問</h2></summary>
+<section id="faq" class="faq">
+<h3>奨学金（JASSO）の返済は、毎月いくらくらいになりますか？</h3><p>借入総額と、第一種（無利子）か第二種（有利子）かで決まります。例えば第一種で総額300万円なら、返還年数は17年（204回）、月額は14,705円です。第二種は利率に応じた利息が加わります。実際の額は JASSO の返還のてびきや返還例で確認してください。</p>
+<h3>奨学金は何歳で完済できますか？</h3><p>貸与が終わった月の翌月から数えて7か月目に返還が始まり、その後は毎月返します。完済は、貸与終了時の年齢に、7か月と返還回数を足した時点が目安です。例えば22歳3月に貸与が終わり156回（13年）で返す場合、最後の返還は35歳6か月ごろです。留年・早期終了・返還の猶予などは考慮していません。</p>
+<h3>返還年数はどう決まりますか？</h3><p>貸与総額に応じて、JASSO の算出表で決まります。総額を区分ごとの基準額で割り、小数点以下を切り捨てた年数が返還年数で、月賦の返還回数は年数×12回です。総額が340万円を超えると20年になります。表どおりのため、総額が増えて年数が短くなる箇所があります（20万円は6年、20万1円は5年）。全16区分はこのページの算出表で確認できます。</p>
+<h3>第一種と第二種の違いは何ですか？</h3><p>第一種は無利子、第二種は有利子で、どちらも返還が必要です。第二種は在学中は利子がつきません。第二種の利率は貸与終了時に決まり、基本月額分の上限は年3.0%です。利率固定方式と、おおむね5年ごとに見直す利率見直し方式があり、申込時に選びます。</p>
+<h3>第一種と第二種の両方を借りている場合はどう計算しますか？</h3><p>併用を選び、それぞれの借入総額を入れてください。JASSO のページには、貸与終了月が同じ場合は返還年数を合算した総額で算出すると書かれています。このツールは、合算した総額で返還年数を決め、第一種と第二種をそれぞれの借入額で計算して月額を足します。この計算方法はツール側の解釈による目安で、月賦と半年賦併用の配分は計算しません。</p>
+<h3>計算結果が JASSO の返還例と少し違うのはなぜですか？</h3><p>第二種は、元利均等返還の標準的な式（月利は年利÷12）で計算しています。JASSO が公表している返還例と比べると、0.4〜1.2%ほど低く出ることがあります。据置期間（返還開始まで）の利息などの扱いが、公開されている情報から確認できていないためです。このツールの数字は目安とし、正確な額は JASSO の返還シミュレーションや返還のてびきで確認してください。</p>
+<h3>毎月の返還額から、完済までの期間を計算できますか？</h3><p>「月額から期間」を選び、毎月返せる額を入れると、返還回数と完済の時期が出ます。ただし実際の返還は算出表で決まるため、表と違う額での試算は、早く返した場合などの目安です。毎月の額が第二種の利息以下だと完済できないため、その場合は結果を出しません。</p>
+<h3>返すのが難しくなったときはどうすればよいですか？</h3><p>月々の返還額を減らす減額返還や、返還期限を延ばす返還期限猶予の制度があります。第一種（2017年度以降の採用者）には所得連動返還方式もあります。このツールでは計算しないため、条件や期間は JASSO の案内で確認してください。</p>
+</section></details>
+<details class="acc"><summary><h2>用語解説</h2></summary>
+<section id="terms">
+<dl class="g">
+<dt>第一種奨学金（無利子）</dt><dd>利子がつかない貸与型の奨学金。返還が必要です。</dd>
+<dt>第二種奨学金（有利子）</dt><dd>利子がつく貸与型の奨学金。在学中は利子がつかず、返還時に利子を加えた額を返します。</dd>
+<dt>給付型奨学金</dt><dd>返還が不要な奨学金。このツールの対象外です。</dd>
+<dt>返還年数算出表</dt><dd>貸与総額に応じて返還年数を決める JASSO の表。総額を基準額で割り、小数点以下を切り捨てます。</dd>
+<dt>返還回数（月賦）</dt><dd>毎月27日に引き落とされる回数。年数×12回です。</dd>
+<dt>元利均等返還</dt><dd>元本と利息を合わせた毎月の返還額が一定になる返し方。第二種の計算に使っています。</dd>
+<dt>利率固定方式／利率見直し方式</dt><dd>貸与終了時に決まった利率を返還完了まで使う方式／おおむね5年ごとに利率を見直す方式。</dd>
+<dt>据置期間（このページでの意味）</dt><dd>貸与が終わってから返還が始まるまでの期間。第二種の利息の扱いが確認できていないため、公式の例と少し差が出ることがあります。</dd>
+<dt>完済年齢</dt><dd>最後の返還を終える時点の年齢。貸与終了時の年齢＋7か月＋（返還回数−1）か月で数えます。</dd>
+<dt>総返還額／利息総額</dt><dd>返還する金額の合計／そのうち元本を超える分。</dd>
+<dt>所得連動返還方式</dt><dd>収入に応じて月々の返還額が決まる方式（第一種・2017年度以降の採用者）。このツールでは計算しません。</dd>
+<dt>減額返還／返還期限猶予</dt><dd>月々の返還額を減らす制度／返還期限を延ばす制度。このツールでは計算しません。</dd>
+</dl>
+</section></details>
+<details class="acc" id="sourcesAcc"><summary><h2>一次情報</h2></summary>
+<section id="sources">
+<ul>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/henkan_kikan/index.html" target="_blank" rel="noopener noreferrer">返還年数算出表</a>（確認日 2026-11-17）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/kappu/index.html" target="_blank" rel="noopener noreferrer">割賦方法・返還開始時期</a>（確認日 2026-11-17）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/kappu/sample/daigaku.html" target="_blank" rel="noopener noreferrer">返還例</a>（確認日 2026-11-17）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/about/taiyo/taiyo_2shu/riritsu_santei.html" target="_blank" rel="noopener noreferrer">第二種の利率の算定方法・令和8年度利率</a>（確認日 2026-11-17）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/about/taiyo/index.html" target="_blank" rel="noopener noreferrer">奨学金の種類</a>（確認日 2026-11-17）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/index.html" target="_blank" rel="noopener noreferrer">返還が困難なとき</a>（確認日 2026-11-17）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/gengaku/index.html" target="_blank" rel="noopener noreferrer">減額返還</a>（確認日 2026-11-17）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/yuyo/index.html" target="_blank" rel="noopener noreferrer">返還期限猶予</a>（確認日 2026-11-17）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/flow/__icsFiles/afieldfile/2025/09/19/r7_henkannotebiki_shosai.pdf" target="_blank" rel="noopener noreferrer">返還のてびき（PDF）</a>（確認日 2026-11-17）</li>
+</ul>
+<p class="hint">利息の起算・端数・最終回の調整は、公開ページで確認できた範囲では不明のため目安としています。</p>
+</section></details>
+</div>
+</main>
+
+<aside class="rel" aria-label="関連ツール">
+<p class="rel-t">関連ツール</p>
+<section class="tools" aria-labelledby="toolsH">
+<h2 id="toolsH">学生バイトお役立ちツール</h2>
+<ul class="tl">
+<li><a href="../"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span></a></li>
+<li><a href="../kakemochi/"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span></a></li>
+<li><a href="../shift-limit/"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span></a></li>
+</ul>
+</section>
+<section class="sisters" id="sisters" aria-labelledby="sistersH">
+<h2 id="sistersH">姉妹ツール</h2>
+<ul class="tl">
+<li><a href="../living-cost-simulator/"><strong>手取り＆一人暮らし生活費シミュレーター</strong><span>返還額を引いた毎月使えるお金を計算</span></a></li>
+<li><a href="../nisa-simulator/"><strong>大学生からの新NISA・バイト代積立シミュレーター</strong><span>余裕資金での積立の将来額を試算</span></a></li>
+<li><a href="./" aria-current="page"><strong>奨学金（JASSO）返済シミュレーター</strong><span>月々の返還額と完済年齢を計算（このページ）</span></a></li>
+<li><a href="../es-word-counter/"><strong>ES文字数カウント＆ガクチカ構成チェッカー</strong><span>ESの文字数と構成をチェック</span></a></li>
+</ul>
+</section>
+</aside>
+<footer>
+<p class="foot-links"><a href="#legal" data-open="legal">免責事項・プライバシー</a> ／ <a href="../about/">運営者情報</a> ／ <a href="../tools/">ツール一覧</a> ／ 連絡先: gakusei.kabe.checker@gmail.com</p>
+<details class="acc" id="legal"><summary>免責事項・プライバシーポリシー</summary>
+<div class="acc-body">
+<section id="disclaimer">
+<h2>免責事項</h2>
+<ul><li>本ツールは情報提供であり、奨学金の返還額・利率・手続きの個別の助言ではありません。結果は目安で、実際の返還額は JASSO の返還のてびき・返還シミュレーションで確認してください。</li>
+<li>制度や利率は変更されることがあります。</li>
+<li>PRの申込条件・審査・特典は各社公式で確認してください。このツールは借入を勧めるものではありません。</li>
+<li>本ツールの利用により生じた損害について、運営者は責任を負いません。</li></ul>
+</section>
+<section id="privacy">
+<h2>プライバシーポリシー</h2>
+<ul><li>入力された金額・年齢などは、お使いの端末内（ブラウザ）で計算するだけで、運営者のサーバーへ送信・保存しません。</li>
+<li>本ページはCookieや解析ツールを使いません。</li>
+<li>当サイトは広告（アフィリエイト）を含みます。広告には「PR」と表示します。</li>
+<li>PRリンクのクリック後は、リンク先の広告主のサイトで各社がプライバシーポリシーに従い情報を取得することがあります。</li>
+<li>「結果をXでシェア」を押したときだけ、X の投稿画面へ移動し、投稿文（金額・年齢は含みません）とこのページのURLが渡されます。</li>
+<li>連絡先: gakusei.kabe.checker@gmail.com</li></ul>
+</section>
+</div></details>
+</footer>
+</div>
+<div id="liveBar" class="livebar" aria-hidden="true" hidden><span id="liveBarText"></span><button type="button" id="liveBarGo" tabindex="-1">結果へ</button></div>
+
+<script src="links-config.js"></script>
+<script id="logic">
+var SCHOLAR=(function(){
+'use strict';
+var BASE='https://gerinoaka.github.io/student-baito-kabe-checker-2026/scholarship/';
+var MIN_TOTAL=30000,MAX_TOTAL=30000000,START_OFFSET=7,MAX_N=600;
+var RATE_BASE_MAX=3.0,RATE_MAX=5.0,PR_FP_MONTHLY=20000,MAX_MONTHLY=10000000;
+var BANDS=[[200000,30000],[400000,40000],[500000,50000],[600000,60000],[700000,70000],[900000,80000],[1100000,90000],[1300000,100000],[1500000,110000],[1700000,120000],[1900000,130000],[2100000,140000],[2300000,150000],[2500000,160000],[3400000,170000]];
+var DATA={LAST_CONFIRMED:'2026-11-17',TAX_YEAR:'令和8年度',CANON:BASE,HASHTAGS:['奨学金','返済シミュレーション','JASSO']};
+var E_INT='数字（整数）で入力してください',E_MIN='3万円以上で入力してください',E_MAX='3,000万円以下で入力してください';
+var E_BSUM='第一種と第二種の合計を3万円以上にしてください';
+var E_YEARS='1以上の整数で入力してください',E_MONTHLY='1円以上1,000万円以下の整数で入力してください';
+var E_RATE='0〜5.000%の数字で入力してください',E_RATE_DEC='小数第3位（0.001%刻み）までで入力してください';
+var E_AGE='15〜80の整数で入力してください',E_YEAR='2000〜2100の整数で入力してください',E_BAD='入力が正しくありません';
+function isInt(n){return typeof n==='number'&&isFinite(n)&&Math.floor(n)===n;}
+function err(code,field,msg){return {error:msg,code:code,field:field};}
+function parseYen(s){
+ if(s===null||s===undefined)return null;
+ var t=String(s).replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);});
+ t=t.replace(/[,，\s　]/g,'').replace(/円$/,'');
+ if(t==='')return null;
+ return /^\d+$/.test(t)?Number(t):NaN;}
+function parseRate(s){
+ if(s===null||s===undefined)return null;
+ var t=String(s).replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);}).replace(/[．。]/g,'.');
+ t=t.replace(/[,，\s　]/g,'').replace(/[%％]$/,'');
+ if(t==='')return null;
+ return /^\d+(\.\d+)?$/.test(t)?Number(t):NaN;}
+function checkRate(s){
+ var t=String(s===null||s===undefined?'':s).replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);}).replace(/[．。]/g,'.').replace(/[,，\s　]/g,'').replace(/[%％]$/,'');
+ var v=parseRate(s);
+ if(v===null||isNaN(v)||v<0||v>RATE_MAX)return {error:E_RATE,value:NaN};
+ var m=t.match(/\.(\d+)$/);
+ if(m&&m[1].replace(/0+$/,'').length>3)return {error:E_RATE_DEC,value:NaN};
+ return {error:null,value:v};}
+function checkAge(v){return (isInt(v)&&v>=15&&v<=80)?null:E_AGE;}
+function checkYear(v){return (isInt(v)&&v>=2000&&v<=2100)?null:E_YEAR;}
+function bandIndex(P){
+ if(typeof P!=='number'||!(P>0))return null;
+ for(var i=0;i<BANDS.length;i++)if(P<=BANDS[i][0])return i+1;
+ return 16;}
+function yearsOf(P){
+ var b=bandIndex(P);
+ if(b===null)return null;
+ if(b===16)return 20;
+ return Math.floor(P/BANDS[b-1][1]);}
+function annuity(P,ratePct,n){
+ if(!(P>0))return 0;
+ var r=ratePct/100/12;
+ if(r===0)return P/n;
+ var L=Math.log1p(r),A1=Math.expm1(n*L);
+ return P*r*(A1+1)/A1;}
+function calcAtN(P1,P2,ratePct,n){
+ var m1=P1>0?Math.floor(P1/n):0,m2=P2>0?Math.round(annuity(P2,ratePct,n)):0;
+ var total2=P2>0?(ratePct===0?P2:Math.max(P2,m2*n)):0;
+ return {m1:m1,m2:m2,monthly:m1+m2,total1:P1,total2:total2,interest:total2-P2,total:P1+total2};}
+function single(v,field){
+ if(!isInt(v)||v<0)return err('int',field,E_INT);
+ if(v<MIN_TOTAL)return err('min',field,E_MIN);
+ if(v>MAX_TOTAL)return err('max',field,E_MAX);
+ return null;}
+function part(v,field){
+ if(!isInt(v)||v<0)return err('int',field,E_INT);
+ if(v>MAX_TOTAL)return err('max',field,E_MAX);
+ return null;}
+function validate(o){
+ if(!o||typeof o!=='object')return err('bad','kind',E_BAD);
+ var k=o.kind,e;
+ if(k!=='1'&&k!=='2'&&k!=='B')return err('bad','kind',E_BAD);
+ if(k==='1'){e=single(o.p1,'p1');if(e)return e;}
+ else if(k==='2'){e=single(o.p2,'p2');if(e)return e;}
+ else{
+  e=part(o.p1,'p1')||part(o.p2,'p2');if(e)return e;
+  if(o.p1+o.p2<MIN_TOTAL)return err('min','p2',E_BSUM);}
+ if(k!=='1'&&!(typeof o.rate==='number'&&isFinite(o.rate)&&o.rate>=0&&o.rate<=RATE_MAX))return err('rate','rate',E_RATE);
+ return null;}
+function split(o){
+ var k=o.kind;
+ return {P1:k==='2'?0:o.p1,P2:k==='1'?0:o.p2,rate:k==='1'?0:o.rate};}
+function calcStd(o){
+ var e=validate(o);if(e)return e;
+ var s=split(o),S=s.P1+s.P2,std=yearsOf(S),years=std,capped=false;
+ if(o.years!==null&&o.years!==undefined){
+  if(!isInt(o.years)||o.years<1)return err('years','years',E_YEARS);
+  if(o.years>std)capped=true;else years=o.years;}
+ var n=years*12,c=calcAtN(s.P1,s.P2,s.rate,n);
+ c.mode='term';c.status='ok';c.kind=o.kind;c.P1=s.P1;c.P2=s.P2;c.rate=s.rate;
+ c.years=years;c.stdYears=std;c.n=n;c.capped=capped;c.shorter=years<std;c.band=bandIndex(S);c.error=null;
+ return c;}
+function simulate(P,rm,M,n){
+ var b=P,sum=0,sim=[P],i,it,pay;
+ for(i=1;i<=n;i++){
+  it=b*rm;
+  if(i<n){pay=M;b=b+it-M;}else{pay=Math.max(0,b+it);b=0;}
+  sum+=pay;sim.push(Math.max(0,b));}
+ return {total:Math.round(sum),sim:sim};}
+function calcRev(o){
+ var e=validate(o);if(e)return e;
+ var M=o.monthly;
+ if(!isInt(M)||M<1||M>MAX_MONTHLY)return err('monthly','monthly',E_MONTHLY);
+ var s=split(o),k=o.kind,P1=s.P1,P2=s.P2,rate=s.rate,rm=rate/1200,n,out;
+ if(k==='1'){
+  n=Math.ceil(P1/M);
+  if(n>MAX_N)return {status:'tooLong',mode:'pay',kind:k,error:null};
+  out={n:n,monthly:M,total:P1,interest:0,last:P1-M*(n-1),m1:M,m2:0,P1:P1,P2:0,rate:0};}
+ else if(k==='2'){
+  if(rate===0){
+   n=Math.ceil(P2/M);
+   if(n>MAX_N)return {status:'tooLong',mode:'pay',kind:k,error:null};
+   out={n:n,monthly:M,total:P2,interest:0,last:P2-M*(n-1),m1:0,m2:M,P1:0,P2:P2,rate:0};}
+  else{
+   if(M<=P2*rm+1e-9)return {status:'noPay',mode:'pay',kind:k,interest1:P2*rm,error:null};
+   n=Math.ceil(-Math.log1p(-P2*rm/M)/Math.log1p(rm)-1e-9);
+   if(n<1)n=1;
+   if(n>MAX_N)return {status:'tooLong',mode:'pay',kind:k,error:null};
+   var sm=simulate(P2,rm,M,n);
+   out={n:n,monthly:M,total:sm.total,interest:sm.total-P2,last:Math.round(sm.sim[n-1]*(1+rm)),m1:0,m2:M,P1:0,P2:P2,rate:rate,sim:sm.sim};}}
+ else{
+  var f=function(x){return P1/x+annuity(P2,rate,x);};
+  n=0;
+  for(var x=1;x<=MAX_N;x++){if(f(x)<=M+1e-9){n=x;break;}}
+  if(!n){
+   if(rate>0&&P2>0&&M<=P2*rm+1e-9)return {status:'noPay',mode:'pay',kind:k,interest1:P2*rm,error:null};
+   return {status:'tooLong',mode:'pay',kind:k,error:null};}
+  var c=calcAtN(P1,P2,rate,n);
+  out={n:n,monthly:c.monthly,total:c.total,interest:c.interest,last:null,m1:c.m1,m2:c.m2,P1:P1,P2:P2,rate:rate};}
+ out.status='ok';out.mode='pay';out.kind=k;out.M=M;out.years=Math.floor(out.n/12);out.rem=out.n%12;out.error=null;
+ return out;}
+function monthAt(o,off){
+ var idx=o.endY*12+(o.endM-1)+off,am=o.age*12+off;
+ return {y:Math.floor(idx/12),m:idx%12+1,ageY:Math.floor(am/12),ageM:am%12};}
+function endInfo(o){return {first:monthAt(o,START_OFFSET),last:monthAt(o,o.n+START_OFFSET-1)};}
+function balances(res,o){
+ var n=res.n,P1=res.P1,P2=res.P2,rate=res.rate,rows=[],ks=[0],k,i,g,L,r=rate/1200,mex;
+ for(k=12;k<=n;k+=12)ks.push(k);
+ if(n%12!==0)ks.push(n);
+ if(res.mode==='term'||res.kind==='B'){mex=annuity(P2,rate,n);L=r>0?Math.log1p(r):0;}
+ for(i=0;i<ks.length;i++){
+  k=ks[i];
+  var b1=0,b2=0;
+  if(k<n){
+   if(res.mode==='pay'&&res.kind==='1')b1=P1-res.M*k;
+   else if(res.mode==='pay'&&res.kind==='2')b2=res.sim?res.sim[k]:P2-res.M*k;
+   else{
+    b1=P1>0?P1-res.m1*k:0;
+    if(P2>0){
+     if(r===0)b2=P2*(1-k/n);
+     else{g=Math.expm1(k*L);b2=P2*(1+g)-mex*g/r;}}}}
+  rows.push({k:k,bal:Math.max(0,Math.round(b1+b2))});}
+ return rows;}
+function fmtAge(y,m){return m===0?y+'歳':y+'歳'+m+'か月';}
+function fmtTerm(n){
+ if(n<12)return n+'か月';
+ return n%12===0?(n/12)+'年':Math.floor(n/12)+'年'+(n%12)+'か月';}
+function buildShare(r){
+ var n=(r&&typeof r==='object')?r.n:r,band='';
+ if(typeof n==='number'&&isFinite(n)&&n>0)band=n<=120?'短め':(n<=180?'ふつう':'長め');
+ var text='奨学金の返済をシミュレーションしてみた📚'+(band?'（返済期間は「'+band+'」タイプ）':'')+'\n卒業前に、月々の返還と完済の時期を確認しておくと安心👇';
+ var tags=DATA.HASHTAGS.slice();
+ var href='https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(BASE)+'&hashtags='+tags.map(encodeURIComponent).join(',');
+ return {text:text,url:BASE,hashtags:tags.join(','),band:band,href:href};}
+function pickPR(o){
+ o=o||{};
+ if(o.age==='u18')return [];
+ var links=o.links||{},c=['kakeibo'],mo=(typeof o.monthly==='number'&&isFinite(o.monthly))?o.monthly:0,out=[];
+ if(o.age==='adult'){
+  if(o.hasKind2||mo>=PR_FP_MONTHLY)c.push('fp');
+  c.push('tsushin');}
+ c.forEach(function(key){
+  var L=links[key];
+  if(L&&typeof L.url==='string'&&L.url.indexOf('https://')===0)out.push(key);});
+ return out.slice(0,2);}
+return {BASE:BASE,DATA:DATA,BANDS:BANDS,MIN_TOTAL:MIN_TOTAL,MAX_TOTAL:MAX_TOTAL,START_OFFSET:START_OFFSET,MAX_N:MAX_N,RATE_BASE_MAX:RATE_BASE_MAX,RATE_MAX:RATE_MAX,PR_FP_MONTHLY:PR_FP_MONTHLY,
+ parseYen:parseYen,parseRate:parseRate,checkRate:checkRate,checkAge:checkAge,checkYear:checkYear,bandIndex:bandIndex,yearsOf:yearsOf,annuity:annuity,calcAtN:calcAtN,calcStd:calcStd,calcRev:calcRev,monthAt:monthAt,endInfo:endInfo,balances:balances,fmtAge:fmtAge,fmtTerm:fmtTerm,buildShare:buildShare,pickPR:pickPR};
+})();
+</script>
+<script id="ui">
+(function(){
+'use strict';
+var K=SCHOLAR;
+function $(id){return document.getElementById(id);}
+var NS='http://www.w3.org/2000/svg';
+var ERRIDS=['p1','p2','years','monthly','rate','age','endY'];
+var ADV={rate:1,age:1,endY:1};
+var RANGES=[['p1','p1Range','man'],['p2','p2Range','man'],['years','yearsRange','yr'],['monthly','monthlyRange','yen']];
+var CHIPS=['p1Chips','p2Chips','yChips','mChips','rChips'];
+var LEAD={kakeibo:'返還が始まる前に、毎月の支出を把握しておきたい方へ',fp:'返済と生活費のバランスを整理したい方へ',tsushin:'毎月の固定費を見直したい方へ'};
+var cur=null,bad={},errT=0,srT=0,prT=0,frame=0,lastSr='',firstPR=true;
+function h(t,c,x,k){var e=document.createElement(t);if(c)e.className=c;if(x!==null&&x!==undefined)e.textContent=x;(k||[]).forEach(function(n){e.appendChild(n);});return e;}
+function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function yen(n){return fmt(n)+'円';}
+function chk(id){return !!$(id).checked;}
+function isNum(v){return typeof v==='number'&&isFinite(v);}
+function kind(){return chk('kindB')?'B':(chk('kind2')?'2':'1');}
+function setErr(id,msg){var e=$('e-'+id),i=$(id);e.textContent=msg||'';e.hidden=!msg;if(msg)i.setAttribute('aria-invalid','true');else i.removeAttribute('aria-invalid');}
+function man(v){return (Math.round(v/1000)/10)+'万円';}
+function valText(t,v){return t==='man'?man(v):(t==='yr'?v+'年':fmt(v)+'円');}
+function setPct(rg){
+ var mn=Number(rg.getAttribute('min')),mx=Number(rg.getAttribute('max')),v=Number(rg.value);
+ rg.style.setProperty('--pct',(mx>mn?Math.min(100,Math.max(0,(v-mn)/(mx-mn)*100)):0)+'%');}
+function syncRange(p){
+ var num=$(p[0]),rg=$(p[1]),v=K.parseYen(num.value);
+ if(isNum(v)){
+  rg.value=String(Math.min(Number(rg.getAttribute('max')),Math.max(Number(rg.getAttribute('min')),v)));
+  rg.classList.remove('is-empty');rg.setAttribute('aria-valuetext',valText(p[2],v));
+ }else{rg.classList.add('is-empty');rg.setAttribute('aria-valuetext','未入力');}
+ setPct(rg);}
+function chipVal(box){
+ var id=box.getAttribute('data-t'),s=$(id).value;
+ return id==='rate'?K.parseRate(s):K.parseYen(s);}
+function syncChips(){
+ CHIPS.forEach(function(cid){
+  var box=$(cid),v=chipVal(box),bs=box.children,i;
+  for(i=0;i<bs.length;i++)bs[i].setAttribute('aria-pressed',isNum(v)&&Number(bs[i].getAttribute('data-v'))===v?'true':'false');});}
+function syncControls(){RANGES.forEach(syncRange);syncChips();}
+function syncPanels(){
+ var k=kind(),pay=chk('modePay');
+ $('w1').hidden=(k==='2');$('w2').hidden=(k==='1');
+ $('wRate').hidden=(k==='1');
+ $('wTerm').hidden=pay;$('wPay').hidden=!pay;
+ $('wYears').hidden=pay||!chk('tCustom');}
+function setText(id,t){var e=$(id);e.textContent=t||'';e.hidden=!t;}
+function drawChart(c){
+ var r=c.res,rows=K.balances(r,c.o),host=$('chart');
+ host.textContent='';
+ var max=rows[0].bal,n=r.n,i,pts=[],a,b;
+ for(i=0;i<rows.length;i++){
+  a=40+rows[i].k/n*272;b=110-(max>0?rows[i].bal/max*98:0);
+  pts.push(a.toFixed(1)+','+b.toFixed(1));}
+ var lab='返還の残高の推移。返還開始時'+yen(max)+'から、約'+(Math.round(n/12*10)/10)+'年後に0円になります';
+ var svg=host;
+ svg.setAttribute('aria-label',lab);
+ var ti=document.createElementNS(NS,'title');ti.textContent=lab;svg.appendChild(ti);
+ function line(y){var l=document.createElementNS(NS,'line');l.setAttribute('class','gl');l.setAttribute('x1','40');l.setAttribute('x2','312');l.setAttribute('y1',String(y));l.setAttribute('y2',String(y));svg.appendChild(l);}
+ function text(x,y,anc,s){var t=document.createElementNS(NS,'text');t.setAttribute('class','ax');t.setAttribute('x',String(x));t.setAttribute('y',String(y));t.setAttribute('text-anchor',anc);t.textContent=s;svg.appendChild(t);}
+ line(12);line(110);
+ var ar=document.createElementNS(NS,'path');ar.setAttribute('class','ar');ar.setAttribute('d','M40,110 L'+pts.join(' L')+' L312,110 Z');svg.appendChild(ar);
+ var ln=document.createElementNS(NS,'path');ln.setAttribute('class','ln');ln.setAttribute('d','M'+pts.join(' L'));svg.appendChild(ln);
+ text(36,114,'end','0');
+ text(36,16,'end',max>=10000?man(max):yen(max));
+ text(40,128,'start',c.info.first.ageY+'歳');
+ text(312,128,'end',c.info.last.ageY+'歳');
+ var tb=$('tblBody');tb.textContent='';
+ for(i=1;i<rows.length;i++){
+  var m=K.monthAt(c.base,rows[i].k+K.START_OFFSET-1);
+  var th=h('th',null,K.fmtTerm(rows[i].k)+'後');th.setAttribute('scope','row');
+  tb.appendChild(h('tr',null,null,[th,h('td',null,m.y+'年'+m.m+'月（'+K.fmtAge(m.ageY,m.ageM)+'）'),h('td','n',yen(rows[i].bal))]));}}
+function render(c){
+ var r=c.res,k=c.k,ok=r.status==='ok',pay=c.pay,has2=(k!=='1'),has1=(k!=='2');
+ $('estBadge').hidden=!has2;$('estNote').hidden=!has2;$('floorNote').hidden=!has1;
+ $('cInt').hidden=!has2;$('rateNote').hidden=!has2;$('cM').hidden=!pay;
+ $('rLabel').textContent=pay?'完済までの期間（目安）':'毎月の返還額（目安）';
+ var sb=$('stdBadge');
+ if(pay){sb.className='pill pill--nt';sb.textContent='－ 任意の返還額での試算';}
+ else if(r.shorter){sb.className='pill pill--nt';sb.textContent='－ 短くした場合の目安';}
+ else{sb.className='pill pill--ok';sb.textContent='○ 算出表どおりの標準期間';}
+ setText('rateNote',has2?'利率 '+c.o.rate.toFixed(3)+'%（年）で計算。変更は「細かい設定」で':'');
+ $('result').setAttribute('data-state',ok?'ready':'unavailable');
+ var ids=['stM','stN','stEnd','stTotal','stInt'],i,bar;
+ if(!ok){
+  var nb=$('rBig');nb.textContent='－';$('rSub').textContent='';
+  for(i=0;i<ids.length;i++)$(ids[i]).textContent='－';
+  $('stEndYm').textContent='';
+  $('chartBox').hidden=true;
+  setText('startNote','');setText('breakdown','');setText('capNote','');
+  setText('noPay',r.status==='noPay'?'毎月の返還額が利息（月'+fmt(Math.round(r.interest1))+'円）以下のため、完済できません。返還額を増やしてください。':'完済まで50年を超えるため計算しません。毎月の返還額を増やしてください。');
+  bar='毎月の返還額では完済できません';
+  $('liveBarText').textContent=bar;
+  announce(bar);
+  $('shareX').href=K.buildShare(null).href;
+  schedulePR();
+  return;}
+ var info=c.info,lastS=K.fmtAge(info.last.ageY,info.last.ageM);
+ var nb2=$('rBig');
+ if(pay)nb2.textContent=K.fmtTerm(r.n);
+ else{nb2.textContent=fmt(r.monthly);nb2.appendChild(h('small',null,'円'));}
+ if(pay)$('rSub').textContent=(k==='B')?'合計の月額は'+fmt(r.monthly)+'円（入力額以内の最短回数で計算）':'毎月'+fmt(r.M)+'円で返した場合';
+ else $('rSub').textContent='返還は'+r.n+'回（'+r.years+'年）'+(r.shorter?'。標準は'+r.stdYears+'年':'');
+ $('stM').textContent=yen(r.monthly);
+ $('stN').textContent=r.n+'回';
+ $('stEnd').textContent=lastS;
+ $('stEndYm').textContent=info.last.y+'年'+info.last.m+'月ごろ';
+ $('stTotal').textContent=yen(r.total);
+ $('stInt').textContent=has2?yen(r.interest):'';
+ setText('startNote','返還開始: '+info.first.y+'年'+info.first.m+'月（'+K.fmtAge(info.first.ageY,info.first.ageM)+'）。貸与終了の翌月から数えて7か月目です。');
+ setText('breakdown',k==='B'?'内訳: 第一種 '+yen(r.m1)+' ＋ 第二種 '+yen(r.m2):'');
+ setText('capNote',(!pay&&r.capped)?'標準の'+r.stdYears+'年が上限のため、標準で計算しています':'');
+ setText('noPay','');
+ $('chartBox').hidden=false;
+ drawChart(c);
+ $('shareX').href=K.buildShare({n:r.n}).href;
+ bar=pay?'完済まで '+K.fmtTerm(r.n)+' ／ 完済 '+lastS:'月額 '+yen(r.monthly)+' ／ 完済 '+lastS;
+ $('liveBarText').textContent=bar;
+ announce(pay?'完済までの期間の目安は'+K.fmtTerm(r.n)+'、返還は'+r.n+'回、完済は'+lastS+'ごろ':'毎月の返還額の目安は'+yen(r.monthly)+'、返還は'+r.n+'回、完済は'+lastS+'ごろ');
+ schedulePR();}
+function prCard(key){
+ var L=(typeof window==='object'&&window.SCHOLAR_LINKS&&typeof window.SCHOLAR_LINKS==='object')?window.SCHOLAR_LINKS[key]:null;
+ if(!L||typeof L.url!=='string'||L.url.indexOf('https://')!==0||typeof L.title!=='string'||typeof L.cta!=='string')return null;
+ var a=h('a','pr-cta',L.cta);a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
+ var tag=(typeof L.label==='string'?String(L.label).replace(/[【】]/g,''):'')||'PR';
+ return h('div','pr-card',null,[h('span','pr-tag',tag),h('p','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,LEAD[key]),h('p',null,typeof L.desc==='string'?L.desc:''),a]);}
+function renderPR(){
+ var host=$('prCards');host.textContent='';
+ var age=chk('ageU')?'u18':(chk('ageA')?'adult':''),msg='',n=0;
+ if(age==='u18')msg='18歳未満の方にはPR情報を表示しません。';
+ else{
+  var mo=(cur&&cur.res&&cur.res.status==='ok')?cur.res.monthly:0;
+  var keys=K.pickPR({age:age,monthly:mo,hasKind2:kind()!=='1',links:(typeof window==='object'&&window.SCHOLAR_LINKS)||{}});
+  keys.forEach(function(k){var c=prCard(k);if(c){host.appendChild(c);n++;}});
+  if(!age)msg='年齢（18歳以上）を選ぶと、家計の相談や通信費のPR情報も表示される場合があります。';
+  else if(!n)msg='現在、表示できるPR情報はありません。';}
+ $('prMsg').textContent=msg;$('prMsg').hidden=!msg;$('prCond').hidden=n===0;}
+function schedulePR(){
+ if(firstPR){firstPR=false;renderPR();return;}
+ clearTimeout(prT);prT=setTimeout(renderPR,400);}
+function announce(t){
+ clearTimeout(srT);
+ srT=setTimeout(function(){if(t!==lastSr){lastSr=t;$('liveSr').textContent=t;}},700);}
+function showErrs(){
+ ERRIDS.forEach(function(id){
+  setErr(id,bad[id]||'');
+  if(bad[id]&&ADV[id])$('advanced').open=true;});}
+function touch(){clearTimeout(errT);errT=setTimeout(showErrs,1200);}
+function recalc(){
+ syncPanels();
+ var k=kind(),pay=chk('modePay'),cust=chk('tCustom'),any=false,key;
+ var rc=K.checkRate($('rate').value);
+ var o={kind:k,p1:K.parseYen($('p1').value),p2:K.parseYen($('p2').value),rate:k==='1'?0:rc.value};
+ var ageV=K.parseYen($('age').value),yV=K.parseYen($('endY').value),mV=Number($('endM').value);
+ var res;
+ bad={};
+ if(pay){var mv=K.parseYen($('monthly').value);o.monthly=mv===null?NaN:mv;res=K.calcRev(o);}
+ else{
+  if(cust){var yv=K.parseYen($('years').value);o.years=yv===null?NaN:yv;}
+  res=K.calcStd(o);}
+ if(res.error)bad[res.field]=res.error;
+ if(k!=='1'&&rc.error)bad.rate=rc.error;
+ var ea=K.checkAge(ageV),ey=K.checkYear(yV);
+ if(ea)bad.age=ea;
+ if(ey)bad.endY=ey;
+ $('rateWarn').hidden=!(k!=='1'&&!rc.error&&rc.value>K.RATE_BASE_MAX);
+ for(key in bad)if(Object.prototype.hasOwnProperty.call(bad,key))any=true;
+ $('result').setAttribute('data-stale',any?'true':'false');
+ $('staleNote').hidden=!any;
+ if(any)return;
+ clearTimeout(errT);showErrs();
+ var base={age:ageV,endY:yV,endM:mV};
+ var c={res:res,o:o,k:k,pay:pay,base:base};
+ if(res.status==='ok'){
+  base.n=res.n;c.info=K.endInfo(base);
+  if(!pay){var yr=$('yearsRange');yr.setAttribute('max',String(res.stdYears));syncRange(RANGES[2]);}}
+ cur=c;render(c);updBar();}
+function schedule(){
+ if(frame)return;
+ var raf=(typeof requestAnimationFrame==='function')?requestAnimationFrame:function(f){return setTimeout(f,16);};
+ frame=raf(function(){frame=0;recalc();});}
+function onAny(){syncControls();schedule();touch();}
+var bar=$('liveBar'),barOut=false;
+function updBar(){bar.hidden=!(barOut&&!!cur);}
+if(typeof IntersectionObserver==='function'){
+ new IntersectionObserver(function(es){barOut=!es[es.length-1].isIntersecting;updBar();}).observe($('resultCard'));}
+$('liveBarGo').addEventListener('click',function(){$('result').scrollIntoView({block:'start'});});
+['p1','p2','years','monthly','rate','age','endY'].forEach(function(id){
+ var el=$(id);el.addEventListener('input',onAny);el.addEventListener('change',onAny);el.addEventListener('blur',showErrs);});
+RANGES.forEach(function(p){
+ var rg=$(p[1]);
+ function fromRange(){$(p[0]).value=String(rg.value);onAny();}
+ rg.addEventListener('input',fromRange);rg.addEventListener('change',fromRange);});
+['kind1','kind2','kindB','modeTerm','modePay','tStd','tCustom','endM'].forEach(function(id){
+ var el=$(id);el.addEventListener('input',onAny);el.addEventListener('change',onAny);});
+['ageU','ageA'].forEach(function(id){
+ var el=$(id);function f(){renderPR();}el.addEventListener('input',f);el.addEventListener('change',f);});
+CHIPS.forEach(function(cid){
+ var box=$(cid);
+ box.addEventListener('click',function(e){
+  var t=e.target;
+  while(t&&t!==box&&!(t.getAttribute&&t.getAttribute('data-v')!==null&&t.getAttribute('data-v')!==undefined))t=t.parentNode;
+  if(!t||t===box)return;
+  $(box.getAttribute('data-t')).value=t.getAttribute('data-v');onAny();});});
+function openFor(el){while(el&&el.nodeType===1){if(el.tagName==='DETAILS')el.open=true;el=el.parentNode;}}
+document.addEventListener('click',function(e){
+ var t=e.target;
+ while(t&&t.nodeType===1){
+  if(t.getAttribute('data-open')){var d=$(t.getAttribute('data-open'));if(d&&d.tagName==='DETAILS')d.open=true;return;}
+  t=t.parentNode;}});
+function hashOpen(){
+ var id=(typeof location==='object'&&location.hash)?location.hash.slice(1):'';
+ if(!id)return;
+ try{id=decodeURIComponent(id);}catch(x){}
+ openFor($(id));}
+window.addEventListener('hashchange',hashOpen);
+syncControls();
+recalc();
+hashOpen();
+})();
+</script>
+</body>
+</html>

@@ -205,8 +205,8 @@ pages.forEach(([p, url, link]) => {
 c('x-sitemap', () => {
   const sm = rd('sitemap.xml');
   const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 6);
-  assert.deepStrictEqual(locs.slice().sort(), pages.map((x) => x[1]).concat(['living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/'].map((x) => BASE + x)).sort());
+  assert.strictEqual(locs.length, 13);
+  assert.deepStrictEqual(locs.slice().sort(), pages.map((x) => x[1]).concat(['living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/', 'about/', 'tools/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'scholarship/'].map((x) => BASE + x)).sort());
 });
 c('x-readme-lines', () => {
   const lines = rd('links-config.js').split(/\r?\n/);
