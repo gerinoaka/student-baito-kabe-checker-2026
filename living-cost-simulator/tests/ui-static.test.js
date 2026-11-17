@@ -83,11 +83,11 @@ ok('N06-reduced', html.includes('@media(prefers-reduced-motion'));
 }
 
 // N08
-ok('N08-title', html.includes('<title>手取り計算 新卒｜初任給の手取りと一人暮らし生活費シミュレーター</title>'));
+ok('N08-title', html.includes('<title>新卒の手取り計算2026｜初任給と新生活の家賃・生活費を試算</title>'));
 {
-  const D = '初任給・バイト代の額面から手取りを目安計算。社会保険・所得税・住民税の内訳、家賃・食費など一人暮らし生活費の理想バランス、毎月の貯金・遊びに使える額をグラフで確認。令和8年度対応。';
+  const D = '新卒の手取りは、額面から社会保険料・所得税・住民税を引いた額が目安。初任給や新生活（2〜3月）の家賃・食費など一人暮らしの生活費配分と、毎月の貯金額を無料で試算できます。令和8年度対応。';
   ok('N08-desc', html.includes('<meta name="description" content="' + D + '">'));
-  ok('N08-ogt', html.includes('<meta property="og:title" content="手取り計算 新卒｜初任給の手取りと一人暮らし生活費シミュレーター">'));
+  ok('N08-ogt', html.includes('<meta property="og:title" content="新卒の手取り計算2026｜初任給と新生活の家賃・生活費を試算">'));
   ok('N08-ogd', html.includes('<meta property="og:description" content="' + D + '">'));
   ok('N08-h1', html.includes('<h1>新卒の手取り計算＆一人暮らし生活費シミュレーター（令和8年度）</h1>'));
   ok('N08-canon', html.includes('<link rel="canonical" href="' + NEW_BASE + '">') && html.includes('<meta property="og:url" content="' + NEW_BASE + '">'));
@@ -137,7 +137,7 @@ ok('N08-title', html.includes('<title>手取り計算 新卒｜初任給の手�
 // N12
 {
   const i = html.indexOf('<div class="card" id="actions">');
-  const e = html.indexOf('<!-- AD-SLOT-1');
+  const e = html.indexOf('<div class="acc-list">', i);   // #actions から次の acc-list まで（ad-slot はページ末尾へ移動済み）
   ok('N12-found', i > 0 && e > i);
   const blk = html.slice(i, e);
   ok('N12-no-range-chip', !/type="range"/.test(blk) && !/class="chip"/.test(blk));
@@ -193,7 +193,7 @@ ok('N08-title', html.includes('<title>手取り計算 新卒｜初任給の手�
   const css = html.match(/<style>([\s\S]*?)<\/style>/)[1];
   const fixed = [...css.matchAll(/(^|[{};,])\s*([^{}]*)\{([^{}]*)\}/g)].filter((m) => /(^|[;{])\s*(min-)?width\s*:\s*\d{3,}px/.test(m[3])).map((m) => m[2].trim());
   ok('X-fixed-width', fixed.every((s) => /^table$/.test(s)), fixed.join(' | '));
-  ok('X-script-src', JSON.stringify([...html.matchAll(/<script[^>]*\ssrc="([^"]*)"/g)].map((m) => m[1])) === '["links-config.js"]');
+  ok('X-script-src', JSON.stringify([...html.matchAll(/<script[^>]*\ssrc="([^"]*)"/g)].map((m) => m[1])) === '["links-config.js","../site-config.js"]');
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
   const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
   ok('X-dup-id', dup.length === 0, dup.join(','));

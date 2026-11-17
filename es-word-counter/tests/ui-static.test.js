@@ -16,8 +16,8 @@ const NEW_BASE = SITE + 'es-word-counter/';
 const G = 'https://gerino' + 'aka.github.io/';
 // 独自ドメイン化後の logic（BASE のみ新URL）の SHA-256
 const LOGIC_SHA = '786492b0bfb569e525df01568b0df3150fc3cb2391920ceb4211bf61e83d18b3';
-const TITLE = 'ES文字数カウント｜8割目安・原稿用紙換算とガクチカ構成チェック';
-const DESC = '就活のES・ガクチカの文字数をリアルタイムでカウント。空白抜き・原稿用紙換算（400字詰）・指定字数の達成率と8割の目安を表示し、結論・STAR・冗長表現のヒントも出します。登録不要で、入力は送信も保存もされません。';
+const TITLE = '就活ES文字数カウント｜ガクチカの8割目安・原稿用紙換算';
+const DESC = 'ESの文字数は指定字数の8〜9割が目安（就活メディアの経験則）。ガクチカの文字数をリアルタイムでカウントし、原稿用紙換算と構成のヒントも表示。登録不要で、入力内容は送信も保存もされません。';
 const H1 = 'ES文字数カウント＆ガクチカ構成チェッカー';
 
 function insideDetails(pos) {

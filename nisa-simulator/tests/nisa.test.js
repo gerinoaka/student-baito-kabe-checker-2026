@@ -71,10 +71,10 @@ t('x-canon', () => {
 });
 t('x-meta', () => {
   assert.ok(html.includes('<html lang="ja">'));
-  assert.ok(html.includes('<meta name="twitter:card" content="summary">'));
+  assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'));
   assert.ok(html.includes('<meta name="viewport" content="width=device-width, initial-scale=1">'));
   assert.ok(/<meta name="theme-color"/.test(html));
-  assert.ok(!/og:image/.test(html));
+  assert.ok(html.includes('<meta property="og:image" content="https://gakusei-tools.com/og/nisa.png">'));
 });
 t('x-jsonld', () => {
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((x) => JSON.parse(x[1]));
@@ -101,9 +101,9 @@ t('x-sister', () => {
 t('x-sitemap', () => {
   const sm = fs.readFileSync(path.join(root, '..', 'sitemap.xml'), 'utf8');
   const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 13);
+  assert.strictEqual(locs.length, 14);
   assert.ok(locs.includes(BASE));
-  assert.ok(sm.includes('<lastmod>2026-11-17</lastmod>'));
+  assert.ok(sm.includes('<lastmod>2026-11-18</lastmod>'));
   assert.ok(!fs.existsSync(path.join(root, 'sitemap.xml')));
 });
 t('x-robots', () => {

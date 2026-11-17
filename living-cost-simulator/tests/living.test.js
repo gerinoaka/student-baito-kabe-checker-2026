@@ -239,21 +239,21 @@ c('I1-size', () => assert.ok(Buffer.byteLength(html, 'utf8') <= 102400, 'size ' 
 c('I1-noinner', () => { assert.ok(!/innerHTML|outerHTML|insertAdjacentHTML|document\.write|eval\(/.test(html)); });
 c('I1-script-src', () => {
   const srcs = [...html.matchAll(/<script[^>]*\ssrc="([^"]*)"/g)].map((x) => x[1]);
-  assert.deepStrictEqual(srcs, ['links-config.js']);
+  assert.deepStrictEqual(srcs, ['links-config.js', '../site-config.js']);
 });
 c('I1-external-urls', () => {
   let s = html.replace(/<script(?![^>]*ld\+json)[\s\S]*?<\/script>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');
-  s = s.replace(/<a [^>]*>/g, '').replace(/<link rel="canonical"[^>]*>/, '').replace(/<meta property="og:url"[^>]*>/, '').replace(/<!--[\s\S]*?-->/g, '');
+  s = s.replace(/<a [^>]*>/g, '').replace(/<link rel="canonical"[^>]*>/, '').replace(/<meta property="og:url"[^>]*>/, '').replace(/<!--[\s\S]*?-->/g, '').replace(/<meta (?:property|name)="(?:og|twitter):image"[^>]*>/g, '');
   assert.ok(!/https:\/\//.test(s), 'stray https url');
 });
 c('I1-head', () => {
   assert.ok(html.includes('<html lang="ja">'));
-  assert.ok(html.includes('<meta name="twitter:card" content="summary">'));
+  assert.ok(html.includes('<meta name="twitter:card" content="summary_large_image">'));
   assert.ok(html.includes('<meta name="viewport" content="width=device-width, initial-scale=1">'));
   assert.strictEqual(html.match(/<link rel="canonical" href="([^"]*)"/)[1], BASE);
   assert.strictEqual(html.match(/<meta property="og:url" content="([^"]*)"/)[1], BASE);
-  assert.ok(!html.includes('og:image'));
-  assert.ok(/<title>手取り計算 新卒｜初任給の手取りと一人暮らし生活費シミュレーター<\/title>/.test(html));
+  assert.ok(html.includes('<meta property="og:image" content="' + SITE + 'og/living.png">'));
+  assert.ok(/<title>新卒の手取り計算2026｜初任給と新生活の家賃・生活費を試算<\/title>/.test(html));
 });
 c('I1-sisters', () => {
   const sec = html.match(/<section class="sisters"[\s\S]*?<\/section>/)[0];
@@ -263,7 +263,7 @@ c('I1-sisters', () => {
   assert.strictEqual((tools.match(/<li>/g) || []).length, 3);
   assert.strictEqual((tools.match(/aria-current="page"/g) || []).length, 0);
 });
-c('I1-sitemap', () => { const x = fs.readFileSync(path.join(root, '..', 'sitemap.xml'), 'utf8'); assert.ok(x.includes('<loc>' + BASE + '</loc>')); assert.ok(x.includes('2026-11-17')); });
+c('I1-sitemap', () => { const x = fs.readFileSync(path.join(root, '..', 'sitemap.xml'), 'utf8'); assert.ok(x.includes('<loc>' + BASE + '</loc>')); assert.ok(x.includes('2026-11-18')); });
 c('I1-robots', () => assert.ok(fs.readFileSync(path.join(root, '..', 'robots.txt'), 'utf8').includes('Sitemap: ' + SITE + 'sitemap.xml')));
 c('I1-nojekyll', () => assert.ok(fs.existsSync(path.join(root, '..', '.nojekyll'))));
 c('I1-no-local-site-files', () => ['sitemap.xml', 'robots.txt', '.nojekyll'].forEach((n) => assert.ok(!fs.existsSync(path.join(root, n)), n + ' must not exist')));

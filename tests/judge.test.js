@@ -134,7 +134,7 @@ pages.forEach(([p, url, link]) => {
     assert.strictEqual(h.match(/<link rel="canonical" href="([^"]*)"/)[1], url);
     assert.strictEqual(h.match(/<meta property="og:url" content="([^"]*)"/)[1], url);
   });
-  c('x-lang ' + p, () => { assert.ok(h.includes('<html lang="ja">')); assert.ok(h.includes('<meta name="twitter:card" content="summary">')); });
+  c('x-lang ' + p, () => { assert.ok(h.includes('<html lang="ja">')); assert.ok(h.includes('<meta name="twitter:card" content="summary_large_image">')); });
   c('x-jsonld ' + p, () => {
     const ld = [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((x) => JSON.parse(x[1]));
     assert.strictEqual(ld.length, 2);
@@ -205,8 +205,8 @@ pages.forEach(([p, url, link]) => {
 c('x-sitemap', () => {
   const sm = rd('sitemap.xml');
   const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 13);
-  assert.deepStrictEqual(locs.slice().sort(), pages.map((x) => x[1]).concat(['living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/', 'about/', 'tools/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'scholarship/'].map((x) => BASE + x)).sort());
+  assert.strictEqual(locs.length, 14);
+  assert.deepStrictEqual(locs.slice().sort(), pages.map((x) => x[1]).concat(['living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/', 'about/', 'tools/', 'privacy/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'scholarship/'].map((x) => BASE + x)).sort());
 });
 c('x-readme-lines', () => {
   const lines = rd('links-config.js').split(/\r?\n/);

@@ -262,15 +262,15 @@ t('M01 size', () => assert.ok(Buffer.byteLength(html, 'utf8') <= 102400, 'size '
 t('M02 meta', () => {
   assert.strictEqual(attr(html, /<link rel="canonical" href="([^"]*)"/), BASE);
   assert.strictEqual(attr(html, /<meta property="og:url" content="([^"]*)"/), BASE);
-  const title = attr(html, /<title>([^<]+)<\/title>/); assert.strictEqual(title, '奨学金（JASSO）返済シミュレーター｜月額・完済年齢を計算');
+  const title = attr(html, /<title>([^<]+)<\/title>/); assert.strictEqual(title, '奨学金（JASSO）返済シミュレーター｜月額と完済年齢を計算');
   const desc = attr(html, /<meta name="description" content="([^"]*)"/);
   assert.strictEqual(attr(html, /<meta property="og:title" content="([^"]*)"/), title);
   assert.strictEqual(attr(html, /<meta property="og:description" content="([^"]*)"/), desc);
   assert.strictEqual(attr(html, /<meta property="og:type" content="([^"]*)"/), 'website');
   assert.strictEqual(attr(html, /<meta property="og:locale" content="([^"]*)"/), 'ja_JP');
   assert.strictEqual(attr(html, /<meta property="og:site_name" content="([^"]*)"/), '学生バイトお役立ちツール');
-  assert.strictEqual(attr(html, /<meta name="twitter:card" content="([^"]*)"/), 'summary');
-  assert.ok(!/og:image/.test(html));
+  assert.strictEqual(attr(html, /<meta name="twitter:card" content="([^"]*)"/), 'summary_large_image');
+  assert.ok(html.includes('<meta property="og:image" content="https://gakusei-tools.com/og/scholarship.png">'));
   assert.ok(/<html lang="ja">/.test(html) && /<meta charset="utf-8">/.test(html) && /name="viewport"/.test(html) && /name="robots" content="index,follow"/.test(html));
   assert.ok(html.includes('<!-- 公開URL: ' + BASE + ' （canonical と og:url の2か所） -->'));
   assert.strictEqual(attr(html, /<h1>([^<]+)<\/h1>/), '奨学金（JASSO）返済シミュレーター');
@@ -311,7 +311,7 @@ t('M06 forbidden / structure', () => {
   assert.ok(html.includes('<meta name="theme-color" content="#f8fafc">\n<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">'));
   assert.strictEqual((html.match(/name="theme-color"/g) || []).length, 2);
   assert.ok(html.includes('<a class="skip" href="#main">') && html.includes('<main id="main">'));
-  [...html.matchAll(/<script\b([^>]*)>/g)].forEach((s) => assert.ok(/type="application\/ld\+json"|src="links-config\.js"|id="logic"|id="ui"/.test(s[1]), 'script ' + s[1]));
+  [...html.matchAll(/<script\b([^>]*)>/g)].forEach((s) => assert.ok(/type="application\/ld\+json"|src="links-config\.js"|src="\.\.\/site-config\.js" defer|id="logic"|id="ui"/.test(s[1]), 'script ' + s[1]));
 });
 t('M07 shared css == root', () => {
   const css = (h) => attr(h, /(\/\*ds:start v1\*\/[\s\S]*?\/\*ds:end\*\/)/);

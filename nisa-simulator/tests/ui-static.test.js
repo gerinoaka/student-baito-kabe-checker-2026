@@ -72,8 +72,8 @@ t('N07', () => {
   });
 });
 t('N08', () => {
-  const T = '大学生の新NISA積立シミュレーター｜バイト代で月1万円なら';
-  const D = '大学生向けに、毎月の積立額・想定利回り・期間をスライダーで動かして新NISAの積立結果をグラフで確認。バイト代の一部を回すといくらになるかを例として試算します。税・手数料は含まず、結果は保証されません。';
+  const T = '大学生の新NISA積立シミュレーター｜月1万円積立の試算';
+  const D = '新NISAの積立結果は、月額・想定利回り・期間で大きく変わります。大学生がバイト代の一部を積み立てる場合の試算を、グラフで確認できます。税・手数料は含まず、元本割れの可能性があり結果は保証されません。';
   assert.ok(html.includes('<title>' + T + '</title>'));
   assert.ok(html.includes('<meta name="description" content="' + D + '">'));
   assert.ok(html.includes('<meta property="og:title" content="' + T + '">'));

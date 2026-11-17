@@ -1,5 +1,5 @@
 'use strict';
-// サイト全体テスト（6ページ・統合後に実行）。依存ゼロ。
+// サイト全体テスト（全14ページ。DIRS は当初の6ツール、新ページは各セクションで追加）。依存ゼロ。
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -32,12 +32,12 @@ c('X02 related links', () => {
 c('X03 sitemap == canonicals', () => {
   const locs = [...rd('sitemap.xml').matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
   const can = PAGES.map((p) => rd(p).match(/<link rel="canonical" href="([^"]*)"/)[1]);
-  assert.strictEqual(locs.length, 13);
+  assert.strictEqual(locs.length, 14);
   assert.deepStrictEqual(can.slice().sort(), DIRS.map((d) => BASE + d).sort());
-  const extra = ['about/', 'tools/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'scholarship/'];
+  const extra = ['about/', 'tools/', 'privacy/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'scholarship/'];
   assert.deepStrictEqual(locs.slice().sort(), can.concat(extra.map((d) => BASE + d)).sort());
   extra.forEach((d) => assert.strictEqual(rd(d + 'index.html').match(/<link rel="canonical" href="([^"]*)"/)[1], BASE + d, d));
-  assert.strictEqual(new Set(locs).size, 13);
+  assert.strictEqual(new Set(locs).size, 14);
 });
 c('X04 no stray root files in subfolders', () => {
   DIRS.slice(1).forEach((d) => ['sitemap.xml', 'robots.txt', '.nojekyll'].forEach((f) => assert.ok(!fs.existsSync(path.join(root, d, f)), d + f)));
@@ -69,7 +69,7 @@ c('X07 links-config labels', () => ['', 'living-cost-simulator/', 'es-word-count
 }));
 
 // ---- about/ と tools/（フェーズ1）----
-const NEW_DIRS = ['about/', 'tools/'];
+const NEW_DIRS = ['about/', 'tools/', 'privacy/'];
 const NEW_PAGES = NEW_DIRS.map((d) => d + 'index.html');
 const ALL_PAGES = PAGES.concat(NEW_PAGES);
 const TOOL_DIRS = DIRS.concat(['scholarship/']);   // ツールのフォルダ（奨学金は6ページの DIRS には入れず、フェーズ4で足す）
@@ -79,11 +79,11 @@ const ldBlocks = (h) => [...h.matchAll(/<script type="application\/ld\+json">([\
 const resolves = (page, href) => fs.existsSync(path.join(path.resolve(path.dirname(path.join(root, page)), href), 'index.html'));
 const attr = (h, re) => { const m = h.match(re); assert.ok(m, 'missing ' + re); return m[1]; };
 const MAIL = attr(rd('index.html'), /<p class="foot-links">[^]*?([\w.]+@[\w.]+)/);
-const TITLE = { 'about/': '運営者情報・計算方針・広告表記｜学生バイトお役立ちツール', 'tools/': '学生向け無料ツール一覧｜バイトの税金・生活費・就活・積立' };
+const TITLE = { 'about/': '運営者情報・計算方針・広告表記｜学生バイトお役立ちツール', 'tools/': '学生向け無料ツール一覧｜バイトの税金・新生活・就活・奨学金' };
 
-c('X08 shared css identical on 8 pages', () => {
+c('X08 shared css identical on 9 pages', () => {
   const base = css(rd(PAGES[0]));
-  assert.strictEqual(ALL_PAGES.length, 8);
+  assert.strictEqual(ALL_PAGES.length, 9);
   ALL_PAGES.forEach((p) => assert.strictEqual(css(rd(p)), base, p));
 });
 c('X09 new pages meta', () => NEW_DIRS.forEach((d) => {
@@ -96,14 +96,16 @@ c('X09 new pages meta', () => NEW_DIRS.forEach((d) => {
   assert.strictEqual(attr(h, /<meta property="og:description" content="([^"]*)"/), desc);
   assert.strictEqual(attr(h, /<meta property="og:type" content="([^"]*)"/), 'website');
   assert.ok(attr(h, /<meta property="og:site_name" content="([^"]*)"/).length > 0);
-  assert.ok(attr(h, /<meta name="twitter:card" content="([^"]*)"/).length > 0);
+  assert.strictEqual(attr(h, /<meta name="twitter:card" content="([^"]*)"/), 'summary_large_image');
   assert.ok(/<html lang="ja">/.test(h) && /<meta charset="utf-8">/.test(h) && /name="viewport"/.test(h));
 }));
 c('X10 new pages JSON-LD', () => NEW_DIRS.forEach((d) => {
   const h = rd(d + 'index.html'); const b = ldBlocks(h); assert.strictEqual(b.length, 2, d);
   b.forEach((x) => assert.strictEqual(x['@context'], 'https://schema.org'));
   const [main, crumb] = b;
-  if (d === 'about/') {
+  if (d === 'privacy/') {
+    assert.strictEqual(main['@type'], 'WebPage'); assert.strictEqual(main.url, BASE + d);
+  } else if (d === 'about/') {
     assert.strictEqual(main['@type'], 'AboutPage'); assert.strictEqual(main.mainEntity['@type'], 'Organization');
     assert.strictEqual(main.url, BASE + d); assert.strictEqual(main.mainEntity.email, MAIL);
   } else {
@@ -122,9 +124,9 @@ c('X11 new pages links', () => NEW_PAGES.forEach((p) => {
   assert.ok(hrefs.length > 0);
   hrefs.forEach((x) => {
     assert.notStrictEqual(x, '#', p + ' href="#"');
-    if (/^https?:/.test(x)) assert.ok(x === 'https://adssettings.google.com',p + ' external ' + x);
+    if (/^https?:/.test(x)) assert.ok(x === 'https://adssettings.google.com' || x === 'https://tools.google.com/dlpage/gaoptout', p + ' external ' + x);
     else if (x.startsWith('mailto:') || x.startsWith('#')) return;
-    else { assert.ok(!x.startsWith('/'), p + ' abs ' + x); assert.ok(resolves(p, x), p + ' -> ' + x); }
+    else { assert.ok(!x.startsWith('/'), p + ' abs ' + x); assert.ok(resolves(p, x.split('#')[0]), p + ' -> ' + x); }
   });
 }));
 c('X12 footer links to about/tools', () => {
@@ -140,6 +142,7 @@ c('X12 footer links to about/tools', () => {
     [wantAbout, wantTools].forEach((x) => assert.ok(resolves(p, x), p + ' resolves ' + x));
     if (PAGES.includes(p)) {
       assert.ok(m[0].startsWith('<p class="foot-links"><a href="#legal"'), p + ' starts with #legal');
+      assert.ok(m[1].indexOf('href="#legal"') < m[1].indexOf('href="' + pre(p) + 'privacy/"') && m[1].indexOf('href="' + pre(p) + 'privacy/"') < m[1].indexOf('href="' + pre(p) + 'about/"'), p + ' privacy after #legal');
       assert.ok(m[1].indexOf('href="#legal"') < m[1].indexOf('gakusei.kabe.checker@gmail.com'), p + ' legal before mail');
       const fi = h.lastIndexOf('<footer'); const seg = h.slice(fi, h.indexOf(m[0], fi));
       assert.strictEqual((seg.match(/<details\b/g) || []).length, (seg.match(/<\/details>/g) || []).length, p + ' foot-links inside details');
@@ -151,7 +154,7 @@ c('X13 new pages structure', () => NEW_PAGES.forEach((p) => {
   assert.strictEqual((h.match(/<nav\b/g) || []).length, 1, p + ' nav');
   assert.strictEqual((h.match(/<h1\b/g) || []).length, 1, p + ' h1');
   const sc = [...h.matchAll(/<script\b([^>]*)>/g)]; assert.ok(sc.length > 0);
-  sc.forEach((s) => assert.ok(/type="application\/ld\+json"/.test(s[1]), p + ' script ' + s[1]));
+  sc.forEach((s) => assert.ok(/type="application\/ld\+json"/.test(s[1]) || /^\s*src="(\.\.\/)*site-config\.js"\s+defer\s*$/.test(s[1]), p + ' script ' + s[1]));
   ['innerHTML', 'outerHTML', 'insertAdjacentHTML', 'document.write', 'eval(', 'localStorage', 'sessionStorage', 'fetch(', 'XMLHttpRequest', 'sendBeacon', 'indexedDB']
     .forEach((w) => assert.ok(!h.includes(w), p + ' forbidden ' + w));
   assert.ok(!/outline:\s*(none|0)/.test(h), p + ' outline');
@@ -166,7 +169,7 @@ c('X13 new pages structure', () => NEW_PAGES.forEach((p) => {
 c('X14 about content', () => {
   const h = rd('about/index.html');
   assert.strictEqual(attr(h, /<title>([^<]+)<\/title>/), TITLE['about/']);
-  ['運営事務局', MAIL, 'PR表記', '「PR」と「広告を含みます」', 'rel=&quot;sponsored&quot;', 'nofollow', 'noopener', '年齢による出し分け', '初期値が「19〜22歳」', '広告の有無や、広告主との関係が', '報酬を受け取ることがあります', 'ステルスマーケティング', '年齢', '目安・要確認', '最終確認日', '影響することはありません', 'id="disclaimer"', 'id="privacy"']
+  ['運営事務局', MAIL, 'PR表記', '「PR」と「広告を含みます」', 'rel=&quot;sponsored&quot;', 'nofollow', 'noopener', '年齢による出し分け', '初期値が「19〜22歳」', '広告の有無や、広告主との関係が', '報酬を受け取ることがあります', 'ステルスマーケティング', '年齢', '目安・要確認', '最終確認日', '影響することはありません', 'id="disclaimer"', 'id="privacy"', 'プライバシーポリシー']
     .forEach((w) => assert.ok(h.includes(w), 'about missing ' + w));
   ['No.1', '業界最大', '累計', '実績', '代表', '創業', '設立'].forEach((w) => assert.ok(!h.includes(w), 'about has ' + w));
 });
@@ -281,8 +284,8 @@ c('G02 meta / canonical / OGP', () => GUIDE_DIRS.forEach((d) => {
   assert.strictEqual(attr(h, /<meta property="og:description" content="([^"]*)"/), desc);
   assert.strictEqual(attr(h, /<meta property="og:type" content="([^"]*)"/), 'article');
   assert.ok(attr(h, /<meta property="og:site_name" content="([^"]*)"/).length > 0);
-  assert.strictEqual(attr(h, /<meta name="twitter:card" content="([^"]*)"/), 'summary');
-  assert.ok(!/property="og:image"/.test(h), d + ' og:image');
+  assert.strictEqual(attr(h, /<meta name="twitter:card" content="([^"]*)"/), 'summary_large_image');
+  assert.ok(/<meta property="og:image" content="https:\/\/gakusei-tools\.com\/og\/[a-z]+\.png">/.test(h), d + ' og:image');
   assert.ok(/<html lang="ja">/.test(h) && /<meta charset="utf-8">/.test(h) && /name="viewport"/.test(h) && /name="robots" content="index,follow"/.test(h));
   assert.ok(h.includes('<meta name="theme-color" content="#f8fafc">\n<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">'), d + ' theme-color');
 }));
@@ -330,7 +333,7 @@ c('G05 footer links + rel aside + nav', () => GUIDE_DIRS.forEach((d) => {
   const p = d + 'index.html'; const h = rd(p);
   const m = attr(h, /(<p class="foot-links">[\s\S]*?<\/p>)/);
   const hrefs = [...m.matchAll(/href="([^"]*)"/g)].map((x) => x[1]);
-  ['../../tools/', '../../about/', '../../about/#disclaimer'].forEach((w) => assert.ok(hrefs.includes(w), d + ' foot ' + w));
+  ['../../tools/', '../../about/', '../../about/#disclaimer', '../../privacy/'].forEach((w) => assert.ok(hrefs.includes(w), d + ' foot ' + w));
   hrefs.filter((x) => !x.startsWith('mailto:')).forEach((x) => assert.ok(rsl(p, x), d + ' foot resolves ' + x));
   const fi = h.lastIndexOf('<footer'); assert.ok(fi > 0 && !/<details/.test(h.slice(fi)), d + ' footer has details');
   const aside = attr(h, /(<aside class="rel"[\s\S]*?<\/aside>)/);
@@ -350,7 +353,7 @@ c('G06 structure', () => GUIDE_DIRS.forEach((d) => {
   const h = gh(d); const t = stripComments(h);
   assert.strictEqual((h.match(/<nav\b/g) || []).length, 1, d + ' nav');
   assert.strictEqual((h.match(/<h1\b/g) || []).length, 1, d + ' h1');
-  [...h.matchAll(/<script\b([^>]*)>/g)].forEach((s) => assert.ok(/type="application\/ld\+json"/.test(s[1]), d + ' script'));
+  [...h.matchAll(/<script\b([^>]*)>/g)].forEach((s) => assert.ok(/type="application\/ld\+json"/.test(s[1]) || s[1].trim() === 'src="../../site-config.js" defer', d + ' script'));
   ['innerHTML', 'outerHTML', 'insertAdjacentHTML', 'document.write', 'eval(', 'localStorage', 'sessionStorage', 'fetch(', 'XMLHttpRequest', 'sendBeacon', 'indexedDB'].forEach((w) => assert.ok(!h.includes(w), d + ' forbidden ' + w));
   assert.ok(!/outline:\s*(none|0)/.test(h), d + ' outline');
   const markup = h.replace(/<style>[\s\S]*?<\/style>/, '');
@@ -431,18 +434,22 @@ c('G13 tools lists all guides, no stray root files in guides', () => {
   assert.ok(!/ADD:scholarship/.test(rd('tools/index.html')), 'ADD:scholarship replaced');
   assert.strictEqual(ldBlocks(rd('tools/index.html'))[0].mainEntity.numberOfItems, TOOL_DIRS.length + GUIDE_DIRS.length);
 });
-const SHA0 = {
-  'about/index.html': '744e875e7bd9891393abb77d1844b64ca7ecb6352b886f7c52b13900905a0795',
-  'index.html': 'a5491c99b5fc15657330f3fac16334ced36db5e05bf12c7b5a9446cabca92fc1',
-  'kakemochi/index.html': '952f87063669159c2505b9004b756f3d35eabd6afb2496facb7cf4de042ebcb7',
-  'shift-limit/index.html': '7882246046a9e95703f305094e1ac3ac19f945c74b7ec0ce64216cc70fd5cf2c',
-  'living-cost-simulator/index.html': '1e0d734f597e98aa2433e27eff8ed7864d8a6a73679cd0c0bb92dee17ea372e1',
-  'es-word-counter/index.html': '4b41d7946fa0fd33a6fd5938aee89be447c85c7c76b67281b9cad4cd56047e36',
-  'nisa-simulator/index.html': 'f2221f52dba9af5783e28eb55f293f5dc6415715957a973b25e781425b7a3a13',
+// G14: logic ブロック（<script id="logic">…</script>）の SHA-256 は着手前（2026-11-18 の総点検の前）から不変。about は title のみ固定。
+const LOGIC0 = {
+  'index.html': 'd0ef39fb19ffe3a23a8c61e95c8253982b7604c2009d38c02c10914bcd46b8aa',
+  'kakemochi/index.html': '193ee57f717e9d371efb9ace4bbda661943f9509d2f3c6c31c2a38b548d9fbee',
+  'shift-limit/index.html': '9bc764c896bf84b78546d7514f4764691a876e0b26cb88808627ebe115d7320c',
+  'living-cost-simulator/index.html': '83725e14a8fb818e570a110281fd8cc737c0adcb5cc810c3eca0ccb1860f4cb7',
+  'es-word-counter/index.html': 'a39f7041db6e642f49081c29ff96881137daecb1af92e786ad623e1f51f4405c',
+  'nisa-simulator/index.html': 'faa451ee994c6889d214909d6bfd0bf10a462b7c1fac04781649dbe738981ebe',
+  'scholarship/index.html': 'a0bcd651b310875ed56fc074dff2bbacb61bd40b8ca7b80e872f903980efe1fb'
 };
-c('G14 about/ and 6 tool pages: SHA-256 frozen (updated for A8 measurement img / PR notice)', () => {
+c('G14 7 tool pages: logic block SHA-256 frozen; about title fixed', () => {
   assert.strictEqual(attr(rd('about/index.html'), /<title>([^<]+)<\/title>/), TITLE['about/']);
-  Object.keys(SHA0).forEach((k) => assert.strictEqual(require('crypto').createHash('sha256').update(fs.readFileSync(path.join(root, k))).digest('hex'), SHA0[k], k + ' changed'));
+  Object.keys(LOGIC0).forEach((k) => {
+    const m = rd(k).match(/<script id="logic">[\s\S]*?<\/script>/); assert.ok(m, k + ' logic');
+    assert.strictEqual(require('crypto').createHash('sha256').update(m[0]).digest('hex'), LOGIC0[k], k + ' logic changed');
+  });
 });
 
 console.log('pass ' + pass + ' / fail ' + fail);

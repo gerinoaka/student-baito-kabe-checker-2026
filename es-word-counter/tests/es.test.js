@@ -123,7 +123,7 @@ c('M01', () => assert.ok(Buffer.byteLength(html, 'utf8') <= 102400));
 c('M02', () => assert.ok(!/innerHTML|insertAdjacentHTML|localStorage|sessionStorage|document\.write|eval\(|fetch\(|XMLHttpRequest|sendBeacon|indexedDB/.test(html)));
 c('M03', () => {
   const src = [...html.matchAll(/<script[^>]*\ssrc="([^"]*)"/g)].map((x) => x[1]);
-  assert.deepStrictEqual(src, ['links-config.js']);
+  assert.deepStrictEqual(src, ['links-config.js', '../site-config.js']);
   assert.ok(![...html.matchAll(/<link\b[^>]*>/g)].some((x) => /href="https?:/.test(x[0]) && !/rel="canonical"/.test(x[0])));
   assert.ok(!/<img\b/.test(html));
 });
@@ -141,7 +141,7 @@ c('M05', () => {
   assert.strictEqual(html.match(/<link rel="canonical" href="([^"]*)"/)[1], BASE);
   assert.strictEqual(html.match(/<meta property="og:url" content="([^"]*)"/)[1], BASE);
   const locs = [...rdP('sitemap.xml').matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 13);
+  assert.strictEqual(locs.length, 14);
   assert.ok(locs.includes(BASE));
   assert.ok(rdP('robots.txt').includes('Sitemap: ' + SITE + 'sitemap.xml'));
   assert.ok(fs.existsSync(path.join(root, '..', '.nojekyll')));

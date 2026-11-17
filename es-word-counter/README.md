@@ -3,7 +3,7 @@
 ## 1. 概要
 就活のES・ガクチカの文字数を数え、指定字数に対する達成率（8割・9割の目安）と、構成・冗長表現のヒントを出す静的ツール。入力は端末内で処理し、送信・保存しない。
 公開URL: https://gakusei-tools.com/es-word-counter/
-デザインは6ページ共通基準（`index.html` 内の `/*ds:start v1*/`〜`/*ds:end*/`）に合わせている。この範囲は他の5ページと同じ内容にする。変えるときは6ページを同時に直す。
+デザインは14ページ共通基準（`index.html` 内の `/*ds:start v1*/`〜`/*ds:end*/`）に合わせている。この範囲は他の13ページと同じ内容にする。変えるときは14ページを同時に直す。
 
 ## 2. ファイル一覧
 - `index.html` : CSS と JS を内包（`links-config.js` → `<script id="logic">` → `<script id="ui">`）。logic は純関数のみ（返却名 `ES`）。
@@ -39,7 +39,7 @@
 依存パッケージなし。
 
 ## 8. SEO・サイトマップ
-`sitemap.xml` と `robots.txt` はサイトのルートに1つだけ（6ページ分）。このフォルダには置かない。公開URLを変えたら、canonical・og:url・JSON-LD の url・logic の `BASE`・`tests/` の `BASE`・ルートの `sitemap.xml` を直す。検索エンジンへの通知は Search Console で `sitemap.xml` を再送信して行う。
+`sitemap.xml` と `robots.txt` はサイトのルートに1つだけ（14ページ分）。このフォルダには置かない。公開URLを変えたら、canonical・og:url・JSON-LD の url・logic の `BASE`・`tests/` の `BASE`・ルートの `sitemap.xml` を直す。検索エンジンへの通知は Search Console で `sitemap.xml` を再送信して行う。
 
 ## 9. 年次メンテナンス
 29卒 / 30卒の日程、PR 案件の対象年度・成果条件、ステマ規制（景品表示法）の運用、リード文の時期表現を見直す。

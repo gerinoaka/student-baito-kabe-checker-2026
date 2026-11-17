@@ -2,7 +2,7 @@
 
 ## 1. 概要と公開URL
 - 新社会人・学生バイトの額面から手取りを目安計算し、一人暮らしの生活費バランスと毎月の貯金・遊びに使える額をグラフ表示する静的サイトです（ビルド不要）。
-- 公開URL: https://gakusei-tools.com/living-cost-simulator/（親サイト「student-baito-kabe-checker-2026」のサブフォルダ。1サイト・6ページ構成の1ページ）
+- 公開URL: https://gakusei-tools.com/living-cost-simulator/（親サイト「student-baito-kabe-checker-2026」のサブフォルダ。1サイト・14ページ構成の1ページ）
 - 最終確認日: 2026-11-17。対象は令和8年度の料率・令和8年分の税。
 
 ## 2. ファイル一覧
@@ -13,9 +13,9 @@
 | `tests/living.test.js` | ロジックと静的検査のテスト（156件） |
 | `tests/ui-static.test.js` | UI の静的検査 N01〜N15（HTML サイズ・details 既定閉・コントラスト・logic のハッシュ・関連ツール・スライダー仕様など） |
 
-`sitemap.xml` / `robots.txt` / `.nojekyll` は、このフォルダには置きません。親フォルダ（サイトのルート）に1つだけ置く構成に一本化しました（6ページ共通。サブフォルダに置いても検索エンジンには読まれないため）。
+`sitemap.xml` / `robots.txt` / `.nojekyll` は、このフォルダには置きません。親フォルダ（サイトのルート）に1つだけ置く構成に一本化しました（14ページ共通。サブフォルダに置いても検索エンジンには読まれないため）。
 
-共通CSSの `/*ds:start v1*/`〜`/*ds:end*/` は6ページで同じにします。変えるときは6ページを同時に直してください。
+共通CSSの `/*ds:start v1*/`〜`/*ds:end*/` は14ページで同じにします。変えるときは14ページを同時に直してください。
 
 ## 3. 公開手順（GitHub Pages）
 独立リポジトリは作りません。親サイトのリポジトリ `student-baito-kabe-checker-2026` のサブフォルダとして公開します。
@@ -30,7 +30,7 @@
   - `internet`: 通信費が手取りの6%超
   - `creditCard`: 新社会人・学生モード（上記条件がないとき）
   - `bank`: 新社会人モードで空き枠があるとき
-- 広告コード（AdSense 等）を入れる場合は、`index.html` の `AD-SLOT-1` の div の `hidden` を外して中に貼る。
+- 広告コード（AdSense 等）を入れる場合は、`index.html` の `AD-SLOT-1` の div（ページ末尾・`data-slot="content-end"`。PRカードとは離れた位置）の `hidden` を外して中に貼る。自動広告だけなら何もしない（ルートの README の「AdSense と GA4」）。
 - AdSense やアクセス解析を追加するときは、プライバシーポリシーの「広告カードの表示時の計測用画像を除き、本ページはCookieや解析ツールを使いません」も必ず更新する。
 
 ## 5. 計算根拠と更新が必要な項目
@@ -54,10 +54,10 @@
 node tests/living.test.js
 node tests/ui-static.test.js
 ```
-`index.html` から `<script id="logic">` を取り出して実行します。依存パッケージは不要です。`living.test.js` の `I1-sitemap` `I1-robots` `I1-nojekyll` は親フォルダのファイルを見るため、親フォルダの sitemap（6URL）が整ってから全件通ります。
+`index.html` から `<script id="logic">` を取り出して実行します。依存パッケージは不要です。`living.test.js` の `I1-sitemap` `I1-robots` `I1-nojekyll` は親フォルダのファイルを見るため、親フォルダの sitemap（14URL）を参照します。
 
 ## 8. Search Console と robots.txt の注意
-- Search Console は既存のプロパティのまま。親サイトの `sitemap.xml`（6ページ）を再送信し、本ページのURLを「URL検査」でインデックス登録リクエストする。
+- Search Console は既存のプロパティのまま。親サイトの `sitemap.xml`（14ページ）を再送信し、本ページのURLを「URL検査」でインデックス登録リクエストする。
 - プロジェクトサイト（サブパス）の `robots.txt` はクローラに読まれない（有効なのはホストのルートのみ）。クロール制御は `<meta name="robots">` で行っている。
 
 ## 9. 免責と連絡先
