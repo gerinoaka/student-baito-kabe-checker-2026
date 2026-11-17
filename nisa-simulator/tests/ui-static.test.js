@@ -120,7 +120,7 @@ t('N12', () => {
 });
 t('N13', () => {
   const lines = fs.readFileSync(path.join(root, 'links-config.js'), 'utf8').split('\n');
-  const at = (k) => lines.map((l, i) => (/^\s+url: '',/.test(l) ? i + 1 : 0)).filter(Boolean);
+  const at = (k) => lines.map((l, i) => (/^\s+url: '(?:|https:\/\/[^']*)',/.test(l) ? i + 1 : 0)).filter(Boolean);
   assert.deepStrictEqual(at(), [38, 45, 52]);
   const rd = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
   ['url 行 38', 'url 行 45', 'url 行 52'].forEach((s) => assert.ok(rd.includes(s), s));

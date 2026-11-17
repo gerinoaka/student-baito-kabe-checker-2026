@@ -35,7 +35,7 @@
  */
 window.NISA_LINKS = {
   shoken1: {
-    url: '',
+    url: 'https://px.a8.net/svt/ejp?a8mat=4BGNCL+RDYLU+1WP2+15Q22P',
     label: 'PR',
     title: 'ネット証券で新NISA口座を開設する',
     desc: '新NISA（つみたて投資枠）の口座開設ができるネット証券です。18歳以上が対象で、最低積立額は会社ごとに異なります。投資には元本割れのおそれがあります。',
@@ -63,4 +63,4 @@ window.NISA_LINKS = {
  * 同じキーの '' の中に貼る。広告カードが画面に表示されたときだけ読み込まれる（カードが出ないときは読み込まれない）。
  * 空のままなら何も読み込まない。728x90 などのバナー画像は使わない。url の行番号は変わらない（このブロックは末尾にある）。
  */
-window.NISA_IMP = { shoken1: '', shoken2: '', book: '' };
+window.NISA_IMP = { shoken1: 'https://www15.a8.net/0.gif?a8mat=4BGNCL+RDYLU+1WP2+15Q22P', shoken2: '', book: '' };
