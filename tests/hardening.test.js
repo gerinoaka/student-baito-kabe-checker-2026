@@ -36,7 +36,7 @@ const META = {
   'guides/student-nisa-start/index.html': ['大学生が新NISAを始める前に｜月5,000円の試算例と口座開設', '大学生が新NISAを始める前の基礎知識。月5,000円・年3%・10年の試算例（元本60万円、評価額約70万円）、口座開設の条件、1人1口座と金融機関変更のルールを整理。元本割れの可能性があり、結果は保証されません。', 'nisa'],
   'about/index.html': ['運営者情報・計算方針・広告表記｜学生バイトお役立ちツール', '学生バイトお役立ちツールの運営者情報・計算方針・広告（PR）表記・免責をまとめたページです。数字は公式の一次情報を確認して作り、結果は目安として表示します。連絡先とプライバシーポリシーへのリンクもあります。', 'default'],
   'tools/index.html': ['学生向け無料ツール一覧｜バイトの税金・新生活・就活・奨学金', '年末調整・扶養・確定申告・還付の確認から、新生活の手取り、就活のES、奨学金の返済まで、学生向けの無料ツールと解説記事を目的別に一覧にしました。入力内容は送信されず、結果はすべて目安です。', 'default'],
-  'privacy/index.html': ['プライバシーポリシー・外部送信先一覧｜学生バイトお役立ちツール', '当サイトのプライバシーポリシーです。入力内容は端末内で計算し送信しません。広告の計測でA8.netへ、Xシェア時にXへ情報が送られる場合があります。送信先・送信される情報・停止方法を一覧で説明します。', 'default'],
+  'privacy/index.html': ['プライバシーポリシー・外部送信先一覧｜学生バイトお役立ちツール', '当サイトのプライバシーポリシーです。入力内容は送信しません。閲覧時のGoogleアナリティクス、広告計測のA8.net、Xシェア時のXへの送信について、送信先・情報・停止方法を一覧で説明します。', 'default'],
 };
 // 着手前（2026-11-18 の総点検の前）に採った <script id="logic"> の SHA-256（手順0）
 const LOGIC0 = {
@@ -88,7 +88,7 @@ c('H02 privacy required words and links', () => {
     .forEach((w) => assert.ok(h.includes(w), 'privacy missing ' + w));
   const hrefs = [...h.matchAll(/<a\b[^>]*?\bhref="([^"]*)"/g)].map((m) => m[1]);
   const ext = hrefs.filter((x) => /^https?:/.test(x)).sort();
-  assert.deepStrictEqual(ext, ['https://adssettings.google.com', 'https://tools.google.com/dlpage/gaoptout']);
+  assert.deepStrictEqual(ext, ['https://policies.google.com/privacy', 'https://policies.google.com/technologies/partner-sites', 'https://tools.google.com/dlpage/gaoptout']);
   assert.ok(!hrefs.some((x) => /a8\.net/i.test(x)), 'A8 URL in href');
   ['innerHTML', 'localStorage', 'sessionStorage', 'fetch(', 'XMLHttpRequest', 'sendBeacon', 'indexedDB', 'eval(', 'document.write'].forEach((w) => assert.ok(!h.includes(w), 'forbidden ' + w));
 });
@@ -117,10 +117,10 @@ c('H05 site-config.js behaviour (no real network)', () => {
   assert.ok(/^\s*ADSENSE_CLIENT:/.test(lines[21]), '22行目 ' + lines[21]);
   assert.ok(/^\s*GA4_ID:/.test(lines[22]), '23行目 ' + lines[22]);
   assert.ok(!rd('site-config.js').includes('anonymize_ip'));
-  const shipped = vm.runInNewContext(rd('site-config.js') + '\n;window.SITE_CONFIG', { window: {}, document: { head: { appendChild() { throw new Error('append'); } }, createElement() { throw new Error('create'); } }, encodeURIComponent, Date });
-  assert.strictEqual(shipped.ADSENSE_CLIENT, ''); assert.strictEqual(shipped.GA4_ID, '');
+  const shipped = runConfig().win.SITE_CONFIG;
+  assert.strictEqual(shipped.ADSENSE_CLIENT, ''); assert.ok(shipped.GA4_ID === '' || /^G-[A-Z0-9]{4,12}$/.test(shipped.GA4_ID), 'GA4_ID format');
   // 空（出荷状態）: script 0・dataLayer/gtag なし
-  let r = runConfig();
+  let r = runConfig({ ADSENSE_CLIENT: '', GA4_ID: '' });
   assert.strictEqual(r.added.length, 0); assert.ok(!('dataLayer' in r.win) && !('gtag' in r.win));
   r = runConfig({ ADSENSE_CLIENT: '   ', GA4_ID: '' }); assert.strictEqual(r.added.length, 0);
   // 不正な形式
@@ -139,7 +139,7 @@ c('H05 site-config.js behaviour (no real network)', () => {
   r = runConfig({ ADSENSE_CLIENT: '', GA4_ID: 'G-ABCD' }); assert.strictEqual(r.added.length, 1);
 });
 c('H06 ads.txt / privacy consistency', () => {
-  const cfg = vm.runInNewContext(rd('site-config.js') + '\n;window.SITE_CONFIG', { window: {}, document: {}, encodeURIComponent, Date });
+  const cfg = runConfig().win.SITE_CONFIG;
   const hasAd = cfg.ADSENSE_CLIENT.trim() !== '', hasGa = cfg.GA4_ID.trim() !== '';
   const exists = fs.existsSync(path.join(root, 'ads.txt'));
   if (!hasAd) assert.ok(!exists, 'ads.txt must not exist while ADSENSE_CLIENT is empty');

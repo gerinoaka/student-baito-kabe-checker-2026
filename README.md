@@ -1,6 +1,6 @@
 # 学生バイトお役立ちツール（令和8年分／令和8年度）— 14ページ
 
-学生・新社会人向けの静的サイト。**ツール7本・解説記事4本・運営者情報・ツール一覧・プライバシーポリシー（計14ページ）**。入力値は送信・保存しない（広告カードの表示時の ASP 計測用画像、「Xでシェア」ボタンを押したときの X への移動を除き、外部リクエストなし。Cookie・ローカルストレージ等は自サイトでは不使用）。`site-config.js` の ID が空の間は、AdSense・GA4 の外部リクエストもゼロ。
+学生・新社会人向けの静的サイト。**ツール7本・解説記事4本・運営者情報・ツール一覧・プライバシーポリシー（計14ページ）**。入力値は送信・保存しない（広告カードの表示時の ASP 計測用画像、「Xでシェア」ボタンを押したときの X への移動、GA4（Google アナリティクス 4）によるアクセス解析を除き、外部リクエストなし。入力内容の Cookie・ローカルストレージ保存は不使用。GA4 は Cookie を使う）。GA4 は `G-3P5TMV0N6Z` で有効。AdSense は ID が空の間、外部リクエストなし。
 
 | 区分 | ページ |
 |---|---|
@@ -122,7 +122,7 @@ student-baito-kabe-checker-2026/
 
 ツール7ページは `<script id="logic">`（純粋関数・DOM非依存）と `<script id="ui">` に分離。**`<script id="logic">` は変えない**（`tests/hardening.test.js` の H16 と `tests/site.test.js` の G14 が SHA-256 で検査する）。変えてよいのは HTML と `<script id="ui">` 内の文言。共通CSSは `/*ds:start v1*/`〜`/*ds:end*/` で、**全14ページで同じ**にする（変えるときは14ページを同時に直す。`tests/site.test.js` の X01・X08 と H20 が検査）。ページ固有のCSSは `/*ds:end*/` の後ろに足す。
 
-外部ホストへのリクエスト: A8.net の計測用画像（広告カード表示時のみ）。`site-config.js` に ID を入れた場合だけ Google（`pagead2.googlesyndication.com` / `www.googletagmanager.com`）。
+外部ホストへのリクエスト: A8.net の計測用画像（広告カード表示時のみ）、GA4（`www.googletagmanager.com` ほか。測定ID `G-3P5TMV0N6Z` 設定済み）。AdSense（`pagead2.googlesyndication.com`）は `ADSENSE_CLIENT` を入れた場合だけ。
 
 ## 3. テスト実行
 Node が PATH に無い場合は `%LOCALAPPDATA%\nodejs-portable` 配下の node.exe をフルパスで指定する。
@@ -168,7 +168,7 @@ $node = (Get-ChildItem $env:LOCALAPPDATA\nodejs-portable -Recurse -Filter node.e
 あわせて `https://gakusei-tools.com/og/kabe.png` と `https://gakusei-tools.com/site-config.js` が開くこと、`sitemap.xml` が14件であることを確認する。
 
 ## 5. AdSense と GA4（`site-config.js`）
-1. **ID を貼る**: AdSense の発行元ID（`ca-pub-` で始まる）を `site-config.js` の **22行目 `ADSENSE_CLIENT`**、GA4 の測定ID（`G-` で始まる）を **23行目 `GA4_ID`** の `''` の中に貼る。14ページすべてに反映される。形式（`ca-pub-`＋数字10〜20桁／`G-`＋英大文字・数字4〜12桁）が合わないときは読み込まない。空のままなら、外部へのリクエストはゼロ（出荷状態は両方空）。
+1. **ID を貼る**: AdSense の発行元ID（`ca-pub-` で始まる）を `site-config.js` の **22行目 `ADSENSE_CLIENT`**、GA4 の測定ID（`G-` で始まる）を **23行目 `GA4_ID`** の `''` の中に貼る。14ページすべてに反映される。形式（`ca-pub-`＋数字10〜20桁／`G-`＋英大文字・数字4〜12桁）が合わないときは読み込まない。空のままなら、その分の外部リクエストはゼロ（現状: GA4_ID は設定済み、ADSENSE_CLIENT は空）。
 2. **ads.txt**（AdSense を使うとき）: サイト直下に `ads.txt` を作る。今は作っていない。テンプレート:
    ```
    google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
@@ -176,7 +176,7 @@ $node = (Get-ChildItem $env:LOCALAPPDATA\nodejs-portable -Recurse -Filter node.e
    `pub-` の後ろは、`ca-pub-1234567890123456` なら `pub-1234567890123456`。手順: ID を貼る → `ads.txt` を作る → 反映（数日かかることがある）→ ブラウザで `/ads.txt` を開いて確認 → AdSense の「サイト」画面で状態を見る。
 3. **ID を貼った日の更新手順（必須）**:
    - `privacy/index.html` の「現在は導入していません」（要点・外部送信先の表の Google 行・`#google` 節）を「導入しています」に書き換え、送信先として Google LLC の行を表に追加する（送信される情報＝IPアドレス・ブラウザ情報・閲覧ページ・Cookie ID、目的＝広告配信／アクセス解析、停止方法＝同ページのオプトアウト）。
-   - 7ツールと about の `#privacy` 要約の4項目目（「…を導入した場合は、…（現在は導入していません）」）も同様に更新する。
+   - （GA4 は 2026-11-18 に導入済みで、上記は反映済み。AdSense 導入時に同様に更新する。）7ツールと about の `#privacy` 要約の4項目目（「…を導入した場合は、…（現在は導入していません）」）も同様に更新する。
    - 最終更新日・制定日の下の更新日を当日にする。（`tests/hardening.test.js` の H06 が、ID があるのに「導入していません」が残っていると失敗にする。）
 4. **手動の広告枠**（任意）: 今は自動広告だけを想定し、`.ad-slot` は全て `hidden`（index・living・scholarship・nisa の4ページに各1つ。ページ末尾でPRカードとは離れている）。使うときは ①AdSense でディスプレイ広告ユニットを作る ②そのページの `.ad-slot` の `<div>` の中に `<ins class="adsbygoogle" …>` と `<script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>` を貼り `hidden` を外す ③同じページで自動広告と併用するなら、AdSense 管理画面の自動広告で、そのページ（または広告の掲載位置）を除外して二重にしない。
 5. **自動広告の位置**: PRカードのすぐ近くに広告が出ないよう、AdSense の自動広告設定の「広告の掲載位置」で制御する。

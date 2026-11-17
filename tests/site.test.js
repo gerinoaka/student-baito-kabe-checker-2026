@@ -124,7 +124,7 @@ c('X11 new pages links', () => NEW_PAGES.forEach((p) => {
   assert.ok(hrefs.length > 0);
   hrefs.forEach((x) => {
     assert.notStrictEqual(x, '#', p + ' href="#"');
-    if (/^https?:/.test(x)) assert.ok(x === 'https://adssettings.google.com' || x === 'https://tools.google.com/dlpage/gaoptout', p + ' external ' + x);
+    if (/^https?:/.test(x)) assert.ok(x === 'https://adssettings.google.com' || x === 'https://tools.google.com/dlpage/gaoptout' || x === 'https://policies.google.com/privacy' || x === 'https://policies.google.com/technologies/partner-sites', p + ' external ' + x);
     else if (x.startsWith('mailto:') || x.startsWith('#')) return;
     else { assert.ok(!x.startsWith('/'), p + ' abs ' + x); assert.ok(resolves(p, x.split('#')[0]), p + ' -> ' + x); }
   });

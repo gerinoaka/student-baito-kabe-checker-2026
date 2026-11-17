@@ -20,7 +20,7 @@
 window.SITE_CONFIG = {
   // ↓ 貼るのはこの2行だけ
   ADSENSE_CLIENT: '',
-  GA4_ID: ''
+  GA4_ID: 'G-3P5TMV0N6Z'
 };
 
 (function () {
