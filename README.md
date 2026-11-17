@@ -117,6 +117,7 @@ student-baito-kabe-checker-2026/
   links-config.js           広告（PR）URLの一元管理（3ページ共通。サブページは ../links-config.js）
   sitemap.xml               6ページ（サブフォルダには sitemap・robots・.nojekyll を置かない）
   robots.txt                Sitemap 行つき
+  CNAME                     独自ドメイン gakusei-tools.com（1行のみ。GitHub Pages のカスタムドメイン用）
   .nojekyll                 0バイト（GitHub Pages で Jekyll 処理を無効にする）
   googlef0918a9bf30cf9a1.html  Search Console 所有権確認（削除禁止）
   kakemochi/index.html      掛け持ち還付チェッカー
@@ -149,23 +150,23 @@ $node = (Get-ChildItem $env:LOCALAPPDATA\nodejs-portable -Recurse -Filter node.e
 全件パスで `pass N / fail 0`（judge 113 / kakemochi 44 / shift 66 / ui-smoke 25 / ui-static 51 / site 7）、失敗があれば終了コード1。
 
 ## 4. 公開手順の概要
-このフォルダの中身を、そのままリポジトリ直下へ git push 1回で反映する（またはブラウザで上書きアップロード。サブフォルダごと、`.nojekyll` と `googlef0918a9bf30cf9a1.html` を含める。products フォルダは作らない）。GitHub Pages は設定済み。次の6URLが開くか確認する。
-- `https://gerinoaka.github.io/student-baito-kabe-checker-2026/`
-- `https://gerinoaka.github.io/student-baito-kabe-checker-2026/kakemochi/`
-- `https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/`
-- `https://gerinoaka.github.io/student-baito-kabe-checker-2026/living-cost-simulator/`
-- `https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/`
-- `https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/`
+このフォルダの中身を、そのままリポジトリ直下へ git push 1回で反映する（またはブラウザで上書きアップロード。サブフォルダごと、`.nojekyll` と `googlef0918a9bf30cf9a1.html` を含める。products フォルダは作らない）。独自ドメインの手順: お名前.com で A レコード4つ（185.199.108.153 / 185.199.109.153 / 185.199.110.153 / 185.199.111.153）と www の CNAME（GitHubユーザー名 gerinoaka の github.io ホスト）を設定し、GitHub の Settings → Pages で DNS check を確認したあと Enforce HTTPS をオンにする。GitHub Pages は設定済み（カスタムドメイン gakusei-tools.com。旧URL `https://gerinoaka.github.io/student-baito-kabe-checker-2026/` からの移行）。次の6URLが開くか確認する。
+- `https://gakusei-tools.com/`
+- `https://gakusei-tools.com/kakemochi/`
+- `https://gakusei-tools.com/shift-limit/`
+- `https://gakusei-tools.com/living-cost-simulator/`
+- `https://gakusei-tools.com/es-word-counter/`
+- `https://gakusei-tools.com/nisa-simulator/`
 ## 5. 置換トークン・書き換え箇所
-- `__SITE_URL__`: 置換済み（`https://gerinoaka.github.io/student-baito-kabe-checker-2026/`）。連絡先 `gakusei.kabe.checker@gmail.com` も記載済み。
+- `__SITE_URL__`: 置換済み（`https://gakusei-tools.com/`）。連絡先 `gakusei.kabe.checker@gmail.com` も記載済み。
 - リポジトリ名を変える場合に直す箇所: 3ページの canonical / og:url、JSON-LD の url（WebApplication と isPartOf）、`sitemap.xml`、`robots.txt`、新3ツールの canonical・og:url・JSON-LD の url・`BASE`・各テストの `BASE`、各ページ logic の `CANON`（index は `KABE.DATA.CANON`、kakemochi は `KAKE.DATA.CANON`、shift-limit は `SHIFT.DATA.CANON`）、`tests/judge.test.js` の `BASE`、`tests/kakemochi.test.js` と `tests/shift.test.js` の `BASE`。
 - AdSense: `index.html` の `.ad-slot`（`data-slot="after-result"` / `before-sources`）。審査通過後に広告コードを `div` 内へ入れ、**入れたら `hidden` を外す**。入力フォーム・ボタン付近・結果カードの間には置かない。
 - 旧 `data-aff` / `aside#aff` / note 導線は廃止し、`links-config.js` に統合した。
 
 ## 6. SEO
 - FAQPage 構造化データのリッチリザルトは2026年5月7日に終了済み。残す理由は、画面上のFAQと同文で保守コストが低いため（効果は薄い）。**FAQを変えたら可視FAQとJSON-LDを必ず同文に更新**（テストで一致を検査）。Q&A は index 15問、kakemochi 13問、shift-limit 12問。用語解説（`#glossary`）は FAQ の外に置く（FAQ の `<section>` の中に入れない）。
-- `robots.txt` は `https://<user>.github.io/<repo>/robots.txt` では クローラに読まれない（プロジェクトサイトのサブパス）。本命は Search Console で `sitemap.xml` を直接送信すること。
-- Search Console は既存のプロパティのまま（新規追加なし）。sitemap.xml を再送信し、新3URLをURL検査でリクエストする（任意）。参考（初回手順）: ①「URLプレフィックス」で `https://gerinoaka.github.io/student-baito-kabe-checker-2026/` を追加（ドメインプロパティ不可）②所有権確認は HTMLファイルをリポジトリ直下へ、または `index.html` の head に `<meta name="google-site-verification" content="...">`（HTMLファイル方式は消すと確認が外れる）③「サイトマップ」で `sitemap.xml` を送信 ④（任意）URL検査で3ページを「インデックス登録をリクエスト」。
+- `robots.txt` は独自ドメイン直下（`https://gakusei-tools.com/robots.txt`）に置かれるためクローラに読まれる。あわせて Search Console で `sitemap.xml` を直接送信する。
+- Search Console は新URL `https://gakusei-tools.com/` のプロパティで運用する（旧URLのプロパティとは別。未登録なら追加する）。sitemap.xml を再送信し、新3URLをURL検査でリクエストする（任意）。参考（初回手順）: ①「URLプレフィックス」で `https://gakusei-tools.com/` を追加（ドメインプロパティ不可）②所有権確認は HTMLファイルをリポジトリ直下へ、または `index.html` の head に `<meta name="google-site-verification" content="...">`（HTMLファイル方式は消すと確認が外れる）③「サイトマップ」で `sitemap.xml` を送信 ④（任意）URL検査で3ページを「インデックス登録をリクエスト」。
 - **所有権確認ファイル `googlef0918a9bf30cf9a1.html`（2026-11-17 設置）は削除禁止。** 消すと Search Console の確認が外れる。フォルダごと再アップロードするときも含めること。
 - og:image は未作成。
 

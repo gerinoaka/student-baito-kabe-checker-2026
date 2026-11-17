@@ -6,7 +6,7 @@ const vm = require('vm');
 const assert = require('node:assert');
 
 const root = path.join(__dirname, '..');
-const BASE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const BASE = 'https://gakusei-tools.com/';
 const DIRS = ['', 'kakemochi/', 'shift-limit/', 'living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/'];
 const PAGES = DIRS.map((d) => d + 'index.html');
 const rd = (p) => fs.readFileSync(path.join(root, p), 'utf8');
@@ -44,7 +44,7 @@ c('X04 no stray root files in subfolders', () => {
   ['sitemap.xml', 'robots.txt', '.nojekyll', 'googlef0918a9bf30cf9a1.html'].forEach((f) => assert.ok(fs.existsSync(path.join(root, f)), f));
 });
 c('X05 no old URLs', () => {
-  const old = ['living-cost-simulator', 'es-word-counter', 'nisa-simulator'].map((n) => 'https://gerinoaka.github.io/' + n + '/');
+  const old = ['living-cost-simulator', 'es-word-counter', 'nisa-simulator'].map((n) => 'https://gerino' + 'aka.github.io/' + n + '/');
   const hits = [];
   (function w(d) {
     fs.readdirSync(d, { withFileTypes: true }).forEach((e) => {
@@ -432,13 +432,13 @@ c('G13 tools lists all guides, no stray root files in guides', () => {
   assert.strictEqual(ldBlocks(rd('tools/index.html'))[0].mainEntity.numberOfItems, TOOL_DIRS.length + GUIDE_DIRS.length);
 });
 const SHA0 = {
-  'about/index.html': 'f543a9b4c5120749019c558d81263d7602776e1fb5b3a16f48a683ff48bff9fe',
-  'index.html': '76eb81ee484ff2107c3aaa4170deedc2706f9a8444ef46ce5e83afeaa2f4975f',
-  'kakemochi/index.html': 'ff6877e7de28c18d1b908aa881a7805da33aa1854d67395b56a610346e88f36b',
-  'shift-limit/index.html': '1e5ee1d7a8cba237737970d7be1f6188b5d303f346fb85903e327f7eed814d69',
-  'living-cost-simulator/index.html': '14f23987321adc0c3fc41b3fc133240d9b84e0fbf1ea9ffd2b71512a82c81aac',
-  'es-word-counter/index.html': '55429e734e21e9484d83fa17124c72d07e7646b605600ae369e1e3b53c256d5a',
-  'nisa-simulator/index.html': '3133bace9bd0540b5e1b4a3756abc9337aefbeeed30c25fe1ba6b98a5d5c7a38',
+  'about/index.html': '744e875e7bd9891393abb77d1844b64ca7ecb6352b886f7c52b13900905a0795',
+  'index.html': 'a5491c99b5fc15657330f3fac16334ced36db5e05bf12c7b5a9446cabca92fc1',
+  'kakemochi/index.html': '952f87063669159c2505b9004b756f3d35eabd6afb2496facb7cf4de042ebcb7',
+  'shift-limit/index.html': '7882246046a9e95703f305094e1ac3ac19f945c74b7ec0ce64216cc70fd5cf2c',
+  'living-cost-simulator/index.html': '1e0d734f597e98aa2433e27eff8ed7864d8a6a73679cd0c0bb92dee17ea372e1',
+  'es-word-counter/index.html': '4b41d7946fa0fd33a6fd5938aee89be447c85c7c76b67281b9cad4cd56047e36',
+  'nisa-simulator/index.html': 'f2221f52dba9af5783e28eb55f293f5dc6415715957a973b25e781425b7a3a13',
 };
 c('G14 about/ and 6 tool pages: SHA-256 frozen (updated for A8 measurement img / PR notice)', () => {
   assert.strictEqual(attr(rd('about/index.html'), /<title>([^<]+)<\/title>/), TITLE['about/']);

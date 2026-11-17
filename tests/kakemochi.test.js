@@ -77,7 +77,7 @@ t('35', [E(100000, 0), E(100000, 13), E(100000, 1.5)],
 const R_REF = (w) => C(1000000, { w: w === undefined ? 5000 : w, ny: false });
 const R_NONE = C(2000000, { w: 11200 });
 const R_SHORT = C(2000000, { w: 11100 });
-const BASE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const BASE = 'https://gakusei-tools.com/';
 t('bs01', [K.buildShare(R_REF()).text.includes('戻る'), K.buildShare(R_REF()).text.includes('還付')], { 0: true, 1: true });
 t('bs02', K.buildShare(R_NONE).text.includes('ほぼありません'), true);
 t('bs03', K.buildShare(R_SHORT).text.includes('追加で納める'), true);

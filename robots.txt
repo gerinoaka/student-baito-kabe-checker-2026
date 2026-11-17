@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gerinoaka.github.io/student-baito-kabe-checker-2026/sitemap.xml
+Sitemap: https://gakusei-tools.com/sitemap.xml

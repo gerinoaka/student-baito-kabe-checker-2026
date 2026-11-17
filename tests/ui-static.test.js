@@ -7,33 +7,33 @@ const assert = require('node:assert');
 const { parseHTML, walk } = require('./dom-stub');
 
 const root = path.join(__dirname, '..');
-const BASE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const BASE = 'https://gakusei-tools.com/';
 // S07: 刷新前の値（不変条件の保険）
 const HEADS = {
  "index.html": {
   "title": "学生バイトの年収の壁チェッカー2026｜178万・150万を一発判定",
   "desc": "大学生・高校生のバイト年収を入れるだけで、令和8年分（2026年）の所得税178万円・親の特定親族特別控除・健保の扶養150万円・住民税の壁を判定。あと何万円稼げるかも分かる無料ツール。最終確認日2026-11-16。",
   "h1": "学生バイトの「年収の壁」チェッカー（令和8年分・2026年）",
-  "url": "https://gerinoaka.github.io/student-baito-kabe-checker-2026/"
+  "url": "https://gakusei-tools.com/"
  },
  "kakemochi/index.html": {
   "title": "掛け持ちバイトの源泉徴収・還付金チェッカー2026｜確定申告の目安",
   "desc": "掛け持ちバイトの支払金額と源泉徴収税額を入れるだけで、令和8年分（2026年）の年税額と還付の目安を計算。乙欄で引かれた税金が戻るか、確定申告が必要かの整理つき。最終確認日2026-11-17。無料ツール。",
   "h1": "掛け持ちバイトの源泉徴収・還付金チェッカー（令和8年分・2026年）",
-  "url": "https://gerinoaka.github.io/student-baito-kabe-checker-2026/kakemochi/"
+  "url": "https://gakusei-tools.com/kakemochi/"
  },
  "shift-limit/index.html": {
   "title": "時給×シフト逆算計算機2026｜年収の壁まであと何時間働ける？",
   "desc": "時給と今までの累計収入を入れると、136万・150万・178万の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかを計算。令和8年分（2026年）対応の無料ツール。最終確認日2026-11-17。",
   "h1": "時給×シフト逆算計算機（令和8年分・2026年）",
-  "url": "https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/"
+  "url": "https://gakusei-tools.com/shift-limit/"
  }
 };
 // S08: 刷新前の <script id="logic"> 本文（UTF-8）の SHA-256
 const HASH = {
-  'index.html': '794b2e7bba35e49991d9a24ff8dd55c7b36f15d7d2da2bcbd847d36cfec6fc4d',
-  'kakemochi/index.html': '88c244f9faf2e1ef26e384e0baca53e4faabfaf02836bcd51a7987f41c678964',
-  'shift-limit/index.html': 'c9d036f0d275616b39ed9fd86062bd83bbcae852657f74dee022c1917cc4351e'
+  'index.html': 'e837523f49bb636ce8b1dbff0083abaf7d0b678f8919b58fd5d6abb7ef520eb4',
+  'kakemochi/index.html': 'e5aabc700fa956c16fc9a00801c49dc3c8c91de2b520e6cbb30dc3dca8fa1e77',
+  'shift-limit/index.html': '08554d5538489d0680e02f7a5b1259208c0c52df64c15b38252465e6467a9f77'
 };
 let pass = 0, fail = 0;
 function c(name, fn) { try { fn(); pass++; } catch (e) { fail++; console.error('FAIL ' + name + ' -> ' + e.message); } }

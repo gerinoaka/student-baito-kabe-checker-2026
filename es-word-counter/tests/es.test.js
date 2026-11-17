@@ -11,7 +11,7 @@ const html = rd('index.html');
 const m = html.match(/<script id="logic">([\s\S]*?)<\/script>/);
 if (!m) { console.error('logic script not found'); process.exit(1); }
 const ES = vm.runInNewContext(m[1] + ';ES', {});
-const SITE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const SITE = 'https://gakusei-tools.com/';
 const BASE = SITE + 'es-word-counter/';
 const rdP = (p) => fs.readFileSync(path.join(root, '..', p), 'utf8'); // 親フォルダ（読むだけ）
 const HAS_SEG = typeof Intl !== 'undefined' && typeof Intl.Segmenter === 'function';

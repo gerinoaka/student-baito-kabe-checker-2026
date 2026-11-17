@@ -83,7 +83,7 @@ t('st05', S.shareTier(C('w178', { cum: 1424001 })), 'tight');
 t('st06', [S.shareTier(C('w178', { cum: 1780000 })), S.shareTier(C('w178', { cum: 1780001 }))], { 0: 'reached', 1: 'over' });
 
 // ---- buildShare
-const BASE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const BASE = 'https://gakusei-tools.com/';
 const TIERS = (w) => {
   const cap = S.WALLS[w].cap;
   return {

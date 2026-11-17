@@ -62,7 +62,7 @@ t('28', () => {
 });
 
 // ---- サイト横断チェック
-const SITE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const SITE = 'https://gakusei-tools.com/';
 const BASE = SITE + 'nisa-simulator/';
 t('x-canon', () => {
   assert.strictEqual(html.match(/<link rel="canonical" href="([^"]*)"/)[1], BASE);

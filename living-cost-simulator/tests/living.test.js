@@ -221,7 +221,7 @@ t('P5', L.parseYen('abc'), NaN);
 
 // ---- I. 静的検査
 const rd = (p) => fs.readFileSync(path.join(root, p), 'utf8');
-const SITE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const SITE = 'https://gakusei-tools.com/';
 const BASE = SITE + 'living-cost-simulator/';
 c('I1-jsonld', () => {
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((x) => JSON.parse(x[1]));

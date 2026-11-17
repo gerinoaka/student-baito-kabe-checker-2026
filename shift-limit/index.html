@@ -8,16 +8,16 @@
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#f8fafc">
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
-<link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/">
+<link rel="canonical" href="https://gakusei-tools.com/shift-limit/">
 <meta property="og:title" content="時給×シフト逆算計算機2026｜年収の壁まであと何時間働ける？">
 <meta property="og:description" content="時給と今までの累計収入を入れると、136万・150万・178万の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかを計算。令和8年分（2026年）対応の無料ツール。最終確認日2026-11-17。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/">
+<meta property="og:url" content="https://gakusei-tools.com/shift-limit/">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:site_name" content="学生バイトお役立ちツール">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M8 22V10h4v12zm6 0V14h4v8zm6 0V8h4v14z' fill='%23fff'/%3E%3C/svg%3E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"時給×シフト逆算計算機（令和8年分）","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/","description":"時給と今までの累計収入を入れると、136万・150万・178万の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかを計算。令和8年分（2026年）対応の無料ツール。最終確認日2026-11-17。","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"dateModified":"2026-11-17","isPartOf":{"@type":"WebSite","name":"学生バイトお役立ちツール","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"時給×シフト逆算計算機（令和8年分）","url":"https://gakusei-tools.com/shift-limit/","description":"時給と今までの累計収入を入れると、136万・150万・178万の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかを計算。令和8年分（2026年）対応の無料ツール。最終確認日2026-11-17。","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"dateModified":"2026-11-17","isPartOf":{"@type":"WebSite","name":"学生バイトお役立ちツール","url":"https://gakusei-tools.com/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"年収の壁を超えないように、あと何時間働けますか？","acceptedAnswer":{"@type":"Answer","text":"壁の金額からこれまでの累計収入を引いた残りを、残り月数で割り、時給で割って求めます。月の上限額は残り枠÷残り月数（円未満切捨）、月の時間は月の上限額÷時給（時間未満切捨）、週の時間は月の時間×12÷52（小数1位まで切捨）で計算します。"}},
 {"@type":"Question","name":"150万円の壁は通勤手当を含みますか？","acceptedAnswer":{"@type":"Answer","text":"親の健保の扶養の150万円（19〜22歳は150万円未満）は、通勤手当を含めた年間収入で判定される扱いです（一部確認。健保組合で要確認）。136万円と178万円は、非課税の通勤手当を除いた給与収入で数えます。"}},
@@ -475,7 +475,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <script id="logic">
 const SHIFT=(function(){
 'use strict';
-const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-17',CANON:'https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/',HASHTAGS:['年収の壁','学生バイト','シフト計算']};
+const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-17',CANON:'https://gakusei-tools.com/shift-limit/',HASHTAGS:['年収の壁','学生バイト','シフト計算']};
 const AGE_GROUPS=['u18','a19p'];
 const WALLS={
  w136:{limit:1360000,cap:1360000,unit:'ika',useCommute:false},

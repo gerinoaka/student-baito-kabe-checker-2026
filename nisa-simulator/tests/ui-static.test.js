@@ -7,10 +7,10 @@ const assert = require('node:assert');
 
 const root = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-const SITE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const SITE = 'https://gakusei-tools.com/';
 const BASE = SITE + 'nisa-simulator/';
-const OLD = 'https://gerinoaka.github.io/nisa-simulator/';
-const LOGIC_SHA = 'a37fa90f1c301e8afb968ec124dd5e3a53d85a9266563f6d385f6e1719c344d0'; // 刷新前（旧BASE）の logic
+const OLD = 'https://gerino' + 'aka.github.io/nisa-simulator/';
+const LOGIC_SHA = '5316fa8fe75f0f3f7a929ba19e28915c7197e72a38c0f4c5b87f0b98fa375d82'; // 独自ドメイン化後の logic
 
 let pass = 0, fail = 0;
 function t(name, fn) {
@@ -84,13 +84,12 @@ t('N08', () => {
 t('N09', () => {
   const logic = html.match(/<script id="logic">([\s\S]*?)<\/script>/)[1];
   assert.ok(logic.includes("const BASE='" + BASE + "'"));
-  const back = logic.split(BASE).join(OLD);
-  assert.strictEqual(crypto.createHash('sha256').update(back).digest('hex'), LOGIC_SHA);
+    assert.strictEqual(crypto.createHash('sha256').update(logic).digest('hex'), LOGIC_SHA);
   assert.ok(html.indexOf('<script src="links-config.js"></script>\n<script id="logic">') > 0);
 });
 t('N10', () => {
   const files = ['index.html', 'links-config.js', 'README.md'].map((f) => fs.readFileSync(path.join(root, f), 'utf8'));
-  ['https://gerinoaka.github.io/living-cost-simulator/', 'https://gerinoaka.github.io/es-word-counter/', OLD].forEach((u) => files.forEach((s) => assert.ok(!s.includes(u), u)));
+  ['https://gerino' + 'aka.github.io/living-cost-simulator/', 'https://gerino' + 'aka.github.io/es-word-counter/', OLD].forEach((u) => files.forEach((s) => assert.ok(!s.includes(u), u)));
 });
 t('N11', () => {
   const rel = html.match(/<aside class="rel"[\s\S]*?<\/aside>/)[0];

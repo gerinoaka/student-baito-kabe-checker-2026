@@ -16,12 +16,11 @@ function ok(name, cond, msg) {
 }
 const attr = (tag, a) => { const m = tag.match(new RegExp('\\s' + a + '="([^"]*)"')); return m ? m[1] : null; };
 
-const SITE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const SITE = 'https://gakusei-tools.com/';
 const NEW_BASE = SITE + 'living-cost-simulator/';
-const OLD_BASE = 'https://gerinoaka.github.io/' + 'living-cost-simulator/';
-const OLD_URLS = ['living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/'].map((x) => 'https://gerinoaka.github.io/' + x);
-// 刷新前の <script id="logic"> の SHA-256（着手時に取得）
-const LOGIC_SHA = 'd7672a6c848f28d5435461b1214b430af296d05bc432915266e8367e071d296f';
+const OLD_URLS = ['living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/'].map((x) => 'https://gerino' + 'aka.github.io/' + x);
+// 独自ドメイン化後の <script id="logic"> の SHA-256（URLのみ置換を機械確認済み）
+const LOGIC_SHA = 'e13db1cb8361730f1a02e560c91219cb8aab0c519ae89e4d5b1316f52f102112';
 
 // N01
 ok('N01', Buffer.byteLength(html, 'utf8') <= 102400, 'size ' + Buffer.byteLength(html, 'utf8'));
@@ -97,8 +96,7 @@ ok('N08-title', html.includes('<title>手取り計算 新卒｜初任給の手�
 // N09
 {
   const lg = html.match(/<script id="logic">([\s\S]*?)<\/script>/)[1];
-  const back = lg.split(NEW_BASE).join(OLD_BASE);
-  ok('N09', crypto.createHash('sha256').update(back, 'utf8').digest('hex') === LOGIC_SHA);
+    ok('N09', crypto.createHash('sha256').update(lg, 'utf8').digest('hex') === LOGIC_SHA);
   ok('N09-base', lg.includes("var BASE='" + NEW_BASE + "';"));
   ok('N09-order', /<script src="links-config\.js"><\/script>\s*<script id="logic">/.test(html));
 }

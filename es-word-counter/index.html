@@ -8,17 +8,17 @@
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#f8fafc">
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
-<!-- 公開URL: https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/ （canonical・og:url・JSON-LD の url・logic の BASE の4か所。変更時は親フォルダの sitemap.xml も更新） -->
-<link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/">
+<!-- 公開URL: https://gakusei-tools.com/es-word-counter/ （canonical・og:url・JSON-LD の url・logic の BASE の4か所。変更時は親フォルダの sitemap.xml も更新） -->
+<link rel="canonical" href="https://gakusei-tools.com/es-word-counter/">
 <meta property="og:title" content="ES文字数カウント｜8割目安・原稿用紙換算とガクチカ構成チェック">
 <meta property="og:description" content="就活のES・ガクチカの文字数をリアルタイムでカウント。空白抜き・原稿用紙換算（400字詰）・指定字数の達成率と8割の目安を表示し、結論・STAR・冗長表現のヒントも出します。登録不要で、入力は送信も保存もされません。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/">
+<meta property="og:url" content="https://gakusei-tools.com/es-word-counter/">
 <meta property="og:site_name" content="ES文字数カウント＆ガクチカ構成チェッカー">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M7 9h18v3H7zm0 6h18v3H7zm0 6h11v3H7z' fill='%23fff'/%3E%3C/svg%3E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ES文字数カウント＆ガクチカ構成チェッカー","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"inLanguage":"ja"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ES文字数カウント＆ガクチカ構成チェッカー","url":"https://gakusei-tools.com/es-word-counter/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"inLanguage":"ja"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"ESの文字数は、スペースや改行を含めて数えるのですか？","acceptedAnswer":{"@type":"Answer","text":"提出先によって異なります。Word は改行を数えず、Excel の LEN は改行も1文字と数えるなど、ツールごとに差があります。このツールの初期設定は「改行は含めず、空白は含める」で、空白抜きの文字数や改行を含む文字数も併記します。最終的には、提出画面に表示される文字数を優先して確認してください。"}},
 {"@type":"Question","name":"ESの文字数は何割くらい埋めればよいですか？","acceptedAnswer":{"@type":"Answer","text":"就活メディアや就活エージェントでは、8割以上を最低ライン、9割以上を理想とする目安がよく紹介されています。ただし企業の公式基準ではなく経験則です。内容が簡潔で的確なら8割未満でも問題ない場合があるため、あくまで目安として使ってください。"}},
@@ -438,7 +438,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <script id="logic">
 var ES=(function(){
 'use strict';
-var BASE='https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/',SHEET=400;
+var BASE='https://gakusei-tools.com/es-word-counter/',SHEET=400;
 var segmenter=null;
 function norm(t){return String(t==null?'':t).replace(/\r\n?/g,'\n');}
 function seg(str,unit){

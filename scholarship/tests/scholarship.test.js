@@ -12,7 +12,7 @@ const rootHtml = fs.readFileSync(path.join(dir, '..', 'index.html'), 'utf8');
 const readme = fs.readFileSync(path.join(dir, 'README.md'), 'utf8');
 const linksSrc = fs.readFileSync(path.join(dir, 'links-config.js'), 'utf8');
 
-const BASE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/scholarship/';
+const BASE = 'https://gakusei-tools.com/scholarship/';
 let pass = 0, fail = 0;
 function t(name, fn) { try { fn(); pass++; } catch (e) { fail++; console.error('FAIL ' + name + ' -> ' + e.message); } }
 
@@ -388,8 +388,8 @@ t('M15 required ids', () => {
     .forEach((id) => assert.ok(ids.includes(id), 'missing id ' + id));
 });
 t('M16 old URL format', () => {
-  assert.ok(!/https:\/\/gerinoaka\.github\.io\/(?!student-baito-kabe-checker-2026\/)/.test(html));
-  [linksSrc, readme].forEach((x) => assert.ok(!/https:\/\/gerinoaka\.github\.io\/(?!student-baito-kabe-checker-2026\/)/.test(x)));
+  assert.ok(!new RegExp('https://gerino' + 'aka\\.github\\.io/').test(html));
+  [linksSrc, readme].forEach((x) => assert.ok(!new RegExp('https://gerino' + 'aka\\.github\\.io/').test(x)));
 });
 t('M17 layout safety', () => {
   const tbls = (markup.match(/<table/g) || []).length;

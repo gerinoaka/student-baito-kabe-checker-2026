@@ -2,7 +2,7 @@
 
 ## 1. 概要と公開URL
 - 新社会人・学生バイトの額面から手取りを目安計算し、一人暮らしの生活費バランスと毎月の貯金・遊びに使える額をグラフ表示する静的サイトです（ビルド不要）。
-- 公開URL: https://gerinoaka.github.io/student-baito-kabe-checker-2026/living-cost-simulator/（親サイト「student-baito-kabe-checker-2026」のサブフォルダ。1サイト・6ページ構成の1ページ）
+- 公開URL: https://gakusei-tools.com/living-cost-simulator/（親サイト「student-baito-kabe-checker-2026」のサブフォルダ。1サイト・6ページ構成の1ページ）
 - 最終確認日: 2026-11-17。対象は令和8年度の料率・令和8年分の税。
 
 ## 2. ファイル一覧
@@ -20,7 +20,7 @@
 ## 3. 公開手順（GitHub Pages）
 独立リポジトリは作りません。親サイトのリポジトリ `student-baito-kabe-checker-2026` のサブフォルダとして公開します。
 1. 親フォルダごと（本フォルダを含めて）リポジトリに git push する（またはブラウザで上書きアップロード）。
-2. Pages は設定済み。数分後に https://gerinoaka.github.io/student-baito-kabe-checker-2026/living-cost-simulator/ で表示される。
+2. Pages は設定済み。数分後に https://gakusei-tools.com/living-cost-simulator/ で表示される。
 3. 公開URLを変える場合は、`index.html` の canonical / og:url / JSON-LD の url / `<!-- 公開URL -->` コメント、`<script id="logic">` 内の `BASE` 定数、親フォルダの `sitemap.xml`、`tests/living.test.js` と `tests/ui-static.test.js` の URL を置き換える。
 
 ## 4. PR リンクの設定（links-config.js）

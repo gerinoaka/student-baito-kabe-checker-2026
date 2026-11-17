@@ -8,16 +8,16 @@
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#f8fafc">
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
-<link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/kakemochi/">
+<link rel="canonical" href="https://gakusei-tools.com/kakemochi/">
 <meta property="og:title" content="掛け持ちバイトの源泉徴収・還付金チェッカー2026｜確定申告の目安">
 <meta property="og:description" content="掛け持ちバイトの支払金額と源泉徴収税額を入れるだけで、令和8年分（2026年）の年税額と還付の目安を計算。乙欄で引かれた税金が戻るか、確定申告が必要かの整理つき。最終確認日2026-11-17。無料ツール。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://gerinoaka.github.io/student-baito-kabe-checker-2026/kakemochi/">
+<meta property="og:url" content="https://gakusei-tools.com/kakemochi/">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:site_name" content="学生バイトお役立ちツール">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M8 22V10h4v12zm6 0V14h4v8zm6 0V8h4v14z' fill='%23fff'/%3E%3C/svg%3E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"掛け持ちバイトの源泉徴収・還付金チェッカー（令和8年分）","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/kakemochi/","description":"掛け持ちバイトの支払金額と源泉徴収税額を入れるだけで、令和8年分（2026年）の年税額と還付の目安を計算。乙欄で引かれた税金が戻るか、確定申告が必要かの整理つき。最終確認日2026-11-17。無料ツール。","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"dateModified":"2026-11-17","isPartOf":{"@type":"WebSite","name":"学生バイトお役立ちツール","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"掛け持ちバイトの源泉徴収・還付金チェッカー（令和8年分）","url":"https://gakusei-tools.com/kakemochi/","description":"掛け持ちバイトの支払金額と源泉徴収税額を入れるだけで、令和8年分（2026年）の年税額と還付の目安を計算。乙欄で引かれた税金が戻るか、確定申告が必要かの整理つき。最終確認日2026-11-17。無料ツール。","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"dateModified":"2026-11-17","isPartOf":{"@type":"WebSite","name":"学生バイトお役立ちツール","url":"https://gakusei-tools.com/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"掛け持ちバイトで引かれた源泉徴収は戻りますか？","acceptedAnswer":{"@type":"Answer","text":"年内に源泉徴収された所得税の合計が、1年分の年税額より多いときは、確定申告（還付申告）で戻ります。令和8年分は給与収入178万円以下なら年税額は0円なので、引かれた所得税の全額が戻る見込みです（目安）。"}},
 {"@type":"Question","name":"乙欄・甲欄とは何ですか？","acceptedAnswer":{"@type":"Answer","text":"甲欄は扶養控除等申告書を提出している勤務先の源泉徴収、乙欄は提出していない勤務先（掛け持ちの2か所目など）の源泉徴収です。乙欄は税率が高く、年末調整もされないため、掛け持ちでは還付や確定申告が関係しやすくなります（個別の判断は要確認）。"}},
@@ -460,7 +460,7 @@ select{margin:0 0 4px}
 const KAKE=(function(){
 'use strict';
 const BASIC=1040000,MIN_GUARANTEE=740000,SCOPE_LIMIT=2060000,STUDENT_AMT=270000,STUDENT_G_MAX=890000,OTSU_LT=105000,OTSU_RATE_NUM=3063,FILING_UNADJ=200000,EXEMPT150=1500000;
-const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-17',REFUND_FROM:'令和9年1月1日',REFUND_TO:'令和13年12月31日',CANON:'https://gerinoaka.github.io/student-baito-kabe-checker-2026/kakemochi/',HASHTAGS:['掛け持ちバイト','確定申告','還付金']};
+const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-17',REFUND_FROM:'令和9年1月1日',REFUND_TO:'令和13年12月31日',CANON:'https://gakusei-tools.com/kakemochi/',HASHTAGS:['掛け持ちバイト','確定申告','還付金']};
 const isInt=function(n){return typeof n==='number'&&Number.isInteger(n);};
 function comma(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
 function fmtYen(n){return comma(n)+'円';}

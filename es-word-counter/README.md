@@ -2,7 +2,7 @@
 
 ## 1. 概要
 就活のES・ガクチカの文字数を数え、指定字数に対する達成率（8割・9割の目安）と、構成・冗長表現のヒントを出す静的ツール。入力は端末内で処理し、送信・保存しない。
-公開URL: https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/
+公開URL: https://gakusei-tools.com/es-word-counter/
 デザインは6ページ共通基準（`index.html` 内の `/*ds:start v1*/`〜`/*ds:end*/`）に合わせている。この範囲は他の5ページと同じ内容にする。変えるときは6ページを同時に直す。
 
 ## 2. ファイル一覧

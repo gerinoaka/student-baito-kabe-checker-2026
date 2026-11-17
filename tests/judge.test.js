@@ -124,7 +124,7 @@ t('bs05', B(A, 1300000).text === B(A, 1310000).text, true);
 
 // ---- C. サイト横断チェック
 const root = path.join(__dirname, '..');
-const BASE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const BASE = 'https://gakusei-tools.com/';
 const pages = [['index.html', BASE, 'links-config.js'], ['kakemochi/index.html', BASE + 'kakemochi/', '../links-config.js'], ['shift-limit/index.html', BASE + 'shift-limit/', '../links-config.js']];
 const rd = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 function c(name, fn) { try { fn(); pass++; } catch (e) { fail++; console.error('FAIL ' + name + ' -> ' + e.message); } }

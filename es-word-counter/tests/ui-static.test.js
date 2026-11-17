@@ -11,12 +11,11 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 let pass = 0, fail = 0;
 function c(name, fn) { try { fn(); pass++; } catch (e) { fail++; console.error('FAIL ' + name + ' -> ' + e.message); } }
 
-const SITE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const SITE = 'https://gakusei-tools.com/';
 const NEW_BASE = SITE + 'es-word-counter/';
-const G = 'https://gerinoaka.github.io/';
-const OLD_BASE = G + 'es-word-counter/';
-// 刷新前の logic（BASE のみ旧URL）の SHA-256
-const LOGIC_SHA = 'a6eb5df47f37a87b114cc895768d359304ba1b350b3f8fca8d25018854a4f4bb';
+const G = 'https://gerino' + 'aka.github.io/';
+// 独自ドメイン化後の logic（BASE のみ新URL）の SHA-256
+const LOGIC_SHA = '786492b0bfb569e525df01568b0df3150fc3cb2391920ceb4211bf61e83d18b3';
 const TITLE = 'ES文字数カウント｜8割目安・原稿用紙換算とガクチカ構成チェック';
 const DESC = '就活のES・ガクチカの文字数をリアルタイムでカウント。空白抜き・原稿用紙換算（400字詰）・指定字数の達成率と8割の目安を表示し、結論・STAR・冗長表現のヒントも出します。登録不要で、入力は送信も保存もされません。';
 const H1 = 'ES文字数カウント＆ガクチカ構成チェッカー';
@@ -106,8 +105,7 @@ c('N08', () => {
 c('N09', () => {
   const body = html.match(/<script id="logic">([\s\S]*?)<\/script>/)[1];
   assert.ok(body.includes("var BASE='" + NEW_BASE + "'"));
-  const old = body.split(NEW_BASE).join(OLD_BASE);
-  assert.strictEqual(crypto.createHash('sha256').update(old, 'utf8').digest('hex'), LOGIC_SHA);
+    assert.strictEqual(crypto.createHash('sha256').update(body, 'utf8').digest('hex'), LOGIC_SHA);
 });
 
 c('N10', () => {

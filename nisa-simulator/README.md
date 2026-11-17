@@ -2,7 +2,7 @@
 
 ## 1 概要
 - 目的: バイト代の一部を新NISAのつみたて投資枠に回した場合の積立結果を、仮定の例として試算・グラフ表示する静的ツール（ビルド不要）。
-- 公開URL: https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/ （GitHub Pages。独立リポジトリではなく、親サイト `student-baito-kabe-checker-2026` のサブフォルダとして公開）
+- 公開URL: https://gakusei-tools.com/nisa-simulator/ （GitHub Pages。独立リポジトリではなく、親サイト `student-baito-kabe-checker-2026` のサブフォルダとして公開）
 - 公開は親リポジトリの git push 1回（またはブラウザで上書き）。このフォルダに `sitemap.xml` / `robots.txt` / `.nojekyll` は置かない（サイト全体のものをルートに1つだけ置いているため。sitemap はルートの `sitemap.xml` の6URLに含まれる）。
 
 ## 2 ファイル一覧

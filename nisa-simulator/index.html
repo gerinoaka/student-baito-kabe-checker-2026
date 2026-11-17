@@ -8,16 +8,16 @@
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#f8fafc">
 <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
-<!-- 公開URL: https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/ （canonical と og:url の2か所） -->
-<link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/">
+<!-- 公開URL: https://gakusei-tools.com/nisa-simulator/ （canonical と og:url の2か所） -->
+<link rel="canonical" href="https://gakusei-tools.com/nisa-simulator/">
 <meta property="og:title" content="大学生の新NISA積立シミュレーター｜バイト代で月1万円なら">
 <meta property="og:description" content="大学生向けに、毎月の積立額・想定利回り・期間をスライダーで動かして新NISAの積立結果をグラフで確認。バイト代の一部を回すといくらになるかを例として試算します。税・手数料は含まず、結果は保証されません。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/">
+<meta property="og:url" content="https://gakusei-tools.com/nisa-simulator/">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M7 24V18h4v6zm7 0V13h4v11zm7 0V7h4v17z' fill='%23fff'/%3E%3C/svg%3E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"大学生からの新NISA・バイト代積立シミュレーター","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/","description":"毎月の積立額・想定利回り・期間を動かして、新NISAのつみたて投資枠での積立結果を仮定の例として試算する無料ツール。","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"大学生からの新NISA・バイト代積立シミュレーター","url":"https://gakusei-tools.com/nisa-simulator/","description":"毎月の積立額・想定利回り・期間を動かして、新NISAのつみたて投資枠での積立結果を仮定の例として試算する無料ツール。","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"大学生でも新NISAを始められますか？","acceptedAnswer":{"@type":"Answer","text":"口座の開設は、その年の1月1日時点で18歳以上の方が対象です。誕生日によっては、大学1年生でもその年は開設できないことがあります。最低積立額や手続きは証券会社ごとに異なるため、各社の公式ページで確認してください。"}},{"@type":"Question","name":"月1万円を積み立てると、10年後はいくらになりますか？","acceptedAnswer":{"@type":"Answer","text":"想定利回り（年率）が3%で、毎月末に積み立てる仮定の例では、元本120万円に対して評価額は約139万円です。ただし利回りは保証されず、元本を下回る場合もあります。このツールで数値を変えて試してください。"}},{"@type":"Question","name":"バイト代の何割くらいを積み立てに回すものですか？","acceptedAnswer":{"@type":"Answer","text":"決まった正解はありません。生活費や急な出費の備えを確保したうえで、無理のない金額から始める方が多いようです。ツールでは月1,000円から試算できます。"}},{"@type":"Question","name":"想定利回りは何%にすればよいですか？","acceptedAnswer":{"@type":"Answer","text":"将来の利回りは誰にもわかりません。0%・3%・5%など複数の値で試し、幅を持って見てください。過去の実績は将来を約束しません。"}},{"@type":"Question","name":"税金や手数料は計算に入っていますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。税・手数料・信託報酬は含めていません。新NISAの口座内の運用益は非課税とされますが、実際の商品には信託報酬などのコストがかかります。"}},{"@type":"Question","name":"新NISAには上限がありますか？","acceptedAnswer":{"@type":"Answer","text":"つみたて投資枠は年間120万円（月10万円）まで、生涯の非課税保有限度額は1,800万円です。このツールは元本が1,800万円を超えると警告を表示します。制度は変更されることがあるため、金融庁の公式ページで確認してください。"}},{"@type":"Question","name":"運用益が出ると、親の扶養に影響しますか？","acceptedAnswer":{"@type":"Answer","text":"NISA口座内の利益は非課税とされています。ただし、扶養の判定は税法上と健康保険で異なり、健保組合ごとに扱いが違う場合があります。詳しくは姉妹ツールの「学生バイトの年収の壁チェッカー」や、加入先の健保に確認してください。"}}]}</script>
 <style>
 /*ds:start v1*/
@@ -469,7 +469,7 @@ thead th:not(:first-child){text-align:right}
 const NISA=(function(){
 'use strict';
 const LIFETIME=18000000,ANNUAL=1200000,MONTHLY_MIN=1000,MONTHLY_MAX=100000,YEARS_MAX=40;
-const BASE='https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/',TAGS=['新NISA','大学生','積立'];
+const BASE='https://gakusei-tools.com/nisa-simulator/',TAGS=['新NISA','大学生','積立'];
 function simulate(o){
  o=o||{};
  const P=o.monthly,R=o.ratePct,Y=o.years,errors=[];

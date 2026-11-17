@@ -2,7 +2,7 @@
 
 ## 1. 概要と公開URL
 - 奨学金（JASSO）の借入総額から、毎月の返還額・返還回数・完済年齢・総返還額を目安計算する静的サイトです（ビルド不要）。第一種（無利子）・第二種（有利子）・併用に対応し、毎月の返還額から完済までの期間を逆算するモードもあります。
-- 公開URL: https://gerinoaka.github.io/student-baito-kabe-checker-2026/scholarship/（親サイト「student-baito-kabe-checker-2026」のサブフォルダ。1サイトの1ページ）
+- 公開URL: https://gakusei-tools.com/scholarship/（親サイト「student-baito-kabe-checker-2026」のサブフォルダ。1サイトの1ページ）
 - 最終確認日: 2026-11-17。対象は令和8年度の返還年数算出表・貸与利率。
 
 ## 2. ファイル一覧
@@ -19,7 +19,7 @@
 ## 3. 公開手順（GitHub Pages）
 独立リポジトリは作りません。親サイトのリポジトリ `student-baito-kabe-checker-2026` のサブフォルダとして公開します。
 1. 親フォルダごと（本フォルダを含めて）リポジトリに git push する（またはブラウザで上書きアップロード）。
-2. Pages は設定済み。数分後に https://gerinoaka.github.io/student-baito-kabe-checker-2026/scholarship/ で表示される。
+2. Pages は設定済み。数分後に https://gakusei-tools.com/scholarship/ で表示される。
 3. 公開URLを変える場合は、`index.html` の canonical / og:url / JSON-LD の url / `<!-- 公開URL -->` コメント、`<script id="logic">` 内の `BASE` 定数、親フォルダの `sitemap.xml`、`tests/scholarship.test.js` の `BASE` を置き換える。
 
 ## 4. PR リンクの設定（links-config.js）
