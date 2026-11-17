@@ -259,6 +259,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 .src a{display:inline-block;padding:12px 0}
 tr.is-current,tr.is-current td{background:var(--primary-soft)!important;font-weight:700}
 .g-now{max-width:100%}
+.pr-imp{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
 </style>
 </head>
 <body>
@@ -271,7 +272,7 @@ tr.is-current,tr.is-current td{background:var(--primary-soft)!important;font-wei
 <a href="#sisters">ほかのツール</a>
 </nav>
 <h1>学生バイトの「年収の壁」チェッカー（令和8年分・2026年）</h1>
-<div class="band" role="note"><span>目安です。対象：令和8年分（2026年）／最終確認日 2026-11-16</span><a href="#legal" data-open="legal">免責</a></div>
+<div class="band" role="note"><span>目安です。対象：令和8年分（2026年）／最終確認日 2026-11-16<br>※当サイトはプロモーション（PR）を含みます</span><a href="#legal" data-open="legal">免責</a></div>
 <div class="warn" id="yearWarn" role="note" hidden>このページは令和8年分（2026年の収入）用です。今年分の制度は変更されている可能性があります。必ず最新の公式情報をご確認ください。</div>
 </header>
 <main>
@@ -512,7 +513,8 @@ tr.is-current,tr.is-current td{background:var(--primary-soft)!important;font-wei
 </section>
 <section id="privacy">
 <h2>プライバシーポリシー</h2>
-<ul><li>入力された金額・年齢区分などは、お使いの端末内（ブラウザ）で計算するだけで、運営者のサーバーへ送信・保存しません。</li>
+<ul><li>広告（PR）カードが表示されたときに限り、ASP（A8.net）の計測用画像（1×1ピクセル）を読み込みます。A8.net が Cookie 等を使って広告の表示・クリック・成果を計測します。入力した金額・文章などは送信されません。</li>
+<li>入力された金額・年齢区分などは、お使いの端末内（ブラウザ）で計算するだけで、運営者のサーバーへ送信・保存しません。</li>
 <li>本ページはクッキー等で入力内容を保存しません。</li>
 <li>広告配信を行う場合、Google AdSense などの第三者配信事業者がクッキーを使って広告を表示することがあります。広告設定は <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">https://adssettings.google.com</a> から変更できます。</li>
 <li>アクセス解析を導入する場合は、本ポリシーを更新します。</li>
@@ -661,11 +663,12 @@ function scrollOnce(){
  if(state!=='ready')return;
  const c=document.querySelector('#result .rc'),r=c.getBoundingClientRect();
  if(r.top<0||r.bottom>(window.innerHeight||667))c.scrollIntoView({block:'nearest',behavior:reduced()?'auto':'smooth'});}
+function impPx(d,key,M){var I=(typeof window==='object'&&window[M]&&typeof window[M]==='object')?window[M][key]:null;if(typeof I==='string'&&/^https:\/\//.test(I)){var g=document.createElement('img');g.className='pr-imp';g.setAttribute('src',I);g.setAttribute('width','1');g.setAttribute('height','1');g.setAttribute('alt','');g.setAttribute('aria-hidden','true');d.appendChild(g);}return d;}
 function prCard(key,lead){
  const L=(typeof window.KABE_LINKS==='object'&&window.KABE_LINKS)?window.KABE_LINKS[key]:null;
  if(!L||typeof L.url!=='string'||!/^https:\/\//.test(L.url)||typeof L.title!=='string'||typeof L.cta!=='string')return null;
  const a=h('a','pr-cta',L.cta);a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
- return h('div','pr-card',null,[h('span','pr-tag',typeof L.label==='string'&&L.label?L.label:'PR'),h('p','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,lead),h('p',null,typeof L.desc==='string'?L.desc:''),a]);}
+ return impPx(h('div','pr-card',null,[h('span','pr-tag',typeof L.label==='string'&&L.label?L.label:'PR'),h('p','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,lead),h('p',null,typeof L.desc==='string'?L.desc:''),a]),key,'KABE_IMP');}
 function fmtBlur(el){const v=K.parseYen(el.value);if(isNum(v))el.value=num(v);}
 function afterReset(f,fn){f.addEventListener('reset',function(){setTimeout(fn,0);});}
 const EID={hCum:'e-cum',hLeft:'e-left',hMon:'e-mon'};

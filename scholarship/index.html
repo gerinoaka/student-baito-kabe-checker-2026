@@ -233,6 +233,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 .card :is(p,dd,td) a{display:inline-flex;align-items:center;min-height:44px}
 .sp{margin-top:var(--s2)}
 .ym{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pr-imp{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
 </style>
 </head>
 <body>
@@ -245,7 +246,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <a href="#toolsH">ほかのツール</a>
 </nav>
 <h1>奨学金（JASSO）返済シミュレーター</h1>
-<div class="band" role="note"><span>目安です。対象：令和8年度の返還年数算出表・貸与利率／最終確認日 2026-11-17</span><a href="#legal" data-open="legal">免責</a></div>
+<div class="band" role="note"><span>目安です。対象：令和8年度の返還年数算出表・貸与利率／最終確認日 2026-11-17<br>※当サイトはプロモーション（PR）を含みます</span><a href="#legal" data-open="legal">免責</a></div>
 <noscript><p class="warn">このツールはJavaScriptが必要です。有効にしてご利用ください。</p></noscript>
 </header>
 <main id="main">
@@ -518,8 +519,9 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 </section>
 <section id="privacy">
 <h2>プライバシーポリシー</h2>
-<ul><li>入力された金額・年齢などは、お使いの端末内（ブラウザ）で計算するだけで、運営者のサーバーへ送信・保存しません。</li>
-<li>本ページはCookieや解析ツールを使いません。</li>
+<ul><li>広告（PR）カードが表示されたときに限り、ASP（A8.net）の計測用画像（1×1ピクセル）を読み込みます。A8.net が Cookie 等を使って広告の表示・クリック・成果を計測します。入力した金額・文章などは送信されません。</li>
+<li>入力された金額・年齢などは、お使いの端末内（ブラウザ）で計算するだけで、運営者のサーバーへ送信・保存しません。</li>
+<li>広告カードの表示時の計測用画像を除き、本ページはCookieや解析ツールを使いません。</li>
 <li>当サイトは広告（アフィリエイト）を含みます。広告には「PR」と表示します。</li>
 <li>PRリンクのクリック後は、リンク先の広告主のサイトで各社がプライバシーポリシーに従い情報を取得することがあります。</li>
 <li>「結果をXでシェア」を押したときだけ、X の投稿画面へ移動し、投稿文（金額・年齢は含みません）とこのページのURLが渡されます。</li>
@@ -825,12 +827,13 @@ function render(c){
  $('liveBarText').textContent=bar;
  announce(pay?'完済までの期間の目安は'+K.fmtTerm(r.n)+'、返還は'+r.n+'回、完済は'+lastS+'ごろ':'毎月の返還額の目安は'+yen(r.monthly)+'、返還は'+r.n+'回、完済は'+lastS+'ごろ');
  schedulePR();}
+function impPx(d,key,M){var I=(typeof window==='object'&&window[M]&&typeof window[M]==='object')?window[M][key]:null;if(typeof I==='string'&&/^https:\/\//.test(I)){var g=document.createElement('img');g.className='pr-imp';g.setAttribute('src',I);g.setAttribute('width','1');g.setAttribute('height','1');g.setAttribute('alt','');g.setAttribute('aria-hidden','true');d.appendChild(g);}return d;}
 function prCard(key){
  var L=(typeof window==='object'&&window.SCHOLAR_LINKS&&typeof window.SCHOLAR_LINKS==='object')?window.SCHOLAR_LINKS[key]:null;
  if(!L||typeof L.url!=='string'||L.url.indexOf('https://')!==0||typeof L.title!=='string'||typeof L.cta!=='string')return null;
  var a=h('a','pr-cta',L.cta);a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
  var tag=(typeof L.label==='string'?String(L.label).replace(/[【】]/g,''):'')||'PR';
- return h('div','pr-card',null,[h('span','pr-tag',tag),h('p','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,LEAD[key]),h('p',null,typeof L.desc==='string'?L.desc:''),a]);}
+ return impPx(h('div','pr-card',null,[h('span','pr-tag',tag),h('p','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,LEAD[key]),h('p',null,typeof L.desc==='string'?L.desc:''),a]),key,'SCHOLAR_IMP');}
 function renderPR(){
  var host=$('prCards');host.textContent='';
  var age=chk('ageU')?'u18':(chk('ageA')?'adult':''),msg='',n=0;

@@ -247,6 +247,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 #hintList li{margin:8px 0}
 #hintList q{display:block;font-size:.875rem;color:var(--sub);quotes:"\300C" "\300D"}
 .stats.res>div{min-width:0}
+.pr-imp{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
 </style>
 </head>
 <body>
@@ -255,7 +256,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <header>
 <nav class="navb" aria-label="サイト内ツール"><a href="../">年収の壁</a><a href="./" aria-current="page">ES文字数</a><a href="#toolsH">ほかのツール</a></nav>
 <h1>ES文字数カウント＆ガクチカ構成チェッカー</h1>
-<div class="band" role="note"><span>目安です。数え方は提出先の表示が優先です／最終更新日 2026-11-17</span><a href="#legal" data-open="legal">免責</a></div>
+<div class="band" role="note"><span>目安です。数え方は提出先の表示が優先です／最終更新日 2026-11-17<br>※当サイトはプロモーション（PR）を含みます</span><a href="#legal" data-open="legal">免責</a></div>
 </header>
 <main id="main">
 <section id="input" class="card" aria-labelledby="h-in">
@@ -412,6 +413,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <div class="acc-body">
 <section id="policy" aria-label="プライバシーポリシー・免責">
 <ul>
+<li>広告（PR）カードが表示されたときに限り、ASP（A8.net）の計測用画像（1×1ピクセル）を読み込みます。A8.net が Cookie 等を使って広告の表示・クリック・成果を計測します。入力した金額・文章などは送信されません。</li>
 <li>入力文は端末内のみで処理し、送信しません。ローカルストレージ・セッションストレージ・Cookie・IndexedDB にも保存しません。</li>
 <li>広告リンク（PR）は、クリックすると遷移先の事業者の規約・Cookie が適用されます。</li>
 <li>アクセス解析と広告配信は、導入する場合にこの欄を更新します。</li>
@@ -625,6 +627,7 @@ function scheduleSr(t){
 function cleanLabel(s){
  var t=typeof s==='string'?String(s).replace(/[【】]/g,'').trim():'';
  return t===''?'PR':t;}
+function impPx(d,key,M){var I=(typeof window==='object'&&window[M]&&typeof window[M]==='object')?window[M][key]:null;if(typeof I==='string'&&/^https:\/\//.test(I)){var g=document.createElement('img');g.className='pr-imp';g.setAttribute('src',I);g.setAttribute('width','1');g.setAttribute('height','1');g.setAttribute('alt','');g.setAttribute('aria-hidden','true');d.appendChild(g);}return d;}
 function prCard(key){
  var K=(typeof window!=='undefined'&&window.ES_LINKS&&typeof window.ES_LINKS==='object')?window.ES_LINKS:null;
  var L=K?K[key]:null;
@@ -632,7 +635,7 @@ function prCard(key){
  var a=h('a','pr-cta',L.cta);
  a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
  a.appendChild(h('span','sr','（新しいタブで開きます）'));
- return h2card(L,a);}
+ return impPx(h2card(L,a),key,'ES_IMP');}
 function h2card(L,a){
  var d=h('div','pr-card');
  d.appendChild(h('span','pr-tag',cleanLabel(L.label)));

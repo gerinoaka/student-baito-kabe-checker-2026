@@ -46,7 +46,7 @@ window.KABE_LINKS = {
   },
   // B: 150万円超・掛け持ちの人向け。確定申告・税金管理アプリ
   kakutei: {
-    url: '',
+    url: 'https://px.a8.net/svt/ejp?a8mat=4BGNCK+C210S2+4JGQ+C4TB5',
     label: 'PR',
     title: '確定申告・税金の管理をスマホで済ませるアプリ',
     desc: '掛け持ちや収入が多めの人は、確定申告が必要になる場合があります。収入の記録から申告書の作成までスマホで進められるサービスです。',
@@ -61,3 +61,11 @@ window.KABE_LINKS = {
     cta: '解説記事を読む'
   }
 };
+
+/*
+ * ── 計測用画像（インプレッション計測）──
+ * A8.net の広告コードにある  <img ... width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=...">  の src の URL（https:// で始まるもの）を、
+ * 同じキーの '' の中に貼る。広告カードが画面に表示されたときだけ読み込まれる（カードが出ないときは読み込まれない）。
+ * 空のままなら何も読み込まない。728x90 などのバナー画像は使わない。url の行番号は変わらない（このブロックは末尾にある）。
+ */
+window.KABE_IMP = { tanpatsu: '', kakutei: 'https://www11.a8.net/0.gif?a8mat=4BGNCK+C210S2+4JGQ+C4TB5', note: '' };

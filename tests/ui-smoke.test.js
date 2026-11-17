@@ -272,5 +272,71 @@ t('shift: intl warn and w150 warn', () => {
   assert.ok(d.$('rWarn').children.length >= 1);
 });
 
+// ---- 計測用画像（A8.net インプレッション）。カードが出たときだけ 1x1 img を出す
+const A8_URL = 'https://px.a8.net/svt/ejp?a8mat=4BGNCK+C210S2+4JGQ+C4TB5';
+const A8_IMP = 'https://www11.a8.net/0.gif?a8mat=4BGNCK+C210S2+4JGQ+C4TB5';
+const imgs = (d) => d.doc.querySelectorAll('#prCards img');
+const chkImg = (d) => {
+  const card = d.doc.querySelector('#prCards .pr-card'); assert.ok(card, 'card');
+  const a = card.querySelector('a.pr-cta');
+  assert.strictEqual(a.getAttribute('href'), A8_URL); assert.strictEqual(a.getAttribute('rel'), 'sponsored nofollow noopener');
+  const im = card.querySelectorAll('img'); assert.strictEqual(im.length, 1); assert.ok(card.contains(im[0]));
+  assert.strictEqual(im[0].getAttribute('src'), A8_IMP);
+  assert.strictEqual(im[0].getAttribute('width'), '1'); assert.strictEqual(im[0].getAttribute('height'), '1');
+  assert.strictEqual(im[0].getAttribute('alt'), ''); assert.strictEqual(im[0].getAttribute('aria-hidden'), 'true');
+};
+t('IMP1 shipped links-config: kakutei url/imp set, others empty', () => {
+  const d = load(IDX);
+  assert.strictEqual(d.ctx.KABE_LINKS.kakutei.url, A8_URL); assert.strictEqual(d.ctx.KABE_LINKS.tanpatsu.url, ''); assert.strictEqual(d.ctx.KABE_LINKS.note.url, '');
+  assert.deepStrictEqual(JSON.parse(JSON.stringify(d.ctx.KABE_IMP)), { tanpatsu: '', kakutei: A8_IMP, note: '' });
+});
+t('IMP2 top over 1.5M: kakutei card + 1x1 img', () => {
+  const d = load(IDX); setSal(d, '1600000'); d.advance(400); chkImg(d);
+  const e = load(IDX); setSal(e, '1000000'); e.advance(1000);
+  assert.strictEqual(e.$('prCards').children.length, 0); assert.strictEqual(imgs(e).length, 0);
+});
+t('IMP3 kakemochi result: kakutei card + 1x1 img', () => {
+  const d = load(KK); kk(d, 0, '500000', '10000'); kk(d, 1, '500000', '10000'); d.advance(400); chkImg(d);
+});
+t('IMP4 empty url: no card, no img', () => {
+  const d = load(IDX, { links: OFF }); d.ctx.KABE_IMP = { tanpatsu: A8_IMP, kakutei: A8_IMP, note: A8_IMP };
+  setSal(d, '1600000'); d.advance(400);
+  assert.strictEqual(d.$('prCards').children.length, 0); assert.strictEqual(imgs(d).length, 0);
+});
+t('IMP5 http:// imp: card yes, img no', () => {
+  const d = load(IDX, { links: ON }); d.ctx.KABE_IMP = { tanpatsu: 'http://www11.a8.net/0.gif?x', kakutei: 'http://www11.a8.net/0.gif?x', note: '' };
+  setSal(d, '1600000'); d.advance(400);
+  assert.strictEqual(d.$('prCards').children.length, 1); assert.strictEqual(imgs(d).length, 0);
+});
+t('IMP6 KABE_IMP missing or empty: card yes, img no', () => {
+  [undefined, {}, { kakutei: '' }, { kakutei: 5 }].forEach((v) => {
+    const d = load(IDX, { links: ON }); d.ctx.KABE_IMP = v;
+    setSal(d, '1600000'); d.advance(400);
+    assert.strictEqual(d.$('prCards').children.length, 1); assert.strictEqual(imgs(d).length, 0);
+  });
+  const k = load(KK, { links: ON }); k.ctx.KABE_IMP = undefined; kk(k, 0, '500000', '10000'); kk(k, 1, '500000', '10000'); k.advance(400);
+  assert.strictEqual(k.$('prCards').children.length, 1); assert.strictEqual(imgs(k).length, 0);
+});
+t('IMP7 shift-limit tanpatsu: imp only when set', () => {
+  const d = load(SH, { links: ON }); d.ctx.KABE_IMP = { tanpatsu: A8_IMP }; hrs(d, '1200'); d.click(d.$('age19')); d.advance(1000);
+  assert.strictEqual(d.$('prCards').children.length, 1); assert.strictEqual(imgs(d).length, 1);
+  const e = load(SH, { links: ON }); hrs(e, '1200'); e.click(e.$('age19')); e.advance(1000);
+  assert.strictEqual(e.$('prCards').children.length, 1); assert.strictEqual(imgs(e).length, 0);
+});
+t('IMP8 other 4 links-config: *_IMP exists, only "" or https', () => {
+  const fs = require('fs'), path = require('path'), vm = require('vm');
+  [['living-cost-simulator', 'LIVING_LINKS', 'LIVING_IMP'], ['es-word-counter', 'ES_LINKS', 'ES_IMP'], ['nisa-simulator', 'NISA_LINKS', 'NISA_IMP'], ['scholarship', 'SCHOLAR_LINKS', 'SCHOLAR_IMP'], ['.', 'KABE_LINKS', 'KABE_IMP']].forEach(([dir, L, I]) => {
+    const w = {}; vm.runInNewContext(fs.readFileSync(path.join(__dirname, '..', dir, 'links-config.js'), 'utf8'), { window: w });
+    assert.deepStrictEqual(Object.keys(w[I]).sort(), Object.keys(w[L]).sort(), dir + ' keys');
+    Object.keys(w[I]).forEach((k) => { assert.ok(w[I][k] === '' || /^https:\/\//.test(w[I][k]), dir + ' ' + k); if (w[I][k]) assert.ok(/^https:\/\//.test(w[L][k].url), dir + ' imp without url ' + k); });
+  });
+});
+t('IMP9 ES page: imp img only on shown card', () => {
+  const d = load('es-word-counter/index.html');
+  d.ctx.ES_LINKS = { shukatsuSite: { url: 'https://example.com/a', label: 'PR', title: 'T', desc: 'D', cta: 'C' }, agent: { url: '', label: 'PR', title: 'T', desc: 'D', cta: 'C' }, scout: { url: '', label: 'PR', title: 'T', desc: 'D', cta: 'C' } };
+  d.ctx.ES_IMP = { shukatsuSite: A8_IMP, agent: A8_IMP, scout: '' };
+  d.K(require('fs').readFileSync(require('path').join(__dirname, '..', 'es-word-counter/index.html'), 'utf8').match(/<script id="ui">([\s\S]*?)<\/script>/)[1]);
+  assert.strictEqual(d.doc.querySelectorAll('#prCards .pr-card').length, 1); assert.strictEqual(imgs(d).length, 1);
+});
 console.log('pass ' + pass + ' / fail ' + fail);
 if (fail) process.exit(1);

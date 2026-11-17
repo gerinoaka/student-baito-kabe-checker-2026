@@ -432,15 +432,15 @@ c('G13 tools lists all guides, no stray root files in guides', () => {
   assert.strictEqual(ldBlocks(rd('tools/index.html'))[0].mainEntity.numberOfItems, TOOL_DIRS.length + GUIDE_DIRS.length);
 });
 const SHA0 = {
-  'about/index.html': '42d8ae1ae90a0f78a6071849e938b6db152ab92f8fcc6fdb855818e67df11513',
-  'index.html': 'c0e6d43f7b80018fb5666658132e42614a26a3ecd8e46c827a72c56b6505b45a',
-  'kakemochi/index.html': 'cdec7c005f512cc87b055b865f4c828c9039d690d9ca4c96422c6858310eb1b0',
-  'shift-limit/index.html': '100298238c3bd1c2cc4db058ad10621a6f1d32b0e47214c6177bb5f755c97dc9',
-  'living-cost-simulator/index.html': 'ac96a6239d5b7eb8504f925ee63f49997742dd0a0e0257a076c405102259b5dd',
-  'es-word-counter/index.html': 'f00b5d8463f415fd0373c3d03e6d53b236697792ccb263d0e8383391cd1569b9',
-  'nisa-simulator/index.html': 'aadd2c739ea0e6669b7a9489f0f5b060f4fcf9aa9d8108d83fb99bf4db0f60f5',
+  'about/index.html': 'f543a9b4c5120749019c558d81263d7602776e1fb5b3a16f48a683ff48bff9fe',
+  'index.html': '76eb81ee484ff2107c3aaa4170deedc2706f9a8444ef46ce5e83afeaa2f4975f',
+  'kakemochi/index.html': 'ff6877e7de28c18d1b908aa881a7805da33aa1854d67395b56a610346e88f36b',
+  'shift-limit/index.html': '1e5ee1d7a8cba237737970d7be1f6188b5d303f346fb85903e327f7eed814d69',
+  'living-cost-simulator/index.html': '14f23987321adc0c3fc41b3fc133240d9b84e0fbf1ea9ffd2b71512a82c81aac',
+  'es-word-counter/index.html': '55429e734e21e9484d83fa17124c72d07e7646b605600ae369e1e3b53c256d5a',
+  'nisa-simulator/index.html': '3133bace9bd0540b5e1b4a3756abc9337aefbeeed30c25fe1ba6b98a5d5c7a38',
 };
-c('G14 about/ and 6 tool pages unchanged (SHA-256 before guides)', () => {
+c('G14 about/ and 6 tool pages: SHA-256 frozen (updated for A8 measurement img / PR notice)', () => {
   assert.strictEqual(attr(rd('about/index.html'), /<title>([^<]+)<\/title>/), TITLE['about/']);
   Object.keys(SHA0).forEach((k) => assert.strictEqual(require('crypto').createHash('sha256').update(fs.readFileSync(path.join(root, k))).digest('hex'), SHA0[k], k + ' changed'));
 });

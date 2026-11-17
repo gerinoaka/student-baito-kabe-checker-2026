@@ -241,6 +241,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 .sent{margin:12px 0 0}
 .fine{font-size:.875rem;line-height:1.6;color:var(--sub);margin:0}
 thead th:not(:first-child){text-align:right}
+.pr-imp{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
 </style>
 </head>
 <body>
@@ -253,7 +254,7 @@ thead th:not(:first-child){text-align:right}
 <a href="#toolsH">ほかのツール</a>
 </nav>
 <h1>大学生からの新NISA・バイト代積立シミュレーター</h1>
-<div class="band" role="note"><span>仮定の試算です。元本割れの可能性があり、結果は保証されません／最終確認日 2026-11-17</span><a href="#disclaimer" data-open="legal">免責</a></div>
+<div class="band" role="note"><span>仮定の試算です。元本割れの可能性があり、結果は保証されません／最終確認日 2026-11-17<br>※当サイトはプロモーション（PR）を含みます</span><a href="#disclaimer" data-open="legal">免責</a></div>
 </header>
 <main id="main">
 <section id="input" class="card">
@@ -451,7 +452,8 @@ thead th:not(:first-child){text-align:right}
 <h2>運営・プライバシー</h2>
 <ul>
 <li>連絡先: gakusei.kabe.checker@gmail.com</li>
-<li>入力された数値は、お使いの端末内（ブラウザ）で計算するだけで、送信も保存もしません。Cookie・アクセス解析は使っていません。</li>
+<li>広告（PR）カードが表示されたときに限り、ASP（A8.net）の計測用画像（1×1ピクセル）を読み込みます。A8.net が Cookie 等を使って広告の表示・クリック・成果を計測します。入力した金額・文章などは送信されません。</li>
+<li>入力された数値は、お使いの端末内（ブラウザ）で計算するだけで、送信も保存もしません。広告カードの表示時の計測用画像を除き、Cookie・アクセス解析は使っていません。</li>
 <li>「Xでシェアする」を押したときだけ、X（x.com）の投稿画面へ移動し、投稿文とこのページのURLが渡されます。押さない限り、外部へ送信しません。</li>
 <li>PRのリンク先は広告主のサイトです。クリック後は、そのサイトのプライバシーポリシーが適用されます。</li>
 <li>最終確認日: 2026-11-17</li>
@@ -644,12 +646,13 @@ $('pGrad').addEventListener('click',function(){preset('pGrad',null,true);});
 $('p30').addEventListener('click',function(){preset('p30',30,false);});
 $('p40').addEventListener('click',function(){preset('p40',40,false);});
 const PR_LEAD={shoken:'つみたて投資枠での積立を始めるための、口座開設のご案内です。',book:'仕組みを基礎から知りたい方へのご案内です。'};
+function impPx(d,key,M){var I=(typeof window==='object'&&window[M]&&typeof window[M]==='object')?window[M][key]:null;if(typeof I==='string'&&/^https:\/\//.test(I)){var g=document.createElement('img');g.className='pr-imp';g.setAttribute('src',I);g.setAttribute('width','1');g.setAttribute('height','1');g.setAttribute('alt','');g.setAttribute('aria-hidden','true');d.appendChild(g);}return d;}
 function prCard(key){
  const L=(typeof window.NISA_LINKS==='object'&&window.NISA_LINKS)?window.NISA_LINKS[key]:null;
  if(!L||typeof L.url!=='string'||!/^https:\/\//.test(L.url)||typeof L.title!=='string'||typeof L.cta!=='string')return null;
  const a=h('a','pr-cta',L.cta);a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
  const lab=(typeof L.label==='string'?L.label:'').replace(/[【】]/g,'')||'PR';
- return h('div','pr-card',null,[h('span','pr-tag',lab),h('span','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,PR_LEAD[key==='book'?'book':'shoken']),h('p',null,typeof L.desc==='string'?L.desc:''),a]);}
+ return impPx(h('div','pr-card',null,[h('span','pr-tag',lab),h('span','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,PR_LEAD[key==='book'?'book':'shoken']),h('p',null,typeof L.desc==='string'?L.desc:''),a]),key,'NISA_IMP');}
 function ageState(){
  const age=toNum($('ageNow').value),valid=Number.isInteger(age)&&age>=0&&age<=120;
  return {adult:valid&&age>=18,under:valid&&age<=17};}

@@ -1,6 +1,6 @@
 # 学生バイトお役立ちツール（令和8年分・2026年）— 年収の壁チェッカー＋関連ミニツール2本
 
-給与のみの学生向けの静的ツール3本。入力値は送信・保存しない（外部リクエスト0、localStorage/cookie 不使用）。
+給与のみの学生向けの静的ツール3本。入力値は送信・保存しない（広告カードの表示時の ASP 計測用画像を除き外部リクエストなし、localStorage/cookie は自サイトでは不使用）。
 
 - 年収の壁チェッカー（`index.html`）: 4つの壁（本人の所得税178万円／親の控除／親の健保の扶養／住民税）を判定。
 - 掛け持ちバイトの源泉徴収・還付金チェッカー（`kakemochi/index.html`）: 年税額と還付の目安。
@@ -14,6 +14,8 @@
 - 書き換えるのは `links-config.js` の3行だけ（41行目・49行目・57行目）。
 - 空のままなら、広告カードは出ない（死んだリンクは公開されない）。
 - 間違えてもサイトは壊れず、カードが出ないだけ。
+- A8.net の広告コードにある `<img border="0" width="1" height="1" src="https://www11.a8.net/0.gif?a8mat=...">` の src の URL は、`links-config.js` 末尾の `window.KABE_IMP = { ... }` の同じキーの `''` の中に貼る（計測用画像。他の4サイトは `LIVING_IMP` / `ES_IMP` / `NISA_IMP` / `SCHOLAR_IMP`）。空なら読み込まない。728×90 のバナー画像は使わない。
+- 計測用画像は、そのキーの広告カードが画面に表示されたときだけ読み込まれる（カードが出ないときは一切読み込まない）。A8.net が Cookie 等で表示・クリック・成果を計測する。入力した金額・文章などは送信されない。
 
 ### 1-2 どのカードが、どのページの誰に出るか
 
@@ -128,7 +130,7 @@ student-baito-kabe-checker-2026/
   tests/shift.test.js       66件
   README.md                 本ファイル
 ```
-各HTMLは CSS/JS 内包の1ファイル（100KB＝102,400バイト以内。現在 index 約88KB、kakemochi 約67KB、shift-limit 約65KB）。`<script id="logic">`（純粋関数・DOM非依存）と `<script id="ui">` に分離。外部共有は `links-config.js` のみ。OGP画像は未作成（`og:image` なし・`twitter:card=summary`）。1200x630 の画像を作ったら `og:image` を追加し `twitter:card=summary_large_image` にできる。
+各HTMLは CSS/JS 内包の1ファイル（100KB＝102,400バイト以内。現在 index 約88KB、kakemochi 約67KB、shift-limit 約65KB）。`<script id="logic">`（純粋関数・DOM非依存）と `<script id="ui">` に分離。外部共有は `links-config.js` のみ（広告カード表示時の計測用画像のみ www11.a8.net へリクエストする）。OGP画像は未作成（`og:image` なし・`twitter:card=summary`）。1200x630 の画像を作ったら `og:image` を追加し `twitter:card=summary_large_image` にできる。
 
 3ページのフッター前に、6ページ共通の `<aside class="rel">`（関連ツール。`.tools` と `.sisters`（`#sisters`））がある。リンクはすべて相対パス（`living-cost-simulator/` / `es-word-counter/` / `nisa-simulator/`）。ヘッダーのナビにも「ほかのツール」（`#sisters`）がある。共通CSSは `/*ds:start v1*/`〜`/*ds:end*/`。6ページで同じにする。変えるときは6ページを同時に直す（`tests/site.test.js` の X01 で検査）。
 
@@ -170,7 +172,7 @@ $node = (Get-ChildItem $env:LOCALAPPDATA\nodejs-portable -Recurse -Filter node.e
 ## 7. Xシェア
 - `https://x.com/intent/tweet` の `text` / `url` / `hashtags`。投稿文に金額・年齢・時間・残額・壁の数値は入れない（テストで検査）。
 - 文面は結果の区分で変わる。index は超えた壁の数と名前、kakemochi は区分（還付／追加納付／差額なし）、shift-limit は壁の種類と余裕の区分（たっぷり／少し／わずか／ちょうど／超過）。
-- ボタンを押すまで外部通信しない。`intent/post` と旧ドメイン（twitter.com）は一次情報で未確認のため使わない。
+- ボタンを押すまで外部通信しない（広告カードの表示時の計測用画像を除く）。`intent/post` と旧ドメイン（twitter.com）は一次情報で未確認のため使わない。
 
 ## 8. PRカード
 - 表の対応は 1-2 のとおり。tanpatsu は 19歳以上のみ（18歳以下・年齢未選択には出さない）。shift-limit は年齢「19歳以上」を選び、結果が余裕ありのときだけ tanpatsu を1枚出す。
