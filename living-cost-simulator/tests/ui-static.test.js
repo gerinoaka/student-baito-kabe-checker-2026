@@ -156,7 +156,7 @@ ok('N08-title', html.includes('<title>手取り計算 新卒｜初任給の手�
   const exp = { rentMove: 43, internet: 50, creditCard: 57, bank: 64 };
   Object.keys(exp).forEach((k) => {
     const ln = exp[k];
-    ok('N13-' + k, /^\s+url: '',/.test(lines[ln - 1]) && /^\s+(rentMove|internet|creditCard|bank): \{/.test(lines[ln - 2]), 'line ' + ln + ': ' + lines[ln - 1]);
+    ok('N13-' + k, /^\s+url: '(?:|https:\/\/[^']*)',/.test(lines[ln - 1]) && /^\s+(rentMove|internet|creditCard|bank): \{/.test(lines[ln - 2]), 'line ' + ln + ': ' + lines[ln - 1]);
     ok('N13-readme-' + k, readme.includes(ln + '行目'));
   });
   ok('N13-comment-lines', lines.slice(0, 40).join('\n').trimEnd().endsWith('*/') && lines[39] === ' */' && lines[40].startsWith('window.LIVING_LINKS'));

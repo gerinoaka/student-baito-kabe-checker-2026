@@ -47,7 +47,7 @@ window.LIVING_LINKS = {
     cta: '一括見積りを見る'
   },
   internet: {
-    url: '',
+    url: 'https://px.a8.net/svt/ejp?a8mat=4BGNCL+22F7EA+4PB0+BXQOH',
     label: 'PR',
     title: 'ネット回線の乗り換え・新規申込',
     desc: '通信費を見直したい人向けです。月額・工事費・契約期間は各社で異なるため、公式ページで確認してください。申込資格（年齢等）は各社公式で確認してください。',
@@ -75,4 +75,4 @@ window.LIVING_LINKS = {
  * 同じキーの '' の中に貼る。広告カードが画面に表示されたときだけ読み込まれる（カードが出ないときは読み込まれない）。
  * 空のままなら何も読み込まない。728x90 などのバナー画像は使わない。url の行番号は変わらない（このブロックは末尾にある）。
  */
-window.LIVING_IMP = { rentMove: '', internet: '', creditCard: '', bank: '' };
+window.LIVING_IMP = { rentMove: '', internet: 'https://www15.a8.net/0.gif?a8mat=4BGNCL+22F7EA+4PB0+BXQOH', creditCard: '', bank: '' };

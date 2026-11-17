@@ -158,7 +158,7 @@ c('N12', () => {
 
 c('N13', () => {
   const lines = fs.readFileSync(path.join(root, 'links-config.js'), 'utf8').split('\n');
-  [40, 48, 56].forEach((n) => assert.ok(/^\s+url: '',/.test(lines[n - 1]), 'line ' + n + ': ' + lines[n - 1]));
+  [40, 48, 56].forEach((n) => assert.ok(/^\s+url: '(?:|https:\/\/[^']*)',/.test(lines[n - 1]), 'line ' + n + ': ' + lines[n - 1]));
   assert.strictEqual(lines.filter((l) => /^\s+url:/.test(l)).length, 3);
   assert.ok(lines.filter((l) => /label:/.test(l)).every((l) => /label: 'PR',/.test(l)));
   assert.ok(fs.readFileSync(path.join(root, 'README.md'), 'utf8').includes('40 / 48 / 56 行目'));

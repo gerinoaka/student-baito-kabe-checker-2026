@@ -226,7 +226,7 @@ t('L1', () => {
 });
 t('L2', () => {
   const lines = linksSrc.split('\n');
-  [40, 47, 54].forEach((n) => assert.strictEqual(lines[n - 1].trim(), "url: '',", 'line ' + n));
+  [40, 47, 54].forEach((n) => assert.ok(/^url: '(?:|https:\/\/[^']*)',$/.test(lines[n - 1].trim()), 'line ' + n));
   assert.strictEqual(lines.filter((l) => /^\s*url:/.test(l)).length, 3);
   ['40行目', '47行目', '54行目'].forEach((w) => assert.ok(readme.includes(w), 'README ' + w));
   assert.ok(linksSrc.includes('（40行目・47行目・54行目）'));
