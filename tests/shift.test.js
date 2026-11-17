@@ -67,5 +67,71 @@ t('38', C('w178', { hourly: 1000, monthsLeft: 1, intl: true }), { monthlyLimit: 
 t('39', C('w178', { hourly: 1000, monthsLeft: 1, intl: false }), { intl: { checked: false, over28: true } });
 t('40', S.WALLS, { w136: { limit: 1360000, useCommute: false, unit: 'ika' }, w150: { limit: 1500000, useCommute: true, unit: 'miman' }, w178: { limit: 1780000, useCommute: false, unit: 'ika' } });
 
+// ---- 例題（FAQ S8・S9 との整合）
+t('ex01', C('w136', { hourly: 1200 }), { hoursMonth: 94, weeklyHours: 21.6 });
+t('ex02', C('w150', { hourly: 1200 }), { hoursMonth: 104, weeklyHours: 24.0 });
+t('ex03', C('w178', { hourly: 1200 }), { hoursMonth: 123, weeklyHours: 28.3 });
+t('ex04', [C('w178', { hourly: 1000 }), C('w178', { hourly: 1500 })],
+  { 0: { monthlyLimit: 148333, hoursMonth: 148, weeklyHours: 34.1 }, 1: { monthlyLimit: 148333, hoursMonth: 98, weeklyHours: 22.6 } });
+
+// ---- shareTier（境界。w178 の cap=1,780,000）
+t('st01', S.shareTier(C('w178', { cum: 0 })), 'ample');
+t('st02', S.shareTier(C('w178', { cum: 890000 })), 'ample');
+t('st03', S.shareTier(C('w178', { cum: 890001 })), 'some');
+t('st04', S.shareTier(C('w178', { cum: 1424000 })), 'some');
+t('st05', S.shareTier(C('w178', { cum: 1424001 })), 'tight');
+t('st06', [S.shareTier(C('w178', { cum: 1780000 })), S.shareTier(C('w178', { cum: 1780001 }))], { 0: 'reached', 1: 'over' });
+
+// ---- buildShare
+const BASE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+const TIERS = (w) => {
+  const cap = S.WALLS[w].cap;
+  return {
+    ample: C(w, { cum: 0 }),
+    some: C(w, { cum: cap - Math.floor(cap * 0.3) }),
+    tight: C(w, { cum: cap - Math.floor(cap * 0.1) }),
+    reached: C(w, { cum: cap }),
+    over: C(w, { cum: cap + 1 }) };
+};
+const T178 = TIERS('w178');
+t('bs01', S.buildShare(T178.ample).text.includes('たっぷり'), true);
+t('bs02', S.buildShare(T178.some).text.includes('少し余裕'), true);
+t('bs03', S.buildShare(T178.tight).text.includes('残りわずか'), true);
+t('bs04', S.buildShare(T178.reached).text.includes('ちょうど届いて'), true);
+t('bs05', S.buildShare(T178.over).text.includes('すでに超えて'), true);
+{
+  const bad = [], got = [];
+  ['w136', 'w150', 'w178'].forEach((w) => {
+    const tr = TIERS(w);
+    Object.keys(tr).forEach((k) => {
+      got.push(S.shareTier(tr[k]) === k);
+      const tx = decodeURIComponent(S.buildShare(tr[k]).href.match(/text=([^&]*)/)[1]);
+      if (/\d/.test(tx) || /万/.test(tx) || /円/.test(tx) || /あと/.test(tx) || /時間/.test(tx)) bad.push(w + ':' + k + ':' + tx);
+    });
+  });
+  t('bs06', bad.join('|') + '/' + got.filter(Boolean).length, '/15');
+}
+{
+  const a = S.buildShare(C('w136', { cum: 0 })).text, b = S.buildShare(C('w150', { cum: 0 })).text;
+  t('bs07', [a.includes('親の扶養控除の壁') && !a.includes('親の健保の扶養の壁'), b.includes('親の健保の扶養の壁') && !b.includes('親の扶養控除の壁')], { 0: true, 1: true });
+}
+{
+  const b = S.buildShare(C('w178', { cum: 0 })), CANON = S.DATA.CANON;
+  const okHref = b.href.indexOf('https://x.com/intent/tweet?text=') === 0 && b.href.indexOf('&url=' + encodeURIComponent(CANON)) > 0 &&
+    b.href.indexOf('hashtags=' + ['年収の壁', '学生バイト', 'シフト計算'].map(encodeURIComponent).join(',')) > 0;
+  t('bs08', [okHref, b.url === CANON, CANON === BASE + 'shift-limit/', b.text === S.buildShare(C('w178', { cum: 100000, hourly: 2000 })).text], { 0: true, 1: true, 2: true, 3: true });
+}
+
+// ---- prPlan（年齢 x status）
+const ROOM = C('w178', { cum: 0 });
+t('pp01', S.prPlan(ROOM, 'a19p'), { a: true });
+t('pp02', S.prPlan(ROOM, 'u18'), { a: false });
+t('pp03', S.prPlan(ROOM, null), { a: false });
+t('pp04', S.prPlan(C('w178', { cum: 1780000 }), 'a19p'), { a: false });
+t('pp05', S.prPlan(C('w178', { cum: 1780001 }), 'a19p'), { a: false });
+t('pp06', S.prPlan(ROOM, 'x'), { a: false });
+t('pp07', S.prPlan({ ok: false, errors: [] }, 'a19p'), { a: false });
+t('pp08', S.prPlan(undefined, 'a19p'), { a: false });
+
 console.log('pass ' + pass + ' / fail ' + fail);
 if (fail) process.exit(1);

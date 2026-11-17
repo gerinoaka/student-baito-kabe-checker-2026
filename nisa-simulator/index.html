@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大学生の新NISA積立シミュレーター｜バイト代で月1万円なら</title>
+<meta name="description" content="大学生向けに、毎月の積立額・想定利回り・期間をスライダーで動かして新NISAの積立結果をグラフで確認。バイト代の一部を回すといくらになるかを例として試算します。税・手数料は含まず、結果は保証されません。">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f8fafc">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+<!-- 公開URL: https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/ （canonical と og:url の2か所） -->
+<link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/">
+<meta property="og:title" content="大学生の新NISA積立シミュレーター｜バイト代で月1万円なら">
+<meta property="og:description" content="大学生向けに、毎月の積立額・想定利回り・期間をスライダーで動かして新NISAの積立結果をグラフで確認。バイト代の一部を回すといくらになるかを例として試算します。税・手数料は含まず、結果は保証されません。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M7 24V18h4v6zm7 0V13h4v11zm7 0V7h4v17z' fill='%23fff'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"大学生からの新NISA・バイト代積立シミュレーター","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/","description":"毎月の積立額・想定利回り・期間を動かして、新NISAのつみたて投資枠での積立結果を仮定の例として試算する無料ツール。","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"大学生でも新NISAを始められますか？","acceptedAnswer":{"@type":"Answer","text":"口座の開設は、その年の1月1日時点で18歳以上の方が対象です。誕生日によっては、大学1年生でもその年は開設できないことがあります。最低積立額や手続きは証券会社ごとに異なるため、各社の公式ページで確認してください。"}},{"@type":"Question","name":"月1万円を積み立てると、10年後はいくらになりますか？","acceptedAnswer":{"@type":"Answer","text":"想定利回り（年率）が3%で、毎月末に積み立てる仮定の例では、元本120万円に対して評価額は約139万円です。ただし利回りは保証されず、元本を下回る場合もあります。このツールで数値を変えて試してください。"}},{"@type":"Question","name":"バイト代の何割くらいを積み立てに回すものですか？","acceptedAnswer":{"@type":"Answer","text":"決まった正解はありません。生活費や急な出費の備えを確保したうえで、無理のない金額から始める方が多いようです。ツールでは月1,000円から試算できます。"}},{"@type":"Question","name":"想定利回りは何%にすればよいですか？","acceptedAnswer":{"@type":"Answer","text":"将来の利回りは誰にもわかりません。0%・3%・5%など複数の値で試し、幅を持って見てください。過去の実績は将来を約束しません。"}},{"@type":"Question","name":"税金や手数料は計算に入っていますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。税・手数料・信託報酬は含めていません。新NISAの口座内の運用益は非課税とされますが、実際の商品には信託報酬などのコストがかかります。"}},{"@type":"Question","name":"新NISAには上限がありますか？","acceptedAnswer":{"@type":"Answer","text":"つみたて投資枠は年間120万円（月10万円）まで、生涯の非課税保有限度額は1,800万円です。このツールは元本が1,800万円を超えると警告を表示します。制度は変更されることがあるため、金融庁の公式ページで確認してください。"}},{"@type":"Question","name":"運用益が出ると、親の扶養に影響しますか？","acceptedAnswer":{"@type":"Answer","text":"NISA口座内の利益は非課税とされています。ただし、扶養の判定は税法上と健康保険で異なり、健保組合ごとに扱いが違う場合があります。詳しくは姉妹ツールの「学生バイトの年収の壁チェッカー」や、加入先の健保に確認してください。"}}]}</script>
+<style>
+/*ds:start v1*/
+:root{color-scheme:light dark;
+--bg:#f8fafc;--card:#fff;--soft:#f1f5f9;--fg:#0f172a;--sub:#475569;
+--primary:#1a56c4;--on-primary:#fff;--primary-soft:#e8f0fd;
+--track:#e2e8f0;--tick:#64748b;
+--ok-bg:#dcfce7;--ok-fg:#166534;--ng-bg:#fee2e2;--ng-fg:#991b1b;--wn-bg:#fef3c7;--wn-fg:#92400e;--nt-bg:#e2e8f0;--nt-fg:#334155;
+--ok:#15803d;--wn:#b45309;--ng:#dc2626;
+--shadow:0 1px 2px rgba(15,23,42,.04),0 4px 16px rgba(15,23,42,.05);
+--shadow-hero:0 1px 2px rgba(15,23,42,.05),0 10px 28px rgba(15,23,42,.08);
+--r-card:20px;--r-in:16px;--r-pill:999px;
+--s1:8px;--s2:16px;--s3:20px;--s4:24px;--s5:32px;
+--ring:#1a56c4;--t:.18s}
+@media(prefers-color-scheme:dark){:root{
+--bg:#0b1220;--card:#111a2e;--soft:#16213a;--fg:#e5edf8;--sub:#a9b6c9;
+--primary:#60a5fa;--on-primary:#0b1220;--primary-soft:#172554;
+--track:#26324a;--tick:#94a3b8;
+--ok-bg:#14532d;--ok-fg:#bbf7d0;--ng-bg:#7f1d1d;--ng-fg:#fecaca;--wn-bg:#78350f;--wn-fg:#fde68a;--nt-bg:#1e293b;--nt-fg:#cbd5e1;
+--ok:#4ade80;--wn:#fbbf24;--ng:#f87171;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+--shadow-hero:0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.4);
+--ring:#93c5fd}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;-webkit-tap-highlight-color:transparent}
+.w{max-width:640px;margin:0 auto;padding:0 16px 96px}
+h1{font-size:1.375rem;line-height:1.4;font-weight:700;margin:12px 0 8px;letter-spacing:.01em;font-feature-settings:"palt"}
+h2{font-size:1.05rem;font-weight:700;margin:0 0 8px}
+h3{font-size:1rem;margin:14px 0 4px}
+.ct{font-size:1.05rem;font-weight:700;margin:0 0 12px;font-feature-settings:"palt"}
+summary h2,summary h3{display:inline;font-size:1.05rem;margin:0;font-feature-settings:"palt"}
+a{color:var(--primary)}
+ul,ol{padding-left:1.3em}
+button{font:inherit;border:0;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;z-index:9;padding:8px 12px;background:var(--primary);color:var(--on-primary)}
+.skip:focus{left:0}
+.navb{display:flex;gap:8px;margin:12px -16px 0;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.navb::-webkit-scrollbar{display:none}
+.navb a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-size:.875rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.navb a[aria-current=page]{background:var(--primary);color:var(--on-primary)}
+.band{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:0 0 var(--s2);font-size:.85rem;line-height:1.5}
+.band a{flex:none;display:inline-flex;align-items:center;min-height:44px;margin:-8px 0;color:var(--wn-fg);font-weight:700;white-space:nowrap}
+.warn{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.9rem;font-weight:700}
+.note{background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.875rem}
+.card{background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);padding:var(--s3);margin:0 0 var(--s2)}
+.rc{box-shadow:var(--shadow-hero);padding:var(--s4)}
+.panel{background:var(--soft);border-radius:var(--r-in);padding:var(--s2)}
+@media(max-width:400px){.card{padding:var(--s2)}.rc{padding:var(--s3)}}
+.kpi-l{margin:0;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.big{margin:2px 0 4px;font-size:2.25rem;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+.big small{margin-left:4px;font-size:1rem;font-weight:700;letter-spacing:0}
+@media(min-width:400px){.big{font-size:2.5rem}}
+.mid{margin:2px 0;font-size:1.375rem;font-weight:700;line-height:1.3}
+.sumline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 4px}
+.stats{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0 0;padding:0}
+.stats[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.stats>*{min-width:0;margin:0;padding:8px 12px;border-radius:var(--r-in);background:var(--soft)}
+.stats dt,.stats .k{display:block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.stats dd,.stats .v{display:block;margin:0;font-weight:700}
+.hint{font-size:.875rem;line-height:1.6;color:var(--sub);margin:6px 0 0}
+.stale{font-size:.875rem;color:var(--sub);margin:8px 0 0}
+.confirm{font-size:.875rem;color:var(--sub);margin:12px 0 0}
+.confirm a,.risk a{display:inline-flex;align-items:center;min-height:44px}
+.risk{margin:12px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--wn-bg);color:var(--wn-fg);font-size:.875rem;line-height:1.6}
+.risk a{color:var(--wn-fg);font-weight:700}
+.safe{margin:8px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--ok-bg);color:var(--ok-fg);font-size:.875rem;font-weight:700;line-height:1.6}
+.pill{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:2px 12px;border-radius:var(--r-pill);font-weight:700;font-size:.9rem;line-height:1.3}
+.pill--ok{background:var(--ok-bg);color:var(--ok-fg)}
+.pill--ng{background:var(--ng-bg);color:var(--ng-fg)}
+.pill--wn{background:var(--wn-bg);color:var(--wn-fg)}
+.pill--nt{background:var(--nt-bg);color:var(--nt-fg)}
+.dot{margin-left:8px;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.75rem;font-weight:700}
+.fld{margin:0 0 var(--s2)}
+label.l{display:block;font-weight:700;margin:0 0 6px}
+.num{position:relative}
+.num input{display:block;width:100%;min-height:56px;margin:0;padding:0 44px 0 16px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;-moz-appearance:textfield;appearance:textfield}
+.num input::-webkit-outer-spin-button,.num input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.num .unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--sub);font-weight:700;pointer-events:none}
+.num--sm input{min-height:48px;font-size:1.125rem;text-align:right}
+.num input[aria-invalid=true],.stepper input[aria-invalid=true],textarea[aria-invalid=true]{box-shadow:inset 0 0 0 2px var(--ng)}
+select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit}
+textarea{display:block;width:100%;min-height:168px;padding:12px 14px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;line-height:1.7;resize:vertical}
+.err{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:6px 12px;margin:8px 0 0;font-size:.9rem;font-weight:700}
+.err::before{content:"\26A0  "}
+.range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:4px 0 0;padding:0;background:transparent;cursor:pointer;--pct:0%}
+.range::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-moz-range-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range::-moz-range-thumb{box-sizing:border-box;width:28px;height:28px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range.is-empty::-webkit-slider-thumb{border-color:var(--tick)}
+.range.is-empty::-moz-range-thumb{border-color:var(--tick)}
+.range:disabled{opacity:.5;cursor:not-allowed}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 0}
+.chips[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.chips[data-cols="6"]{grid-template-columns:repeat(6,1fr)}
+@media(max-width:359px){.chips[data-cols="4"]{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:374px){.chips[data-cols="6"]{grid-template-columns:repeat(3,1fr)}}
+.chip{min-height:44px;min-width:44px;padding:0 6px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-weight:700;white-space:nowrap;transition:background var(--t),color var(--t)}
+.chip[aria-pressed=true]{background:var(--primary);color:var(--on-primary)}
+.chip[aria-pressed=true]::before{content:"\2713  "}
+.chips[data-cols="6"] .chip[aria-pressed=true]::before{content:"\2713"}
+.seg-group{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;border:0;margin:0 0 var(--s2);padding:0;min-width:0}
+.seg-group[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.seg-group[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.seg-group legend{padding:0;margin:0 0 8px;font-weight:700}
+.seg{position:relative;display:block;min-width:0}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.seg span{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:48px;padding:6px 8px;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font-weight:700;font-size:.95rem;text-align:center;line-height:1.35;cursor:pointer;transition:background var(--t),color var(--t)}
+.seg small{font-size:.8rem;font-weight:400}
+.seg input:checked+span{background:var(--primary);color:var(--on-primary)}
+.seg input:checked+span::before{content:"\2713";position:absolute;top:4px;right:8px;font-size:.75rem}
+.seg input:focus-visible+span{outline:3px solid var(--ring);outline-offset:2px}
+.stepper{display:flex;align-items:center;gap:12px}
+.stepper button{flex:none;width:52px;height:52px;border-radius:50%;background:var(--soft);color:var(--fg);font-size:1.5rem;font-weight:700;line-height:1}
+.stepper input{width:72px;min-height:52px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;text-align:center}
+.stepper .unit{color:var(--sub);font-weight:700}
+.cb{display:flex;align-items:center;gap:10px;min-height:44px;margin:0 0 var(--s1)}
+.cb input{flex:none;width:22px;height:22px;margin:0;accent-color:var(--primary)}
+.cb--sw input{-webkit-appearance:none;appearance:none;position:relative;width:46px;height:28px;border-radius:14px;background:var(--tick);cursor:pointer;transition:background var(--t)}
+.cb--sw input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--card);transition:left var(--t)}
+.cb--sw input:checked{background:var(--primary)}
+.cb--sw input:checked::after{left:21px}
+.btn,.btn-ghost,.sh,.pr-cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;padding:0 16px;border-radius:var(--r-in);font-weight:700;text-decoration:none;text-align:center}
+.btn{background:var(--primary);color:var(--on-primary)}
+.btn-ghost{background:var(--soft);color:var(--primary)}
+.btn-text{min-height:44px;padding:0 12px;background:none;color:var(--primary);font-weight:700}
+.sh{background:var(--fg);color:var(--bg)}
+.go-row{display:grid;gap:8px;margin-top:var(--s2)}
+.gauge{position:relative;height:64px;margin:12px 12px 4px}
+.g-now{position:absolute;top:0;white-space:nowrap;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.8rem;font-weight:700;line-height:1.5}
+.g-track{position:absolute;left:0;right:0;top:28px;height:14px;border-radius:7px;background:var(--track);overflow:hidden}
+.g-fill{width:0;height:100%;border-radius:7px;background:var(--ok);transition:width var(--t)}
+.g-fill[data-tone=wn]{background:var(--wn)}
+.g-fill[data-tone=ng]{background:var(--ng)}
+.g-tick{position:absolute;top:24px;width:2px;height:22px;margin-left:-1px;background:var(--tick)}
+.g-thumb{position:absolute;top:24px;left:0;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--card);border:4px solid var(--primary);transition:left var(--t)}
+.g-labels{position:absolute;left:0;right:0;top:48px;height:16px;font-size:.72rem;line-height:16px;color:var(--sub)}
+.g-labels span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.gauge--bar{height:40px;margin:8px 0 4px}
+.gauge--bar .g-track{top:0}
+.gauge--bar .g-tick{top:-4px}
+.gauge--bar .g-labels{top:20px}
+.g-cap{margin:6px 0 0;font-size:.875rem;color:var(--sub)}
+.acc{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2)}
+.acc>summary{display:flex;align-items:center;gap:8px;min-height:56px;padding:0 20px;cursor:pointer;list-style:none;font-weight:700}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary::after{content:"";flex:none;margin:0 4px 4px auto;width:9px;height:9px;border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg);transition:transform var(--t)}
+.acc[open]>summary::after{margin-bottom:-4px;transform:rotate(-135deg)}
+.acc-body,.acc>section{padding:0 20px 20px}
+.acc-list{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2);overflow:hidden}
+.acc-list>.acc{margin:0;border-radius:0;background:none}
+.acc-list>.acc:not(:first-child){border-top:1px solid var(--soft)}
+.acc--inline{background:var(--soft);border-radius:var(--r-in)}
+.acc--inline>summary{min-height:48px;padding:0 16px}
+.acc--inline>.acc-body{padding:0 16px 16px}
+@media(max-width:400px){.acc>summary{padding:0 16px}.acc-body,.acc>section{padding:0 16px 16px}}
+.tw{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;width:100%;min-width:400px;font-size:.88rem}
+th,td{padding:8px 10px;text-align:left;vertical-align:top}
+th{color:var(--sub);font-weight:700}
+td.n{text-align:right;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--soft)}
+caption{text-align:left;font-weight:700;padding:4px 0}
+.faq h3{margin:14px 0 0}
+.faq p{margin:4px 0}
+dl.g dt{font-weight:700;margin:12px 0 0}
+dl.g dd{margin:2px 0 0}
+.shw{margin:0 0 4px}
+.pr-wrap{margin-top:var(--s3)}
+.pr-note{margin:0 0 8px;font-size:.875rem;line-height:1.6;color:var(--sub)}
+.pr-card{background:var(--soft);border-radius:var(--r-in);padding:var(--s2);margin:12px 0 0}
+.pr-card h3,.pr-card h4{margin:6px 0;font-size:1rem}
+.pr-card p{margin:4px 0;font-size:.9rem}
+.pr-tag{display:inline-block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.pr-tag::before{content:"\3010"}
+.pr-tag::after{content:"\3011"}
+.pr-disc{display:inline;margin:0 0 0 4px;font-size:.8125rem;color:var(--sub)}
+.pr-cta{min-height:48px;margin-top:10px;background:var(--card);color:var(--primary)}
+.ad-slot{min-height:250px;margin:0 0 var(--s2);display:flex;align-items:flex-start;justify-content:center;border-radius:var(--r-in)}
+.ad-label{font-size:.75rem;color:var(--sub);padding:4px}
+.rel{margin:var(--s5) 0 0}
+.rel-t{margin:0 0 8px;font-size:1.05rem;font-weight:700;font-feature-settings:"palt"}
+.rel .tools,.rel .sisters{background:var(--card);border-radius:var(--r-card);padding:8px;margin:0 0 var(--s2)}
+.rel h2{margin:8px 12px 4px;font-size:.8125rem;color:var(--sub)}
+.tl{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.tl a{position:relative;display:block;min-height:56px;padding:10px 36px 10px 12px;border-radius:var(--r-in);color:var(--fg);text-decoration:none;transition:background var(--t)}
+.tl a::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;margin-top:-4px;border-top:2px solid var(--sub);border-right:2px solid var(--sub);transform:rotate(45deg)}
+.tl a:hover{background:var(--soft)}
+.tl a strong{display:block;font-size:.95rem;line-height:1.5}
+.tl a span{display:block;font-size:.8125rem;color:var(--sub)}
+.tl a[aria-current=page]{background:var(--primary-soft)}
+.tl a[aria-current=page]::after{display:none}
+footer{font-size:.85rem;color:var(--sub);margin-top:var(--s4)}
+.foot-links{margin:0 0 var(--s1)}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px}
+footer h2{font-size:1rem;margin:12px 0 6px}
+.livebar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:640px;min-height:56px;margin:0 auto;padding:0 16px env(safe-area-inset-bottom);background:var(--card);box-shadow:0 -4px 16px rgba(15,23,42,.12);font-weight:700}
+.livebar button{flex:none;min-height:44px;padding:0 16px;border-radius:var(--r-pill);background:var(--primary);color:var(--on-primary);font-weight:700}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+/*ds:end*/
+.ages{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.ages>*{min-width:0}
+.chips.pre{grid-template-columns:repeat(3,1fr)}
+.chips.pre .chip{min-width:0;padding:6px;white-space:normal;font-size:.875rem;line-height:1.3}
+.det .v{font-size:.9rem}
+.chart{display:block;width:100%;height:auto;margin:12px 0 0;background:none;border:0}
+.ax{fill:var(--sub);font-size:9px}
+.gl{stroke:var(--track);stroke-width:.5}
+.bp{fill:var(--primary)}
+.bg{fill:url(#hatch)}
+.hb{fill:var(--ok-bg)}
+.hl{stroke:var(--ok)}
+.leg{font-size:.875rem;margin:6px 0 0}
+.k1{color:var(--primary)}
+.k2{color:var(--ok-fg)}
+.sent{margin:12px 0 0}
+.fine{font-size:.875rem;line-height:1.6;color:var(--sub);margin:0}
+thead th:not(:first-child){text-align:right}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ</a>
+<div class="w">
+<header>
+<nav class="navb" aria-label="サイト内ツール">
+<a href="../">年収の壁</a>
+<a href="./" aria-current="page">新NISA積立</a>
+<a href="#toolsH">ほかのツール</a>
+</nav>
+<h1>大学生からの新NISA・バイト代積立シミュレーター</h1>
+<div class="band" role="note"><span>仮定の試算です。元本割れの可能性があり、結果は保証されません／最終確認日 2026-11-17</span><a href="#disclaimer" data-open="legal">免責</a></div>
+</header>
+<main id="main">
+<section id="input" class="card">
+<h2 class="ct">積立の条件を決める</h2>
+<div class="fld"><label class="l" for="mNum">毎月の積立額（円）</label>
+<div class="num"><input id="mNum" type="number" inputmode="numeric" min="1000" max="100000" step="1000" value="10000" aria-describedby="hM eM"><span class="unit">円</span></div>
+<p class="err" id="eM" role="alert" hidden></p>
+<label class="sr" for="mRange">毎月の積立額（円）スライダー</label>
+<input id="mRange" class="range" type="range" min="1000" max="100000" step="1000" value="10000" aria-valuetext="月10,000円" style="--pct:9.09%">
+<div class="chips" id="mChips" data-cols="4">
+<button type="button" class="chip" aria-pressed="false" data-v="3000" aria-label="月3千円">月3千</button>
+<button type="button" class="chip" aria-pressed="false" data-v="5000" aria-label="月5千円">月5千</button>
+<button type="button" class="chip" aria-pressed="true" data-v="10000" aria-label="月1万円">月1万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="30000" aria-label="月3万円">月3万</button>
+</div>
+<p class="hint" id="hM">つみたて投資枠は年120万円まで（月10万円）。最低積立額は証券会社ごとに異なります</p></div>
+</section>
+
+<section id="result" data-state="ready" data-stale="false">
+<p id="liveSr" class="sr" aria-live="polite" aria-atomic="true"></p>
+<div class="card rc" id="resCard">
+<h2 class="ct">試算結果（例）</h2>
+<p class="kpi-l">将来の評価額（例）</p>
+<p class="big" id="rBig">約0<small>万円</small></p>
+<ul class="stats det" data-cols="3">
+<li><span class="k">元本合計</span><span class="v" id="rPrin">0円</span></li>
+<li><span class="k">運用益（例）</span><span class="v" id="rGain">0円</span></li>
+<li><span class="k">元本に対する倍率</span><span class="v" id="rMult">×1.0</span></li>
+</ul>
+<div id="graph">
+<svg id="chart" class="chart" viewBox="0 0 320 200" role="img" aria-labelledby="chartTitle chartDesc">
+<title id="chartTitle">元本と運用益の推移（年ごとの積み上げ棒グラフ）</title>
+<desc id="chartDesc"></desc>
+<defs><pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="4" height="4" class="hb"/><line x1="0" y1="0" x2="0" y2="4" class="hl" stroke-width="1.6"/></pattern></defs>
+<g id="chartG"></g>
+</svg>
+<p class="leg"><span class="k1">■</span> 元本（斜線なし）／<span class="k2">▨</span> 運用益（斜線）</p>
+<p class="hint">横軸は積立の年数（年）、縦軸は金額（万円）です。</p>
+</div>
+<p class="sent" id="rSent"></p>
+<p class="warn" id="warnLife" hidden></p>
+<p class="warn" id="warnAnnual" hidden>つみたて投資枠の年間上限（120万円）を超えています</p>
+<p class="risk" role="note">元本割れの可能性があります。結果は保証されません。投資の勧誘ではありません。税・手数料は含みません。<a href="#disclaimer" data-open="legal">詳しい注意</a></p>
+<p class="stale" id="staleNote" hidden>入力が途中のため、直前の結果を表示しています</p>
+</div>
+</section>
+
+<section id="cond" class="card">
+<h2 class="ct">利回りと期間を変える</h2>
+<div class="fld"><label class="l" for="rNum">想定利回り（年率）%</label>
+<div class="num num--sm"><input id="rNum" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="3" aria-describedby="hR eR"><span class="unit">%</span></div>
+<p class="err" id="eR" role="alert" hidden></p>
+<label class="sr" for="rRange">想定利回り（年率）スライダー</label>
+<input id="rRange" class="range" type="range" min="0" max="10" step="0.1" value="3" aria-valuetext="年率3.0%" style="--pct:30%">
+<div class="chips" id="rChips" data-cols="3">
+<button type="button" class="chip" aria-pressed="false" data-v="0" aria-label="年率0%">0%</button>
+<button type="button" class="chip" aria-pressed="true" data-v="3" aria-label="年率3%">3%</button>
+<button type="button" class="chip" aria-pressed="false" data-v="5" aria-label="年率5%">5%</button>
+</div>
+<p class="hint" id="hR">想定は保証されません。0%の場合も見てみましょう</p></div>
+<div class="fld"><label class="l" for="yNum">積立期間（年）</label>
+<div class="num num--sm"><input id="yNum" type="number" inputmode="numeric" min="1" max="40" step="1" value="10" aria-describedby="hY eY"><span class="unit">年</span></div>
+<p class="err" id="eY" role="alert" hidden></p>
+<label class="sr" for="yRange">積立期間（年）スライダー</label>
+<input id="yRange" class="range" type="range" min="1" max="40" step="1" value="10" aria-valuetext="10年" style="--pct:23.08%">
+<div class="chips" id="yChips" data-cols="4">
+<button type="button" class="chip" aria-pressed="false" data-v="5" aria-label="5年">5年</button>
+<button type="button" class="chip" aria-pressed="true" data-v="10" aria-label="10年">10年</button>
+<button type="button" class="chip" aria-pressed="false" data-v="20" aria-label="20年">20年</button>
+<button type="button" class="chip" aria-pressed="false" data-v="30" aria-label="30年">30年</button>
+</div>
+<p class="hint" id="hY">1〜40年の範囲で選べます。</p></div>
+<details class="acc acc--inline" id="ageAcc"><summary>年齢から期間を決める（任意）</summary>
+<div class="acc-body">
+<div class="ages">
+<div><label class="l" for="ageNow">今の年齢</label><div class="num num--sm"><input id="ageNow" type="number" inputmode="numeric" min="0" max="120" step="1" value="20" aria-describedby="hAge eAge"><span class="unit">歳</span></div></div>
+<div><label class="l" for="ageGoal">卒業予定の年齢</label><div class="num num--sm"><input id="ageGoal" type="number" inputmode="numeric" min="0" max="120" step="1" value="22" aria-describedby="hAge eAge"><span class="unit">歳</span></div></div>
+</div>
+<p class="hint" id="hAge">年齢は、その年の1月1日時点の年齢で数えます。</p>
+<div class="chips pre" role="group" aria-label="期間のプリセット" data-cols="3">
+<button type="button" class="chip" id="pGrad" aria-pressed="false">大学卒業まで</button>
+<button type="button" class="chip" id="p30" aria-pressed="false">30歳まで</button>
+<button type="button" class="chip" id="p40" aria-pressed="false">40歳まで</button>
+</div>
+<p class="err" id="eAge" role="alert" hidden></p>
+<p class="hint" id="clampNote" hidden>期間は最大40年で表示しています</p>
+</div>
+</details>
+<p class="warn" id="ageNote" role="note" hidden>NISA口座は、その年の1月1日時点で18歳以上の方が開設できます。誕生日によっては、大学1年生でもその年は開設できない場合があります。</p>
+</section>
+
+<div class="acc-list">
+<details class="acc" id="tableAcc"><summary><h2>年ごとの表</h2></summary>
+<section id="table">
+<div class="tw"><table><caption>年ごとの元本累計・評価額・運用益（例）</caption>
+<thead><tr><th scope="col">年</th><th scope="col">元本累計</th><th scope="col">評価額</th><th scope="col">運用益</th></tr></thead>
+<tbody id="tblBody"></tbody></table></div>
+</section></details>
+<details class="acc" id="premiseAcc"><summary><h2>計算の前提</h2></summary>
+<div class="acc-body"><p class="fine">バイト代の積立（月額）を、毎月の積立額として試算しています。毎月末に積み立て、年率を月利に換算（複利）して計算。税・手数料は含みません。金融庁のシミュレーターと完全には一致しません。</p></div></details>
+</div>
+
+<div class="card" id="actions">
+<p class="shw"><a id="shareX" class="sh" href="https://x.com/intent/tweet" target="_blank" rel="noopener noreferrer">Xでシェアする<span class="sr">（新しいタブで開きます）</span></a></p>
+<p class="hint">押すと X の投稿画面が開きます。投稿文には金額・年齢は入りません。</p>
+<section class="pr-wrap" id="prSec" hidden>
+<h3 class="ct">口座開設について</h3>
+<p class="pr-note">広告を含みます。投資には元本割れのおそれがあります。口座開設は18歳以上が目安で、最終判断はご自身で。結果は保証されず、投資の勧誘ではありません。税・手数料は含みません。</p>
+<p class="pr-note" id="prUnder" hidden>18歳になる年から口座を開設できます</p>
+<div id="prCards"></div>
+</section>
+</div>
+
+<!-- AD-SLOT-1: ディスプレイ広告（レスポンシブ）。広告コードを入れたら hidden を外す。コードやIDは入れていない -->
+<div class="ad-slot" data-slot="after-account" role="complementary" aria-label="広告" hidden><span class="ad-label">広告</span></div>
+
+<div class="acc-list">
+<details class="acc" id="aboutAcc"><summary><h2>このツールでわかること</h2></summary>
+<div class="acc-body"><p>バイト代の一部を新NISAのつみたて投資枠に回した場合の、あくまで仮定の試算です。</p></div></details>
+<details class="acc"><summary><h2>よくある質問</h2></summary>
+<section id="faq" class="faq">
+<h3>大学生でも新NISAを始められますか？</h3>
+<p>口座の開設は、その年の1月1日時点で18歳以上の方が対象です。誕生日によっては、大学1年生でもその年は開設できないことがあります。最低積立額や手続きは証券会社ごとに異なるため、各社の公式ページで確認してください。</p>
+<h3>月1万円を積み立てると、10年後はいくらになりますか？</h3>
+<p>想定利回り（年率）が3%で、毎月末に積み立てる仮定の例では、元本120万円に対して評価額は約139万円です。ただし利回りは保証されず、元本を下回る場合もあります。このツールで数値を変えて試してください。</p>
+<h3>バイト代の何割くらいを積み立てに回すものですか？</h3>
+<p>決まった正解はありません。生活費や急な出費の備えを確保したうえで、無理のない金額から始める方が多いようです。ツールでは月1,000円から試算できます。</p>
+<h3>想定利回りは何%にすればよいですか？</h3>
+<p>将来の利回りは誰にもわかりません。0%・3%・5%など複数の値で試し、幅を持って見てください。過去の実績は将来を約束しません。</p>
+<h3>税金や手数料は計算に入っていますか？</h3>
+<p>いいえ。税・手数料・信託報酬は含めていません。新NISAの口座内の運用益は非課税とされますが、実際の商品には信託報酬などのコストがかかります。</p>
+<h3>新NISAには上限がありますか？</h3>
+<p>つみたて投資枠は年間120万円（月10万円）まで、生涯の非課税保有限度額は1,800万円です。このツールは元本が1,800万円を超えると警告を表示します。制度は変更されることがあるため、金融庁の公式ページで確認してください。</p>
+<h3>運用益が出ると、親の扶養に影響しますか？</h3>
+<p>NISA口座内の利益は非課税とされています。ただし、扶養の判定は税法上と健康保険で異なり、健保組合ごとに扱いが違う場合があります。詳しくは姉妹ツールの「学生バイトの年収の壁チェッカー」や、加入先の健保に確認してください。</p>
+</section></details>
+<details class="acc"><summary><h2>用語解説</h2></summary>
+<section id="terms">
+<dl class="g">
+<dt>つみたて投資枠</dt><dd>新NISAの枠の一つ。決められた投資信託を、年間120万円まで積み立てて投資できる。このツールの試算対象。</dd>
+<dt>成長投資枠</dt><dd>新NISAのもう一つの枠。年間240万円まで。このツールでは扱わない。</dd>
+<dt>非課税保有限度額</dt><dd>生涯で非課税で保有できる元本の上限。1,800万円（うち成長投資枠は1,200万円まで）。</dd>
+<dt>複利</dt><dd>運用で得た利益にも、次の運用益がつくしくみ。期間が長いほど元本との差が開きやすい。</dd>
+<dt>利回り</dt><dd>運用の年あたりの増減の割合。想定利回りは仮の数字で、将来を保証しない。</dd>
+<dt>元本</dt><dd>自分が積み立てたお金の合計（運用益を含まない）。</dd>
+<dt>元本割れ</dt><dd>評価額が、積み立てた元本を下回ること。</dd>
+<dt>評価額</dt><dd>運用している資産を、そのときの価格で見た合計額。</dd>
+<dt>信託報酬</dt><dd>投資信託を保有している間、毎年かかる運用管理の費用。商品ごとに異なる。</dd>
+<dt>インデックスファンド</dt><dd>株価指数などに連動することを目指す投資信託。</dd>
+<dt>積立（定額積立）</dt><dd>毎月など決まった日に、決まった金額で買い続ける方法。</dd>
+</dl>
+</section></details>
+</div>
+</main>
+<aside class="rel" aria-label="関連ツール">
+<p class="rel-t">関連ツール</p>
+<section class="tools" aria-labelledby="toolsH">
+<h2 id="toolsH">学生バイトお役立ちツール</h2>
+<ul class="tl">
+<li><a href="../"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span></a></li>
+<li><a href="../kakemochi/"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span></a></li>
+<li><a href="../shift-limit/"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span></a></li>
+</ul>
+</section>
+<section class="sisters" id="sisters" aria-labelledby="sistersH">
+<h2 id="sistersH">姉妹ツール</h2>
+<ul class="tl">
+<li><a href="../living-cost-simulator/"><strong>手取り＆一人暮らし生活費シミュレーター</strong><span>手取りと生活費の目安を計算</span></a></li>
+<li><a href="../es-word-counter/"><strong>ES文字数カウント＆ガクチカ構成チェッカー</strong><span>ESの文字数と構成をチェック</span></a></li>
+<li><a href="./" aria-current="page"><strong>大学生からの新NISA・バイト代積立シミュレーター</strong><span>積立の将来額を試算（このページ）</span></a></li>
+</ul>
+</section>
+</aside>
+<footer>
+<p class="foot-links"><a href="#legal" data-open="legal">免責事項・プライバシー</a> ／ 連絡先: gakusei.kabe.checker@gmail.com</p>
+<details class="acc" id="legal"><summary>ご利用前の注意（免責）・プライバシー</summary>
+<div class="acc-body">
+<section id="disclaimer">
+<h2>ご利用前の注意（免責）</h2>
+<ol>
+<li>投資には元本割れのおそれがあります。</li>
+<li>想定利回りは保証されるものではありません。結果は、入力した数値を使った計算の一例にすぎません。</li>
+<li>過去の実績は、将来の成果を約束するものではありません。</li>
+<li>このツールは投資の勧誘や、特定の商品の推奨ではありません。</li>
+<li>投資の最終判断は、ご自身の責任で行ってください。</li>
+<li>税・手数料・信託報酬・為替の影響は計算に含めていません。実際の結果とは異なります。</li>
+<li>計算結果の正確性は保証せず、利用による損害について責任を負いません。内容は予告なく変更することがあります。</li>
+<li>制度は改正されることがあります。最終確認日は 2026-11-17 です。最新の情報は金融庁・各金融機関の公式ページで確認してください。</li>
+<li>2027年開始予定の、未成年向けの口座（通称「こどもNISA」）は、この試算の対象外です。</li>
+<li>本ツールは成長投資枠を扱わず、つみたて投資枠のみで試算します。売却は扱いません。</li>
+<li>積立を始める前に、生活費の備えを確保することを一般論としてお勧めします。</li>
+</ol>
+</section>
+<section id="privacy">
+<h2>運営・プライバシー</h2>
+<ul>
+<li>連絡先: gakusei.kabe.checker@gmail.com</li>
+<li>入力された数値は、お使いの端末内（ブラウザ）で計算するだけで、送信も保存もしません。Cookie・アクセス解析は使っていません。</li>
+<li>「Xでシェアする」を押したときだけ、X（x.com）の投稿画面へ移動し、投稿文とこのページのURLが渡されます。押さない限り、外部へ送信しません。</li>
+<li>PRのリンク先は広告主のサイトです。クリック後は、そのサイトのプライバシーポリシーが適用されます。</li>
+<li>最終確認日: 2026-11-17</li>
+</ul>
+</section>
+</div></details>
+</footer>
+</div>
+<div id="liveBar" class="livebar" aria-hidden="true" hidden><span id="liveBarText"></span><button type="button" tabindex="-1" id="liveBarGo">結果へ</button></div>
+
+<script src="links-config.js"></script>
+<script id="logic">
+const NISA=(function(){
+'use strict';
+const LIFETIME=18000000,ANNUAL=1200000,MONTHLY_MIN=1000,MONTHLY_MAX=100000,YEARS_MAX=40;
+const BASE='https://gerinoaka.github.io/student-baito-kabe-checker-2026/nisa-simulator/',TAGS=['新NISA','大学生','積立'];
+function simulate(o){
+ o=o||{};
+ const P=o.monthly,R=o.ratePct,Y=o.years,errors=[];
+ if(typeof P!=='number'||!isFinite(P)||!Number.isInteger(P)||P<0||(P>0&&P<MONTHLY_MIN)||P>MONTHLY_MAX)errors.push('monthly');
+ if(typeof R!=='number'||!isFinite(R)||R<0||R>10)errors.push('rate');
+ if(typeof Y!=='number'||!Number.isInteger(Y)||Y<1||Y>YEARS_MAX)errors.push('years');
+ if(errors.length)return {ok:false,errors:errors};
+ const i=R===0?0:Math.pow(1+R/100,1/12)-1,n=Y*12;
+ let bal=0;const rows=[];
+ for(let y=1;y<=Y;y++){
+  for(let m=0;m<12;m++)bal=bal*(1+i)+P;
+  const pr=P*12*y;
+  rows.push({year:y,principal:pr,value:bal,gain:bal-pr});}
+ const closed=i===0?P*n:P*(Math.pow(1+i,n)-1)/i;
+ let fin=bal;
+ if(Math.abs(bal-closed)>=1){
+  fin=closed;const last=rows[rows.length-1];last.value=closed;last.gain=closed-last.principal;}
+ const principal=P*n,e=P>0?Math.floor(LIFETIME/(P*12))+1:null;
+ return {ok:true,monthlyRate:i,months:n,principal:principal,finalValue:fin,gain:fin-principal,rows:rows,
+  annualOver:P*12>ANNUAL,lifetimeExceeded:principal>LIFETIME,exceedYear:(e!==null&&e<=Y)?e:null};}
+function yearsFromAge(c,t){
+ if(typeof c!=='number'||typeof t!=='number'||!Number.isInteger(c)||!Number.isInteger(t))return {ok:false,years:null,clamped:false,reason:'invalid'};
+ if(c<18)return {ok:false,years:null,clamped:false,reason:'under18'};
+ if(t<=c)return {ok:false,years:null,clamped:false,reason:'order'};
+ const y=t-c,clamped=y>YEARS_MAX;
+ return {ok:true,years:clamped?YEARS_MAX:y,clamped:clamped,reason:null};}
+function fmtYen(x){return Math.round(x).toLocaleString('ja-JP');}
+function fmtMan(x){return Math.round(x/10000);}
+function buildShare(o){
+ const m=o.monthly,y=o.years;
+ const pace=m<5000?'少額から':m<20000?'コツコツ':'しっかり';
+ const term=y<5?'短め':y<=15?'中期':'長期';
+ const text='バイト代からのNISA積立をシミュレーションしてみた📈 '+pace+'続けると…（'+term+'）の積み上がり方が見えた！';
+ const href='https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(BASE)+'&hashtags='+TAGS.map(encodeURIComponent).join(',');
+ return {text:text,url:BASE,hashtags:TAGS.join(','),href:href};}
+return {simulate:simulate,yearsFromAge:yearsFromAge,fmtYen:fmtYen,fmtMan:fmtMan,buildShare:buildShare,
+ LIFETIME:LIFETIME,ANNUAL:ANNUAL,MONTHLY_MIN:MONTHLY_MIN,MONTHLY_MAX:MONTHLY_MAX,YEARS_MAX:YEARS_MAX,BASE:BASE};
+})();
+</script>
+<script id="ui">
+(function(){
+'use strict';
+const N=NISA,$=function(id){return document.getElementById(id);};
+const NS='http://www.w3.org/2000/svg';
+const cur={monthly:10000,ratePct:3,years:10};
+function h(t,c,x,k){const e=document.createElement(t);if(c)e.className=c;if(x!==null&&x!==undefined)e.textContent=x;(k||[]).forEach(function(n){e.appendChild(n);});return e;}
+function sv(tag,attrs,text,parent){
+ const e=document.createElementNS(NS,tag);
+ Object.keys(attrs).forEach(function(k){e.setAttribute(k,String(attrs[k]));});
+ if(text!==null&&text!==undefined)e.textContent=text;
+ if(parent)parent.appendChild(e);
+ return e;}
+function yen(x){return N.fmtYen(x)+'円';}
+function man(x){return N.fmtMan(x).toLocaleString('ja-JP');}
+function niceMax(v){
+ if(!(v>0))return 3;
+ const p=Math.max(1,Math.pow(10,Math.floor(Math.log10(v/3))));
+ const c=[1,2,5,10];
+ for(let i=0;i<c.length;i++){if(c[i]*p*3>=v)return c[i]*p*3;}
+ return 30*p;}
+function drawChart(r){
+ const g=$('chartG');g.textContent='';
+ const X0=44,X1=316,YT=14,YB=172,W=X1-X0,H=YB-YT,n=r.rows.length;
+ const top=niceMax(r.rows[n-1].value/10000);
+ sv('text',{x:2,y:9,class:'ax'},'万円',g);
+ for(let t=1;t<=3;t++){
+  const v=top*t/3,y=YB-H*t/3;
+  sv('line',{x1:X0,x2:X1,y1:y,y2:y,class:'gl'},null,g);
+  sv('text',{x:X0-3,y:y+3,'text-anchor':'end',class:'ax'},Math.round(v).toLocaleString('ja-JP'),g);}
+ const gap=1,bw=Math.max(1,(W-gap*(n-1))/n);
+ let lastLab=-9;
+ r.rows.forEach(function(row,i){
+  const x=X0+i*(bw+gap),hp=(row.principal/10000)/top*H,hg=Math.max(0,(row.gain/10000)/top*H);
+  sv('rect',{x:x,y:YB-hp,width:bw,height:hp,class:'bp'},null,g);
+  if(hg>0)sv('rect',{x:x,y:YB-hp-hg,width:bw,height:hg,class:'bg'},null,g);
+  const y=row.year;
+  if(y===1||y%10===0||(y===n&&y-lastLab>=3)){
+   sv('text',{x:x+bw/2,y:186,'text-anchor':'middle',class:'ax'},String(y),g);lastLab=y;}});
+ sv('text',{x:X1,y:198,'text-anchor':'end',class:'ax'},'（年）',g);}
+function drawTable(r){
+ const tb=$('tblBody');tb.textContent='';
+ r.rows.forEach(function(row){
+  const th=h('th',null,row.year+'年目');th.setAttribute('scope','row');
+  tb.appendChild(h('tr',null,null,[th,h('td','n',yen(row.principal)),h('td','n',yen(row.value)),h('td','n',yen(row.gain))]));});}
+const FIELDS=[
+ {key:'monthly',num:'mNum',rng:'mRange',err:'eM',chips:'mChips',msg:'1,000〜100,000円の範囲で入力してください',
+  ok:function(v){return Number.isInteger(v)&&v>=N.MONTHLY_MIN&&v<=N.MONTHLY_MAX;},
+  vt:function(v){return '月'+Number(v).toLocaleString('ja-JP')+'円';}},
+ {key:'ratePct',num:'rNum',rng:'rRange',err:'eR',chips:'rChips',msg:'0〜10%の範囲で入力してください',
+  ok:function(v){return isFinite(v)&&v>=0&&v<=10;},
+  vt:function(v){return '年率'+Number(v).toFixed(1)+'%';}},
+ {key:'years',num:'yNum',rng:'yRange',err:'eY',chips:'yChips',msg:'1〜40年の整数で入力してください',
+  ok:function(v){return Number.isInteger(v)&&v>=1&&v<=N.YEARS_MAX;},
+  vt:function(v){return v+'年';}}];
+const shown={};
+let srTimer=null,prTimer=null,pend=false,outOfView=false;
+function refreshStale(){
+ const any=Object.keys(shown).some(function(k){return shown[k];});
+ $('staleNote').hidden=!any;
+ $('result').setAttribute('data-stale',any?'true':'false');}
+function setErr(id,inp,msg){
+ const e=$(id);e.textContent=msg||'';e.hidden=!msg;
+ if(inp){if(msg)inp.setAttribute('aria-invalid','true');else inp.removeAttribute('aria-invalid');}}
+function toNum(s){const t=String(s).trim();return t===''?NaN:Number(t);}
+const PRE=['pGrad','p30','p40'];
+function unpress(){PRE.forEach(function(id){$(id).setAttribute('aria-pressed','false');});$('clampNote').hidden=true;}
+function sync(){
+ FIELDS.forEach(function(f){
+  const rng=$(f.rng),v=cur[f.key],mn=Number(rng.min),mx=Number(rng.max);
+  const pct=Math.max(0,Math.min(100,(v-mn)/(mx-mn)*100));
+  rng.style.setProperty('--pct',pct.toFixed(2)+'%');
+  rng.setAttribute('aria-valuetext',f.vt(v));
+  Array.prototype.forEach.call($(f.chips).querySelectorAll('button'),function(b){
+   b.setAttribute('aria-pressed',Number(b.getAttribute('data-v'))===v?'true':'false');});});}
+function draw(){
+ const r=N.simulate(cur);
+ if(!r.ok)return;
+ const big=$('rBig');big.textContent='約'+man(r.finalValue);big.appendChild(h('small',null,'万円'));
+ $('rPrin').textContent=yen(r.principal);
+ $('rGain').textContent=yen(r.gain);
+ $('rMult').textContent='×'+(r.finalValue/r.principal).toFixed(1);
+ $('rSent').textContent='毎月'+yen(cur.monthly)+'を'+cur.years+'年続けると、元本'+yen(r.principal)+'のところ、仮定の利回りでは評価額が約'+yen(r.finalValue)+'になる例です。';
+ const wl=$('warnLife');
+ wl.hidden=!r.lifetimeExceeded;
+ wl.textContent=r.lifetimeExceeded?'元本累計が'+r.exceedYear+'年目に生涯の非課税保有限度額1,800万円を超えます。それ以降の積立は非課税の対象外になるため、この試算は参考になりません。':'';
+ $('warnAnnual').hidden=!r.annualOver;
+ const last=r.rows[r.rows.length-1];
+ $('chartDesc').textContent=cur.years+'年後の評価額は約'+yen(last.value)+'、うち元本'+yen(last.principal)+'、運用益'+yen(last.gain);
+ $('shareX').href=N.buildShare(cur).href;
+ $('liveBarText').textContent='約'+man(r.finalValue)+'万円（元本 '+yen(r.principal)+'）';
+ sync();drawChart(r);drawTable(r);
+ const sr=$('liveSr'),txt=cur.years+'年後の評価額の例は約'+man(r.finalValue)+'万円、元本は'+yen(r.principal);
+ clearTimeout(srTimer);
+ srTimer=setTimeout(function(){if(sr.textContent!==txt)sr.textContent=txt;},700);
+ upBar();}
+function schedule(){
+ if(pend)return;pend=true;
+ requestAnimationFrame(function(){pend=false;draw();});}
+function upBar(){$('liveBar').hidden=!outOfView;}
+function apply(f,v,keep){
+ const num=$(f.num);
+ if(!keep)num.value=String(v);
+ $(f.rng).value=String(v);
+ clearTimeout(f.t);shown[f.key]=false;setErr(f.err,num,'');refreshStale();
+ cur[f.key]=v;if(f.key==='years')unpress();schedule();}
+function showErr(f){
+ const num=$(f.num);
+ if(f.ok(toNum(num.value)))return;
+ setErr(f.err,num,f.msg);shown[f.key]=true;refreshStale();}
+FIELDS.forEach(function(f){
+ const num=$(f.num),rng=$(f.rng);
+ rng.addEventListener('input',function(){apply(f,Number(rng.value));});
+ num.addEventListener('input',function(){
+  const v=toNum(num.value);
+  clearTimeout(f.t);
+  if(f.ok(v)){apply(f,v,true);return;}
+  f.t=setTimeout(function(){showErr(f);},1200);});
+ num.addEventListener('blur',function(){clearTimeout(f.t);showErr(f);});
+ Array.prototype.forEach.call($(f.chips).querySelectorAll('button'),function(b){
+  b.addEventListener('click',function(){apply(f,Number(b.getAttribute('data-v')));});});});
+function preset(btnId,goal,isGrad){
+ const a=toNum($('ageNow').value),t=goal===null?toNum($('ageGoal').value):goal;
+ const r=N.yearsFromAge(a,t);
+ unpress();
+ if(!r.ok){
+  const m={invalid:'年齢は整数で入力してください',under18:'今の年齢が18歳未満のため、年齢からの自動設定は使えません。期間はスライダーで選んでください。',
+   order:isGrad?'卒業予定の年齢は、今の年齢より大きい数にしてください':'今の年齢より大きい年齢のプリセットを選んでください'};
+  setErr('eAge',null,m[r.reason]);return;}
+ setErr('eAge',null,'');
+ apply(FIELDS[2],r.years);
+ $('clampNote').hidden=!r.clamped;
+ $(btnId).setAttribute('aria-pressed','true');}
+$('pGrad').addEventListener('click',function(){preset('pGrad',null,true);});
+$('p30').addEventListener('click',function(){preset('p30',30,false);});
+$('p40').addEventListener('click',function(){preset('p40',40,false);});
+const PR_LEAD={shoken:'つみたて投資枠での積立を始めるための、口座開設のご案内です。',book:'仕組みを基礎から知りたい方へのご案内です。'};
+function prCard(key){
+ const L=(typeof window.NISA_LINKS==='object'&&window.NISA_LINKS)?window.NISA_LINKS[key]:null;
+ if(!L||typeof L.url!=='string'||!/^https:\/\//.test(L.url)||typeof L.title!=='string'||typeof L.cta!=='string')return null;
+ const a=h('a','pr-cta',L.cta);a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
+ const lab=(typeof L.label==='string'?L.label:'').replace(/[【】]/g,'')||'PR';
+ return h('div','pr-card',null,[h('span','pr-tag',lab),h('span','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,PR_LEAD[key==='book'?'book':'shoken']),h('p',null,typeof L.desc==='string'?L.desc:''),a]);}
+function ageState(){
+ const age=toNum($('ageNow').value),valid=Number.isInteger(age)&&age>=0&&age<=120;
+ return {adult:valid&&age>=18,under:valid&&age<=17};}
+function renderAge(){const s=ageState();$('ageNote').hidden=!s.under;$('prUnder').hidden=!s.under;}
+function renderPR(){
+ const s=ageState();
+ renderAge();
+ const host=$('prCards');host.textContent='';
+ const cards=[];
+ if(s.adult){['shoken1','shoken2'].forEach(function(k){const c=prCard(k);if(c)cards.push(c);});}
+ if(!cards.length){const b=prCard('book');if(b)cards.push(b);}
+ cards.forEach(function(c){host.appendChild(c);});
+ $('prSec').hidden=cards.length===0;}
+$('ageNow').addEventListener('input',function(){renderAge();clearTimeout(prTimer);prTimer=setTimeout(renderPR,400);});
+function openFor(el){for(let n=el;n;n=n.parentElement){if(n.tagName==='DETAILS')n.open=true;}}
+Array.prototype.forEach.call(document.querySelectorAll('a[data-open]'),function(a){
+ a.addEventListener('click',function(){const t=$(a.getAttribute('data-open'));if(t)openFor(t);});});
+function hashOpen(){
+ let id='';try{id=decodeURIComponent(location.hash.slice(1));}catch(e){id='';}
+ if(!id)return;const t=$(id);if(t)openFor(t);}
+window.addEventListener('hashchange',hashOpen);
+$('liveBarGo').addEventListener('click',function(){$('result').scrollIntoView({block:'start'});});
+if(typeof IntersectionObserver==='function'){
+ new IntersectionObserver(function(es){es.forEach(function(e){outOfView=!e.isIntersecting;upBar();});}).observe($('resCard'));}
+renderPR();
+hashOpen();
+draw();
+$('liveSr').textContent=cur.years+'年後の評価額の例は約'+man(N.simulate(cur).finalValue)+'万円、元本は'+yen(N.simulate(cur).principal);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ES文字数カウント｜8割目安・原稿用紙換算とガクチカ構成チェック</title>
+<meta name="description" content="就活のES・ガクチカの文字数をリアルタイムでカウント。空白抜き・原稿用紙換算（400字詰）・指定字数の達成率と8割の目安を表示し、結論・STAR・冗長表現のヒントも出します。登録不要で、入力は送信も保存もされません。">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f8fafc">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+<!-- 公開URL: https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/ （canonical・og:url・JSON-LD の url・logic の BASE の4か所。変更時は親フォルダの sitemap.xml も更新） -->
+<link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/">
+<meta property="og:title" content="ES文字数カウント｜8割目安・原稿用紙換算とガクチカ構成チェック">
+<meta property="og:description" content="就活のES・ガクチカの文字数をリアルタイムでカウント。空白抜き・原稿用紙換算（400字詰）・指定字数の達成率と8割の目安を表示し、結論・STAR・冗長表現のヒントも出します。登録不要で、入力は送信も保存もされません。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/">
+<meta property="og:site_name" content="ES文字数カウント＆ガクチカ構成チェッカー">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M7 9h18v3H7zm0 6h18v3H7zm0 6h11v3H7z' fill='%23fff'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ES文字数カウント＆ガクチカ構成チェッカー","url":"https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"inLanguage":"ja"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"ESの文字数は、スペースや改行を含めて数えるのですか？","acceptedAnswer":{"@type":"Answer","text":"提出先によって異なります。Word は改行を数えず、Excel の LEN は改行も1文字と数えるなど、ツールごとに差があります。このツールの初期設定は「改行は含めず、空白は含める」で、空白抜きの文字数や改行を含む文字数も併記します。最終的には、提出画面に表示される文字数を優先して確認してください。"}},
+{"@type":"Question","name":"ESの文字数は何割くらい埋めればよいですか？","acceptedAnswer":{"@type":"Answer","text":"就活メディアや就活エージェントでは、8割以上を最低ライン、9割以上を理想とする目安がよく紹介されています。ただし企業の公式基準ではなく経験則です。内容が簡潔で的確なら8割未満でも問題ない場合があるため、あくまで目安として使ってください。"}},
+{"@type":"Question","name":"ガクチカは何文字で書くのが一般的ですか？","acceptedAnswer":{"@type":"Answer","text":"200字・300字・400字・600字といった設問が多いと言われ、400字が典型例として紹介されることもあります。ただし企業ごとに異なるため、設問の指定文字数を必ず確認してください。このツールでは200〜800字のプリセットと、1〜10000字の任意入力を選べます。"}},
+{"@type":"Question","name":"原稿用紙換算とは何ですか？","acceptedAnswer":{"@type":"Answer","text":"文字数を400字詰め原稿用紙（20字×20行）の枚数に直したものです。このツールでは「文字数÷400」の単純計算で表示します。実際の原稿用紙は句読点や改行の位置で枚数が変わるため、目安として見てください。"}},
+{"@type":"Question","name":"入力したESは外部に送信されたり保存されたりしますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。文字数の計算も構成チェックも、すべてお使いのブラウザの中だけで行います。入力した文章を外部へ送信せず、ブラウザの保存領域（ローカルストレージ等）にも保存しません。ページを閉じると内容は消えます。共有パソコンで使う場合は、使い終わったらページを閉じて内容を消してください。文章の控えは別途保存してください。"}},
+{"@type":"Question","name":"ガクチカの構成チェックでは何を見ていますか？","acceptedAnswer":{"@type":"Answer","text":"結論が冒頭にあるか、状況・課題・行動・結果にあたる言葉があるか、数字があるか、冗長な表現や同じ語尾の連続がないかを、小さな辞書とパターンで確認します。点数や合否は出さず、見直しのヒントを表示します。文章そのものの良し悪しは判定できません。"}},
+{"@type":"Question","name":"絵文字や特殊な漢字は何文字として数えますか？","acceptedAnswer":{"@type":"Answer","text":"見た目の1文字を1文字として数えます。ブラウザが対応していれば、絵文字や結合文字も1文字にまとめます。対応していない場合は、サロゲートペアの文字を1文字として数える方式に切り替わります。ただしメモアプリや提出先フォームでは2文字と数える場合があります。"}},
+{"@type":"Question","name":"文字数が足りないとき、どう増やせばよいですか？","acceptedAnswer":{"@type":"Answer","text":"単語を水増しするより、状況の説明、自分が工夫した行動、結果の数字や変化、そこからの学びを加えると、内容が伝わりやすくなる場合があります。ヒント一覧で「見当たらない」と表示された項目から見直してみてください。"}}
+]}</script>
+<style>
+/*ds:start v1*/
+:root{color-scheme:light dark;
+--bg:#f8fafc;--card:#fff;--soft:#f1f5f9;--fg:#0f172a;--sub:#475569;
+--primary:#1a56c4;--on-primary:#fff;--primary-soft:#e8f0fd;
+--track:#e2e8f0;--tick:#64748b;
+--ok-bg:#dcfce7;--ok-fg:#166534;--ng-bg:#fee2e2;--ng-fg:#991b1b;--wn-bg:#fef3c7;--wn-fg:#92400e;--nt-bg:#e2e8f0;--nt-fg:#334155;
+--ok:#15803d;--wn:#b45309;--ng:#dc2626;
+--shadow:0 1px 2px rgba(15,23,42,.04),0 4px 16px rgba(15,23,42,.05);
+--shadow-hero:0 1px 2px rgba(15,23,42,.05),0 10px 28px rgba(15,23,42,.08);
+--r-card:20px;--r-in:16px;--r-pill:999px;
+--s1:8px;--s2:16px;--s3:20px;--s4:24px;--s5:32px;
+--ring:#1a56c4;--t:.18s}
+@media(prefers-color-scheme:dark){:root{
+--bg:#0b1220;--card:#111a2e;--soft:#16213a;--fg:#e5edf8;--sub:#a9b6c9;
+--primary:#60a5fa;--on-primary:#0b1220;--primary-soft:#172554;
+--track:#26324a;--tick:#94a3b8;
+--ok-bg:#14532d;--ok-fg:#bbf7d0;--ng-bg:#7f1d1d;--ng-fg:#fecaca;--wn-bg:#78350f;--wn-fg:#fde68a;--nt-bg:#1e293b;--nt-fg:#cbd5e1;
+--ok:#4ade80;--wn:#fbbf24;--ng:#f87171;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+--shadow-hero:0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.4);
+--ring:#93c5fd}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;-webkit-tap-highlight-color:transparent}
+.w{max-width:640px;margin:0 auto;padding:0 16px 96px}
+h1{font-size:1.375rem;line-height:1.4;font-weight:700;margin:12px 0 8px;letter-spacing:.01em;font-feature-settings:"palt"}
+h2{font-size:1.05rem;font-weight:700;margin:0 0 8px}
+h3{font-size:1rem;margin:14px 0 4px}
+.ct{font-size:1.05rem;font-weight:700;margin:0 0 12px;font-feature-settings:"palt"}
+summary h2,summary h3{display:inline;font-size:1.05rem;margin:0;font-feature-settings:"palt"}
+a{color:var(--primary)}
+ul,ol{padding-left:1.3em}
+button{font:inherit;border:0;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;z-index:9;padding:8px 12px;background:var(--primary);color:var(--on-primary)}
+.skip:focus{left:0}
+.navb{display:flex;gap:8px;margin:12px -16px 0;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.navb::-webkit-scrollbar{display:none}
+.navb a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-size:.875rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.navb a[aria-current=page]{background:var(--primary);color:var(--on-primary)}
+.band{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:0 0 var(--s2);font-size:.85rem;line-height:1.5}
+.band a{flex:none;display:inline-flex;align-items:center;min-height:44px;margin:-8px 0;color:var(--wn-fg);font-weight:700;white-space:nowrap}
+.warn{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.9rem;font-weight:700}
+.note{background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.875rem}
+.card{background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);padding:var(--s3);margin:0 0 var(--s2)}
+.rc{box-shadow:var(--shadow-hero);padding:var(--s4)}
+.panel{background:var(--soft);border-radius:var(--r-in);padding:var(--s2)}
+@media(max-width:400px){.card{padding:var(--s2)}.rc{padding:var(--s3)}}
+.kpi-l{margin:0;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.big{margin:2px 0 4px;font-size:2.25rem;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+.big small{margin-left:4px;font-size:1rem;font-weight:700;letter-spacing:0}
+@media(min-width:400px){.big{font-size:2.5rem}}
+.mid{margin:2px 0;font-size:1.375rem;font-weight:700;line-height:1.3}
+.sumline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 4px}
+.stats{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0 0;padding:0}
+.stats[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.stats>*{min-width:0;margin:0;padding:8px 12px;border-radius:var(--r-in);background:var(--soft)}
+.stats dt,.stats .k{display:block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.stats dd,.stats .v{display:block;margin:0;font-weight:700}
+.hint{font-size:.875rem;line-height:1.6;color:var(--sub);margin:6px 0 0}
+.stale{font-size:.875rem;color:var(--sub);margin:8px 0 0}
+.confirm{font-size:.875rem;color:var(--sub);margin:12px 0 0}
+.confirm a,.risk a{display:inline-flex;align-items:center;min-height:44px}
+.risk{margin:12px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--wn-bg);color:var(--wn-fg);font-size:.875rem;line-height:1.6}
+.risk a{color:var(--wn-fg);font-weight:700}
+.safe{margin:8px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--ok-bg);color:var(--ok-fg);font-size:.875rem;font-weight:700;line-height:1.6}
+.pill{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:2px 12px;border-radius:var(--r-pill);font-weight:700;font-size:.9rem;line-height:1.3}
+.pill--ok{background:var(--ok-bg);color:var(--ok-fg)}
+.pill--ng{background:var(--ng-bg);color:var(--ng-fg)}
+.pill--wn{background:var(--wn-bg);color:var(--wn-fg)}
+.pill--nt{background:var(--nt-bg);color:var(--nt-fg)}
+.dot{margin-left:8px;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.75rem;font-weight:700}
+.fld{margin:0 0 var(--s2)}
+label.l{display:block;font-weight:700;margin:0 0 6px}
+.num{position:relative}
+.num input{display:block;width:100%;min-height:56px;margin:0;padding:0 44px 0 16px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;-moz-appearance:textfield;appearance:textfield}
+.num input::-webkit-outer-spin-button,.num input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.num .unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--sub);font-weight:700;pointer-events:none}
+.num--sm input{min-height:48px;font-size:1.125rem;text-align:right}
+.num input[aria-invalid=true],.stepper input[aria-invalid=true],textarea[aria-invalid=true]{box-shadow:inset 0 0 0 2px var(--ng)}
+select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit}
+textarea{display:block;width:100%;min-height:168px;padding:12px 14px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;line-height:1.7;resize:vertical}
+.err{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:6px 12px;margin:8px 0 0;font-size:.9rem;font-weight:700}
+.err::before{content:"\26A0  "}
+.range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:4px 0 0;padding:0;background:transparent;cursor:pointer;--pct:0%}
+.range::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-moz-range-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range::-moz-range-thumb{box-sizing:border-box;width:28px;height:28px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range.is-empty::-webkit-slider-thumb{border-color:var(--tick)}
+.range.is-empty::-moz-range-thumb{border-color:var(--tick)}
+.range:disabled{opacity:.5;cursor:not-allowed}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 0}
+.chips[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.chips[data-cols="6"]{grid-template-columns:repeat(6,1fr)}
+@media(max-width:359px){.chips[data-cols="4"]{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:374px){.chips[data-cols="6"]{grid-template-columns:repeat(3,1fr)}}
+.chip{min-height:44px;min-width:44px;padding:0 6px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-weight:700;white-space:nowrap;transition:background var(--t),color var(--t)}
+.chip[aria-pressed=true]{background:var(--primary);color:var(--on-primary)}
+.chip[aria-pressed=true]::before{content:"\2713  "}
+.chips[data-cols="6"] .chip[aria-pressed=true]::before{content:"\2713"}
+.seg-group{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;border:0;margin:0 0 var(--s2);padding:0;min-width:0}
+.seg-group[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.seg-group[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.seg-group legend{padding:0;margin:0 0 8px;font-weight:700}
+.seg{position:relative;display:block;min-width:0}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.seg span{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:48px;padding:6px 8px;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font-weight:700;font-size:.95rem;text-align:center;line-height:1.35;cursor:pointer;transition:background var(--t),color var(--t)}
+.seg small{font-size:.8rem;font-weight:400}
+.seg input:checked+span{background:var(--primary);color:var(--on-primary)}
+.seg input:checked+span::before{content:"\2713";position:absolute;top:4px;right:8px;font-size:.75rem}
+.seg input:focus-visible+span{outline:3px solid var(--ring);outline-offset:2px}
+.stepper{display:flex;align-items:center;gap:12px}
+.stepper button{flex:none;width:52px;height:52px;border-radius:50%;background:var(--soft);color:var(--fg);font-size:1.5rem;font-weight:700;line-height:1}
+.stepper input{width:72px;min-height:52px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;text-align:center}
+.stepper .unit{color:var(--sub);font-weight:700}
+.cb{display:flex;align-items:center;gap:10px;min-height:44px;margin:0 0 var(--s1)}
+.cb input{flex:none;width:22px;height:22px;margin:0;accent-color:var(--primary)}
+.cb--sw input{-webkit-appearance:none;appearance:none;position:relative;width:46px;height:28px;border-radius:14px;background:var(--tick);cursor:pointer;transition:background var(--t)}
+.cb--sw input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--card);transition:left var(--t)}
+.cb--sw input:checked{background:var(--primary)}
+.cb--sw input:checked::after{left:21px}
+.btn,.btn-ghost,.sh,.pr-cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;padding:0 16px;border-radius:var(--r-in);font-weight:700;text-decoration:none;text-align:center}
+.btn{background:var(--primary);color:var(--on-primary)}
+.btn-ghost{background:var(--soft);color:var(--primary)}
+.btn-text{min-height:44px;padding:0 12px;background:none;color:var(--primary);font-weight:700}
+.sh{background:var(--fg);color:var(--bg)}
+.go-row{display:grid;gap:8px;margin-top:var(--s2)}
+.gauge{position:relative;height:64px;margin:12px 12px 4px}
+.g-now{position:absolute;top:0;white-space:nowrap;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.8rem;font-weight:700;line-height:1.5}
+.g-track{position:absolute;left:0;right:0;top:28px;height:14px;border-radius:7px;background:var(--track);overflow:hidden}
+.g-fill{width:0;height:100%;border-radius:7px;background:var(--ok);transition:width var(--t)}
+.g-fill[data-tone=wn]{background:var(--wn)}
+.g-fill[data-tone=ng]{background:var(--ng)}
+.g-tick{position:absolute;top:24px;width:2px;height:22px;margin-left:-1px;background:var(--tick)}
+.g-thumb{position:absolute;top:24px;left:0;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--card);border:4px solid var(--primary);transition:left var(--t)}
+.g-labels{position:absolute;left:0;right:0;top:48px;height:16px;font-size:.72rem;line-height:16px;color:var(--sub)}
+.g-labels span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.gauge--bar{height:40px;margin:8px 0 4px}
+.gauge--bar .g-track{top:0}
+.gauge--bar .g-tick{top:-4px}
+.gauge--bar .g-labels{top:20px}
+.g-cap{margin:6px 0 0;font-size:.875rem;color:var(--sub)}
+.acc{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2)}
+.acc>summary{display:flex;align-items:center;gap:8px;min-height:56px;padding:0 20px;cursor:pointer;list-style:none;font-weight:700}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary::after{content:"";flex:none;margin:0 4px 4px auto;width:9px;height:9px;border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg);transition:transform var(--t)}
+.acc[open]>summary::after{margin-bottom:-4px;transform:rotate(-135deg)}
+.acc-body,.acc>section{padding:0 20px 20px}
+.acc-list{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2);overflow:hidden}
+.acc-list>.acc{margin:0;border-radius:0;background:none}
+.acc-list>.acc:not(:first-child){border-top:1px solid var(--soft)}
+.acc--inline{background:var(--soft);border-radius:var(--r-in)}
+.acc--inline>summary{min-height:48px;padding:0 16px}
+.acc--inline>.acc-body{padding:0 16px 16px}
+@media(max-width:400px){.acc>summary{padding:0 16px}.acc-body,.acc>section{padding:0 16px 16px}}
+.tw{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;width:100%;min-width:400px;font-size:.88rem}
+th,td{padding:8px 10px;text-align:left;vertical-align:top}
+th{color:var(--sub);font-weight:700}
+td.n{text-align:right;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--soft)}
+caption{text-align:left;font-weight:700;padding:4px 0}
+.faq h3{margin:14px 0 0}
+.faq p{margin:4px 0}
+dl.g dt{font-weight:700;margin:12px 0 0}
+dl.g dd{margin:2px 0 0}
+.shw{margin:0 0 4px}
+.pr-wrap{margin-top:var(--s3)}
+.pr-note{margin:0 0 8px;font-size:.875rem;line-height:1.6;color:var(--sub)}
+.pr-card{background:var(--soft);border-radius:var(--r-in);padding:var(--s2);margin:12px 0 0}
+.pr-card h3,.pr-card h4{margin:6px 0;font-size:1rem}
+.pr-card p{margin:4px 0;font-size:.9rem}
+.pr-tag{display:inline-block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.pr-tag::before{content:"\3010"}
+.pr-tag::after{content:"\3011"}
+.pr-disc{display:inline;margin:0 0 0 4px;font-size:.8125rem;color:var(--sub)}
+.pr-cta{min-height:48px;margin-top:10px;background:var(--card);color:var(--primary)}
+.ad-slot{min-height:250px;margin:0 0 var(--s2);display:flex;align-items:flex-start;justify-content:center;border-radius:var(--r-in)}
+.ad-label{font-size:.75rem;color:var(--sub);padding:4px}
+.rel{margin:var(--s5) 0 0}
+.rel-t{margin:0 0 8px;font-size:1.05rem;font-weight:700;font-feature-settings:"palt"}
+.rel .tools,.rel .sisters{background:var(--card);border-radius:var(--r-card);padding:8px;margin:0 0 var(--s2)}
+.rel h2{margin:8px 12px 4px;font-size:.8125rem;color:var(--sub)}
+.tl{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.tl a{position:relative;display:block;min-height:56px;padding:10px 36px 10px 12px;border-radius:var(--r-in);color:var(--fg);text-decoration:none;transition:background var(--t)}
+.tl a::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;margin-top:-4px;border-top:2px solid var(--sub);border-right:2px solid var(--sub);transform:rotate(45deg)}
+.tl a:hover{background:var(--soft)}
+.tl a strong{display:block;font-size:.95rem;line-height:1.5}
+.tl a span{display:block;font-size:.8125rem;color:var(--sub)}
+.tl a[aria-current=page]{background:var(--primary-soft)}
+.tl a[aria-current=page]::after{display:none}
+footer{font-size:.85rem;color:var(--sub);margin-top:var(--s4)}
+.foot-links{margin:0 0 var(--s1)}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px}
+footer h2{font-size:1rem;margin:12px 0 6px}
+.livebar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:640px;min-height:56px;margin:0 auto;padding:0 16px env(safe-area-inset-bottom);background:var(--card);box-shadow:0 -4px 16px rgba(15,23,42,.12);font-weight:700}
+.livebar button{flex:none;min-height:44px;padding:0 16px;border-radius:var(--r-pill);background:var(--primary);color:var(--on-primary);font-weight:700}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+/*ds:end*/
+.fs{border:0;margin:16px 0 8px;padding:0;min-width:0}
+.fs legend{padding:0;font-weight:700}
+#limitChips{grid-template-columns:repeat(6,minmax(0,1fr))}
+#limitChips .chip{min-width:0;padding:0 2px;font-size:.9375rem}
+@media(max-width:374px){#limitChips{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:8px 0}
+.tag{padding:2px 10px;border-radius:999px;font-size:.875rem;font-weight:700}
+.tag--ok{background:var(--ok-bg);color:var(--ok-fg)}
+.tag--no{background:var(--wn-bg);color:var(--wn-fg)}
+.tcount{margin:4px 0 0;text-align:right;font-size:.8125rem;color:var(--sub)}
+#hintList{padding-left:1.2em}
+#hintList li{margin:8px 0}
+#hintList q{display:block;font-size:.875rem;color:var(--sub);quotes:"\300C" "\300D"}
+.stats.res>div{min-width:0}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+<div class="w">
+<header>
+<nav class="navb" aria-label="サイト内ツール"><a href="../">年収の壁</a><a href="./" aria-current="page">ES文字数</a><a href="#toolsH">ほかのツール</a></nav>
+<h1>ES文字数カウント＆ガクチカ構成チェッカー</h1>
+<div class="band" role="note"><span>目安です。数え方は提出先の表示が優先です／最終更新日 2026-11-17</span><a href="#legal" data-open="legal">免責</a></div>
+</header>
+<main id="main">
+<section id="input" class="card" aria-labelledby="h-in">
+<h2 class="ct" id="h-in">文章を入れて文字数をチェック</h2>
+<label class="l" for="es">ESの本文</label>
+<textarea id="es" rows="8" autocomplete="off" spellcheck="false" aria-describedby="privNote" placeholder="ここにESやガクチカの文章を貼り付けてください"></textarea>
+<p class="tcount" id="tCount" aria-hidden="true">0 / 400字</p>
+<p class="safe" id="privNote">入力は送信・保存しません。この端末のブラウザの中だけで処理します。</p>
+<fieldset class="fs"><legend>指定文字数</legend>
+<div class="chips pre" id="limitChips" data-cols="6">
+<button type="button" class="chip" data-v="200" aria-pressed="false" aria-label="200字">200</button>
+<button type="button" class="chip" data-v="300" aria-pressed="false" aria-label="300字">300</button>
+<button type="button" class="chip" data-v="400" aria-pressed="true" aria-label="400字">400</button>
+<button type="button" class="chip" data-v="500" aria-pressed="false" aria-label="500字">500</button>
+<button type="button" class="chip" data-v="600" aria-pressed="false" aria-label="600字">600</button>
+<button type="button" class="chip" data-v="800" aria-pressed="false" aria-label="800字">800</button>
+</div>
+</fieldset>
+<button type="button" class="btn-text" id="clr">入力をクリア</button>
+<details class="acc acc--inline" id="advanced"><summary>数え方・任意の文字数</summary>
+<div class="acc-body">
+<label class="l" for="limit">任意の文字数</label>
+<div class="num num--sm"><input id="limit" type="number" inputmode="numeric" min="1" max="10000" step="1" aria-describedby="limitErr"><span class="unit">字</span></div>
+<p class="err" id="limitErr" role="alert" hidden>指定文字数は1〜10000の整数で入力してください。</p>
+<label class="cb"><input type="checkbox" id="cbNl"> 改行を文字数に含める</label>
+<label class="cb"><input type="checkbox" id="cbSp" checked> 空白（全角・半角）を文字数に含める</label>
+<p class="hint">提出先フォームの数え方が優先です。必ず提出画面の表示で最終確認してください。</p>
+<p class="hint">共有パソコンで使う場合は、使い終わったらページを閉じて内容を消してください。</p>
+</div>
+</details>
+</section>
+
+<section id="result" aria-labelledby="h-res" data-state="empty" data-stale="false">
+<p id="liveSr" class="sr" aria-live="polite" aria-atomic="true"></p>
+<div class="card rc">
+<h2 class="ct" id="h-res">結果</h2>
+<p class="kpi-l">文字数</p>
+<p class="big"><span id="rCount">0</span><small id="rOf">／400字</small></p>
+<div id="rate">
+<p class="sumline"><strong id="rRate">達成率 0%</strong> <span class="pill pill--ok" id="rBadge" hidden></span></p>
+<div class="gauge gauge--bar"><div class="g-track" id="pb" role="progressbar" aria-label="指定文字数に対する達成率" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="g-fill" id="pf"></div></div><div class="g-tick" style="left:80%"></div><div class="g-tick" style="left:90%"></div><div class="g-labels" aria-hidden="true"><span style="left:80%">8割</span><span style="left:90%">9割</span></div></div>
+</div>
+<p id="rVerdict">文章を入れると結果が出ます。</p>
+<dl class="stats res">
+<div><dt>空白抜き</dt><dd id="rNoSp">0</dd></div>
+<div><dt>改行を含む</dt><dd id="rWithNl">0</dd></div>
+<div><dt>原稿用紙換算（400字詰）</dt><dd id="rSheets">0枚（切上 0枚）</dd></div>
+<div><dt>行数</dt><dd id="rLines">0</dd></div>
+</dl>
+<p class="hint">8割・9割は就活メディアや就活エージェントの経験則による目安で、企業の公式基準ではありません。内容が的確なら8割未満でも問題ない場合があります。</p>
+<p class="hint">原稿用紙換算は「文字数÷400」の単純計算です。実際の原稿用紙は句読点・改行で枚数が変わります。</p>
+<p class="stale" id="staleNote" hidden>入力が途中のため、直前の結果を表示しています</p>
+<p class="confirm">最終確認は、提出画面に表示される文字数で行ってください。</p>
+</div>
+</section>
+
+<div class="acc-list">
+<details class="acc" id="hintsAcc"><summary><h2 id="h-hint">構成・表現のヒント</h2><span class="dot" id="hintDot" hidden></span></summary>
+<section id="hints" aria-labelledby="h-hint">
+<p>点数や合否は出しません。文章の良し悪しは判定できないため、見直しの参考としてお使いください。</p>
+<p id="hintMsg"></p>
+<ul class="tags" id="chips" aria-label="構成チェック"></ul>
+<ul id="hintList"></ul>
+</section>
+</details>
+</div>
+
+<div class="card" id="actions">
+<p class="shw"><a id="shareX" class="sh" href="https://x.com/intent/tweet" target="_blank" rel="noopener noreferrer">Xでシェア（文字数や本文は含まれません）</a></p>
+<section class="pr-wrap" id="pr" aria-label="広告" hidden>
+<p class="pr-note">以下は広告（アフィリエイトリンク）を含みます。上の結果とは関係なく表示しています。</p>
+<div id="prCards"></div>
+</section>
+</div>
+
+<div class="acc-list">
+<details class="acc" id="aboutAcc"><summary><h2>このツールでわかること</h2></summary>
+<div class="acc-body">
+<p>ESやガクチカの文章を貼るだけで、文字数・原稿用紙換算・指定字数に対する達成率がすぐ分かります。登録不要で、入力した文章はこの端末の外に送信されず、保存もされません。</p>
+</div>
+</details>
+<details class="acc"><summary><h2 id="h-guide">ESの文字数の数え方と8割の目安</h2></summary>
+<section id="guide" aria-labelledby="h-guide">
+<p>ES 文字数の数え方は、提出先のフォームやツールによって変わります。このツールの初期設定は「改行は含めず、空白は含める」で、設定の切替もできます。</p>
+<p>就活メディアや就活エージェントでは、指定字数の8割以上を最低ライン、9割以上を理想とする「ES 8割」の目安がよく紹介されています。ガクチカ 文字数の設問（200字・400字など）にも同じ考え方が使われます。</p>
+<p>ただし8割・9割は経験則で、企業の公式基準ではありません。最終的には提出画面の表示で確認してください。</p>
+<div class="tw"><table><caption>指定字数ごとの8割・9割の字数（切上）</caption>
+<thead><tr><th>指定字数</th><th>8割</th><th>9割</th></tr></thead>
+<tbody>
+<tr><td>200字</td><td>160字</td><td>180字</td></tr>
+<tr><td>300字</td><td>240字</td><td>270字</td></tr>
+<tr><td>400字</td><td>320字</td><td>360字</td></tr>
+<tr><td>500字</td><td>400字</td><td>450字</td></tr>
+<tr><td>600字</td><td>480字</td><td>540字</td></tr>
+<tr><td>800字</td><td>640字</td><td>720字</td></tr>
+</tbody></table></div>
+<p class="hint">Word は改行を数えず、Excel の LEN は改行も1と数えるなど、ツールで差が出ます。</p>
+</section>
+</details>
+<details class="acc"><summary><h2 id="h-faq">よくある疑問 Q&amp;A</h2></summary>
+<section id="faq" class="faq" aria-labelledby="h-faq">
+<h3>ESの文字数は、スペースや改行を含めて数えるのですか？</h3><p>提出先によって異なります。Word は改行を数えず、Excel の LEN は改行も1文字と数えるなど、ツールごとに差があります。このツールの初期設定は「改行は含めず、空白は含める」で、空白抜きの文字数や改行を含む文字数も併記します。最終的には、提出画面に表示される文字数を優先して確認してください。</p>
+<h3>ESの文字数は何割くらい埋めればよいですか？</h3><p>就活メディアや就活エージェントでは、8割以上を最低ライン、9割以上を理想とする目安がよく紹介されています。ただし企業の公式基準ではなく経験則です。内容が簡潔で的確なら8割未満でも問題ない場合があるため、あくまで目安として使ってください。</p>
+<h3>ガクチカは何文字で書くのが一般的ですか？</h3><p>200字・300字・400字・600字といった設問が多いと言われ、400字が典型例として紹介されることもあります。ただし企業ごとに異なるため、設問の指定文字数を必ず確認してください。このツールでは200〜800字のプリセットと、1〜10000字の任意入力を選べます。</p>
+<h3>原稿用紙換算とは何ですか？</h3><p>文字数を400字詰め原稿用紙（20字×20行）の枚数に直したものです。このツールでは「文字数÷400」の単純計算で表示します。実際の原稿用紙は句読点や改行の位置で枚数が変わるため、目安として見てください。</p>
+<h3>入力したESは外部に送信されたり保存されたりしますか？</h3><p>いいえ。文字数の計算も構成チェックも、すべてお使いのブラウザの中だけで行います。入力した文章を外部へ送信せず、ブラウザの保存領域（ローカルストレージ等）にも保存しません。ページを閉じると内容は消えます。共有パソコンで使う場合は、使い終わったらページを閉じて内容を消してください。文章の控えは別途保存してください。</p>
+<h3>ガクチカの構成チェックでは何を見ていますか？</h3><p>結論が冒頭にあるか、状況・課題・行動・結果にあたる言葉があるか、数字があるか、冗長な表現や同じ語尾の連続がないかを、小さな辞書とパターンで確認します。点数や合否は出さず、見直しのヒントを表示します。文章そのものの良し悪しは判定できません。</p>
+<h3>絵文字や特殊な漢字は何文字として数えますか？</h3><p>見た目の1文字を1文字として数えます。ブラウザが対応していれば、絵文字や結合文字も1文字にまとめます。対応していない場合は、サロゲートペアの文字を1文字として数える方式に切り替わります。ただしメモアプリや提出先フォームでは2文字と数える場合があります。</p>
+<h3>文字数が足りないとき、どう増やせばよいですか？</h3><p>単語を水増しするより、状況の説明、自分が工夫した行動、結果の数字や変化、そこからの学びを加えると、内容が伝わりやすくなる場合があります。ヒント一覧で「見当たらない」と表示された項目から見直してみてください。</p>
+</section>
+</details>
+<details class="acc"><summary><h2 id="h-terms">用語解説</h2></summary>
+<section id="terms" aria-labelledby="h-terms">
+<dl class="g">
+<dt>文字数（空白含む）</dt><dd>空白（全角・半角）を文字として数えた文字数。このツールの主指標の初期値です。</dd>
+<dt>空白抜き文字数</dt><dd>空白・タブ・改行をすべて除いた文字数。</dd>
+<dt>改行を含む文字数</dt><dd>改行を1文字として数えた文字数。Excel の LEN と同じ数え方です。</dd>
+<dt>達成率</dt><dd>文字数を指定文字数で割った割合。小数点以下は切り捨てて表示します。</dd>
+<dt>8割ライン（目安）</dt><dd>指定文字数の8割にあたる文字数。就活メディアの経験則による目安で、企業の公式基準ではありません。</dd>
+<dt>理想ライン（9割）</dt><dd>指定文字数の9割にあたる文字数。目安として、9割以上を理想とする説明があります。</dd>
+<dt>原稿用紙換算</dt><dd>文字数を400字詰め原稿用紙（20字×20行）の枚数に直した値。単純計算です。</dd>
+<dt>ガクチカ</dt><dd>「学生時代に力を入れたこと」の略。ESや面接でよく聞かれる設問です。</dd>
+<dt>STAR（状況・課題・行動・結果）</dt><dd>Situation・Task・Action・Result の頭文字を取った、経験を整理する型。日本のガクチカの構成と対応づけた、目安としての使い方です。</dd>
+<dt>結論ファースト</dt><dd>文章の冒頭で結論を述べる書き方。何に力を入れたかを最初に示すと、読み手が追いやすくなる場合があります。</dd>
+</dl>
+</section>
+</details>
+</div>
+</main>
+
+<aside class="rel" aria-label="関連ツール">
+<p class="rel-t">関連ツール</p>
+<section class="tools" aria-labelledby="toolsH">
+<h2 id="toolsH">学生バイトお役立ちツール</h2>
+<ul class="tl">
+<li><a href="../"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span></a></li>
+<li><a href="../kakemochi/"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span></a></li>
+<li><a href="../shift-limit/"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span></a></li>
+</ul>
+</section>
+<section class="sisters" id="sisters" aria-labelledby="sistersH">
+<h2 id="sistersH">姉妹ツール</h2>
+<ul class="tl">
+<li><a href="../living-cost-simulator/"><strong>手取り＆一人暮らし生活費シミュレーター</strong><span>手取りと生活費の目安を計算</span></a></li>
+<li><a href="./" aria-current="page"><strong>ES文字数カウント＆ガクチカ構成チェッカー</strong><span>ESの文字数と構成をチェック（このページ）</span></a></li>
+<li><a href="../nisa-simulator/"><strong>大学生からの新NISA・バイト代積立シミュレーター</strong><span>積立の将来額を試算</span></a></li>
+</ul>
+</section>
+</aside>
+
+<footer>
+<p class="foot-links"><a href="#legal" data-open="legal">免責事項・プライバシー</a> ／ 連絡先: <a href="mailto:gakusei.kabe.checker@gmail.com">gakusei.kabe.checker@gmail.com</a></p>
+<details class="acc" id="legal"><summary>プライバシーポリシー・免責</summary>
+<div class="acc-body">
+<section id="policy" aria-label="プライバシーポリシー・免責">
+<ul>
+<li>入力文は端末内のみで処理し、送信しません。ローカルストレージ・セッションストレージ・Cookie・IndexedDB にも保存しません。</li>
+<li>広告リンク（PR）は、クリックすると遷移先の事業者の規約・Cookie が適用されます。</li>
+<li>アクセス解析と広告配信は、導入する場合にこの欄を更新します。</li>
+<li>「Xでシェア」を押したときだけ X の投稿画面へ移動します。渡されるのは定型の投稿文とこのページのURLのみで、文字数や本文は含まれません。</li>
+</ul>
+<h3>免責</h3>
+<ul>
+<li>本ツールは目安と文章見直しのヒントを示すもので、選考結果・文章の評価を保証しません。</li>
+<li>数え方は提出先により異なります。最終確認は提出画面で行ってください。</li>
+<li>8割・9割は経験則であり、企業の公式基準ではありません。</li>
+</ul>
+<h3>広告表記</h3>
+<ul><li>PR 枠のリンクは成果報酬型の広告を含みます。</li></ul>
+</section>
+</div>
+</details>
+<p>© 2026 ES文字数カウント＆ガクチカ構成チェッカー</p>
+</footer>
+</div>
+
+<script src="links-config.js"></script>
+<script id="logic">
+var ES=(function(){
+'use strict';
+var BASE='https://gerinoaka.github.io/student-baito-kabe-checker-2026/es-word-counter/',SHEET=400;
+var segmenter=null;
+function norm(t){return String(t==null?'':t).replace(/\r\n?/g,'\n');}
+function seg(str,unit){
+ if(unit==='grapheme'&&typeof Intl!=='undefined'&&typeof Intl.Segmenter==='function'){
+  if(!segmenter)segmenter=new Intl.Segmenter('ja',{granularity:'grapheme'});
+  return [...segmenter.segment(str)].length;}
+ return [...str].length;}
+function count(text,opts){
+ var o={countNewline:false,countSpace:true,unit:'grapheme'};
+ if(opts)Object.keys(o).forEach(function(k){if(opts[k]!==undefined)o[k]=opts[k];});
+ var s=norm(text),u=o.unit,t=s;
+ if(!o.countNewline)t=t.replace(/\n/g,'');
+ if(!o.countSpace)t=t.replace(/[ \t 　]/g,'');
+ var c=seg(t,u);
+ return {count:c,withNewline:seg(s,u),noNewline:seg(s.replace(/\n/g,''),u),noSpace:seg(s.replace(/[\s　]/g,''),u),
+  utf16:s.length,lines:s===''?0:s.split('\n').length,
+  sheets:Math.round(c/SHEET*100)/100,sheetsCeil:Math.ceil(c/SHEET)};}
+function progress(count,limit){
+ limit=Number(limit);
+ if(!(Number.isInteger(limit)&&limit>=1&&limit<=10000))return {hasLimit:false};
+ var st;
+ if(count===0)st='empty';
+ else if(count>limit)st='over';
+ else if(count*10>=limit*9)st='ideal';
+ else if(count*10>=limit*8)st='ok';
+ else st='low';
+ var m80=Math.ceil(limit*8/10),m90=Math.ceil(limit*9/10);
+ return {hasLimit:true,status:st,pct:Math.floor(count*100/limit),rate:count/limit,min80:m80,min90:m90,
+  toOk:Math.max(0,m80-count),toIdeal:Math.max(0,m90-count),over:Math.max(0,count-limit)};}
+var REDUNDANT=[
+ {id:'dekiru',re:/することができ(?:る|ます|た|ました)/g,th:1,tip:'「できる」「できます」に短縮できるかもしれません'},
+ {id:'toiu',re:/(?:という|といった)/g,th:3,tip:'「という」が多いと冗長になりがちです'},
+ {id:'itadaku',re:/(?:させていただ(?:く|き|いた)|させて頂)/g,th:2,tip:'ESでは「〜しました」で足りる場合があります'},
+ {id:'omou',re:/と(?:思(?:い(?!や)|う)|考えて(?:い)?(?:ます|る))/g,th:3,tip:'断定できる箇所は言い切る方が伝わる場合があります'},
+ {id:'nitei',re:/(?:ないわけではない|なくはない|ないことはない)/g,th:1,tip:'二重否定は肯定に言い換えられるかもしれません'},
+ {id:'kogo',re:/(?:めっちゃ|とか(?![ぁ-ん])|みたいな|やっぱり?)/g,th:1,tip:'話し言葉に見える表現です。書き言葉にするかご確認ください'}];
+var STRUCT=[
+ {id:'conclusion',title:'結論（冒頭）',re:/(?:私(?:は|が)|私の|学生時代|力を入れ|取り組ん|強み|ガクチカ)/,head:true,tip:'冒頭で結論（何に力を入れたか）を述べると伝わりやすい場合があります。'},
+ {id:'situation',title:'状況・目的',re:/(?:当時|所属|在籍|担当|目的|目標|背景|状況|きっかけ)/,tip:'状況・目的（いつ、どこで、何のために）が見当たらないかもしれません。'},
+ {id:'task',title:'課題',re:/(?:課題|問題|壁|困難|原因|不足|低迷|悩|苦戦|伸び悩)/,tip:'課題や壁にあたる記述が見当たらないかもしれません。'},
+ {id:'action',title:'行動',re:/(?:取り組(?:み|ん)|工夫|提案|改善|実行|実施|導入|分析|巻き込|行いまし|試み)/,tip:'具体的な行動（自分が何をしたか）が見当たらないかもしれません。'},
+ {id:'result',title:'結果',re:/(?:結果|成果|達成|向上|増加|削減|受賞|[0-9０-９]+(?:\.[0-9０-９]+)?\s*(?:%|％|倍|人|件|円|位|割|点))/,tip:'結果（数字や変化）が見当たらないかもしれません。'},
+ {id:'learning',title:'学び',re:/(?:学び|学ん|身に付|気づ|活か|貢献)/,quiet:true,tip:''}];
+function snip(q,i,n){return q.slice(Math.max(0,i-8),i+n+8).replace(/\n/g,' ');}
+function analyze(text){
+ var s=norm(text);
+ if(s.trim()==='')return [];
+ var q=s.replace(/[「『][^」』]*[」』]/g,'');
+ var len=[...q.replace(/\n/g,'')].length,out=[];
+ REDUNDANT.forEach(function(r){
+  var ms=[...q.matchAll(r.re)];
+  if(ms.length>=r.th)out.push({id:'redundant:'+r.id,kind:'redundant',title:'冗長・話し言葉の表現（'+ms.length+'回）',tip:r.tip,count:ms.length,
+   excerpts:ms.slice(0,3).map(function(m){return snip(q,m.index,m[0].length);})});});
+ var sents=(q.match(/[^。！？!?\n]+[。！？!?]?/g)||[]).filter(function(x){return x.trim()!=='';});
+ var ends=sents.map(function(x){var m=x.replace(/[。！？!?\s]+$/,'').match(/(?:でした|ました|です|ます|である|だった|した|いる|ない)$/);return m?m[0]:'';});
+ var i=0;
+ while(i<ends.length){
+  var j=i;
+  while(j+1<ends.length&&ends[j+1]===ends[i])j++;
+  var n=j-i+1;
+  if(ends[i]!==''&&n>=3)out.push({id:'ending',kind:'ending',title:'同じ語尾の連続',
+   tip:'「'+ends[i]+'」で終わる文が'+n+'回続いています。語尾を変えるとリズムが整うかもしれません。',count:n,
+   excerpts:sents.slice(i,Math.min(j+1,i+3)).map(function(x){return [...x.trim()].slice(-10).join('');})});
+  i=j+1;}
+ if(len<150){
+  out.push({id:'short',kind:'note',title:'短文のため構成チェックは省略しました',tip:'150字以上になると構成チェックを行います。',excerpts:[]});
+ }else{
+  var head=[...q.trim()].slice(0,60).join('');
+  STRUCT.forEach(function(r){
+   out.push({id:r.id,kind:'structure',found:r.re.test(r.head?head:q),title:r.title,tip:r.tip,excerpts:[]});});
+  if(!/[0-9０-９]/.test(q))out.push({id:'number',kind:'number',title:'数字',tip:'具体的な数字があると説得力が増す場合があります。',excerpts:[]});}
+ return out;}
+function buildShare(result){
+ var st=result&&result.status,text;
+ if(st==='ok')text='ESの文字数チェック完了：目安ラインクリア✨';
+ else if(st==='ideal')text='ESの文字数チェック完了：理想ライン到達✨';
+ else if(st==='low')text='ESの文字数をチェック中：目安ラインまであと少し！';
+ else if(st==='over')text='ESの文字数をチェック中：文字数オーバーを調整中';
+ else text='ESの文字数をチェックしました';
+ var hashtags=['就活','ES対策','ガクチカ'];
+ return {text:text,hashtags:hashtags,
+  href:'https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(BASE)+'&hashtags='+hashtags.map(encodeURIComponent).join(',')};}
+return {count:count,progress:progress,analyze:analyze,buildShare:buildShare,REDUNDANT:REDUNDANT,BASE:BASE};
+})();
+</script>
+<script id="ui">
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id);};
+function h(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==null&&x!==undefined)e.textContent=x;return e;}
+var presets=[].slice.call(document.querySelectorAll('#limitChips button[data-v]'));
+var preset=400,composing=false,timer=null,errTimer=null,srTimer=null,lastLimit=400,lastSr='';
+var LABEL={low:['△ 目安未満','wn'],ok:['○ 目安クリア','ok'],ideal:['◎ 理想ライン','ok'],over:['× 超過','ng']};
+var TONE={low:'wn',over:'ng'};
+function setPreset(v){
+ preset=v;
+ presets.forEach(function(b){b.setAttribute('aria-pressed',String(Number(b.getAttribute('data-v'))===v));});}
+function getLimit(){
+ var inp=$('limit'),v=String(inp.value).trim();
+ var bad=!!(inp.validity&&inp.validity.badInput);
+ if(v===''&&!bad)return {limit:preset,err:false};
+ var n=Number(v);
+ if(bad||v===''||!Number.isInteger(n)||n<1||n>10000)return {limit:null,err:true};
+ return {limit:n,err:false};}
+function showErr(on){
+ $('limitErr').hidden=!on;
+ if(on)$('limit').setAttribute('aria-invalid','true');else $('limit').removeAttribute('aria-invalid');
+ $('staleNote').hidden=!on;
+ $('result').setAttribute('data-stale',on?'true':'false');}
+function checkErr(now){
+ clearTimeout(errTimer);
+ if(!getLimit().err){showErr(false);return;}
+ if(now){showErr(true);return;}
+ errTimer=setTimeout(function(){if(getLimit().err)showErr(true);},1200);}
+function tag(label,found){
+ return h('li','tag '+(found?'tag--ok':'tag--no'),label+'：'+(found?'あり':'見当たらない'));}
+function setDot(n){
+ var d=$('hintDot');
+ d.hidden=!(n>0);
+ d.textContent=n>0?'見直し '+n+'件':'';}
+function renderHints(text,c){
+ var list=$('hintList'),chips=$('chips'),msg=$('hintMsg');
+ list.textContent='';chips.textContent='';setDot(0);
+ if(String(text).trim()===''){msg.textContent='文章を入れるとヒントが出ます。';return;}
+ if(c.noNewline>3000){msg.textContent='長文のためヒントの表示を省略しました。';return;}
+ var hs=ES.analyze(text),shown=0;
+ var st={};
+ hs.forEach(function(x){if(x.kind==='structure')st[x.id]=x.found;});
+ if(hs.some(function(x){return x.kind==='structure';})){
+  [['conclusion','結論'],['situation','状況'],['task','課題'],['action','行動'],['result','結果']].forEach(function(p){chips.appendChild(tag(p[1],st[p[0]]));});
+  chips.appendChild(tag('数字',!hs.some(function(x){return x.id==='number';})));
+  chips.appendChild(tag('学び（任意）',st.learning));}
+ hs.forEach(function(x){
+  if(x.kind==='structure'&&(x.found||x.id==='learning'))return;
+  var li=h('li');
+  li.appendChild(h('strong',null,x.title));
+  li.appendChild(h('span',null,'　'+x.tip));
+  x.excerpts.forEach(function(e){li.appendChild(h('q',null,e));});
+  list.appendChild(li);
+  if(x.kind!=='note')shown++;});
+ setDot(shown);
+ msg.textContent=shown===0?'いまのところ目立つ点は見つかりませんでした。これは文章の良し悪しを保証するものではありません。':'';}
+function render(){
+ var text=$('es').value;
+ var c=ES.count(text,{countNewline:$('cbNl').checked,countSpace:$('cbSp').checked});
+ var L=getLimit();
+ if(!L.err)lastLimit=L.limit;
+ var lim=L.err?lastLimit:L.limit;
+ var p=ES.progress(c.count,lim);
+ $('result').setAttribute('data-state',c.count===0?'empty':'ready');
+ $('rCount').textContent=String(c.count);
+ $('rOf').textContent=p.hasLimit?'／'+lim+'字':'字';
+ $('tCount').textContent=p.hasLimit?c.count+' / '+lim+'字':c.count+'字';
+ $('rNoSp').textContent=String(c.noSpace);
+ $('rWithNl').textContent=String(c.withNewline);
+ $('rSheets').textContent=c.sheets+'枚（切上 '+c.sheetsCeil+'枚）';
+ $('rLines').textContent=String(c.lines);
+ var v,badge=$('rBadge');
+ if(c.count===0)v='文章を入れると結果が出ます。';
+ else if(!p.hasLimit)v='指定文字数を選ぶと達成率が出ます。';
+ else if(p.status==='low')v='目安の8割まであと'+p.toOk+'字です。（目安未満）';
+ else if(p.status==='ok')v='8割の目安ラインに到達しています（一般に『合格ライン』と呼ばれる目安で、企業の公式基準ではありません）。9割以上が理想とされます（あと'+p.toIdeal+'字）。';
+ else if(p.status==='ideal')v='理想とされる9割以上です。';
+ else v='指定文字数を'+p.over+'字超えています。提出できない場合があります。';
+ $('rVerdict').textContent=v;
+ $('rate').hidden=!p.hasLimit;
+ var sr='文字数は'+c.count+'字';
+ if(p.hasLimit){
+  var w=Math.max(0,Math.min(100,p.pct));
+  $('rRate').textContent='達成率 '+p.pct+'%（'+c.count+' / '+lim+'字）';
+  $('pf').style.width=w+'%';
+  if(TONE[p.status])$('pf').setAttribute('data-tone',TONE[p.status]);else $('pf').removeAttribute('data-tone');
+  $('pb').setAttribute('aria-valuenow',String(w));
+  $('pb').setAttribute('aria-valuetext','達成率 '+p.pct+'%');
+  var lb=LABEL[p.status];
+  badge.hidden=!lb;
+  if(lb){badge.textContent=lb[0];badge.className='pill pill--'+lb[1];}
+  if(c.count>0)sr+='、達成率'+p.pct+'%'+(lb?'、'+lb[0].replace(/^[^ ]+ /,''):'');}
+ var share=ES.buildShare({status:p.hasLimit?p.status:'none'});
+ $('shareX').href=share.href;
+ renderHints(text,c);
+ scheduleSr(sr);}
+function scheduleSr(t){
+ clearTimeout(srTimer);
+ srTimer=setTimeout(function(){if(t!==lastSr){$('liveSr').textContent=t;lastSr=t;}},1500);}
+function cleanLabel(s){
+ var t=typeof s==='string'?String(s).replace(/[【】]/g,'').trim():'';
+ return t===''?'PR':t;}
+function prCard(key){
+ var K=(typeof window!=='undefined'&&window.ES_LINKS&&typeof window.ES_LINKS==='object')?window.ES_LINKS:null;
+ var L=K?K[key]:null;
+ if(!L||typeof L.url!=='string'||!/^https:\/\//.test(L.url)||typeof L.title!=='string'||typeof L.cta!=='string')return null;
+ var a=h('a','pr-cta',L.cta);
+ a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
+ a.appendChild(h('span','sr','（新しいタブで開きます）'));
+ return h2card(L,a);}
+function h2card(L,a){
+ var d=h('div','pr-card');
+ d.appendChild(h('span','pr-tag',cleanLabel(L.label)));
+ d.appendChild(h('p','pr-disc','広告を含みます'));
+ d.appendChild(h('h3',null,L.title));
+ d.appendChild(h('p',null,typeof L.desc==='string'?L.desc:''));
+ d.appendChild(a);
+ return d;}
+function renderPr(){
+ var host=$('prCards'),n=0;
+ host.textContent='';
+ ['shukatsuSite','agent','scout'].forEach(function(k){
+  if(n>=2)return;
+  var c=prCard(k);
+  if(c){host.appendChild(c);n++;}});
+ $('pr').hidden=n===0;}
+function schedule(){
+ if(composing)return;
+ clearTimeout(timer);
+ timer=setTimeout(render,120);}
+$('es').addEventListener('input',schedule);
+$('es').addEventListener('compositionstart',function(){composing=true;});
+$('es').addEventListener('compositionend',function(){composing=false;clearTimeout(timer);render();});
+presets.forEach(function(b){b.addEventListener('click',function(){
+ setPreset(Number(b.getAttribute('data-v')));$('limit').value='';render();checkErr(false);});});
+$('limit').addEventListener('input',function(){
+ var inp=$('limit');
+ if(String(inp.value).trim()!==''||(inp.validity&&inp.validity.badInput))setPreset(null);
+ render();checkErr(false);});
+$('limit').addEventListener('blur',function(){checkErr(true);});
+$('cbNl').addEventListener('change',render);
+$('cbSp').addEventListener('change',render);
+$('clr').addEventListener('click',function(){$('es').value='';render();$('es').focus();});
+[].slice.call(document.querySelectorAll('[data-open]')).forEach(function(a){
+ a.addEventListener('click',function(){
+  var t=$(a.getAttribute('data-open'));
+  if(t&&t.tagName==='DETAILS')t.open=true;});});
+renderPr();
+render();
+})();
+</script>
+</body>
+</html>

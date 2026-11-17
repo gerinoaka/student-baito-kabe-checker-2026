@@ -6,7 +6,8 @@
 <title>掛け持ちバイトの源泉徴収・還付金チェッカー2026｜確定申告の目安</title>
 <meta name="description" content="掛け持ちバイトの支払金額と源泉徴収税額を入れるだけで、令和8年分（2026年）の年税額と還付の目安を計算。乙欄で引かれた税金が戻るか、確定申告が必要かの整理つき。最終確認日2026-11-17。無料ツール。">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#0b5fa5">
+<meta name="theme-color" content="#f8fafc">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/kakemochi/">
 <meta property="og:title" content="掛け持ちバイトの源泉徴収・還付金チェッカー2026｜確定申告の目安">
 <meta property="og:description" content="掛け持ちバイトの支払金額と源泉徴収税額を入れるだけで、令和8年分（2026年）の年税額と還付の目安を計算。乙欄で引かれた税金が戻るか、確定申告が必要かの整理つき。最終確認日2026-11-17。無料ツール。">
@@ -22,142 +23,323 @@
 {"@type":"Question","name":"乙欄・甲欄とは何ですか？","acceptedAnswer":{"@type":"Answer","text":"甲欄は扶養控除等申告書を提出している勤務先の源泉徴収、乙欄は提出していない勤務先（掛け持ちの2か所目など）の源泉徴収です。乙欄は税率が高く、年末調整もされないため、掛け持ちでは還付や確定申告が関係しやすくなります（個別の判断は要確認）。"}},
 {"@type":"Question","name":"還付申告はいつまでにすればいいですか？","acceptedAnswer":{"@type":"Answer","text":"還付申告は、その年の翌年1月1日から5年間、確定申告の期間と関係なく提出できます。令和8年分は令和9年1月1日から令和13年12月31日までです。"}},
 {"@type":"Question","name":"源泉徴収税額が0円でも還付されますか？","acceptedAnswer":{"@type":"Answer","text":"源泉徴収票の源泉徴収税額が0円の場合、申告しても還付される所得税はありません。還付になるのは、年内に引かれた所得税が年税額より多いときです。"}},
-{"@type":"Question","name":"令和8年分で所得税がかからない給与収入はいくらまでですか？","acceptedAnswer":{"@type":"Answer","text":"給与のみの学生で、令和8年分は給与収入178万円以下なら年税額は0円です（基礎控除104万円と給与所得控除の最低保障74万円の合計）。令和7年分は160万円でした。"}}
+{"@type":"Question","name":"令和8年分で所得税がかからない給与収入はいくらまでですか？","acceptedAnswer":{"@type":"Answer","text":"給与のみの学生で、令和8年分は給与収入178万円以下なら年税額は0円です（基礎控除104万円と給与所得控除の最低保障74万円の合計）。令和7年分は160万円でした。"}},
+{"@type":"Question","name":"掛け持ちバイトは確定申告が必要ですか？","acceptedAnswer":{"@type":"Answer","text":"給与が2か所以上で、年末調整されなかった給与と給与以外の所得の合計が20万円を超えると、確定申告が必要になる場合があります（国税庁 No.1900）。給与収入から雑損・医療費・寄附金・基礎控除以外の所得控除を引いた額が150万円以下で、給与以外の所得が20万円以下なら不要とされますが、令和8年分での扱いは要確認です。還付を受けるための申告は、条件に当たらなくても任意でできます。"}},
+{"@type":"Question","name":"掛け持ちバイトは親にバレますか？確定申告との関係は？","acceptedAnswer":{"@type":"Answer","text":"確定申告の内容は住民税にも反映されます（二次情報による一部確認）。住民税の通知の届き方は市区町村の運用で異なり、未確認です。親の健保の扶養に入っている場合は、認定後も保険者が年1回以上収入を確認します（健保組合で要確認）。"}},
+{"@type":"Question","name":"バイトの源泉徴収票はいつもらえますか？","acceptedAnswer":{"@type":"Answer","text":"令和8年分の源泉徴収票は、12月以後に勤務先から交付されます。紛失したときは勤務先に再発行を依頼してください（一般的な対応のため要確認）。このツールには、各勤務先の「支払金額」と「源泉徴収税額」を入力します。"}},
+{"@type":"Question","name":"年末調整を受けていないバイトの給料はどうなりますか？","acceptedAnswer":{"@type":"Answer","text":"年末調整は原則、扶養控除等申告書を出した勤務先で行われます。出していない乙欄の給与や従たる給与は年末調整されないため、確定申告で精算します。令和8年12月の年末調整では改正後の控除（基礎控除104万円など）で精算されるため、年末調整前の給与明細の金額は見込みとして扱ってください。"}},
+{"@type":"Question","name":"乙欄の源泉徴収税率はいくらですか？","acceptedAnswer":{"@type":"Answer","text":"令和8年分の月額表では、社会保険料控除後の給与が105,000円未満のとき3.063%です（令和2〜7年分は88,000円未満、令和9年分は111,000円未満。いずれも一部確認）。それ以上は税額表で決まるため、このツールでは給与明細の実額の入力をおすすめします。"}},
+{"@type":"Question","name":"確定申告はどこで、どうやってしますか？","acceptedAnswer":{"@type":"Answer","text":"国税庁の確定申告書等作成コーナーで、すべての勤務先の支払金額と源泉徴収税額を入力し、e-Taxまたは税務署へ提出します。還付金は指定した口座に振り込まれ、時期は税務署によります。還付申告は令和9年1月1日から令和13年12月31日まで提出できます。"}},
+{"@type":"Question","name":"勤労学生控除を使うと還付は増えますか？","acceptedAnswer":{"@type":"Answer","text":"給与のみの学生では、令和8年分の所得税への追加効果はありません。178万円以下なら控除なしでも年税額が0円のためです。適用の上限は合計所得89万円以下（給与収入163万円以下）、控除額は27万円で、住民税の所得割に効きます。扶養控除等申告書の勤労学生欄で申告し、乙欄の勤務先では適用されません。"}},
+{"@type":"Question","name":"社会保険料が引かれていると、還付は変わりますか？","acceptedAnswer":{"@type":"Answer","text":"社会保険料控除は、実際に支払った（給与から天引きされた）社会保険料の全額が対象です（国税庁 No.1130）。国民年金などを自分で納めた分があれば、入力欄「社会保険料等」に加えてください。学生は社会保険が原則対象外のため、0円のことが多いです。なお給与収入178万円以下の範囲では年税額が0円のため、還付額は変わりません。"}}
 ]}</script>
 <style>
-:root{--bg:#fff;--fg:#1f2933;--pri:#0b5fa5;--ok:#146c43;--okb:#e6f4ea;--ng:#b42318;--ngb:#fdecea;--wn:#8a5a00;--wnb:#fff4d6;--ln:#d0d7de;--cd:#f6f8fa}
-@media(prefers-color-scheme:dark){:root{--bg:#12171d;--fg:#e6edf3;--pri:#6cb6ff;--ok:#56d364;--okb:#12261a;--ng:#ff8a80;--ngb:#3a1816;--wn:#e3b341;--wnb:#33280a;--ln:#3a444e;--cd:#1a2129}}
+/*ds:start v1*/
+:root{color-scheme:light dark;
+--bg:#f8fafc;--card:#fff;--soft:#f1f5f9;--fg:#0f172a;--sub:#475569;
+--primary:#1a56c4;--on-primary:#fff;--primary-soft:#e8f0fd;
+--track:#e2e8f0;--tick:#64748b;
+--ok-bg:#dcfce7;--ok-fg:#166534;--ng-bg:#fee2e2;--ng-fg:#991b1b;--wn-bg:#fef3c7;--wn-fg:#92400e;--nt-bg:#e2e8f0;--nt-fg:#334155;
+--ok:#15803d;--wn:#b45309;--ng:#dc2626;
+--shadow:0 1px 2px rgba(15,23,42,.04),0 4px 16px rgba(15,23,42,.05);
+--shadow-hero:0 1px 2px rgba(15,23,42,.05),0 10px 28px rgba(15,23,42,.08);
+--r-card:20px;--r-in:16px;--r-pill:999px;
+--s1:8px;--s2:16px;--s3:20px;--s4:24px;--s5:32px;
+--ring:#1a56c4;--t:.18s}
+@media(prefers-color-scheme:dark){:root{
+--bg:#0b1220;--card:#111a2e;--soft:#16213a;--fg:#e5edf8;--sub:#a9b6c9;
+--primary:#60a5fa;--on-primary:#0b1220;--primary-soft:#172554;
+--track:#26324a;--tick:#94a3b8;
+--ok-bg:#14532d;--ok-fg:#bbf7d0;--ng-bg:#7f1d1d;--ng-fg:#fecaca;--wn-bg:#78350f;--wn-fg:#fde68a;--nt-bg:#1e293b;--nt-fg:#cbd5e1;
+--ok:#4ade80;--wn:#fbbf24;--ng:#f87171;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+--shadow-hero:0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.4);
+--ring:#93c5fd}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 "Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,sans-serif}
-.w{max-width:720px;margin:0 auto;padding:0 16px 40px}
-h1{font-size:1.4rem;line-height:1.4;margin:20px 0 8px}
-h2{font-size:1.2rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:2px solid var(--pri)}
-h3{font-size:1.05rem;margin:14px 0 4px}
-a{color:var(--pri)}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;-webkit-tap-highlight-color:transparent}
+.w{max-width:640px;margin:0 auto;padding:0 16px 96px}
+h1{font-size:1.375rem;line-height:1.4;font-weight:700;margin:12px 0 8px;letter-spacing:.01em;font-feature-settings:"palt"}
+h2{font-size:1.05rem;font-weight:700;margin:0 0 8px}
+h3{font-size:1rem;margin:14px 0 4px}
+.ct{font-size:1.05rem;font-weight:700;margin:0 0 12px;font-feature-settings:"palt"}
+summary h2,summary h3{display:inline;font-size:1.05rem;margin:0;font-feature-settings:"palt"}
+a{color:var(--primary)}
 ul,ol{padding-left:1.3em}
-.note,.warn{border-radius:6px;padding:8px 12px;margin:12px 0;font-size:.92rem}
-.note{background:var(--wnb);color:var(--wn);border:1px solid var(--wn)}
-.warn{background:var(--ngb);color:var(--ng);border:1px solid var(--ng);font-weight:700}
-.note ul{margin:0;padding-left:1.1em}
-fieldset{border:1px solid var(--ln);border-radius:6px;margin:0 0 14px;padding:8px 12px}
-legend{font-weight:700;padding:0 4px}
-.fld{margin:0 0 14px}
-label.l{display:block;font-weight:700;margin-bottom:4px}
-input[type=text]{width:100%;min-height:48px;padding:8px 12px;font-size:16px;border:1px solid var(--ln);border-radius:6px;background:var(--bg);color:var(--fg)}
-input[aria-invalid=true]{border-color:var(--ng);border-width:2px}
-.hint{font-size:.85rem;margin:4px 0 0;opacity:.85}
-.err{color:var(--ng);background:var(--ngb);border-radius:4px;padding:4px 8px;margin:4px 0 0;font-size:.9rem;font-weight:700}
-.err::before{content:"\26A0  "}
-details.d{border:1px solid var(--ln);border-radius:6px;padding:8px 12px;margin:0 0 14px}
-details.d>summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
-.cb{display:flex;align-items:center;gap:8px;min-height:44px}
-.cb input{width:22px;height:22px;margin:0}
-button{min-height:48px;font:inherit;font-weight:700;border-radius:6px;border:2px solid var(--pri);padding:0 16px;cursor:pointer}
-.pri{background:var(--pri);color:var(--bg);width:100%;margin-bottom:10px}
-.sec{background:var(--bg);color:var(--pri);width:100%;margin-bottom:10px}
+button{font:inherit;border:0;cursor:pointer}
 button:disabled{opacity:.5;cursor:not-allowed}
-:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
-.sum{background:var(--cd);border:1px solid var(--ln);border-radius:6px;padding:10px 14px}
-.sum p{margin:2px 0}.big{font-size:1.25rem;font-weight:700}
-.tw{overflow-x:auto;margin:10px 0}
-table{border-collapse:collapse;width:100%;min-width:480px;font-size:.88rem}
-th,td{border:1px solid var(--ln);padding:6px 8px;text-align:left;vertical-align:top}
-th{background:var(--cd)}
-caption{text-align:left;font-weight:700;padding:4px 0}
-.badge{font-size:.75rem;border:1px solid var(--fg);border-radius:10px;padding:0 8px;margin-left:6px}
-.src{font-size:.82rem;word-break:break-all}
-.faq h3{margin-top:14px}.faq p{margin:4px 0}
-footer{font-size:.85rem;opacity:.85;margin-top:24px}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-.navb{display:flex;flex-wrap:wrap;gap:0 14px;margin:6px 0 0;padding:0;font-size:.9rem}
-.navb a{display:inline-flex;align-items:center;min-height:44px}
-.navb a[aria-current=page]{font-weight:700;color:var(--fg);text-decoration:none}
-.tools{margin:32px 0 0}
-.tl{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-.tl a{display:block;min-height:44px;padding:10px 12px;border:1px solid var(--ln);border-radius:6px;background:var(--cd);color:var(--fg);text-decoration:none}
-.tl a strong{display:block;color:var(--pri)}
-.tl a span{font-size:.88rem}
-.tl a[aria-current=page]{border:2px solid var(--pri)}
-.pr-card{border:1px solid var(--ln);border-radius:6px;padding:10px 14px;margin:10px 0;background:var(--cd)}
-.pr-card h4{margin:6px 0;font-size:1rem}
-.pr-card p{margin:4px 0}
-.pr-tag{display:inline-block;font-size:.75rem;font-weight:700;border:1px solid var(--fg);border-radius:4px;padding:0 6px}
-.pr-cta,.sh{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:6px;background:var(--pri);color:var(--bg);font-weight:700;text-decoration:none;text-align:center}
-.shw{margin:10px 0 2px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;z-index:9;padding:8px 12px;background:var(--primary);color:var(--on-primary)}
+.skip:focus{left:0}
+.navb{display:flex;gap:8px;margin:12px -16px 0;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.navb::-webkit-scrollbar{display:none}
+.navb a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-size:.875rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.navb a[aria-current=page]{background:var(--primary);color:var(--on-primary)}
+.band{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:0 0 var(--s2);font-size:.85rem;line-height:1.5}
+.band a{flex:none;display:inline-flex;align-items:center;min-height:44px;margin:-8px 0;color:var(--wn-fg);font-weight:700;white-space:nowrap}
+.warn{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.9rem;font-weight:700}
+.note{background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.875rem}
+.card{background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);padding:var(--s3);margin:0 0 var(--s2)}
+.rc{box-shadow:var(--shadow-hero);padding:var(--s4)}
+.panel{background:var(--soft);border-radius:var(--r-in);padding:var(--s2)}
+@media(max-width:400px){.card{padding:var(--s2)}.rc{padding:var(--s3)}}
+.kpi-l{margin:0;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.big{margin:2px 0 4px;font-size:2.25rem;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+.big small{margin-left:4px;font-size:1rem;font-weight:700;letter-spacing:0}
+@media(min-width:400px){.big{font-size:2.5rem}}
+.mid{margin:2px 0;font-size:1.375rem;font-weight:700;line-height:1.3}
+.sumline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 4px}
+.stats{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0 0;padding:0}
+.stats[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.stats>*{min-width:0;margin:0;padding:8px 12px;border-radius:var(--r-in);background:var(--soft)}
+.stats dt,.stats .k{display:block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.stats dd,.stats .v{display:block;margin:0;font-weight:700}
+.hint{font-size:.875rem;line-height:1.6;color:var(--sub);margin:6px 0 0}
+.stale{font-size:.875rem;color:var(--sub);margin:8px 0 0}
+.confirm{font-size:.875rem;color:var(--sub);margin:12px 0 0}
+.confirm a,.risk a{display:inline-flex;align-items:center;min-height:44px}
+.risk{margin:12px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--wn-bg);color:var(--wn-fg);font-size:.875rem;line-height:1.6}
+.risk a{color:var(--wn-fg);font-weight:700}
+.safe{margin:8px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--ok-bg);color:var(--ok-fg);font-size:.875rem;font-weight:700;line-height:1.6}
+.pill{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:2px 12px;border-radius:var(--r-pill);font-weight:700;font-size:.9rem;line-height:1.3}
+.pill--ok{background:var(--ok-bg);color:var(--ok-fg)}
+.pill--ng{background:var(--ng-bg);color:var(--ng-fg)}
+.pill--wn{background:var(--wn-bg);color:var(--wn-fg)}
+.pill--nt{background:var(--nt-bg);color:var(--nt-fg)}
+.dot{margin-left:8px;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.75rem;font-weight:700}
+.fld{margin:0 0 var(--s2)}
+label.l{display:block;font-weight:700;margin:0 0 6px}
+.num{position:relative}
+.num input{display:block;width:100%;min-height:56px;margin:0;padding:0 44px 0 16px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;-moz-appearance:textfield;appearance:textfield}
+.num input::-webkit-outer-spin-button,.num input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.num .unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--sub);font-weight:700;pointer-events:none}
+.num--sm input{min-height:48px;font-size:1.125rem;text-align:right}
+.num input[aria-invalid=true],.stepper input[aria-invalid=true],textarea[aria-invalid=true]{box-shadow:inset 0 0 0 2px var(--ng)}
+select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit}
+textarea{display:block;width:100%;min-height:168px;padding:12px 14px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;line-height:1.7;resize:vertical}
+.err{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:6px 12px;margin:8px 0 0;font-size:.9rem;font-weight:700}
+.err::before{content:"\26A0  "}
+.range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:4px 0 0;padding:0;background:transparent;cursor:pointer;--pct:0%}
+.range::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-moz-range-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range::-moz-range-thumb{box-sizing:border-box;width:28px;height:28px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range.is-empty::-webkit-slider-thumb{border-color:var(--tick)}
+.range.is-empty::-moz-range-thumb{border-color:var(--tick)}
+.range:disabled{opacity:.5;cursor:not-allowed}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 0}
+.chips[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.chips[data-cols="6"]{grid-template-columns:repeat(6,1fr)}
+@media(max-width:359px){.chips[data-cols="4"]{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:374px){.chips[data-cols="6"]{grid-template-columns:repeat(3,1fr)}}
+.chip{min-height:44px;min-width:44px;padding:0 6px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-weight:700;white-space:nowrap;transition:background var(--t),color var(--t)}
+.chip[aria-pressed=true]{background:var(--primary);color:var(--on-primary)}
+.chip[aria-pressed=true]::before{content:"\2713  "}
+.chips[data-cols="6"] .chip[aria-pressed=true]::before{content:"\2713"}
+.seg-group{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;border:0;margin:0 0 var(--s2);padding:0;min-width:0}
+.seg-group[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.seg-group[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.seg-group legend{padding:0;margin:0 0 8px;font-weight:700}
+.seg{position:relative;display:block;min-width:0}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.seg span{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:48px;padding:6px 8px;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font-weight:700;font-size:.95rem;text-align:center;line-height:1.35;cursor:pointer;transition:background var(--t),color var(--t)}
+.seg small{font-size:.8rem;font-weight:400}
+.seg input:checked+span{background:var(--primary);color:var(--on-primary)}
+.seg input:checked+span::before{content:"\2713";position:absolute;top:4px;right:8px;font-size:.75rem}
+.seg input:focus-visible+span{outline:3px solid var(--ring);outline-offset:2px}
+.stepper{display:flex;align-items:center;gap:12px}
+.stepper button{flex:none;width:52px;height:52px;border-radius:50%;background:var(--soft);color:var(--fg);font-size:1.5rem;font-weight:700;line-height:1}
+.stepper input{width:72px;min-height:52px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;text-align:center}
+.stepper .unit{color:var(--sub);font-weight:700}
+.cb{display:flex;align-items:center;gap:10px;min-height:44px;margin:0 0 var(--s1)}
+.cb input{flex:none;width:22px;height:22px;margin:0;accent-color:var(--primary)}
+.cb--sw input{-webkit-appearance:none;appearance:none;position:relative;width:46px;height:28px;border-radius:14px;background:var(--tick);cursor:pointer;transition:background var(--t)}
+.cb--sw input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--card);transition:left var(--t)}
+.cb--sw input:checked{background:var(--primary)}
+.cb--sw input:checked::after{left:21px}
+.btn,.btn-ghost,.sh,.pr-cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;padding:0 16px;border-radius:var(--r-in);font-weight:700;text-decoration:none;text-align:center}
+.btn{background:var(--primary);color:var(--on-primary)}
+.btn-ghost{background:var(--soft);color:var(--primary)}
+.btn-text{min-height:44px;padding:0 12px;background:none;color:var(--primary);font-weight:700}
+.sh{background:var(--fg);color:var(--bg)}
+.go-row{display:grid;gap:8px;margin-top:var(--s2)}
+.gauge{position:relative;height:64px;margin:12px 12px 4px}
+.g-now{position:absolute;top:0;white-space:nowrap;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.8rem;font-weight:700;line-height:1.5}
+.g-track{position:absolute;left:0;right:0;top:28px;height:14px;border-radius:7px;background:var(--track);overflow:hidden}
+.g-fill{width:0;height:100%;border-radius:7px;background:var(--ok);transition:width var(--t)}
+.g-fill[data-tone=wn]{background:var(--wn)}
+.g-fill[data-tone=ng]{background:var(--ng)}
+.g-tick{position:absolute;top:24px;width:2px;height:22px;margin-left:-1px;background:var(--tick)}
+.g-thumb{position:absolute;top:24px;left:0;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--card);border:4px solid var(--primary);transition:left var(--t)}
+.g-labels{position:absolute;left:0;right:0;top:48px;height:16px;font-size:.72rem;line-height:16px;color:var(--sub)}
+.g-labels span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.gauge--bar{height:40px;margin:8px 0 4px}
+.gauge--bar .g-track{top:0}
+.gauge--bar .g-tick{top:-4px}
+.gauge--bar .g-labels{top:20px}
+.g-cap{margin:6px 0 0;font-size:.875rem;color:var(--sub)}
+.acc{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2)}
+.acc>summary{display:flex;align-items:center;gap:8px;min-height:56px;padding:0 20px;cursor:pointer;list-style:none;font-weight:700}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary::after{content:"";flex:none;margin:0 4px 4px auto;width:9px;height:9px;border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg);transition:transform var(--t)}
+.acc[open]>summary::after{margin-bottom:-4px;transform:rotate(-135deg)}
+.acc-body,.acc>section{padding:0 20px 20px}
+.acc-list{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2);overflow:hidden}
+.acc-list>.acc{margin:0;border-radius:0;background:none}
+.acc-list>.acc:not(:first-child){border-top:1px solid var(--soft)}
+.acc--inline{background:var(--soft);border-radius:var(--r-in)}
+.acc--inline>summary{min-height:48px;padding:0 16px}
+.acc--inline>.acc-body{padding:0 16px 16px}
+@media(max-width:400px){.acc>summary{padding:0 16px}.acc-body,.acc>section{padding:0 16px 16px}}
+.tw{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;width:100%;min-width:400px;font-size:.88rem}
+th,td{padding:8px 10px;text-align:left;vertical-align:top}
+th{color:var(--sub);font-weight:700}
+td.n{text-align:right;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--soft)}
+caption{text-align:left;font-weight:700;padding:4px 0}
+.faq h3{margin:14px 0 0}
+.faq p{margin:4px 0}
+dl.g dt{font-weight:700;margin:12px 0 0}
+dl.g dd{margin:2px 0 0}
+.shw{margin:0 0 4px}
+.pr-wrap{margin-top:var(--s3)}
+.pr-note{margin:0 0 8px;font-size:.875rem;line-height:1.6;color:var(--sub)}
+.pr-card{background:var(--soft);border-radius:var(--r-in);padding:var(--s2);margin:12px 0 0}
+.pr-card h3,.pr-card h4{margin:6px 0;font-size:1rem}
+.pr-card p{margin:4px 0;font-size:.9rem}
+.pr-tag{display:inline-block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.pr-tag::before{content:"\3010"}
+.pr-tag::after{content:"\3011"}
+.pr-disc{display:inline;margin:0 0 0 4px;font-size:.8125rem;color:var(--sub)}
+.pr-cta{min-height:48px;margin-top:10px;background:var(--card);color:var(--primary)}
+.ad-slot{min-height:250px;margin:0 0 var(--s2);display:flex;align-items:flex-start;justify-content:center;border-radius:var(--r-in)}
+.ad-label{font-size:.75rem;color:var(--sub);padding:4px}
+.rel{margin:var(--s5) 0 0}
+.rel-t{margin:0 0 8px;font-size:1.05rem;font-weight:700;font-feature-settings:"palt"}
+.rel .tools,.rel .sisters{background:var(--card);border-radius:var(--r-card);padding:8px;margin:0 0 var(--s2)}
+.rel h2{margin:8px 12px 4px;font-size:.8125rem;color:var(--sub)}
+.tl{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.tl a{position:relative;display:block;min-height:56px;padding:10px 36px 10px 12px;border-radius:var(--r-in);color:var(--fg);text-decoration:none;transition:background var(--t)}
+.tl a::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;margin-top:-4px;border-top:2px solid var(--sub);border-right:2px solid var(--sub);transform:rotate(45deg)}
+.tl a:hover{background:var(--soft)}
+.tl a strong{display:block;font-size:.95rem;line-height:1.5}
+.tl a span{display:block;font-size:.8125rem;color:var(--sub)}
+.tl a[aria-current=page]{background:var(--primary-soft)}
+.tl a[aria-current=page]::after{display:none}
+footer{font-size:.85rem;color:var(--sub);margin-top:var(--s4)}
+.foot-links{margin:0 0 var(--s1)}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px}
+footer h2{font-size:1rem;margin:12px 0 6px}
+.livebar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:640px;min-height:56px;margin:0 auto;padding:0 16px env(safe-area-inset-bottom);background:var(--card);box-shadow:0 -4px 16px rgba(15,23,42,.12);font-weight:700}
+.livebar button{flex:none;min-height:44px;padding:0 16px;border-radius:var(--r-pill);background:var(--primary);color:var(--on-primary);font-weight:700}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+/*ds:end*/
+.job{position:relative;min-width:0;margin:0 0 12px;padding:var(--s2);border:0;border-radius:var(--r-in);background:var(--soft)}
+.job legend{padding:0;font-weight:700}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pair>*{min-width:0}
+.job .num input{background:var(--card)}
+.job .chip{margin:8px 0 0;background:var(--card)}
+.job .chip[aria-pressed=true]{background:var(--primary)}
+.del{position:absolute;top:2px;right:6px;min-width:44px;min-height:44px;background:none;color:var(--ng-fg);font-weight:700}
+.src{font-size:.82rem;word-break:break-all}
+.src a{display:inline-block;padding:12px 0}
+select{margin:0 0 4px}
 </style>
 </head>
 <body>
 <div class="w">
 <header>
-<h1>掛け持ちバイトの源泉徴収・還付金チェッカー（令和8年分・2026年）</h1>
-<p>掛け持ちバイトの収入と、源泉徴収票・給与明細の「源泉徴収税額」を入れると、令和8年分の年税額の目安と、還付（または追加納付）の目安が分かります。</p>
-<div class="note" role="note"><ul>
-<li>対象: 令和8年分（2026年1〜12月の収入）</li>
-<li>最終確認日: 2026-11-17</li>
-<li>この結果は目安です。実際の還付額は確定申告書の作成（税務署・e-Tax）で確定します。</li></ul></div>
-<div class="warn" id="yearWarn" role="note" hidden>このページは令和8年分（2026年の収入）用です。今年分の制度は変更されている可能性があります。必ず最新の公式情報をご確認ください。</div>
 <nav class="navb" aria-label="学生バイトお役立ちツール">
 <a href="../">壁チェッカー</a>
 <a href="./" aria-current="page">掛け持ち還付</a>
 <a href="../shift-limit/">シフト逆算</a>
+<a href="#sisters">ほかのツール</a>
 </nav>
+<h1>掛け持ちバイトの源泉徴収・還付金チェッカー（令和8年分・2026年）</h1>
+<div class="band" role="note"><span>目安です。対象：令和8年分（2026年）／最終確認日 2026-11-17</span><a href="#legal" data-open="legal">免責</a></div>
+<div class="warn" id="yearWarn" role="note" hidden>このページは令和8年分（2026年の収入）用です。今年分の制度は変更されている可能性があります。必ず最新の公式情報をご確認ください。</div>
 </header>
 <main>
-<section id="input">
-<h2>勤務先の収入と源泉徴収税額を入れる</h2>
+<section id="input" class="card">
+<h2 class="ct">勤務先の収入と源泉徴収税額を入れる</h2>
 <form id="f" novalidate>
 <div id="jobs"></div>
 <p class="err" id="e-jobs" role="alert" hidden></p>
-<button type="button" class="sec" id="addJob">勤務先を追加</button>
+<button type="button" class="btn btn-ghost" id="addJob">勤務先を追加</button>
+<details class="acc acc--inline" id="hintsAcc" style="margin-top:16px"><summary>入力のヒント（源泉徴収票のどこを見る？）</summary><div class="acc-body" id="hints"></div></details>
+<details class="acc acc--inline" id="advanced"><summary>詳細設定</summary><div class="acc-body">
 <div class="fld"><label class="l" for="social">社会保険料等の合計（円・任意、空欄=0）</label>
-<input id="social" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 0" aria-describedby="e-social h-social">
+<div class="num num--sm"><input id="social" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 0" aria-describedby="e-social h-social"><span class="unit">円</span></div>
 <p class="err" id="e-social" role="alert" hidden></p>
 <p class="hint" id="h-social">全勤務先の源泉徴収票の「社会保険料等の金額」の合計。国民年金などを自分で納めた分があれば加えます。学生は0のことが多いです。</p></div>
-<details class="d"><summary>詳細設定</summary>
-<label class="cb"><input type="checkbox" id="student"><span>勤労学生控除を使う（学校に在学、給与以外の所得10万円以下）</span></label>
-<p class="hint">給与のみの場合、令和8年分の所得税への追加効果はありません（住民税に効きます）。</p></details>
-<button type="submit" class="pri" id="go">還付の目安を計算する</button>
-<button type="button" class="sec" id="rst">入力をリセット</button>
+<label class="cb cb--sw"><input type="checkbox" id="student"><span>勤労学生控除を使う（学校に在学、給与以外の所得10万円以下）</span></label>
+<p class="hint">給与のみの場合、令和8年分の所得税への追加効果はありません（住民税に効きます）。</p>
+<div class="fld" style="margin-top:16px"><h3>乙欄の源泉徴収税額を概算する（任意・目安）</h3>
+<label class="l" for="otsuRow">対象の勤務先</label><select id="otsuRow"></select>
+<label class="l" for="otsuMo" style="margin-top:8px">月の給与（社会保険料控除後・円）</label>
+<div class="num num--sm"><input id="otsuMo" type="text" inputmode="numeric" autocomplete="off" aria-describedby="h-otsu"><span class="unit">円</span></div>
+<label class="l" for="otsuMn" style="margin-top:8px">月数（1〜12）</label>
+<div class="num num--sm"><input id="otsuMn" type="text" inputmode="numeric" autocomplete="off"><span class="unit">か月</span></div>
+<p class="hint" id="h-otsu">乙欄（扶養控除等申告書を出していない勤務先）で、月払い・令和8年分のとき、月の給与が105,000円未満の場合だけ使えます（3.063%で概算）。それ以外は明細の実額を入力してください。</p>
+<p class="err" id="e-otsu" role="alert" hidden></p>
+<button type="button" class="btn btn-ghost" id="otsuEst" style="margin-top:8px">概算して源泉徴収税額に入れる</button></div>
+</div></details>
+<div class="go-row"><button type="submit" class="btn btn-ghost" id="go">還付の目安を計算する</button>
+<button type="button" class="btn-text" id="rst">入力をリセット</button></div>
 </form>
 </section>
 
-<section id="result" hidden aria-live="polite">
-<h2 id="resultH" tabindex="-1">計算結果</h2>
-<h3>年税額と還付の目安</h3>
-<div class="sum"><p class="big" id="rBig"></p><p id="rSub"></p></div>
-<div class="tw"><table><caption>内訳（令和8年分・目安）</caption><thead><tr><th>項目</th><th>金額</th></tr></thead><tbody id="rBody"></tbody></table></div>
-<h3>確定申告は必要？</h3>
-<p id="rFile"></p>
-<p id="rRefundTerm" hidden>還付申告は任意で、令和9年1月1日から令和13年12月31日まで（5年間）提出できます。</p>
-<h3>手続きの流れ</h3>
-<ol>
+<section id="result" data-state="empty" data-stale="false">
+<p id="liveSr" class="sr" aria-live="polite" aria-atomic="true"></p>
+<div class="card rc">
+<div id="resultEmpty"><p id="emptyTxt">勤務先ごとの支払金額と源泉徴収税額を入れると、還付の目安がここに出ます。</p></div>
+<div id="resultBody" hidden>
+<h2 id="resultH" class="ct">計算結果</h2>
+<p class="kpi-l" id="rLabel">還付の目安</p>
+<p class="big" id="rBig">0円</p>
+<p class="sumline"><span class="pill pill--nt" id="rKind"></span></p>
+<p id="rSub" class="hint"></p>
+<p class="stale" id="staleNote" hidden>入力が途中のため、直前の結果を表示しています</p>
+<p class="confirm">確認先: 国税庁・税務署（<a href="#rFileAcc" data-open="rFileAcc">申告の必要性を見る</a>）</p>
+</div>
+</div>
+<div class="acc-list">
+<details class="acc" id="rTableAcc" hidden><summary>内訳（令和8年分・目安）</summary><div class="acc-body"><div class="tw"><table><thead><tr><th>項目</th><th>金額</th></tr></thead><tbody id="rBody"></tbody></table></div></div></details>
+<details class="acc" id="rFileAcc" hidden><summary>確定申告は必要？</summary><div class="acc-body"><p id="rFile"></p>
+<p id="rRefundTerm" hidden>還付申告は任意で、令和9年1月1日から令和13年12月31日まで（5年間）提出できます。</p></div></details>
+<details class="acc" id="rFlowAcc"><summary>手続きの流れ</summary><div class="acc-body"><ol>
 <li>勤務先ごとに令和8年分の源泉徴収票を受け取ります（12月以後に交付されます）。</li>
 <li>国税庁の「確定申告書等作成コーナー」で、すべての勤務先の支払金額と源泉徴収税額を入力します。</li>
 <li>e-Taxまたは税務署へ提出します（還付申告は令和9年1月1日〜令和13年12月31日）。</li>
 <li>還付される場合は、指定した口座に振り込まれます（時期は税務署によります）。</li>
-<li>確定申告の内容は住民税にも反映されます（住民税額は市区町村で確定します。一部確認）。</li></ol>
-<div class="note" role="note"><ul>
+<li>確定申告の内容は住民税にも反映されます（住民税額は市区町村で確定します。一部確認）。</li></ol></div></details>
+<details class="acc" id="rNoteAcc"><summary>計算の前提と注意</summary><div class="acc-body"><ul>
 <li>年税額の100円未満切捨は一次情報で未確認のため、目安として表示しています。</li>
 <li>令和8年12月の年末調整で、改正後の控除（基礎控除104万円など）で精算されます。年末調整前の明細の金額は見込みとして扱ってください。</li>
 <li>給与のみ（他の所得なし）、支払金額の合計が206万円以下の場合を想定しています。</li>
-<li>壁チェッカーでは178万円を1円でも超えると「所得税がかかる」と判定しますが、年税額が100円未満になる帯（178万1円〜178万1,999円）では、この計算では0円と表示される場合があります（100円未満切捨は目安）。</li></ul></div>
-<div id="prWrap" hidden>
-<h3>次のおすすめアクション</h3>
+<li>壁チェッカーでは178万円を1円でも超えると「所得税がかかる」と判定しますが、年税額が100円未満になる帯（178万1円〜178万1,999円）では、この計算では0円と表示される場合があります（100円未満切捨は目安）。</li></ul></div></details>
+</div>
+<div class="card" id="actions" hidden>
+<p class="shw"><a id="shareX" class="sh" href="https://x.com/intent/tweet" target="_blank" rel="noopener noreferrer">X で還付チェック結果をシェア<span class="sr"> （新しいタブで開きます）</span></a></p>
+<p class="hint">押すと X の投稿画面が開きます。投稿文には金額は入りません。投稿前に内容を確認できます。</p>
+<div id="prWrap" class="pr-wrap" hidden>
+<h3 class="ct">次のおすすめアクション</h3>
+<p class="pr-note">「PR」は広告（アフィリエイト）です。リンク先では各サービスの規約・年齢条件をご確認ください。</p>
 <div id="prCards"></div>
-<p class="hint">「PR」は広告（アフィリエイト）です。リンク先では各サービスの規約・年齢条件をご確認ください。</p>
 </div>
 <ul class="tl"><li><a href="../"><strong>年収の壁チェッカー（本人の所得税・親の控除・健保の扶養）へ</strong></a></li></ul>
+</div>
 </section>
-
-<section id="otsu">
-<h2>乙欄の税金を概算するときの注意</h2>
+<div class="acc-list">
+<details class="acc" id="aboutAcc"><summary><h2>このツールでわかること</h2></summary><div class="acc-body"><p>掛け持ちバイトの収入と、源泉徴収票・給与明細の「源泉徴収税額」を入れると、令和8年分の年税額の目安と、還付（または追加納付）の目安が分かります。</p></div></details>
+<details class="acc"><summary><h2>乙欄の税金を概算するときの注意</h2></summary><section id="otsu">
 <p>乙欄の税額は年分と給与の額で変わります。令和8年分（令和8年1〜12月支払）は、月の給与（社保控除後）が105,000円未満なら3.063%、105,000円以上は税額表で決まるため、明細の実額を入力してください。令和9年分は111,000円未満に変わります。</p>
-</section>
-
-<section id="faq" class="faq">
-<h2>よくある質問</h2>
+</section></details>
+<details class="acc"><summary><h2>よくある質問</h2></summary><section id="faq" class="faq">
 <h3>掛け持ちバイトで引かれた源泉徴収は戻りますか？</h3>
 <p>年内に源泉徴収された所得税の合計が、1年分の年税額より多いときは、確定申告（還付申告）で戻ります。令和8年分は給与収入178万円以下なら年税額は0円なので、引かれた所得税の全額が戻る見込みです（目安）。</p>
 <h3>乙欄・甲欄とは何ですか？</h3>
@@ -168,10 +350,42 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <p>源泉徴収票の源泉徴収税額が0円の場合、申告しても還付される所得税はありません。還付になるのは、年内に引かれた所得税が年税額より多いときです。</p>
 <h3>令和8年分で所得税がかからない給与収入はいくらまでですか？</h3>
 <p>給与のみの学生で、令和8年分は給与収入178万円以下なら年税額は0円です（基礎控除104万円と給与所得控除の最低保障74万円の合計）。令和7年分は160万円でした。</p>
-</section>
-
-<section id="sources">
-<h2>根拠となる一次情報</h2>
+<h3>掛け持ちバイトは確定申告が必要ですか？</h3>
+<p>給与が2か所以上で、年末調整されなかった給与と給与以外の所得の合計が20万円を超えると、確定申告が必要になる場合があります（国税庁 No.1900）。給与収入から雑損・医療費・寄附金・基礎控除以外の所得控除を引いた額が150万円以下で、給与以外の所得が20万円以下なら不要とされますが、令和8年分での扱いは要確認です。還付を受けるための申告は、条件に当たらなくても任意でできます。</p>
+<h3>掛け持ちバイトは親にバレますか？確定申告との関係は？</h3>
+<p>確定申告の内容は住民税にも反映されます（二次情報による一部確認）。住民税の通知の届き方は市区町村の運用で異なり、未確認です。親の健保の扶養に入っている場合は、認定後も保険者が年1回以上収入を確認します（健保組合で要確認）。</p>
+<h3>バイトの源泉徴収票はいつもらえますか？</h3>
+<p>令和8年分の源泉徴収票は、12月以後に勤務先から交付されます。紛失したときは勤務先に再発行を依頼してください（一般的な対応のため要確認）。このツールには、各勤務先の「支払金額」と「源泉徴収税額」を入力します。</p>
+<h3>年末調整を受けていないバイトの給料はどうなりますか？</h3>
+<p>年末調整は原則、扶養控除等申告書を出した勤務先で行われます。出していない乙欄の給与や従たる給与は年末調整されないため、確定申告で精算します。令和8年12月の年末調整では改正後の控除（基礎控除104万円など）で精算されるため、年末調整前の給与明細の金額は見込みとして扱ってください。</p>
+<h3>乙欄の源泉徴収税率はいくらですか？</h3>
+<p>令和8年分の月額表では、社会保険料控除後の給与が105,000円未満のとき3.063%です（令和2〜7年分は88,000円未満、令和9年分は111,000円未満。いずれも一部確認）。それ以上は税額表で決まるため、このツールでは給与明細の実額の入力をおすすめします。</p>
+<h3>確定申告はどこで、どうやってしますか？</h3>
+<p>国税庁の確定申告書等作成コーナーで、すべての勤務先の支払金額と源泉徴収税額を入力し、e-Taxまたは税務署へ提出します。還付金は指定した口座に振り込まれ、時期は税務署によります。還付申告は令和9年1月1日から令和13年12月31日まで提出できます。</p>
+<h3>勤労学生控除を使うと還付は増えますか？</h3>
+<p>給与のみの学生では、令和8年分の所得税への追加効果はありません。178万円以下なら控除なしでも年税額が0円のためです。適用の上限は合計所得89万円以下（給与収入163万円以下）、控除額は27万円で、住民税の所得割に効きます。扶養控除等申告書の勤労学生欄で申告し、乙欄の勤務先では適用されません。</p>
+<h3>社会保険料が引かれていると、還付は変わりますか？</h3>
+<p>社会保険料控除は、実際に支払った（給与から天引きされた）社会保険料の全額が対象です（国税庁 No.1130）。国民年金などを自分で納めた分があれば、入力欄「社会保険料等」に加えてください。学生は社会保険が原則対象外のため、0円のことが多いです。なお給与収入178万円以下の範囲では年税額が0円のため、還付額は変わりません。</p>
+</section></details>
+<details class="acc"><summary><h2>用語解説</h2></summary><section id="glossary">
+<dl class="g">
+<dt>源泉徴収</dt><dd>勤務先が給与を払うときに所得税を天引きして国に納める仕組みです。</dd>
+<dt>源泉徴収票</dt><dd>1年間の支払金額と源泉徴収税額などが書かれた書類。勤務先が12月以後に交付します。</dd>
+<dt>甲欄</dt><dd>扶養控除等申告書を提出している勤務先に適用される、源泉徴収の区分です。</dd>
+<dt>乙欄</dt><dd>扶養控除等申告書を出していない勤務先（掛け持ちの2か所目など）に適用される区分。税率が高めで、年末調整もされません。</dd>
+<dt>扶養控除等申告書</dt><dd>勤務先に出す書類。原則、1か所の勤務先にだけ出します。</dd>
+<dt>年末調整</dt><dd>勤務先が年間の所得税を精算する手続き。扶養控除等申告書を出した勤務先で行われるのが一般的です。</dd>
+<dt>確定申告</dt><dd>自分で所得と税額を計算して申告する手続き。掛け持ちで年末調整されない給与があるときなどに必要になります。</dd>
+<dt>還付申告</dt><dd>納めすぎた税金を戻してもらうための申告。翌年1月1日から5年間、期間を問わず提出できます。</dd>
+<dt>給与所得控除</dt><dd>給与収入から差し引ける控除。令和8・9年分は、給与収入が741,000円以上219万円未満のとき、給与所得は収入から74万円（最低保障額）を引いた金額です。</dd>
+<dt>基礎控除</dt><dd>本人の所得から引く控除。令和8年分は合計所得132万円以下で104万円です。</dd>
+<dt>課税所得</dt><dd>控除を引いたあとの、税率をかける対象の金額。1,000円未満は切り捨てます。</dd>
+<dt>復興特別所得税</dt><dd>所得税の基準額に2.1%を上乗せして納める税（令和8年分）です。</dd>
+<dt>勤労学生控除</dt><dd>控除額27万円。合計所得89万円以下かつ他の所得10万円以下が条件。給与のみの所得税では追加効果はありません。</dd>
+<dt>社会保険料控除</dt><dd>実際に支払った社会保険料を全額、所得から引ける控除です。</dd>
+</dl>
+</section></details>
+<details class="acc"><summary><h2>根拠となる一次情報</h2></summary><section id="sources">
 <p>最終確認日: 2026-11-17</p>
 <ul class="src">
 <li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1410 給与所得控除</a></li>
@@ -184,23 +398,35 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <li><a href="https://www.nta.go.jp/publication/pamph/gensen/zeigakuhyo2026/01.htm" target="_blank" rel="noopener noreferrer">国税庁 令和8年分 源泉徴収税額表</a></li>
 <li><a href="https://www.nta.go.jp/publication/pamph/gensen/zeigakuhyo2026/data/denshi_02.pdf" target="_blank" rel="noopener noreferrer">国税庁 令和8年分 月額表の電算機計算（乙欄の計算。本文未確認・一部確認）</a></li>
 <li><a href="https://www.nta.go.jp/users/gensen/2026kiso/index.htm" target="_blank" rel="noopener noreferrer">国税庁 令和8年分 基礎控除等の源泉徴収事務</a></li></ul>
-</section>
-
-<section id="future">
-<h2>令和9年分以降について</h2>
+</section></details>
+<details class="acc"><summary><h2>令和9年分以降について</h2></summary><section id="future">
 <ul><li>令和9年分（2027年の収入）: 令和8年分と同じ特例が適用される見込みですが、公式情報で必ず確認してください。乙欄の源泉徴収は、令和9年分の税額表（令和9年1月支払分から）で111,000円未満に変わります（一部確認）。</li>
 <li>令和10年分以降: 特例の終了により基準額が変わります（要確認）。このツールは令和8年分のみ対応です。</li></ul>
-</section>
+</section></details>
+</div>
 </main>
+<aside class="rel" aria-label="関連ツール">
+<p class="rel-t">関連ツール</p>
 <section class="tools" aria-labelledby="toolsH">
 <h2 id="toolsH">学生バイトお役立ちツール</h2>
 <ul class="tl">
 <li><a href="../"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span></a></li>
-<li><a href="./" aria-current="page"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span></a></li>
+<li><a href="./" aria-current="page"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算（このページ）</span></a></li>
 <li><a href="../shift-limit/"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span></a></li>
 </ul>
 </section>
+<section class="sisters" id="sisters" aria-labelledby="sistersH">
+<h2 id="sistersH">姉妹ツール</h2>
+<ul class="tl">
+<li><a href="../living-cost-simulator/"><strong>手取り＆一人暮らし生活費シミュレーター</strong><span>手取りと生活費の目安を計算</span></a></li>
+<li><a href="../es-word-counter/"><strong>ES文字数カウント＆ガクチカ構成チェッカー</strong><span>ESの文字数と構成をチェック</span></a></li>
+<li><a href="../nisa-simulator/"><strong>大学生からの新NISA・バイト代積立シミュレーター</strong><span>積立の将来額を試算</span></a></li>
+</ul>
+</section>
+</aside>
 <footer>
+<p class="foot-links"><a href="#legal" data-open="legal">免責事項・プライバシー</a> ／ 連絡先: gakusei.kabe.checker@gmail.com</p>
+<details class="acc" id="legal"><summary>免責事項・プライバシーポリシー</summary><div class="acc-body">
 <section id="disclaimer">
 <h2>免責事項</h2>
 <ul><li>本ツールは学生本人・保護者向けの情報提供であり、税務・社会保険の個別の助言ではありません。結果は目安です。</li>
@@ -218,18 +444,21 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <li>広告配信を行う場合、Google AdSense などの第三者配信事業者がクッキーを使って広告を表示することがあります。広告設定は <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">https://adssettings.google.com</a> から変更できます。</li>
 <li>アクセス解析を導入する場合は、本ポリシーを更新します。</li>
 <li>広告・アフィリエイトを含みます。広告枠には「広告」「PR」と表示します。</li>
+<li>「X で還付チェック結果をシェア」ボタンを押したときだけ、X（x.com）の投稿画面へ移動し、投稿文（還付・追加納付・差額なしの区分のみ。金額は含みません）とこのページのURLが渡されます。ボタンを押さない限り、外部へ送信しません。</li>
 <li>PRカード（広告）のリンク先は広告主のサイトです。クリック後は、そのサイトのプライバシーポリシーが適用されます。</li>
 <li>連絡先: gakusei.kabe.checker@gmail.com</li></ul>
 </section>
+</div></details>
 </footer>
 </div>
+<div id="liveBar" class="livebar" aria-hidden="true" hidden><span id="liveBarText"></span><button type="button" tabindex="-1" id="liveBarGo">結果へ</button></div>
 
 <script src="../links-config.js"></script>
 <script id="logic">
 const KAKE=(function(){
 'use strict';
 const BASIC=1040000,MIN_GUARANTEE=740000,SCOPE_LIMIT=2060000,STUDENT_AMT=270000,STUDENT_G_MAX=890000,OTSU_LT=105000,OTSU_RATE_NUM=3063,FILING_UNADJ=200000,EXEMPT150=1500000;
-const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-17',REFUND_FROM:'令和9年1月1日',REFUND_TO:'令和13年12月31日'};
+const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-17',REFUND_FROM:'令和9年1月1日',REFUND_TO:'令和13年12月31日',CANON:'https://gerinoaka.github.io/student-baito-kabe-checker-2026/kakemochi/',HASHTAGS:['掛け持ちバイト','確定申告','還付金']};
 const isInt=function(n){return typeof n==='number'&&Number.isInteger(n);};
 function comma(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
 function fmtYen(n){return comma(n)+'円';}
@@ -283,50 +512,101 @@ function estimateOtsu(o){
  if(!errors.length&&o.monthly>=OTSU_LT)errors.push({field:'monthly',message:'月の給与（社会保険料控除後）が105,000円以上の場合は概算できません。給与明細・源泉徴収票の実額を入力してください。'});
  if(errors.length)return {ok:false,errors:errors};
  return {ok:true,value:Math.floor(o.monthly*OTSU_RATE_NUM/100000)*o.months};}
-return {calcRefund:calcRefund,estimateOtsu:estimateOtsu,parseYen:parseYen,fmtYen:fmtYen,DATA:DATA};
+const SHARE_BODY={
+ refund:'💰 掛け持ちバイトの還付チェック：源泉徴収された税金が戻る（還付）見込みでした！',
+ none:'🤔 掛け持ちバイトの還付チェック：還付も追加納付もほぼありませんでした。',
+ short:'😱 掛け持ちバイトの還付チェック：追加で納める必要がある可能性がありました…！'};
+function buildShare(r){
+ const k=(r&&Object.prototype.hasOwnProperty.call(SHARE_BODY,r.kind))?r.kind:'none';
+ const text=SHARE_BODY[k]+'\nあなたも計算してみて👇';
+ const href='https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(DATA.CANON)+'&hashtags='+DATA.HASHTAGS.map(encodeURIComponent).join(',');
+ return {text:text,url:DATA.CANON,hashtags:DATA.HASHTAGS.join(','),href:href};}
+return {calcRefund:calcRefund,estimateOtsu:estimateOtsu,buildShare:buildShare,parseYen:parseYen,fmtYen:fmtYen,DATA:DATA};
 })();
 </script>
 <script id="ui">
 (function(){
 'use strict';
-const K=KAKE,$=function(id){return document.getElementById(id);};
+const K=KAKE;
+const $=function(id){return document.getElementById(id);};
 function h(t,c,x,k){const e=document.createElement(t);if(c)e.className=c;if(x!==null&&x!==undefined)e.textContent=x;(k||[]).forEach(function(n){e.appendChild(n);});return e;}
+const raf=window.requestAnimationFrame?function(f){window.requestAnimationFrame(f);}:function(f){setTimeout(f,16);};
+function reduced(){return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);}
+const PCLS={'○':'ok','×':'ng','△':'wn','－':'nt'};
+function pc(t){return 'pill pill--'+(PCLS[String(t).charAt(0)]||'nt');}
+function num(n){return Number(n).toLocaleString('en-US');}
+function isNum(v){return typeof v==='number'&&!isNaN(v);}
+let state='empty',pend=false,prT=null,srT=null,srL='';
+function setState(s){state=s;$('result').setAttribute('data-state',s);}
+function schedule(){if(pend)return;pend=true;raf(function(){pend=false;tick();});}
+const shown={},tm={};
+function eEl(k){return $(EID[k]||('e-'+k));}
+function eShow(k,m){const e=eEl(k);e.textContent=m;e.hidden=false;$(k).setAttribute('aria-invalid','true');shown[k]=1;}
+function eHide(k){clearTimeout(tm[k]);delete tm[k];if(shown[k]){const e=eEl(k);e.textContent='';e.hidden=true;$(k).removeAttribute('aria-invalid');delete shown[k];}}
+function eSet(k,m,now){
+ if(!m){eHide(k);return;}
+ clearTimeout(tm[k]);delete tm[k];
+ if(now||shown[k])eShow(k,m);
+ else tm[k]=setTimeout(function(){delete tm[k];eShow(k,m);stale();},1200);}
+function eAll(){Object.keys(shown).concat(Object.keys(tm)).forEach(eHide);}
+function stale(){const on=state==='ready'&&Object.keys(shown).length>0;$('result').setAttribute('data-stale',on?'true':'false');$('staleNote').hidden=!on;}
+function say(t){clearTimeout(srT);srT=setTimeout(function(){if(t!==srL){srL=t;$('liveSr').textContent=t;}},700);}
+function openFor(id){let e=id?document.getElementById(id):null;while(e){if(e.tagName==='DETAILS')e.open=true;e=e.parentNode;}}
+[].forEach.call(document.querySelectorAll('a[data-open]'),function(a){a.addEventListener('click',function(){openFor(a.getAttribute('data-open'));});});
+function hashOpen(){let id=(window.location&&window.location.hash||'').slice(1);if(!id)return;try{id=decodeURIComponent(id);}catch(e){}openFor(id);}
+hashOpen();window.addEventListener('hashchange',hashOpen);
+let lbOn=false,vis=true,lbTxt='';
+function lbUpd(){const b=$('liveBar');if(!b)return;b.hidden=!(lbOn&&!vis&&state==='ready');$('liveBarText').textContent=lbTxt;}
+if($('liveBar')&&window.IntersectionObserver){
+ const rc0=document.querySelector('#result .rc');lbOn=true;
+ new IntersectionObserver(function(es){vis=es[es.length-1].isIntersecting;lbUpd();}).observe(rc0);
+ $('liveBarGo').addEventListener('click',function(){rc0.scrollIntoView({block:'start'});});}
+function scrollOnce(){
+ if(state!=='ready')return;
+ const c=document.querySelector('#result .rc'),r=c.getBoundingClientRect();
+ if(r.top<0||r.bottom>(window.innerHeight||667))c.scrollIntoView({block:'nearest',behavior:reduced()?'auto':'smooth'});}
+function prCard(key,lead){
+ const L=(typeof window.KABE_LINKS==='object'&&window.KABE_LINKS)?window.KABE_LINKS[key]:null;
+ if(!L||typeof L.url!=='string'||!/^https:\/\//.test(L.url)||typeof L.title!=='string'||typeof L.cta!=='string')return null;
+ const a=h('a','pr-cta',L.cta);a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
+ return h('div','pr-card',null,[h('span','pr-tag',typeof L.label==='string'&&L.label?L.label:'PR'),h('p','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,lead),h('p',null,typeof L.desc==='string'?L.desc:''),a]);}
+function fmtBlur(el){const v=K.parseYen(el.value);if(isNum(v))el.value=num(v);}
+function afterReset(f,fn){f.addEventListener('reset',function(){setTimeout(fn,0);});}
+const EID={};
 const MAXJ=5,MINJ=2;
-let jobs=[{},{}],judged=false,shown=[];
-function clearErr(){shown.forEach(function(p){const e=$(p[0]);if(e){e.textContent='';e.hidden=true;}if(p[1]){const i=$(p[1]);if(i)i.removeAttribute('aria-invalid');}});shown=[];}
-function showErr(eid,iid,msg){const e=$(eid);e.textContent=msg;e.hidden=false;if(iid)$(iid).setAttribute('aria-invalid','true');shown.push([eid,iid]);}
-function fld(id,lab,val,hint){
+let jobs=[{},{}];
+function fld(id,lab,val){
  const i=document.createElement('input');i.type='text';i.id=id;i.value=val||'';
  i.setAttribute('inputmode','numeric');i.setAttribute('autocomplete','off');i.setAttribute('aria-describedby','e-'+id+' h-'+id);
  const l=h('label','l',lab);l.setAttribute('for',id);
  const e=h('p','err',null);e.id='e-'+id;e.setAttribute('role','alert');e.hidden=true;
- const t=h('p','hint',hint);t.id='h-'+id;
- return h('div','fld',null,[l,i,e,t]);}
-function btn(id,txt,fn){const b=h('button','sec',txt);b.type='button';b.id=id;b.addEventListener('click',fn);return b;}
+ return {box:h('div','fld',null,[l,h('div','num num--sm',null,[i,h('span','unit','円')]),e]),input:i};}
 function row(i,v){
  const cb=document.createElement('input');cb.type='checkbox';cb.id='j'+i+'-ny';cb.checked=!!v.ny;
- const fs=h('fieldset',null,null,[h('legend',null,'勤務先'+(i+1)),
-  fld('j'+i+'-pay','支払金額（年間・円）',v.pay,'源泉徴収票の「支払金額」。見込みでも可（年末調整前の見込みは目安）。'),
-  fld('j'+i+'-wh','源泉徴収税額（所得税・円）',v.wh,'源泉徴収票・給与明細の「源泉徴収税額」。引かれていなければ0。'),
-  h('label','cb',null,[cb,h('span',null,'年末調整を受けた勤務先（扶養控除等申告書を出している勤務先）')]),
-  h('details','d',null,[h('summary',null,'乙欄の源泉徴収税額を概算する（任意・目安）'),
-   fld('j'+i+'-mo','月の給与（社会保険料控除後・円）',v.mo,'乙欄（扶養控除等申告書を出していない勤務先）で、月払い・令和8年分のとき、月の給与が105,000円未満の場合だけ使えます（3.063%で概算）。それ以外は明細の実額を入力してください。'),
-   fld('j'+i+'-mn','月数（1〜12）',v.mn,'給与が支払われた月数です。'),
-   btn('j'+i+'-est','概算して源泉徴収税額に入れる',function(){estimate(i);})])]);
- if(jobs.length>MINJ)fs.appendChild(btn('j'+i+'-del','この勤務先を削除',function(){collect();jobs.splice(i,1);draw();if(judged)run(false);}));
+ const a=fld('j'+i+'-pay','支払金額（年間）',v.pay),b=fld('j'+i+'-wh','源泉徴収税額',v.wh);
+ const z=h('button','chip','0円');z.type='button';z.id='j'+i+'-z';z.setAttribute('aria-pressed','false');z.setAttribute('aria-label','源泉徴収税額を0円にする');
+ z.addEventListener('click',function(){b.input.value='0';schedule();});
+ b.box.insertBefore(z,b.box.lastChild);
+ [a.input,b.input].forEach(function(i){i.addEventListener('blur',function(){fmtBlur(i);compute({blur:i.id});});});
+ const fs=h('fieldset','job',null,[h('legend',null,'勤務先'+(i+1)),h('div','pair',null,[a.box,b.box]),
+  h('label','cb',null,[cb,h('span',null,'年末調整を受けた勤務先（扶養控除等申告書を出している勤務先）')])]);
+ if(jobs.length>MINJ){const d=h('button','del','削除');d.type='button';d.id='j'+i+'-del';d.setAttribute('aria-label','勤務先'+(i+1)+'を削除');
+  d.addEventListener('click',function(){collect();jobs.splice(i,1);draw();$('addJob').focus();schedule();});fs.appendChild(d);}
  return fs;}
-function draw(){
- clearErr();const host=$('jobs');host.textContent='';
- jobs.forEach(function(v,i){host.appendChild(row(i,v));});
- $('addJob').disabled=jobs.length>=MAXJ;}
 function collect(){
- jobs=jobs.map(function(_,i){return {pay:$('j'+i+'-pay').value,wh:$('j'+i+'-wh').value,ny:$('j'+i+'-ny').checked,mo:$('j'+i+'-mo').value,mn:$('j'+i+'-mn').value};});}
-function estimate(i){
- clearErr();
- const r=K.estimateOtsu({monthly:K.parseYen($('j'+i+'-mo').value),months:K.parseYen($('j'+i+'-mn').value)});
- if(!r.ok){r.errors.forEach(function(e){showErr('e-j'+i+'-mo','j'+i+'-'+(e.field==='months'?'mn':'mo'),e.message);});return;}
- $('j'+i+'-wh').value=String(r.value);
- if(judged)run(false);}
+ jobs=jobs.map(function(_,i){return {pay:$('j'+i+'-pay').value,wh:$('j'+i+'-wh').value,ny:$('j'+i+'-ny').checked};});}
+function draw(){
+ eAll();
+ const host=$('jobs'),hs=$('hints');host.textContent='';hs.textContent='';
+ jobs.forEach(function(v,i){
+  host.appendChild(row(i,v));
+  const p1=h('p','hint','勤務先'+(i+1)+'の支払金額: 源泉徴収票の「支払金額」。見込みでも可（年末調整前の見込みは目安）。');p1.id='h-j'+i+'-pay';
+  const p2=h('p','hint','勤務先'+(i+1)+'の源泉徴収税額: 源泉徴収票・給与明細の「源泉徴収税額」。引かれていなければ0。');p2.id='h-j'+i+'-wh';
+  hs.appendChild(p1);hs.appendChild(p2);});
+ const sel=$('otsuRow'),cur=sel.value;sel.textContent='';
+ jobs.forEach(function(_,i){const o=h('option',null,'勤務先'+(i+1));o.value=String(i);sel.appendChild(o);});
+ sel.value=Number(cur)<jobs.length?(cur||'0'):'0';
+ $('addJob').disabled=jobs.length>=MAXJ;}
 function yen(n){return K.fmtYen(n);}
 const FILE={
  short:'年税額より源泉徴収が少ないため、確定申告で追加納付が必要になる場合があります（要確認）。',
@@ -336,48 +616,85 @@ const FILE={
 const PR_LEAD={
  kakutei:'150万円超・掛け持ち・健保のラインを超える場合は、確定申告や税金の管理が必要になることがあります。',
  note:'壁の数え方と申告の流れを詳しく知りたい方へ。'};
-function prCard(key){
- const L=(typeof window.KABE_LINKS==='object'&&window.KABE_LINKS)?window.KABE_LINKS[key]:null;
- if(!L||typeof L.url!=='string'||!/^https:\/\//.test(L.url)||typeof L.title!=='string'||typeof L.cta!=='string')return null;
- const a=h('a','pr-cta',L.cta);a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
- return h('div','pr-card',null,[h('span','pr-tag',typeof L.label==='string'&&L.label?L.label:'PR'),h('h4',null,L.title),h('p',null,PR_LEAD[key]),h('p',null,typeof L.desc==='string'?L.desc:''),a]);}
 function render(r){
- $('rBig').textContent=r.kind==='refund'?'還付の目安: '+yen(r.refund):(r.kind==='short'?'追加納付の目安: '+yen(r.short):'還付も追加納付もほぼありません（差額0円）');
+ const lab=r.kind==='refund'?'還付の目安':(r.kind==='short'?'追加納付の目安':'差額');
+ const big=r.kind==='refund'?yen(r.refund):(r.kind==='short'?yen(r.short):'0円');
+ const kt=r.kind==='refund'?'↩ 還付':(r.kind==='short'?'＋ 追加納付':'＝ 差額なし');
+ $('rLabel').textContent=lab;$('rBig').textContent=big;
+ const k=$('rKind');k.textContent=kt;k.className='pill pill--'+(r.kind==='refund'?'ok':(r.kind==='short'?'ng':'nt'));
  $('rSub').textContent='年税額の目安 '+yen(r.annualTax)+' ／ 源泉徴収の合計 '+yen(r.W);
  const rows=[['支払金額の合計',yen(r.X)],['給与所得',yen(r.G)],['社会保険料等',yen(r.S)]];
  if(r.studentDeduction>0)rows.push(['勤労学生控除',yen(r.studentDeduction)]);
  rows.push(['課税所得（1,000円未満切捨）',yen(r.T)],['基準所得税額（5%）',yen(r.baseTax)],['年税額の目安（復興特別所得税2.1%込み・100円未満切捨）',yen(r.annualTax),1],['源泉徴収の合計',yen(r.W)],
   ['差額',r.kind==='refund'?'還付 '+yen(r.refund):(r.kind==='short'?'追加納付 '+yen(r.short):'0円')]);
  const tb=$('rBody');tb.textContent='';
- rows.forEach(function(x){const th=h('th',null,x[0]);if(x[2])th.appendChild(h('span','badge','目安'));tb.appendChild(h('tr',null,null,[th,h('td',null,x[1])]));});
+ rows.forEach(function(x){const th=h('th',null,x[0]);if(x[2])th.appendChild(h('span','dot','目安'));tb.appendChild(h('tr',null,null,[th,h('td','n',x[1])]));});
  const f=r.filing;let t=FILE[f.reason];
  if(f.reason==='unadjusted_over_200k'&&f.exemption150Candidate)t+='給与収入から基礎控除以外の所得控除を引いた額が150万円以下なら申告不要となる場合の、令和8年分での扱いは要確認です。';
  $('rFile').textContent=t;
  $('rRefundTerm').hidden=r.kind!=='refund';
- const host=$('prCards');host.textContent='';
- const c=prCard('kakutei')||prCard('note');
- if(c)host.appendChild(c);
- $('prWrap').hidden=!c;}
-function run(focus){
- clearErr();collect();
- const r=K.calcRefund({jobs:jobs.map(function(v){return {pay:K.parseYen(v.pay),withheld:K.parseYen(v.wh),nenmatsu:v.ny};}),social:K.parseYen($('social').value),student:$('student').checked});
- if(!r.ok){
-  r.errors.forEach(function(e){
-   let m=/^jobs\.(\d+)\.(pay|withheld)$/.exec(e.field);
-   if(m){const id='j'+m[1]+(m[2]==='pay'?'-pay':'-wh');showErr('e-'+id,id,e.message);}
-   else if(e.field==='social')showErr('e-social','social',e.message);
-   else showErr('e-jobs',null,e.message);});
-  $('result').hidden=true;return;}
- judged=true;$('result').hidden=false;render(r);
- if(focus){const hd=$('resultH');hd.focus({preventScroll:true});
-  hd.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}}
+ $('shareX').href=K.buildShare(r).href;
+ show(true);
+ say(lab+'は'+big+'、'+kt);lbTxt=lab+' '+big;lbUpd();
+ clearTimeout(prT);prT=setTimeout(function(){
+  const host=$('prCards');host.textContent='';
+  const c=prCard('kakutei',PR_LEAD.kakutei)||prCard('note',PR_LEAD.note);
+  if(c)host.appendChild(c);
+  $('prWrap').hidden=!c;},400);}
+function show(on){
+ $('resultEmpty').hidden=on;$('resultBody').hidden=!on;$('actions').hidden=!on;
+ $('rTableAcc').hidden=!on;$('rFileAcc').hidden=!on;}
+function keyOf(f){
+ let m=/^jobs\.(\d+)\.(pay|withheld)$/.exec(f);
+ if(m)return 'j'+m[1]+(m[2]==='pay'?'-pay':'-wh');
+ return f==='social'?'social':null;}
+function compute(o){
+ o=o||{};collect();
+ const rows=jobs.map(function(v){return {pay:K.parseYen(v.pay),wh:K.parseYen(v.wh),ny:v.ny};});
+ const r=K.calcRefund({jobs:rows.map(function(x){return {pay:x.pay,withheld:x.wh,nenmatsu:x.ny};}),social:K.parseYen($('social').value),student:$('student').checked});
+ const bad={};
+ if(!r.ok&&!r.outOfScope)r.errors.forEach(function(e){
+  const k=keyOf(e.field);if(!k)return;
+  const el=$(k);
+  if(el&&K.parseYen(el.value)===null&&!o.submit)return;
+  bad[k]=e.message;});
+ const keys=['social'];jobs.forEach(function(_,i){keys.push('j'+i+'-pay','j'+i+'-wh');});
+ keys.forEach(function(k){eSet(k,bad[k],o.submit||o.blur===k);});
+ const ej=$('e-jobs');
+ if(r.ok){ej.textContent='';ej.hidden=true;setState('ready');render(r);}
+ else if(r.outOfScope){
+  const m=r.errors[0].message;ej.textContent=m;ej.hidden=false;
+  setState('scope');$('emptyTxt').textContent=m;show(false);lbUpd();}
+ else{ej.textContent='';ej.hidden=true;
+  if(state==='scope'){setState('empty');$('emptyTxt').textContent=EMPTY;}}
+ stale();}
+const EMPTY='勤務先ごとの支払金額と源泉徴収税額を入れると、還付の目安がここに出ます。';
+function syncView(){
+ jobs.forEach(function(_,i){const z=$('j'+i+'-z');if(z)z.setAttribute('aria-pressed',String(K.parseYen($('j'+i+'-wh').value)===0));});}
+function tick(){syncView();compute();}
+function resetAll(){
+ eAll();clearTimeout(prT);setState('empty');$('emptyTxt').textContent=EMPTY;
+ $('e-jobs').hidden=true;$('e-jobs').textContent='';$('e-otsu').hidden=true;
+ $('result').setAttribute('data-stale','false');$('staleNote').hidden=true;
+ show(false);$('prWrap').hidden=true;$('prCards').textContent='';
+ $('shareX').href='https://x.com/intent/tweet';lbUpd();}
+const f=$('f');
+f.addEventListener('input',function(e){
+ const t=e.target;
+ if(/^otsu/.test(t.id||''))return;
+ schedule();});
+f.addEventListener('change',function(e){if(/^otsu/.test((e.target&&e.target.id)||''))return;schedule();});
+f.addEventListener('submit',function(e){e.preventDefault();compute({submit:true});scrollOnce();});
+$('addJob').addEventListener('click',function(){if(jobs.length>=MAXJ)return;collect();jobs.push({});draw();schedule();});
+$('otsuEst').addEventListener('click',function(){
+ const e=$('e-otsu');e.hidden=true;e.textContent='';
+ const r=K.estimateOtsu({monthly:K.parseYen($('otsuMo').value),months:K.parseYen($('otsuMn').value)});
+ if(!r.ok){e.textContent=r.errors[0].message;e.hidden=false;return;}
+ $('j'+$('otsuRow').value+'-wh').value=String(r.value);schedule();});
+$('social').addEventListener('blur',function(){fmtBlur($('social'));compute({blur:'social'});});
+$('rst').addEventListener('click',function(){f.reset();jobs=[{},{}];draw();resetAll();});
+afterReset(f,function(){jobs=[{},{}];draw();resetAll();});
 if(new Date().getFullYear()>=2027)$('yearWarn').hidden=false;
-$('f').addEventListener('submit',function(e){e.preventDefault();run(true);});
-$('f').addEventListener('input',function(e){if(judged&&!/-(mo|mn)$/.test((e.target&&e.target.id)||''))run(false);});
-$('f').addEventListener('change',function(){if(judged)run(false);});
-$('addJob').addEventListener('click',function(){if(jobs.length>=MAXJ)return;collect();jobs.push({});draw();if(judged)run(false);});
-$('rst').addEventListener('click',function(){
- $('f').reset();jobs=[{},{}];judged=false;draw();clearErr();$('result').hidden=true;});
 draw();
 })();
 </script>

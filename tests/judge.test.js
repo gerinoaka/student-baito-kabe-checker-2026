@@ -147,7 +147,50 @@ pages.forEach(([p, url, link]) => {
     const qs = [...faq.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((x) => x[1]);
     assert.deepStrictEqual(ld[1].mainEntity.map((q) => q.name), qs);
   });
-  c('x-size ' + p, () => assert.ok(Buffer.byteLength(h, 'utf8') <= 61440, 'size ' + Buffer.byteLength(h, 'utf8')));
+  c('x-size ' + p, () => assert.ok(Buffer.byteLength(h, 'utf8') <= 102400, 'size ' + Buffer.byteLength(h, 'utf8')));
+  c('x-faqcount ' + p, () => {
+    const faq = h.match(/<section id="faq"[\s\S]*?<\/section>/)[0];
+    const n = (faq.match(/<h3>/g) || []).length;
+    const min = { 'index.html': 15, 'kakemochi/index.html': 13, 'shift-limit/index.html': 12 }[p];
+    assert.ok(n >= min, 'faq h3 count ' + n + ' < ' + min);
+  });
+  c('x-glossary ' + p, () => {
+    const g = h.match(/<section id="glossary">[\s\S]*?<\/section>/);
+    assert.ok(g, 'glossary missing');
+    const n = (g[0].match(/<dt>/g) || []).length;
+    assert.ok(n >= 10 && n <= 15, 'dt count ' + n);
+    assert.ok(!h.match(/<section id="faq"[\s\S]*?<\/section>/)[0].includes('<dl'), 'glossary inside faq');
+  });
+  c('x-sisters ' + p, () => {
+    const s = h.match(/<section class="sisters" id="sisters"[\s\S]*?<\/section>/);
+    assert.ok(s, 'sisters missing');
+    assert.ok(s[0].includes('<h2 id="sistersH">姉妹ツール</h2>'));
+    assert.ok(!s[0].includes('aria-current'));
+    const pre = p === 'index.html' ? '' : '../';
+    ['living-cost-simulator', 'es-word-counter', 'nisa-simulator'].forEach((x) => {
+      assert.ok(s[0].includes('href="' + pre + x + '/"'), x);
+      assert.ok(fs.existsSync(path.join(root, x, 'index.html')), x + '/index.html');
+    });
+    assert.ok(h.indexOf('id="toolsH"') < h.indexOf('id="sisters"') && h.indexOf('id="sisters"') < h.indexOf('<footer>'));
+    assert.strictEqual((h.match(/id="toolsH"[\s\S]*?<\/section>/)[0].match(/aria-current/g) || []).length, 1);
+  });
+  if (p !== 'index.html') {
+    c('x-share ' + p, () => {
+      const a = h.match(/<a id="shareX"[^>]*>/)[0];
+      assert.ok(a.includes('href="https://x.com/intent/tweet"'));
+      assert.ok(a.includes('rel="noopener noreferrer"'));
+    });
+    c('x-share-privacy ' + p, () => assert.ok(h.match(/<section id="privacy">[\s\S]*?<\/section>/)[0].includes('x.com')));
+    c('x-prwrap ' + p, () => { assert.ok(h.includes('id="prWrap"')); assert.ok(h.includes('id="prCards"')); });
+  }
+  if (p === 'shift-limit/index.html') {
+    c('x-age ' + p, () => {
+      const r = [...h.matchAll(/<input type="radio" name="age"[^>]*>/g)].map((x) => x[0]);
+      assert.strictEqual(r.length, 2);
+      assert.ok(r[0].includes('value="u18"') && r[1].includes('value="a19p"'));
+      r.forEach((x) => assert.ok(!/checked/.test(x)));
+    });
+  }
   c('x-nohash ' + p, () => { assert.ok(!h.includes('href="#"')); assert.ok(!h.includes('data-aff')); });
   c('x-tools ' + p, () => {
     const sec = h.match(/<section class="tools"[\s\S]*?<\/section>/)[0];
@@ -162,8 +205,14 @@ pages.forEach(([p, url, link]) => {
 c('x-sitemap', () => {
   const sm = rd('sitemap.xml');
   const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 3);
-  assert.deepStrictEqual(locs.slice().sort(), pages.map((x) => x[1]).sort());
+  assert.strictEqual(locs.length, 6);
+  assert.deepStrictEqual(locs.slice().sort(), pages.map((x) => x[1]).concat(['living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/'].map((x) => BASE + x)).sort());
+});
+c('x-readme-lines', () => {
+  const lines = rd('links-config.js').split(/\r?\n/);
+  [41, 49, 57].forEach((n) => assert.ok(/^\s+url: '.*',$/.test(lines[n - 1]), 'line ' + n + ': ' + lines[n - 1]));
+  const rm = rd('README.md');
+  ['41行目', '49行目', '57行目'].forEach((x) => assert.ok(rm.includes(x), x));
 });
 c('x-robots', () => assert.ok(rd('robots.txt').includes('Sitemap: ' + BASE + 'sitemap.xml')));
 c('x-nojekyll', () => assert.ok(fs.existsSync(path.join(root, '.nojekyll'))));

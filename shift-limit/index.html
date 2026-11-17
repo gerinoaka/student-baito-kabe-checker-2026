@@ -6,7 +6,8 @@
 <title>時給×シフト逆算計算機2026｜年収の壁まであと何時間働ける？</title>
 <meta name="description" content="時給と今までの累計収入を入れると、136万・150万・178万の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかを計算。令和8年分（2026年）対応の無料ツール。最終確認日2026-11-17。">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#0b5fa5">
+<meta name="theme-color" content="#f8fafc">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/">
 <meta property="og:title" content="時給×シフト逆算計算機2026｜年収の壁まであと何時間働ける？">
 <meta property="og:description" content="時給と今までの累計収入を入れると、136万・150万・178万の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかを計算。令和8年分（2026年）対応の無料ツール。最終確認日2026-11-17。">
@@ -22,133 +23,316 @@
 {"@type":"Question","name":"150万円の壁は通勤手当を含みますか？","acceptedAnswer":{"@type":"Answer","text":"親の健保の扶養の150万円（19〜22歳は150万円未満）は、通勤手当を含めた年間収入で判定される扱いです（一部確認。健保組合で要確認）。136万円と178万円は、非課税の通勤手当を除いた給与収入で数えます。"}},
 {"@type":"Question","name":"12月分の給与が翌年1月払いのときは、今年の収入に入りますか？","acceptedAnswer":{"@type":"Answer","text":"所得税の給与収入は、支給日（支払を受けた日）が属する年で数えます。12月分が翌年1月払いなら翌年分、11月分が12月払いなら今年分です。健保の扶養の年間収入は見込み年収で判定され、数え方が異なります。"}},
 {"@type":"Question","name":"留学生は週何時間まで働けますか？","acceptedAnswer":{"@type":"Answer","text":"資格外活動許可を受けた留学生は、原則として週28時間以内です（学校の長期休業期間は1日8時間以内）。一部確認の情報のため、在籍する学校や出入国在留管理庁でご確認ください。"}},
-{"@type":"Question","name":"深夜や残業の割増があると計算はずれますか？","acceptedAnswer":{"@type":"Answer","text":"ずれます。深夜・残業・休日は割増賃金で時給が上がるため、この計算機の時間より早く壁に届きます。余裕を持って計画してください。"}}
+{"@type":"Question","name":"深夜や残業の割増があると計算はずれますか？","acceptedAnswer":{"@type":"Answer","text":"ずれます。深夜・残業・休日は割増賃金で時給が上がるため、この計算機の時間より早く壁に届きます。余裕を持って計画してください。"}},
+{"@type":"Question","name":"学生のバイトは週何時間まで働けますか？","acceptedAnswer":{"@type":"Answer","text":"日本人学生には、学生であること自体による法定の週上限はないとされます（労働基準法の一次情報は未確認のため要確認）。ただし労働基準法の法定労働時間（週40時間・1日8時間）の枠があり、18歳未満は年少者の規定（深夜・時間外の制限）があります。留学生（資格外活動許可あり）は原則週28時間以内です。"}},
+{"@type":"Question","name":"週20時間以上働くと社会保険に入りますか？学生は？","acceptedAnswer":{"@type":"Answer","text":"勤務先の社会保険の賃金要件（月額8.8万円以上）は2026年10月1日に撤廃されました。現在の加入要件は、週の所定労働時間20時間以上、従業員51人以上の企業（2027年10月から36人以上、以降段階的に拡大）、学生でないことです。学生は原則対象外ですが、休学中・定時制・通信制などは例外のため、年金事務所・勤務先で要確認です。"}},
+{"@type":"Question","name":"時給1,200円で、壁を超えないには月に何時間まで働けますか？","acceptedAnswer":{"@type":"Answer","text":"通勤手当なし・累計0円・年12か月で計算した目安です。136万円以下なら月94時間（週21.6時間）、150万円未満なら月104時間（週24.0時間）、178万円以下なら月123時間（週28.3時間）までです。年の途中なら、累計と残り月数を入力すると計算できます。深夜・残業の割増があると、これより早く壁に届きます。"}},
+{"@type":"Question","name":"時給が上がると、壁まで働ける時間は変わりますか？","acceptedAnswer":{"@type":"Answer","text":"変わります。壁までの残り枠が同じなら月の収入上限は変わらず、時給が高いほど働ける時間は短くなります。累計0円・年12か月で178万円以下を目指す場合、月の収入上限は148,333円で、時給1,000円なら月148時間（週34.1時間）、時給1,500円なら月98時間（週22.6時間）です。"}},
+{"@type":"Question","name":"ボーナス（賞与）や臨時収入は壁の計算に入りますか？","acceptedAnswer":{"@type":"Answer","text":"賞与は給与収入に含めて数えます（賞与を給与から除外する規定はありません。専用ページの一次情報は未取得のため要確認）。このツールには賞与の入力欄がないため、受け取った賞与は「これまでの累計給与収入」に加えてください。これから受け取る予定の賞与も累計に足して入力すると、その分だけ残り枠が減ります。"}},
+{"@type":"Question","name":"掛け持ち（ダブルワーク）の場合、どう入力すればいいですか？","acceptedAnswer":{"@type":"Answer","text":"年収の壁は全勤務先の給与の合計で判定します。「これまでの累計給与収入」には全勤務先の合計を入れ、時給には、これから増やす予定のバイトの時給を入れてください。留学生の週28時間も、掛け持ちは合算です（一部確認。学校・出入国在留管理庁で要確認）。還付の目安は「掛け持ちバイトの源泉徴収・還付金チェッカー」で計算できます。"}},
+{"@type":"Question","name":"夏休みだけなど、短期間だけ働く場合の残り月数はどう入れますか？","acceptedAnswer":{"@type":"Answer","text":"「残り月数」には、今年中に給与が支払われる月数（支給日の数）を入れます。働かない月は数えません。月の収入上限は「残り枠÷その月数」で計算するため、2か月だけ給与が出るなら、残り枠を2で割った額が1か月あたりの上限です。支給日が12月31日までの給与だけが今年分です。"}}
 ]}</script>
 <style>
-:root{--bg:#fff;--fg:#1f2933;--pri:#0b5fa5;--ok:#146c43;--okb:#e6f4ea;--ng:#b42318;--ngb:#fdecea;--wn:#8a5a00;--wnb:#fff4d6;--ln:#d0d7de;--cd:#f6f8fa}
-@media(prefers-color-scheme:dark){:root{--bg:#12171d;--fg:#e6edf3;--pri:#6cb6ff;--ok:#56d364;--okb:#12261a;--ng:#ff8a80;--ngb:#3a1816;--wn:#e3b341;--wnb:#33280a;--ln:#3a444e;--cd:#1a2129}}
+/*ds:start v1*/
+:root{color-scheme:light dark;
+--bg:#f8fafc;--card:#fff;--soft:#f1f5f9;--fg:#0f172a;--sub:#475569;
+--primary:#1a56c4;--on-primary:#fff;--primary-soft:#e8f0fd;
+--track:#e2e8f0;--tick:#64748b;
+--ok-bg:#dcfce7;--ok-fg:#166534;--ng-bg:#fee2e2;--ng-fg:#991b1b;--wn-bg:#fef3c7;--wn-fg:#92400e;--nt-bg:#e2e8f0;--nt-fg:#334155;
+--ok:#15803d;--wn:#b45309;--ng:#dc2626;
+--shadow:0 1px 2px rgba(15,23,42,.04),0 4px 16px rgba(15,23,42,.05);
+--shadow-hero:0 1px 2px rgba(15,23,42,.05),0 10px 28px rgba(15,23,42,.08);
+--r-card:20px;--r-in:16px;--r-pill:999px;
+--s1:8px;--s2:16px;--s3:20px;--s4:24px;--s5:32px;
+--ring:#1a56c4;--t:.18s}
+@media(prefers-color-scheme:dark){:root{
+--bg:#0b1220;--card:#111a2e;--soft:#16213a;--fg:#e5edf8;--sub:#a9b6c9;
+--primary:#60a5fa;--on-primary:#0b1220;--primary-soft:#172554;
+--track:#26324a;--tick:#94a3b8;
+--ok-bg:#14532d;--ok-fg:#bbf7d0;--ng-bg:#7f1d1d;--ng-fg:#fecaca;--wn-bg:#78350f;--wn-fg:#fde68a;--nt-bg:#1e293b;--nt-fg:#cbd5e1;
+--ok:#4ade80;--wn:#fbbf24;--ng:#f87171;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
+--shadow-hero:0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.4);
+--ring:#93c5fd}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 "Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,sans-serif}
-.w{max-width:720px;margin:0 auto;padding:0 16px 40px}
-h1{font-size:1.4rem;line-height:1.4;margin:20px 0 8px}
-h2{font-size:1.2rem;margin:32px 0 10px;padding-bottom:4px;border-bottom:2px solid var(--pri)}
-h3{font-size:1.05rem;margin:14px 0 4px}
-a{color:var(--pri)}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;-webkit-tap-highlight-color:transparent}
+.w{max-width:640px;margin:0 auto;padding:0 16px 96px}
+h1{font-size:1.375rem;line-height:1.4;font-weight:700;margin:12px 0 8px;letter-spacing:.01em;font-feature-settings:"palt"}
+h2{font-size:1.05rem;font-weight:700;margin:0 0 8px}
+h3{font-size:1rem;margin:14px 0 4px}
+.ct{font-size:1.05rem;font-weight:700;margin:0 0 12px;font-feature-settings:"palt"}
+summary h2,summary h3{display:inline;font-size:1.05rem;margin:0;font-feature-settings:"palt"}
+a{color:var(--primary)}
 ul,ol{padding-left:1.3em}
-.note,.warn{border-radius:6px;padding:8px 12px;margin:12px 0;font-size:.92rem}
-.note{background:var(--wnb);color:var(--wn);border:1px solid var(--wn)}
-.warn{background:var(--ngb);color:var(--ng);border:1px solid var(--ng);font-weight:700}
-.note ul{margin:0;padding-left:1.1em}
-fieldset{border:1px solid var(--ln);border-radius:6px;margin:0 0 14px;padding:8px 12px}
-legend{font-weight:700;padding:0 4px}
-.rd{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer}
-.rd input{width:22px;height:22px;margin:0}
-.fld{margin:0 0 14px}
-label.l{display:block;font-weight:700;margin-bottom:4px}
-input[type=text]{width:100%;min-height:48px;padding:8px 12px;font-size:16px;border:1px solid var(--ln);border-radius:6px;background:var(--bg);color:var(--fg)}
-input[aria-invalid=true]{border-color:var(--ng);border-width:2px}
-.hint{font-size:.85rem;margin:4px 0 0;opacity:.85}
-.err{color:var(--ng);background:var(--ngb);border-radius:4px;padding:4px 8px;margin:4px 0 0;font-size:.9rem;font-weight:700}
-.err::before{content:"\26A0  "}
-.cb{display:flex;align-items:center;gap:8px;min-height:44px;margin:0 0 14px}
-.cb input{width:22px;height:22px;margin:0}
-button{min-height:48px;font:inherit;font-weight:700;border-radius:6px;border:2px solid var(--pri);padding:0 16px;cursor:pointer}
-.pri{background:var(--pri);color:var(--bg);width:100%;margin-bottom:10px}
-.sec{background:var(--bg);color:var(--pri);width:100%;margin-bottom:10px}
+button{font:inherit;border:0;cursor:pointer}
 button:disabled{opacity:.5;cursor:not-allowed}
-:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
-.sum{background:var(--cd);border:1px solid var(--ln);border-radius:6px;padding:10px 14px}
-.sum p{margin:2px 0}.big{font-size:1.25rem;font-weight:700}
-.tw{overflow-x:auto;margin:10px 0}
-table{border-collapse:collapse;width:100%;min-width:400px;font-size:.88rem}
-th,td{border:1px solid var(--ln);padding:6px 8px;text-align:left;vertical-align:top}
-th{background:var(--cd)}
-caption{text-align:left;font-weight:700;padding:4px 0}
-tr.is-current td,tr.is-current th{font-weight:700;background:var(--wnb);border-left:4px solid var(--pri)}
-.src{font-size:.82rem;word-break:break-all}
-.faq h3{margin-top:14px}.faq p{margin:4px 0}
-footer{font-size:.85rem;opacity:.85;margin-top:24px}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-.navb{display:flex;flex-wrap:wrap;gap:0 14px;margin:6px 0 0;padding:0;font-size:.9rem}
-.navb a{display:inline-flex;align-items:center;min-height:44px}
-.navb a[aria-current=page]{font-weight:700;color:var(--fg);text-decoration:none}
-.tools{margin:32px 0 0}
-.tl{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-.tl a{display:block;min-height:44px;padding:10px 12px;border:1px solid var(--ln);border-radius:6px;background:var(--cd);color:var(--fg);text-decoration:none}
-.tl a strong{display:block;color:var(--pri)}
-.tl a span{font-size:.88rem}
-.tl a[aria-current=page]{border:2px solid var(--pri)}
-.pr-card{border:1px solid var(--ln);border-radius:6px;padding:10px 14px;margin:10px 0;background:var(--cd)}
-.pr-card h4{margin:6px 0;font-size:1rem}
-.pr-card p{margin:4px 0}
-.pr-tag{display:inline-block;font-size:.75rem;font-weight:700;border:1px solid var(--fg);border-radius:4px;padding:0 6px}
-.pr-cta,.sh{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 16px;border-radius:6px;background:var(--pri);color:var(--bg);font-weight:700;text-decoration:none;text-align:center}
-.shw{margin:10px 0 2px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0;z-index:9;padding:8px 12px;background:var(--primary);color:var(--on-primary)}
+.skip:focus{left:0}
+.navb{display:flex;gap:8px;margin:12px -16px 0;padding:0 16px;overflow-x:auto;scrollbar-width:none}
+.navb::-webkit-scrollbar{display:none}
+.navb a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-size:.875rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.navb a[aria-current=page]{background:var(--primary);color:var(--on-primary)}
+.band{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:0 0 var(--s2);font-size:.85rem;line-height:1.5}
+.band a{flex:none;display:inline-flex;align-items:center;min-height:44px;margin:-8px 0;color:var(--wn-fg);font-weight:700;white-space:nowrap}
+.warn{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.9rem;font-weight:700}
+.note{background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.875rem}
+.card{background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);padding:var(--s3);margin:0 0 var(--s2)}
+.rc{box-shadow:var(--shadow-hero);padding:var(--s4)}
+.panel{background:var(--soft);border-radius:var(--r-in);padding:var(--s2)}
+@media(max-width:400px){.card{padding:var(--s2)}.rc{padding:var(--s3)}}
+.kpi-l{margin:0;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.big{margin:2px 0 4px;font-size:2.25rem;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+.big small{margin-left:4px;font-size:1rem;font-weight:700;letter-spacing:0}
+@media(min-width:400px){.big{font-size:2.5rem}}
+.mid{margin:2px 0;font-size:1.375rem;font-weight:700;line-height:1.3}
+.sumline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 4px}
+.stats{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0 0;padding:0}
+.stats[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.stats>*{min-width:0;margin:0;padding:8px 12px;border-radius:var(--r-in);background:var(--soft)}
+.stats dt,.stats .k{display:block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.stats dd,.stats .v{display:block;margin:0;font-weight:700}
+.hint{font-size:.875rem;line-height:1.6;color:var(--sub);margin:6px 0 0}
+.stale{font-size:.875rem;color:var(--sub);margin:8px 0 0}
+.confirm{font-size:.875rem;color:var(--sub);margin:12px 0 0}
+.confirm a,.risk a{display:inline-flex;align-items:center;min-height:44px}
+.risk{margin:12px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--wn-bg);color:var(--wn-fg);font-size:.875rem;line-height:1.6}
+.risk a{color:var(--wn-fg);font-weight:700}
+.safe{margin:8px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--ok-bg);color:var(--ok-fg);font-size:.875rem;font-weight:700;line-height:1.6}
+.pill{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:2px 12px;border-radius:var(--r-pill);font-weight:700;font-size:.9rem;line-height:1.3}
+.pill--ok{background:var(--ok-bg);color:var(--ok-fg)}
+.pill--ng{background:var(--ng-bg);color:var(--ng-fg)}
+.pill--wn{background:var(--wn-bg);color:var(--wn-fg)}
+.pill--nt{background:var(--nt-bg);color:var(--nt-fg)}
+.dot{margin-left:8px;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.75rem;font-weight:700}
+.fld{margin:0 0 var(--s2)}
+label.l{display:block;font-weight:700;margin:0 0 6px}
+.num{position:relative}
+.num input{display:block;width:100%;min-height:56px;margin:0;padding:0 44px 0 16px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;-moz-appearance:textfield;appearance:textfield}
+.num input::-webkit-outer-spin-button,.num input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.num .unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--sub);font-weight:700;pointer-events:none}
+.num--sm input{min-height:48px;font-size:1.125rem;text-align:right}
+.num input[aria-invalid=true],.stepper input[aria-invalid=true],textarea[aria-invalid=true]{box-shadow:inset 0 0 0 2px var(--ng)}
+select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit}
+textarea{display:block;width:100%;min-height:168px;padding:12px 14px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;line-height:1.7;resize:vertical}
+.err{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:6px 12px;margin:8px 0 0;font-size:.9rem;font-weight:700}
+.err::before{content:"\26A0  "}
+.range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:4px 0 0;padding:0;background:transparent;cursor:pointer;--pct:0%}
+.range::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-moz-range-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range::-moz-range-thumb{box-sizing:border-box;width:28px;height:28px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range.is-empty::-webkit-slider-thumb{border-color:var(--tick)}
+.range.is-empty::-moz-range-thumb{border-color:var(--tick)}
+.range:disabled{opacity:.5;cursor:not-allowed}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 0}
+.chips[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.chips[data-cols="6"]{grid-template-columns:repeat(6,1fr)}
+@media(max-width:359px){.chips[data-cols="4"]{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:374px){.chips[data-cols="6"]{grid-template-columns:repeat(3,1fr)}}
+.chip{min-height:44px;min-width:44px;padding:0 6px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-weight:700;white-space:nowrap;transition:background var(--t),color var(--t)}
+.chip[aria-pressed=true]{background:var(--primary);color:var(--on-primary)}
+.chip[aria-pressed=true]::before{content:"\2713  "}
+.chips[data-cols="6"] .chip[aria-pressed=true]::before{content:"\2713"}
+.seg-group{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;border:0;margin:0 0 var(--s2);padding:0;min-width:0}
+.seg-group[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.seg-group[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.seg-group legend{padding:0;margin:0 0 8px;font-weight:700}
+.seg{position:relative;display:block;min-width:0}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.seg span{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:48px;padding:6px 8px;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font-weight:700;font-size:.95rem;text-align:center;line-height:1.35;cursor:pointer;transition:background var(--t),color var(--t)}
+.seg small{font-size:.8rem;font-weight:400}
+.seg input:checked+span{background:var(--primary);color:var(--on-primary)}
+.seg input:checked+span::before{content:"\2713";position:absolute;top:4px;right:8px;font-size:.75rem}
+.seg input:focus-visible+span{outline:3px solid var(--ring);outline-offset:2px}
+.stepper{display:flex;align-items:center;gap:12px}
+.stepper button{flex:none;width:52px;height:52px;border-radius:50%;background:var(--soft);color:var(--fg);font-size:1.5rem;font-weight:700;line-height:1}
+.stepper input{width:72px;min-height:52px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;text-align:center}
+.stepper .unit{color:var(--sub);font-weight:700}
+.cb{display:flex;align-items:center;gap:10px;min-height:44px;margin:0 0 var(--s1)}
+.cb input{flex:none;width:22px;height:22px;margin:0;accent-color:var(--primary)}
+.cb--sw input{-webkit-appearance:none;appearance:none;position:relative;width:46px;height:28px;border-radius:14px;background:var(--tick);cursor:pointer;transition:background var(--t)}
+.cb--sw input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--card);transition:left var(--t)}
+.cb--sw input:checked{background:var(--primary)}
+.cb--sw input:checked::after{left:21px}
+.btn,.btn-ghost,.sh,.pr-cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;padding:0 16px;border-radius:var(--r-in);font-weight:700;text-decoration:none;text-align:center}
+.btn{background:var(--primary);color:var(--on-primary)}
+.btn-ghost{background:var(--soft);color:var(--primary)}
+.btn-text{min-height:44px;padding:0 12px;background:none;color:var(--primary);font-weight:700}
+.sh{background:var(--fg);color:var(--bg)}
+.go-row{display:grid;gap:8px;margin-top:var(--s2)}
+.gauge{position:relative;height:64px;margin:12px 12px 4px}
+.g-now{position:absolute;top:0;white-space:nowrap;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.8rem;font-weight:700;line-height:1.5}
+.g-track{position:absolute;left:0;right:0;top:28px;height:14px;border-radius:7px;background:var(--track);overflow:hidden}
+.g-fill{width:0;height:100%;border-radius:7px;background:var(--ok);transition:width var(--t)}
+.g-fill[data-tone=wn]{background:var(--wn)}
+.g-fill[data-tone=ng]{background:var(--ng)}
+.g-tick{position:absolute;top:24px;width:2px;height:22px;margin-left:-1px;background:var(--tick)}
+.g-thumb{position:absolute;top:24px;left:0;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--card);border:4px solid var(--primary);transition:left var(--t)}
+.g-labels{position:absolute;left:0;right:0;top:48px;height:16px;font-size:.72rem;line-height:16px;color:var(--sub)}
+.g-labels span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.gauge--bar{height:40px;margin:8px 0 4px}
+.gauge--bar .g-track{top:0}
+.gauge--bar .g-tick{top:-4px}
+.gauge--bar .g-labels{top:20px}
+.g-cap{margin:6px 0 0;font-size:.875rem;color:var(--sub)}
+.acc{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2)}
+.acc>summary{display:flex;align-items:center;gap:8px;min-height:56px;padding:0 20px;cursor:pointer;list-style:none;font-weight:700}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary::after{content:"";flex:none;margin:0 4px 4px auto;width:9px;height:9px;border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg);transition:transform var(--t)}
+.acc[open]>summary::after{margin-bottom:-4px;transform:rotate(-135deg)}
+.acc-body,.acc>section{padding:0 20px 20px}
+.acc-list{background:var(--card);border-radius:var(--r-card);margin:0 0 var(--s2);overflow:hidden}
+.acc-list>.acc{margin:0;border-radius:0;background:none}
+.acc-list>.acc:not(:first-child){border-top:1px solid var(--soft)}
+.acc--inline{background:var(--soft);border-radius:var(--r-in)}
+.acc--inline>summary{min-height:48px;padding:0 16px}
+.acc--inline>.acc-body{padding:0 16px 16px}
+@media(max-width:400px){.acc>summary{padding:0 16px}.acc-body,.acc>section{padding:0 16px 16px}}
+.tw{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;width:100%;min-width:400px;font-size:.88rem}
+th,td{padding:8px 10px;text-align:left;vertical-align:top}
+th{color:var(--sub);font-weight:700}
+td.n{text-align:right;white-space:nowrap}
+tbody tr:nth-child(even){background:var(--soft)}
+caption{text-align:left;font-weight:700;padding:4px 0}
+.faq h3{margin:14px 0 0}
+.faq p{margin:4px 0}
+dl.g dt{font-weight:700;margin:12px 0 0}
+dl.g dd{margin:2px 0 0}
+.shw{margin:0 0 4px}
+.pr-wrap{margin-top:var(--s3)}
+.pr-note{margin:0 0 8px;font-size:.875rem;line-height:1.6;color:var(--sub)}
+.pr-card{background:var(--soft);border-radius:var(--r-in);padding:var(--s2);margin:12px 0 0}
+.pr-card h3,.pr-card h4{margin:6px 0;font-size:1rem}
+.pr-card p{margin:4px 0;font-size:.9rem}
+.pr-tag{display:inline-block;font-size:.8125rem;font-weight:700;color:var(--sub)}
+.pr-tag::before{content:"\3010"}
+.pr-tag::after{content:"\3011"}
+.pr-disc{display:inline;margin:0 0 0 4px;font-size:.8125rem;color:var(--sub)}
+.pr-cta{min-height:48px;margin-top:10px;background:var(--card);color:var(--primary)}
+.ad-slot{min-height:250px;margin:0 0 var(--s2);display:flex;align-items:flex-start;justify-content:center;border-radius:var(--r-in)}
+.ad-label{font-size:.75rem;color:var(--sub);padding:4px}
+.rel{margin:var(--s5) 0 0}
+.rel-t{margin:0 0 8px;font-size:1.05rem;font-weight:700;font-feature-settings:"palt"}
+.rel .tools,.rel .sisters{background:var(--card);border-radius:var(--r-card);padding:8px;margin:0 0 var(--s2)}
+.rel h2{margin:8px 12px 4px;font-size:.8125rem;color:var(--sub)}
+.tl{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.tl a{position:relative;display:block;min-height:56px;padding:10px 36px 10px 12px;border-radius:var(--r-in);color:var(--fg);text-decoration:none;transition:background var(--t)}
+.tl a::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;margin-top:-4px;border-top:2px solid var(--sub);border-right:2px solid var(--sub);transform:rotate(45deg)}
+.tl a:hover{background:var(--soft)}
+.tl a strong{display:block;font-size:.95rem;line-height:1.5}
+.tl a span{display:block;font-size:.8125rem;color:var(--sub)}
+.tl a[aria-current=page]{background:var(--primary-soft)}
+.tl a[aria-current=page]::after{display:none}
+footer{font-size:.85rem;color:var(--sub);margin-top:var(--s4)}
+.foot-links{margin:0 0 var(--s1)}
+.foot-links a{display:inline-flex;align-items:center;min-height:44px}
+footer h2{font-size:1rem;margin:12px 0 6px}
+.livebar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:640px;min-height:56px;margin:0 auto;padding:0 16px env(safe-area-inset-bottom);background:var(--card);box-shadow:0 -4px 16px rgba(15,23,42,.12);font-weight:700}
+.livebar button{flex:none;min-height:44px;padding:0 16px;border-radius:var(--r-pill);background:var(--primary);color:var(--on-primary);font-weight:700}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+/*ds:end*/
+.bigpair{display:flex;flex-wrap:wrap;gap:0 24px}
+.warns{list-style:none;margin:8px 0 0;padding:0}
+.warns li{margin:8px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--wn-bg);color:var(--wn-fg);font-size:.875rem}
+.cmp{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0 0;padding:0}
+.cmp li{display:flex;flex-direction:column;gap:2px;min-width:0;padding:10px 8px;border-radius:var(--r-in);background:var(--soft);font-size:.875rem}
+.cmp li.is-cur{background:var(--primary-soft)}
+.cmp strong{font-size:1rem}
+.cmp .v{font-weight:700}
+.cmp .k{font-size:.8125rem;color:var(--sub)}
+.cmp .pill{min-height:28px;padding:2px 8px;font-size:.8125rem}
+.src{font-size:.82rem;word-break:break-all}
+.src a{display:inline-block;padding:12px 0}
 </style>
 </head>
 <body>
 <div class="w">
 <header>
-<h1>時給×シフト逆算計算機（令和8年分・2026年）</h1>
-<p>時給とこれまでの累計収入を入れると、選んだ年収の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかが分かります。</p>
-<div class="note" role="note"><ul>
-<li>対象: 令和8年分（2026年1〜12月の収入）</li>
-<li>最終確認日: 2026-11-17</li>
-<li>この計算は目安です。時給の割増や支払日で実際の収入は変わります。</li></ul></div>
-<div class="warn" id="yearWarn" role="note" hidden>このページは令和8年分（2026年の収入）用です。今年分の制度は変更されている可能性があります。必ず最新の公式情報をご確認ください。</div>
 <nav class="navb" aria-label="学生バイトお役立ちツール">
 <a href="../">壁チェッカー</a>
 <a href="../kakemochi/">掛け持ち還付</a>
 <a href="./" aria-current="page">シフト逆算</a>
+<a href="#sisters">ほかのツール</a>
 </nav>
+<h1>時給×シフト逆算計算機（令和8年分・2026年）</h1>
+<div class="band" role="note"><span>目安です。対象：令和8年分（2026年）／最終確認日 2026-11-17</span><a href="#legal" data-open="legal">免責</a></div>
+<div class="warn" id="yearWarn" role="note" hidden>このページは令和8年分（2026年の収入）用です。今年分の制度は変更されている可能性があります。必ず最新の公式情報をご確認ください。</div>
 </header>
 <main>
-<section id="input">
-<h2>条件を入れる</h2>
+<section id="input" class="card">
+<h2 class="ct">条件を入れる</h2>
 <form id="f" novalidate>
-<fieldset><legend>目指す壁（超えたくないライン）</legend>
-<label class="rd"><input type="radio" name="wall" id="w136" value="w136"> 136万円（親の扶養控除ライン・以下）</label>
-<label class="rd"><input type="radio" name="wall" id="w150" value="w150" checked> 150万円（親の健保の扶養・19〜22歳・未満）</label>
-<label class="rd"><input type="radio" name="wall" id="w178" value="w178"> 178万円（本人の所得税が0円のライン・以下）</label>
-<p class="err" id="e-wall" role="alert" hidden></p></fieldset>
+<fieldset class="seg-group" data-cols="3"><legend>目指す壁（超えたくないライン）</legend>
+<label class="seg"><input type="radio" name="wall" id="w136" value="w136"><span>136万<small>親の扶養控除</small></span></label>
+<label class="seg"><input type="radio" name="wall" id="w150" value="w150" checked><span>150万<small>健保の扶養</small></span></label>
+<label class="seg"><input type="radio" name="wall" id="w178" value="w178"><span>178万<small>本人の所得税</small></span></label>
+</fieldset>
+<p class="hint" id="wallHint" style="margin:-8px 0 16px">150万円（親の健保の扶養・19〜22歳・未満）</p>
+<p class="err" id="e-wall" role="alert" hidden></p>
 <div class="fld"><label class="l" for="hourly">時給（円）</label>
-<input id="hourly" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 1,200" aria-describedby="e-hourly h-hourly">
+<div class="num"><input id="hourly" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 1,200" aria-describedby="e-hourly h-hourly"><span class="unit">円</span></div>
 <p class="err" id="e-hourly" role="alert" hidden></p>
+<label class="sr" for="hourlyRange">時給をスライダーで選ぶ</label>
+<input type="range" class="range is-empty" id="hourlyRange" min="900" max="2000" step="10" value="900">
+<div class="chips" id="hourlyChips" data-cols="4">
+<button type="button" class="chip" aria-pressed="false" aria-label="1,000円" data-v="1000">1,000</button>
+<button type="button" class="chip" aria-pressed="false" aria-label="1,100円" data-v="1100">1,100</button>
+<button type="button" class="chip" aria-pressed="false" aria-label="1,200円" data-v="1200">1,200</button>
+<button type="button" class="chip" aria-pressed="false" aria-label="1,500円" data-v="1500">1,500</button>
+</div>
 <p class="hint" id="h-hourly">基本の時給を入れます。深夜・残業の割増は含めません。</p></div>
 <div class="fld"><label class="l" for="cum">これまでの累計給与収入（円）</label>
-<input id="cum" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 800,000" aria-describedby="e-cum h-cum">
+<div class="num"><input id="cum" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 800,000" aria-describedby="e-cum h-cum"><span class="unit">円</span></div>
 <p class="err" id="e-cum" role="alert" hidden></p>
+<label class="sr" for="cumRange">累計をスライダーで選ぶ</label>
+<input type="range" class="range is-empty" id="cumRange" min="0" max="2000000" step="10000" value="0">
 <p class="hint" id="h-cum">今年1月から今日までに支払われた給与の合計（税込・賞与を含む）。非課税の通勤手当は含めません。</p></div>
 <div class="fld"><label class="l" for="left">残り月数</label>
-<input id="left" type="text" inputmode="numeric" autocomplete="off" aria-describedby="e-left h-left">
+<div class="stepper"><button type="button" id="leftDec" aria-label="残り月数を1か月減らす">−</button>
+<input id="left" type="text" inputmode="numeric" autocomplete="off" aria-describedby="e-left h-left"><span class="unit">か月</span>
+<button type="button" id="leftInc" aria-label="残り月数を1か月増やす">＋</button></div>
 <p class="err" id="e-left" role="alert" hidden></p>
 <p class="hint" id="h-left">今年中にこれから給与が支払われる月数（支給日の数）で数えます。12月分の給与が翌年1月払いなら、その分は数えません（翌年分の収入）。締め日・支払日は勤務先にご確認ください。</p></div>
+<details class="acc acc--inline" id="advanced"><summary>詳細設定<span class="dot" id="advDot" hidden>設定あり</span></summary><div class="acc-body">
 <div class="fld"><label class="l" for="commute">月の通勤手当（円・任意）</label>
-<input id="commute" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 10,000" aria-describedby="e-commute h-commute">
+<div class="num num--sm"><input id="commute" type="text" inputmode="numeric" autocomplete="off" placeholder="例: 10,000" aria-describedby="e-commute h-commute"><span class="unit">円</span></div>
 <p class="err" id="e-commute" role="alert" hidden></p>
 <p class="hint" id="h-commute">150万円の壁を選んだときだけ使います（月額×12を年間の通勤手当として加えます）。136万・178万では使いません。</p></div>
-<label class="cb"><input type="checkbox" id="intl"><span>留学生（在留資格「留学」・資格外活動許可あり）</span></label>
-<button type="submit" class="pri" id="go">計算する</button>
-<button type="button" class="sec" id="rst">入力をリセット</button>
+<label class="cb cb--sw"><input type="checkbox" id="intl"><span>留学生（在留資格「留学」・資格外活動許可あり）</span></label>
+<fieldset class="seg-group" data-cols="2" id="ageSet"><legend>年齢（任意）</legend>
+<label class="seg"><input type="radio" name="age" id="age18" value="u18"><span>18歳以下<small>高校生を含む</small></span></label>
+<label class="seg"><input type="radio" name="age" id="age19" value="a19p"><span>19歳以上<small>高校生を除く</small></span></label>
+</fieldset>
+<p class="hint">任意です。選ばなくても計算できます。年齢に合う広告（PR）を表示するかの判定にだけ使い、計算結果は変わりません。端末内だけで処理し、送信しません。選び直すときは「入力をリセット」を押してください。</p>
+</div></details>
+<div class="go-row"><button type="submit" class="btn btn-ghost" id="go">計算する</button>
+<button type="button" class="btn-text" id="rst">入力をリセット</button></div>
 </form>
 </section>
 
-<section id="result" hidden aria-live="polite">
-<h2 id="resultH" tabindex="-1">計算結果</h2>
-<h3>選んだ壁の結果</h3>
-<div class="sum"><p class="big" id="rBig"></p><p id="rSub"></p></div>
-<ul id="rWarn"></ul>
-<h3>3つの壁を比べる</h3>
-<div class="tw"><table><caption>同じ条件で3つの壁を比べる</caption><thead><tr><th>壁</th><th>月の収入上限</th><th>月の時間</th><th>週の時間</th></tr></thead><tbody id="cBody"></tbody></table></div>
-<ul class="tl">
-<li><a href="../"><strong>年収の壁チェッカーで4つの壁をまとめて判定する</strong></a></li>
-<li><a href="../kakemochi/"><strong>掛け持ちの場合は還付チェッカーへ</strong></a></li></ul>
-</section>
-
-<section id="diff">
-<h2>壁ごとの数え方の違い</h2>
+<section id="result" data-state="empty" data-stale="false">
+<p id="liveSr" class="sr" aria-live="polite" aria-atomic="true"></p>
+<div class="card rc">
+<div id="resultEmpty"><p>時給を入れると、壁を超えないための月・週の時間がここに出ます。</p></div>
+<div id="resultBody" hidden>
+<h2 id="resultH" class="ct">計算結果</h2>
+<div id="rBig" class="bigpair"><p class="big"><span id="rMonth">38</span><small>時間／月</small></p><p class="big"><span id="rWeek">8.7</span><small>時間／週</small></p></div>
+<p id="rSub" class="hint"></p>
+<p class="sumline"><span class="pill pill--wn" id="rState" hidden></span></p>
+<div class="gauge gauge--bar" id="roomGauge" role="img" aria-label=""><div class="g-track"><div class="g-fill" id="rgFill" data-tone="ok"></div></div></div>
+<p class="g-cap" id="rgCap"></p>
+<ul id="rWarn" class="warns"></ul>
+<p class="stale" id="staleNote" hidden>入力が途中のため、直前の結果を表示しています</p>
+<p class="confirm">確認先: 勤務先・健康保険組合・税務署（<a href="#diff" data-open="diffAcc">壁ごとの数え方</a>）</p>
+<ul id="cCards" class="cmp"></ul>
+</div>
+</div>
+<details class="acc" id="diffAcc"><summary><h2>壁ごとの数え方の違い</h2></summary><section id="diff">
 <div class="tw"><table><thead><tr><th>壁</th><th>判定する値</th><th>通勤手当</th><th>境界</th></tr></thead><tbody>
 <tr><td>136万</td><td>給与収入（暦年の支給日基準）</td><td>非課税分は含めない</td><td>136万円以下</td></tr>
 <tr><td>150万</td><td>見込み年収（通勤手当込み）</td><td>含める（一部確認）</td><td>150万円未満</td></tr>
@@ -156,20 +340,30 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 </tbody></table></div>
 <p>136万円を超えても、19〜22歳は159万円まで親の控除額は同じ63万円（特定親族特別控除）です。</p>
 <p>178万円以下なら本人の所得税は0円ですが、親の控除は178万円より前に減り始めます。</p>
+</section></details>
+<div class="card" id="actions" hidden>
+<p class="shw"><a id="shareX" class="sh" href="https://x.com/intent/tweet" target="_blank" rel="noopener noreferrer">X で計算結果をシェア<span class="sr"> （新しいタブで開きます）</span></a></p>
+<p class="hint">押すと X の投稿画面が開きます。投稿文には金額・時間・年齢は入りません。投稿前に内容を確認できます。</p>
+<div id="prWrap" class="pr-wrap" hidden><h3 class="ct">次のおすすめアクション</h3>
+<p class="pr-note">「PR」は広告（アフィリエイト）です。リンク先では各サービスの規約・年齢条件をご確認ください。</p>
+<div id="prCards"></div></div>
+<ul class="tl">
+<li><a href="../"><strong>年収の壁チェッカーで4つの壁をまとめて判定する</strong></a></li>
+<li><a href="../kakemochi/"><strong>掛け持ちの場合は還付チェッカーへ</strong></a></li></ul>
+</div>
 </section>
-
-<section id="cautions">
-<h2>使う前の注意</h2>
+<div class="acc-list">
+<details class="acc" id="aboutAcc"><summary><h2>このツールでわかること</h2></summary><div class="acc-body"><p>時給とこれまでの累計収入を入れると、選んだ年収の壁を超えないために、残り何か月で月何時間・週何時間まで働けるかが分かります。</p></div></details>
+<details class="acc"><summary><h2>使う前の注意</h2></summary><section id="cautions">
 <ul>
 <li>12月分の給与が1月払いなら翌年分です。所得税の収入は、給与が支払われる日（支給日）が属する年で数えます。</li>
 <li>深夜・残業・休日の割増で時給が上がるため、実際はこの計算より早く壁に届きます。余裕を持って計画してください。</li>
 <li>留学生（資格外活動許可あり）は週28時間以内です。複数のバイトを掛け持ちする場合は合算です。長期休業期間の扱いは学校・出入国在留管理庁で確認してください（一部確認）。</li>
 <li>学生でない場合、週の所定労働時間20時間以上かつ従業員51人以上の勤務先では社会保険の対象になります。学生は原則対象外です。</li>
-<li>住民税（119万円）はこの計算機の対象外です。年収の壁チェッカーで確認してください。</li></ul>
-</section>
-
-<section id="faq" class="faq">
-<h2>よくある質問</h2>
+<li>住民税（119万円）はこの計算機の対象外です。年収の壁チェッカーで確認してください。</li>
+<li>年齢の選択は任意で、広告（PR）の表示判定にだけ使います。計算結果には影響しません。</li></ul>
+</section></details>
+<details class="acc"><summary><h2>よくある質問</h2></summary><section id="faq" class="faq">
 <h3>年収の壁を超えないように、あと何時間働けますか？</h3>
 <p>壁の金額からこれまでの累計収入を引いた残りを、残り月数で割り、時給で割って求めます。月の上限額は残り枠÷残り月数（円未満切捨）、月の時間は月の上限額÷時給（時間未満切捨）、週の時間は月の時間×12÷52（小数1位まで切捨）で計算します。</p>
 <h3>150万円の壁は通勤手当を含みますか？</h3>
@@ -180,10 +374,38 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <p>資格外活動許可を受けた留学生は、原則として週28時間以内です（学校の長期休業期間は1日8時間以内）。一部確認の情報のため、在籍する学校や出入国在留管理庁でご確認ください。</p>
 <h3>深夜や残業の割増があると計算はずれますか？</h3>
 <p>ずれます。深夜・残業・休日は割増賃金で時給が上がるため、この計算機の時間より早く壁に届きます。余裕を持って計画してください。</p>
-</section>
-
-<section id="sources">
-<h2>根拠となる一次情報</h2>
+<h3>学生のバイトは週何時間まで働けますか？</h3>
+<p>日本人学生には、学生であること自体による法定の週上限はないとされます（労働基準法の一次情報は未確認のため要確認）。ただし労働基準法の法定労働時間（週40時間・1日8時間）の枠があり、18歳未満は年少者の規定（深夜・時間外の制限）があります。留学生（資格外活動許可あり）は原則週28時間以内です。</p>
+<h3>週20時間以上働くと社会保険に入りますか？学生は？</h3>
+<p>勤務先の社会保険の賃金要件（月額8.8万円以上）は2026年10月1日に撤廃されました。現在の加入要件は、週の所定労働時間20時間以上、従業員51人以上の企業（2027年10月から36人以上、以降段階的に拡大）、学生でないことです。学生は原則対象外ですが、休学中・定時制・通信制などは例外のため、年金事務所・勤務先で要確認です。</p>
+<h3>時給1,200円で、壁を超えないには月に何時間まで働けますか？</h3>
+<p>通勤手当なし・累計0円・年12か月で計算した目安です。136万円以下なら月94時間（週21.6時間）、150万円未満なら月104時間（週24.0時間）、178万円以下なら月123時間（週28.3時間）までです。年の途中なら、累計と残り月数を入力すると計算できます。深夜・残業の割増があると、これより早く壁に届きます。</p>
+<h3>時給が上がると、壁まで働ける時間は変わりますか？</h3>
+<p>変わります。壁までの残り枠が同じなら月の収入上限は変わらず、時給が高いほど働ける時間は短くなります。累計0円・年12か月で178万円以下を目指す場合、月の収入上限は148,333円で、時給1,000円なら月148時間（週34.1時間）、時給1,500円なら月98時間（週22.6時間）です。</p>
+<h3>ボーナス（賞与）や臨時収入は壁の計算に入りますか？</h3>
+<p>賞与は給与収入に含めて数えます（賞与を給与から除外する規定はありません。専用ページの一次情報は未取得のため要確認）。このツールには賞与の入力欄がないため、受け取った賞与は「これまでの累計給与収入」に加えてください。これから受け取る予定の賞与も累計に足して入力すると、その分だけ残り枠が減ります。</p>
+<h3>掛け持ち（ダブルワーク）の場合、どう入力すればいいですか？</h3>
+<p>年収の壁は全勤務先の給与の合計で判定します。「これまでの累計給与収入」には全勤務先の合計を入れ、時給には、これから増やす予定のバイトの時給を入れてください。留学生の週28時間も、掛け持ちは合算です（一部確認。学校・出入国在留管理庁で要確認）。還付の目安は「<a href="../kakemochi/">掛け持ちバイトの源泉徴収・還付金チェッカー</a>」で計算できます。</p>
+<h3>夏休みだけなど、短期間だけ働く場合の残り月数はどう入れますか？</h3>
+<p>「残り月数」には、今年中に給与が支払われる月数（支給日の数）を入れます。働かない月は数えません。月の収入上限は「残り枠÷その月数」で計算するため、2か月だけ給与が出るなら、残り枠を2で割った額が1か月あたりの上限です。支給日が12月31日までの給与だけが今年分です。</p>
+</section></details>
+<details class="acc"><summary><h2>用語解説</h2></summary><section id="glossary">
+<dl class="g">
+<dt>給与収入</dt><dd>税引前の給与の総額。賞与を含み、非課税の通勤手当は含めません。</dd>
+<dt>支給日</dt><dd>給与が実際に支払われる日。所得税の収入は、支給日が属する年で数えます。</dd>
+<dt>累計給与収入</dt><dd>今年1月から今日までに支払われた給与の合計。この計算機の出発点です。</dd>
+<dt>残り枠</dt><dd>選んだ壁の金額から累計（150万円の壁では通勤手当の年額も）を引いた、あと稼げる額です。</dd>
+<dt>月の収入上限</dt><dd>残り枠を残り月数で割った額（円未満切捨）です。</dd>
+<dt>通勤手当</dt><dd>交通費として支給される手当。非課税限度（月15万円まで）内は給与収入に含めませんが、健保の扶養の判定（150万円）では含めて判定される扱いです。</dd>
+<dt>扶養控除</dt><dd>親の所得税の控除。令和8年分は子の給与収入136万円以下が条件です。</dd>
+<dt>特定親族特別控除</dt><dd>19歳以上23歳未満の子の給与収入が136万円超197万円以下のとき、段階的に受けられる親の控除。159万円までは満額63万円です。</dd>
+<dt>健康保険の被扶養者</dt><dd>親などの健康保険に扶養として加入すること。19〜22歳は年間収入150万円未満が基準です。</dd>
+<dt>年間収入（見込み年収）</dt><dd>健保の扶養の判定に使う、契約から見込まれる1年間の収入。税の暦年の支給日基準とは数え方が異なります。</dd>
+<dt>割増賃金</dt><dd>深夜・残業・休日に上乗せされる賃金。時給が上がるため、壁に早く届きます。</dd>
+<dt>資格外活動許可</dt><dd>留学生がアルバイトをするために必要な許可。原則週28時間以内です。</dd>
+</dl>
+</section></details>
+<details class="acc"><summary><h2>根拠となる一次情報</h2></summary><section id="sources">
 <p>最終確認日: 2026-11-17</p>
 <ul class="src">
 <li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1199 基礎控除</a></li>
@@ -193,23 +415,35 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <li><a href="https://www.mhlw.go.jp/web/t_doc?dataId=00tc9349&amp;dataType=1&amp;pageNo=1" target="_blank" rel="noopener noreferrer">厚生労働省 被扶養者の年間収入の判定</a></li>
 <li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/gensen/2509.htm" target="_blank" rel="noopener noreferrer">国税庁 No.2509 給与等の収入すべき時期</a></li>
 <li><a href="https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri07_00003.html" target="_blank" rel="noopener noreferrer">出入国在留管理庁 留学生の資格外活動（本文は一部確認）</a></li></ul>
-</section>
-
-<section id="future">
-<h2>令和9年分以降について</h2>
+</section></details>
+<details class="acc"><summary><h2>令和9年分以降について</h2></summary><section id="future">
 <ul><li>令和9年分（2027年の収入）: 令和8年分と同じ特例が適用される見込みですが、公式情報で必ず確認してください。</li>
 <li>令和10年分以降: 特例の終了により基準額が変わります（要確認）。このツールは令和8年分のみ対応です。</li></ul>
-</section>
+</section></details>
+</div>
 </main>
+<aside class="rel" aria-label="関連ツール">
+<p class="rel-t">関連ツール</p>
 <section class="tools" aria-labelledby="toolsH">
 <h2 id="toolsH">学生バイトお役立ちツール</h2>
 <ul class="tl">
 <li><a href="../"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span></a></li>
 <li><a href="../kakemochi/"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span></a></li>
-<li><a href="./" aria-current="page"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span></a></li>
+<li><a href="./" aria-current="page"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算（このページ）</span></a></li>
 </ul>
 </section>
+<section class="sisters" id="sisters" aria-labelledby="sistersH">
+<h2 id="sistersH">姉妹ツール</h2>
+<ul class="tl">
+<li><a href="../living-cost-simulator/"><strong>手取り＆一人暮らし生活費シミュレーター</strong><span>手取りと生活費の目安を計算</span></a></li>
+<li><a href="../es-word-counter/"><strong>ES文字数カウント＆ガクチカ構成チェッカー</strong><span>ESの文字数と構成をチェック</span></a></li>
+<li><a href="../nisa-simulator/"><strong>大学生からの新NISA・バイト代積立シミュレーター</strong><span>積立の将来額を試算</span></a></li>
+</ul>
+</section>
+</aside>
 <footer>
+<p class="foot-links"><a href="#legal" data-open="legal">免責事項・プライバシー</a> ／ 連絡先: gakusei.kabe.checker@gmail.com</p>
+<details class="acc" id="legal"><summary>免責事項・プライバシーポリシー</summary><div class="acc-body">
 <section id="disclaimer">
 <h2>免責事項</h2>
 <ul><li>本ツールは学生本人・保護者向けの情報提供であり、税務・社会保険の個別の助言ではありません。結果は目安です。</li>
@@ -226,17 +460,21 @@ footer{font-size:.85rem;opacity:.85;margin-top:24px}
 <li>広告配信を行う場合、Google AdSense などの第三者配信事業者がクッキーを使って広告を表示することがあります。広告設定は <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">https://adssettings.google.com</a> から変更できます。</li>
 <li>アクセス解析を導入する場合は、本ポリシーを更新します。</li>
 <li>広告・アフィリエイトを含みます。広告枠には「広告」「PR」と表示します。</li>
+<li>「X で計算結果をシェア」ボタンを押したときだけ、X（x.com）の投稿画面へ移動し、投稿文（壁の種類と余裕の区分のみ。金額・時間・年齢は含みません）とこのページのURLが渡されます。ボタンを押さない限り、外部へ送信しません。</li>
 <li>PRカード（広告）のリンク先は広告主のサイトです。クリック後は、そのサイトのプライバシーポリシーが適用されます。</li>
 <li>連絡先: gakusei.kabe.checker@gmail.com</li></ul>
 </section>
+</div></details>
 </footer>
 </div>
+<div id="liveBar" class="livebar" aria-hidden="true" hidden><span id="liveBarText"></span><button type="button" tabindex="-1" id="liveBarGo">結果へ</button></div>
 
 <script src="../links-config.js"></script>
 <script id="logic">
 const SHIFT=(function(){
 'use strict';
-const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-17'};
+const DATA={TAX_YEAR:'令和8年分',LAST_CONFIRMED:'2026-11-17',CANON:'https://gerinoaka.github.io/student-baito-kabe-checker-2026/shift-limit/',HASHTAGS:['年収の壁','学生バイト','シフト計算']};
+const AGE_GROUPS=['u18','a19p'];
 const WALLS={
  w136:{limit:1360000,cap:1360000,unit:'ika',useCommute:false},
  w150:{limit:1500000,cap:1499999,unit:'miman',useCommute:true},
@@ -274,59 +512,192 @@ function calcShift(o){
  else{status='room';monthlyLimit=Math.floor(slot/ml);hoursMonth=Math.floor(monthlyLimit/H);weeklyHours=weeklyFromMonthly(hoursMonth).weekly;}
  return {ok:true,wall:o.wall,basis:W.useCommute?'Y':'X',limit:W.limit,cap:W.cap,commuteYear:commuteYear,slot:slot,status:status,exceeded:exceeded,monthsLeft:ml,
   monthlyLimit:monthlyLimit,hoursMonth:hoursMonth,weeklyHours:weeklyHours,intl:{checked:!!o.intl,over28:weeklyFromMonthly(hoursMonth).over28}};}
-return {calcShift:calcShift,weeklyFromMonthly:weeklyFromMonthly,defaultMonthsLeft:defaultMonthsLeft,WALLS:WALLS,parseYen:parseYen,fmtYen:fmtYen,DATA:DATA};
+function shareTier(r){
+ if(!r||r.ok!==true||!isInt(r.slot)||!isInt(r.cap))return null;
+ if(r.status==='reached')return r.exceeded?'over':'reached';
+ if(r.status!=='room')return null;
+ if(r.slot*2>=r.cap)return 'ample';
+ if(r.slot*5>=r.cap)return 'some';
+ return 'tight';}
+const WALL_LABEL={w136:'親の扶養控除の壁',w150:'親の健保の扶養の壁',w178:'本人の所得税の壁'};
+function buildShare(r){
+ const tier=shareTier(r);
+ const wl=WALL_LABEL[(r&&Object.prototype.hasOwnProperty.call(WALL_LABEL,r.wall))?r.wall:'w178'];
+ const B={
+  ample:'🟢 学生バイトのシフト逆算：'+wl+'まで、まだたっぷり余裕がありました！',
+  some:'🙂 学生バイトのシフト逆算：'+wl+'まで、まだ少し余裕がありました。',
+  tight:'😅 学生バイトのシフト逆算：'+wl+'まで、残りわずかでした…！',
+  reached:'⚠️ 学生バイトのシフト逆算：'+wl+'にちょうど届いていました…！',
+  over:'😱 学生バイトのシフト逆算：'+wl+'をすでに超えていました…！'};
+ const body=tier?B[tier]:'🧮 学生バイトのシフト逆算：計算してみました。';
+ const text=body+'\nあなたも計算してみて👇';
+ const href='https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(DATA.CANON)+'&hashtags='+DATA.HASHTAGS.map(encodeURIComponent).join(',');
+ return {text:text,url:DATA.CANON,hashtags:DATA.HASHTAGS.join(','),href:href};}
+function prPlan(r,age){return {a:!!(r&&r.ok===true&&r.status==='room'&&age===AGE_GROUPS[1])};}
+return {calcShift:calcShift,shareTier:shareTier,buildShare:buildShare,prPlan:prPlan,weeklyFromMonthly:weeklyFromMonthly,defaultMonthsLeft:defaultMonthsLeft,WALLS:WALLS,parseYen:parseYen,fmtYen:fmtYen,DATA:DATA};
 })();
 </script>
 <script id="ui">
 (function(){
 'use strict';
-const K=SHIFT,$=function(id){return document.getElementById(id);};
+const K=SHIFT;
+const $=function(id){return document.getElementById(id);};
 function h(t,c,x,k){const e=document.createElement(t);if(c)e.className=c;if(x!==null&&x!==undefined)e.textContent=x;(k||[]).forEach(function(n){e.appendChild(n);});return e;}
-const NAMES={w136:'136万円',w150:'150万円',w178:'178万円'};
-const EID={wall:['e-wall',null],hourly:['e-hourly','hourly'],cum:['e-cum','cum'],monthsLeft:['e-left','left'],commute:['e-commute','commute']};
-let judged=false,shown=[];
-function clearErr(){shown.forEach(function(p){const e=$(p[0]);e.textContent='';e.hidden=true;if(p[1])$(p[1]).removeAttribute('aria-invalid');});shown=[];}
-function showErr(f,msg){const p=EID[f];const e=$(p[0]);e.textContent=msg;e.hidden=false;if(p[1])$(p[1]).setAttribute('aria-invalid','true');shown.push(p);}
+const raf=window.requestAnimationFrame?function(f){window.requestAnimationFrame(f);}:function(f){setTimeout(f,16);};
+function reduced(){return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);}
+const PCLS={'○':'ok','×':'ng','△':'wn','－':'nt'};
+function pc(t){return 'pill pill--'+(PCLS[String(t).charAt(0)]||'nt');}
+function num(n){return Number(n).toLocaleString('en-US');}
+function isNum(v){return typeof v==='number'&&!isNaN(v);}
+let state='empty',pend=false,prT=null,srT=null,srL='';
+function setState(s){state=s;$('result').setAttribute('data-state',s);}
+function schedule(){if(pend)return;pend=true;raf(function(){pend=false;tick();});}
+const shown={},tm={};
+function eEl(k){return $(EID[k]||('e-'+k));}
+function eShow(k,m){const e=eEl(k);e.textContent=m;e.hidden=false;$(k).setAttribute('aria-invalid','true');shown[k]=1;}
+function eHide(k){clearTimeout(tm[k]);delete tm[k];if(shown[k]){const e=eEl(k);e.textContent='';e.hidden=true;$(k).removeAttribute('aria-invalid');delete shown[k];}}
+function eSet(k,m,now){
+ if(!m){eHide(k);return;}
+ clearTimeout(tm[k]);delete tm[k];
+ if(now||shown[k])eShow(k,m);
+ else tm[k]=setTimeout(function(){delete tm[k];eShow(k,m);stale();},1200);}
+function eAll(){Object.keys(shown).concat(Object.keys(tm)).forEach(eHide);}
+function stale(){const on=state==='ready'&&Object.keys(shown).length>0;$('result').setAttribute('data-stale',on?'true':'false');$('staleNote').hidden=!on;}
+function say(t){clearTimeout(srT);srT=setTimeout(function(){if(t!==srL){srL=t;$('liveSr').textContent=t;}},700);}
+function openFor(id){let e=id?document.getElementById(id):null;while(e){if(e.tagName==='DETAILS')e.open=true;e=e.parentNode;}}
+[].forEach.call(document.querySelectorAll('a[data-open]'),function(a){a.addEventListener('click',function(){openFor(a.getAttribute('data-open'));});});
+function hashOpen(){let id=(window.location&&window.location.hash||'').slice(1);if(!id)return;try{id=decodeURIComponent(id);}catch(e){}openFor(id);}
+hashOpen();window.addEventListener('hashchange',hashOpen);
+let lbOn=false,vis=true,lbTxt='';
+function lbUpd(){const b=$('liveBar');if(!b)return;b.hidden=!(lbOn&&!vis&&state==='ready');$('liveBarText').textContent=lbTxt;}
+if($('liveBar')&&window.IntersectionObserver){
+ const rc0=document.querySelector('#result .rc');lbOn=true;
+ new IntersectionObserver(function(es){vis=es[es.length-1].isIntersecting;lbUpd();}).observe(rc0);
+ $('liveBarGo').addEventListener('click',function(){rc0.scrollIntoView({block:'start'});});}
+function scrollOnce(){
+ if(state!=='ready')return;
+ const c=document.querySelector('#result .rc'),r=c.getBoundingClientRect();
+ if(r.top<0||r.bottom>(window.innerHeight||667))c.scrollIntoView({block:'nearest',behavior:reduced()?'auto':'smooth'});}
+function prCard(key,lead){
+ const L=(typeof window.KABE_LINKS==='object'&&window.KABE_LINKS)?window.KABE_LINKS[key]:null;
+ if(!L||typeof L.url!=='string'||!/^https:\/\//.test(L.url)||typeof L.title!=='string'||typeof L.cta!=='string')return null;
+ const a=h('a','pr-cta',L.cta);a.href=L.url;a.target='_blank';a.rel='sponsored nofollow noopener';
+ return h('div','pr-card',null,[h('span','pr-tag',typeof L.label==='string'&&L.label?L.label:'PR'),h('p','pr-disc','広告を含みます'),h('h3',null,L.title),h('p',null,lead),h('p',null,typeof L.desc==='string'?L.desc:''),a]);}
+function fmtBlur(el){const v=K.parseYen(el.value);if(isNum(v))el.value=num(v);}
+function afterReset(f,fn){f.addEventListener('reset',function(){setTimeout(fn,0);});}
+const EID={};
+const NAMES={w136:'136万',w150:'150万',w178:'178万'};
+const WH={w136:'136万円（親の扶養控除ライン・以下）',w150:'150万円（親の健保の扶養・19〜22歳・未満）',w178:'178万円（本人の所得税が0円のライン・以下）'};
+const PR_LEAD='いまは壁に余裕があります。壁を超えない範囲で、スキマ時間に稼ぐ方法もあります。※稼ぎすぎると壁を超えるので、累計の収入を確認しながら使いましょう。';
+const RG={hourly:[900,2000],cum:[0,2000000]};
 function wk(w){return String(w);}
+function manS(n){
+ if(n<=0)return '0円';
+ if(n<10000)return K.fmtYen(n);
+ if(n%10000===0)return num(n/10000)+'万円';
+ return num(Math.floor(n/10000))+'万'+num(n%10000)+'円';}
+function curWall(){const s=document.querySelector('input[name=wall]:checked');return s?s.value:null;}
+function curAge(){return (document.querySelector('input[name=age]:checked')||{}).value||null;}
+function readInp(){
+ return {wall:curWall(),hourly:K.parseYen($('hourly').value),cum:K.parseYen($('cum').value),monthsLeft:K.parseYen($('left').value),commute:K.parseYen($('commute').value),intl:$('intl').checked};}
+function setRange(id,rid,lo,hi,txt){
+ const raw=K.parseYen($(id).value),rg=$(rid);
+ if(isNum(raw))rg.value=String(Math.max(lo,Math.min(hi,raw)));
+ else if(raw===null)rg.value=String(lo);
+ rg.classList.toggle('is-empty',raw===null);
+ const v=Number(rg.value);
+ rg.style.setProperty('--pct',((v-lo)/(hi-lo)*100)+'%');
+ rg.setAttribute('aria-valuetext',raw===null?'未入力':txt(isNum(raw)?raw:v));}
+function leftBase(){
+ const v=K.parseYen($('left').value);
+ if(isNum(v)&&Number.isInteger(v)&&v>=1&&v<=12)return v;
+ const d=new Date();return K.defaultMonthsLeft(d.getFullYear(),d.getMonth()+1);}
+function syncView(){
+ setRange('hourly','hourlyRange',900,2000,function(v){return num(v)+'円';});
+ setRange('cum','cumRange',0,2000000,function(v){return manS(v);});
+ const hv=K.parseYen($('hourly').value);
+ [].forEach.call($('hourlyChips').querySelectorAll('button'),function(b){b.setAttribute('aria-pressed',String(isNum(hv)&&Number(b.getAttribute('data-v'))===hv));});
+ const lv=K.parseYen($('left').value),ok=isNum(lv)&&Number.isInteger(lv)&&lv>=1&&lv<=12;
+ $('leftDec').disabled=ok&&lv<=1;$('leftInc').disabled=ok&&lv>=12;
+ $('wallHint').textContent=WH[curWall()]||'';
+ $('advDot').hidden=!($('commute').value.trim()||$('intl').checked||curAge());}
 function render(inp,r){
- const big=$('rBig'),sub=$('rSub');
- if(r.status==='room'){
-  big.textContent='残り'+r.monthsLeft+'か月で、月'+r.hoursMonth+'時間・週'+wk(r.weeklyHours)+'時間まで';
-  sub.textContent='月の収入上限の目安: '+K.fmtYen(r.monthlyLimit)+'（時給'+K.fmtYen(inp.hourly)+'の場合）';}
- else if(!r.exceeded){big.textContent='すでに到達しています';sub.textContent='これ以上の給与は壁を超える可能性があります。';}
- else{big.textContent='すでに壁を超えています';sub.textContent='この壁を超えない計画はできません。次の壁の結果も見てください。';}
- const tb=$('cBody');tb.textContent='';
+ const room=r.status==='room';
+ $('rMonth').textContent=room?String(r.hoursMonth):'－';
+ $('rWeek').textContent=room?wk(r.weeklyHours):'－';
+ const st=$('rState');
+ if(room){st.hidden=true;
+  $('rSub').textContent='残り'+r.monthsLeft+'か月・月の収入上限の目安 '+K.fmtYen(r.monthlyLimit)+'（時給'+K.fmtYen(inp.hourly)+'の場合）';}
+ else{st.hidden=false;
+  st.textContent=r.exceeded?'× すでに壁を超えています':'△ すでに到達しています';st.className='pill pill--'+(r.exceeded?'ng':'wn');
+  $('rSub').textContent=r.exceeded?'この壁を超えない計画はできません。次の壁の結果も見てください。':'これ以上の給与は壁を超える可能性があります。';}
+ const pct=room?Math.max(0,Math.min(100,r.slot/r.cap*100)):0;
+ const tier=K.shareTier(r),tone={ample:'ok',some:'wn',tight:'ng',reached:'ng',over:'ng'}[tier]||'ng';
+ const fl=$('rgFill');fl.style.width=pct+'%';fl.setAttribute('data-tone',tone);
+ const cap='残り枠 '+manS(Math.max(0,r.slot))+'（'+Math.round(pct)+'%）';
+ $('rgCap').textContent=cap;$('roomGauge').setAttribute('aria-label',cap);
+ const cc=$('cCards');cc.textContent='';
  ['w136','w150','w178'].forEach(function(w){
   const x=K.calcShift({wall:w,hourly:inp.hourly,cum:inp.cum,monthsLeft:inp.monthsLeft,commute:inp.commute,intl:inp.intl});
-  const th=h('th',null,NAMES[w]+(w==='w150'?'（未満）':'（以下）'));
-  let cells;
-  if(x.status==='room')cells=[K.fmtYen(x.monthlyLimit),x.hoursMonth+'時間',wk(x.weeklyHours)+'時間'];
-  else{const s=x.exceeded?'超過済み':'到達済み';cells=[s,s,s];}
-  const tr=h('tr',null,null,[th].concat(cells.map(function(c){return h('td',null,c);})));
-  if(w===inp.wall){tr.className='is-current';tr.setAttribute('aria-current','true');}
-  tb.appendChild(tr);});
+  const cur=w===inp.wall;
+  const kids=[h('strong',null,(cur?'✓ ':'')+NAMES[w]),h('small','k',w==='w150'?'（未満）':'（以下）')];
+  if(x.status==='room')kids.push(h('span','v','月'+x.hoursMonth+'時間'),h('span','v','週'+wk(x.weeklyHours)+'時間'),h('small','k','上限 '+K.fmtYen(x.monthlyLimit)));
+  else{const t=x.exceeded?'× 超過済み':'△ 到達済み';kids.push(h('span',pc(t),t));}
+  const li=h('li',cur?'is-cur':null,null,kids);
+  if(cur)li.setAttribute('aria-current','true');
+  cc.appendChild(li);});
  const wl=$('rWarn');wl.textContent='';
  if(r.intl.checked&&r.intl.over28)wl.appendChild(h('li',null,'このペースだと留学生の週28時間の上限を超えます。週28時間以内に収めてください（学校の長期休業期間は別の扱い）。'));
- if(inp.wall==='w150')wl.appendChild(h('li',null,'150万円は通勤手当を含めて数えます。健保組合により運用が異なるため、親の勤務先または健保組合でご確認ください。'));}
-function run(focus){
- clearErr();
- const sel=document.querySelector('input[name=wall]:checked');
- const inp={wall:sel?sel.value:null,hourly:K.parseYen($('hourly').value),cum:K.parseYen($('cum').value),monthsLeft:K.parseYen($('left').value),commute:K.parseYen($('commute').value),intl:$('intl').checked};
- const r=K.calcShift(inp);
- if(!r.ok){r.errors.forEach(function(e){showErr(e.field,e.message);});$('result').hidden=true;return;}
- judged=true;$('result').hidden=false;render(inp,r);
- if(focus){const hd=$('resultH');hd.focus({preventScroll:true});
-  hd.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}}
+ if(inp.wall==='w150')wl.appendChild(h('li',null,'150万円は通勤手当を含めて数えます。健保組合により運用が異なるため、親の勤務先または健保組合でご確認ください。'));
+ $('shareX').href=K.buildShare(r).href;
+ $('resultEmpty').hidden=true;$('resultBody').hidden=false;$('actions').hidden=false;
+ const sum=room?'月'+r.hoursMonth+'時間・週'+wk(r.weeklyHours)+'時間まで（'+NAMES[inp.wall]+'）':st.textContent;
+ say(sum);lbTxt=room?'月'+r.hoursMonth+'時間・週'+wk(r.weeklyHours)+'時間':st.textContent;lbUpd();
+ clearTimeout(prT);prT=setTimeout(function(){renderPr(r);},400);}
+function renderPr(r){
+ const p=K.prPlan(r,curAge()),host=$('prCards');host.textContent='';
+ const c=p.a?prCard('tanpatsu',PR_LEAD):null;
+ if(c)host.appendChild(c);
+ $('prWrap').hidden=!c;}
+function compute(o){
+ o=o||{};
+ const inp=readInp(),r=K.calcShift(inp);
+ const bad={},map={hourly:'hourly',cum:'cum',monthsLeft:'left',commute:'commute'};
+ if(!r.ok)r.errors.forEach(function(e){
+  const k=map[e.field];if(!k)return;
+  if(inp[e.field]===null&&!o.submit)return;
+  bad[k]=e.message;});
+ ['hourly','cum','left','commute'].forEach(function(k){eSet(k,bad[k],o.submit||o.blur===k);});
+ if(r.ok){setState('ready');render(inp,r);}
+ stale();}
+function tick(){syncView();compute();}
+function resetAll(){
+ eAll();clearTimeout(prT);setState('empty');
+ $('result').setAttribute('data-stale','false');$('staleNote').hidden=true;
+ $('resultEmpty').hidden=false;$('resultBody').hidden=true;$('actions').hidden=true;$('prWrap').hidden=true;$('prCards').textContent='';
+ $('shareX').href='https://x.com/intent/tweet';initLeft();syncView();lbUpd();}
 function initLeft(){
  const d=new Date(),n=K.defaultMonthsLeft(d.getFullYear(),d.getMonth()+1);
  $('left').defaultValue=String(n);$('left').value=String(n);}
+const f=$('f');
+f.addEventListener('input',function(e){
+ const t=e.target;
+ if(t.id==='hourlyRange')$('hourly').value=num(t.value);
+ if(t.id==='cumRange')$('cum').value=num(t.value);
+ schedule();});
+f.addEventListener('change',schedule);
+f.addEventListener('submit',function(e){e.preventDefault();syncView();compute({submit:true});scrollOnce();});
+$('hourlyChips').addEventListener('click',function(e){const v=e.target.getAttribute&&e.target.getAttribute('data-v');if(!v)return;$('hourly').value=num(v);schedule();});
+function step(d){const v=Math.max(1,Math.min(12,leftBase()+d));$('left').value=String(v);schedule();}
+$('leftDec').addEventListener('click',function(){step(-1);});
+$('leftInc').addEventListener('click',function(){step(1);});
+['hourly','cum','commute'].forEach(function(id){$(id).addEventListener('blur',function(){fmtBlur($(id));syncView();compute({blur:id==='commute'?'commute':id});});});
+$('left').addEventListener('blur',function(){compute({blur:'left'});});
+$('rst').addEventListener('click',function(){f.reset();resetAll();});
+afterReset(f,resetAll);
 initLeft();
 if(new Date().getFullYear()>=2027)$('yearWarn').hidden=false;
-$('f').addEventListener('submit',function(e){e.preventDefault();run(true);});
-$('f').addEventListener('input',function(){if(judged)run(false);});
-$('f').addEventListener('change',function(){if(judged)run(false);});
-$('rst').addEventListener('click',function(){
- $('f').reset();judged=false;$('result').hidden=true;clearErr();initLeft();});
+syncView();
 })();
 </script>
 </body>

@@ -73,5 +73,34 @@ t('34', [E(100000, 1), E(104999, 1), E(105000, 1), E(88000, 12), E(50000, 3), E(
 t('35', [E(100000, 0), E(100000, 13), E(100000, 1.5)],
   { 0: { ok: false, errors: { 0: { field: 'months' } } }, 1: { ok: false, errors: { 0: { field: 'months' } } }, 2: { ok: false, errors: { 0: { field: 'months' } } } });
 
+// ---- buildShare（Xシェア文面）
+const R_REF = (w) => C(1000000, { w: w === undefined ? 5000 : w, ny: false });
+const R_NONE = C(2000000, { w: 11200 });
+const R_SHORT = C(2000000, { w: 11100 });
+const BASE = 'https://gerinoaka.github.io/student-baito-kabe-checker-2026/';
+t('bs01', [K.buildShare(R_REF()).text.includes('戻る'), K.buildShare(R_REF()).text.includes('還付')], { 0: true, 1: true });
+t('bs02', K.buildShare(R_NONE).text.includes('ほぼありません'), true);
+t('bs03', K.buildShare(R_SHORT).text.includes('追加で納める'), true);
+{
+  const bad = [];
+  [R_REF(), R_REF(40000), R_NONE, R_SHORT].forEach((r, i) => {
+    const tx = decodeURIComponent(K.buildShare(r).href.match(/text=([^&]*)/)[1]);
+    if (/\d/.test(tx) || /万/.test(tx) || /円/.test(tx) || /あと/.test(tx)) bad.push(i + ':' + tx);
+  });
+  t('bs04', bad.join('|'), '');
+}
+t('bs05', K.buildShare(R_REF(5000)).text === K.buildShare(R_REF(40000)).text, true);
+{
+  const b = K.buildShare(R_REF()), CANON = K.DATA.CANON;
+  t('bs06', b.href.indexOf('https://x.com/intent/tweet?text=') === 0 && b.href.indexOf('&url=' + encodeURIComponent(CANON)) > 0 &&
+    b.href.indexOf('hashtags=' + ['掛け持ちバイト', '確定申告', '還付金'].map(encodeURIComponent).join(',')) > 0, true);
+  t('bs07', [b.url === CANON, CANON === BASE + 'kakemochi/'], { 0: true, 1: true });
+}
+{
+  const a = K.buildShare(R_REF()).text, b = K.buildShare(R_NONE).text, c = K.buildShare(R_SHORT).text;
+  t('bs08', a !== b && b !== c && a !== c, true);
+}
+t('bs09', K.buildShare({ kind: 'x' }).text === K.buildShare(R_NONE).text, true);
+
 console.log('pass ' + pass + ' / fail ' + fail);
 if (fail) process.exit(1);
