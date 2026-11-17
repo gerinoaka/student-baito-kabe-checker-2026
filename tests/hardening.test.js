@@ -1,5 +1,5 @@
 'use strict';
-// 総点検の是正＋AdSense審査前の整備（2026-11-18）の追加テスト H01〜H17、全14ページ横断チェック H18〜H20。依存ゼロ。
+// 総点検の是正＋AdSense審査前の整備（2026-11-18）の追加テスト H01〜H17、全17ページ横断チェック H18〜H20。依存ゼロ。
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -16,7 +16,7 @@ const attr = (h, re) => { const m = h.match(re); assert.ok(m, 'missing ' + re); 
 const ldBlocks = (h) => [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
 
 const TOOLS = ['index.html', 'kakemochi/index.html', 'shift-limit/index.html', 'living-cost-simulator/index.html', 'es-word-counter/index.html', 'nisa-simulator/index.html', 'scholarship/index.html'];
-const GUIDES = ['guides/150-wall-guide/index.html', 'guides/kakemochi-tax-guide/index.html', 'guides/es-star-method/index.html', 'guides/student-nisa-start/index.html'];
+const GUIDES = ['guides/150-wall-guide/index.html', 'guides/kakemochi-tax-guide/index.html', 'guides/es-star-method/index.html', 'guides/student-nisa-start/index.html', 'guides/nenmatsu-chosei-miss/index.html', 'guides/kokuho-150-cost/index.html', 'guides/baito-nisa-monthly/index.html'];
 const INFO = ['about/index.html', 'tools/index.html', 'privacy/index.html'];
 const ALL = TOOLS.concat(GUIDES, INFO);
 const rel = (p) => (p === 'index.html' ? '' : p.startsWith('guides/') ? '../../' : '../');
@@ -34,6 +34,9 @@ const META = {
   'guides/kakemochi-tax-guide/index.html': ['バイトの掛け持ちで乙欄に｜確定申告で還付を受ける手順と必要書類', '掛け持ちバイトで乙欄になり税金を多く引かれたときは、確定申告で還付を受けられる場合があります。源泉徴収票の集め方、申告書の作成手順、還付金の振込時期の目安、よくある失敗を整理しました。令和8年分。', 'kakemochi'],
   'guides/es-star-method/index.html': ['ガクチカの書き方｜構成の型と文字数ごとの配分例（400字）', 'ガクチカは「結論→状況→課題→行動→結果」の型で書くと整理しやすいです。200〜600字の配分例と、足りない・多いときの調整のコツ、提出前チェックリストを掲載。8割の目安は経験則で、合否の保証はありません。', 'es'],
   'guides/student-nisa-start/index.html': ['大学生が新NISAを始める前に｜月5,000円の試算例と口座開設', '大学生が新NISAを始める前の基礎知識。月5,000円・年3%・10年の試算例（元本60万円、評価額約70万円）、口座開設の条件、1人1口座と金融機関変更のルールを整理。元本割れの可能性があり、結果は保証されません。', 'nisa'],
+  'guides/nenmatsu-chosei-miss/index.html': ['年末調整を出し忘れた大学生へ｜確定申告で還付を取り戻す手順', 'バイトの年末調整を出し忘れた、掛け持ちで間に合わなかった大学生は、確定申告（還付申告）で取り戻せる場合があります。扶養控除等申告書の出し忘れ、書類の遅れ、年の途中の退職の状況別に整理。令和8年分。', 'kakemochi'],
+  'guides/kokuho-150-cost/index.html': ['150万円を超えた大学生の国民健康保険｜保険料の決まり方と調べ方', '150万円の壁を超えた大学生の国民健康保険料は、いくらかは自治体で違います。保険料の決まり方、金額の調べ方、加入手続き、扶養内に戻る目安、事業主の証明による一時的な超過の扱いを整理。令和8年分。', 'kabe'],
+  'guides/baito-nisa-monthly/index.html': ['大学生が月5,000円・1万円で新NISA｜卒業までの積立試算表', '大学生が月5,000円・1万円を新NISAで積み立てると、2〜4年でいくらか。年0%・3%の試算表を掲載。新年度前の検討に。仮定の例で、元本割れの可能性があり、税・手数料は含みません。令和8年分。', 'nisa'],
   'about/index.html': ['運営者情報・計算方針・広告表記｜学生バイトお役立ちツール', '学生バイトお役立ちツールの運営者情報・計算方針・広告（PR）表記・免責をまとめたページです。数字は公式の一次情報を確認して作り、結果は目安として表示します。連絡先とプライバシーポリシーへのリンクもあります。', 'default'],
   'tools/index.html': ['学生向け無料ツール一覧｜バイトの税金・新生活・就活・奨学金', '年末調整・扶養・確定申告・還付の確認から、新生活の手取り、就活のES、奨学金の返済まで、学生向けの無料ツールと解説記事を目的別に一覧にしました。入力内容は送信されず、結果はすべて目安です。', 'default'],
   'privacy/index.html': ['プライバシーポリシー・外部送信先一覧｜学生バイトお役立ちツール', '当サイトのプライバシーポリシーです。入力内容は送信しません。Googleアナリティクスと広告配信のGoogle AdSense、広告計測のA8.net、Xシェア時のXへの送信について、送信先・情報・停止方法を説明します。', 'default'],
@@ -78,7 +81,7 @@ c('H01 privacy page', () => {
   assert.strictEqual(b[0]['@type'], 'WebPage'); assert.strictEqual(b[1]['@type'], 'BreadcrumbList');
   assert.strictEqual(ds(h), ds(rd('index.html')));
   const sm = rd('sitemap.xml'); const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 14); assert.ok(locs.includes(BASE + 'privacy/'));
+  assert.strictEqual(locs.length, 17); assert.ok(locs.includes(BASE + 'privacy/'));
   assert.ok(h.includes('.tw table.ext{min-width:640px}'));
   assert.ok(h.includes('<script src="../site-config.js" defer></script>\n</body>'));
 });
@@ -92,7 +95,7 @@ c('H02 privacy required words and links', () => {
   assert.ok(!hrefs.some((x) => /a8\.net/i.test(x)), 'A8 URL in href');
   ['innerHTML', 'localStorage', 'sessionStorage', 'fetch(', 'XMLHttpRequest', 'sendBeacon', 'indexedDB', 'eval(', 'document.write'].forEach((w) => assert.ok(!h.includes(w), 'forbidden ' + w));
 });
-c('H03 footer privacy link on 14 pages', () => ALL.forEach((p) => {
+c('H03 footer privacy link on 17 pages', () => ALL.forEach((p) => {
   const h = rd(p); const m = attr(h, /(<p class="foot-links">[\s\S]*?<\/p>)/);
   const hrefs = [...m.matchAll(/href="([^"]*)"/g)].map((x) => x[1]);
   const want = p === 'privacy/index.html' ? './' : (p === 'about/index.html' ? '../privacy/' : rel(p) + 'privacy/');
@@ -103,7 +106,7 @@ c('H03 footer privacy link on 14 pages', () => ALL.forEach((p) => {
     assert.strictEqual(hrefs.indexOf(rel(p) + 'privacy/'), 1, p + ' privacy right after #legal');
   }
 }));
-c('H04 site-config.js script on 14 pages', () => ALL.forEach((p) => {
+c('H04 site-config.js script on 17 pages', () => ALL.forEach((p) => {
   const h = rd(p);
   const all = [...h.matchAll(/<script\b[^>]*src="[^"]*site-config\.js"[^>]*>/g)];
   assert.strictEqual(all.length, 1, p + ' count');
@@ -161,7 +164,7 @@ c('H06 ads.txt / privacy consistency', () => {
     TOOLS.concat(['about/index.html']).forEach((p) => assert.ok(!/（現在は導入していません）/.test(rd(p)), p + ' summary says not introduced'));
   }
 });
-c('H07 title / description of 14 pages', () => ALL.forEach((p) => {
+c('H07 title / description of 17 pages', () => ALL.forEach((p) => {
   const h = rd(p); const [t, d] = META[p];
   assert.strictEqual(attr(h, /<title>([^<]*)<\/title>/), t, p + ' title');
   assert.strictEqual(attr(h, /<meta name="description" content="([^"]*)"/), d, p + ' desc');
@@ -179,7 +182,7 @@ function pngSize(file) {
   assert.strictEqual(b.slice(12, 16).toString(), 'IHDR');
   return [b.readUInt32BE(16), b.readUInt32BE(20), b.length];
 }
-c('H08 OGP on 14 pages and og/*.png', () => {
+c('H08 OGP on 17 pages and og/*.png', () => {
   ALL.forEach((p) => {
     const h = rd(p); const img = META[p][2];
     const og = attr(h, /<meta property="og:image" content="([^"]*)"/);
@@ -283,10 +286,10 @@ c('H16 logic block SHA-256 unchanged (7 tools)', () => Object.keys(LOGIC0).forEa
   const m = rd(p).match(/<script id="logic">[\s\S]*?<\/script>/); assert.ok(m, p);
   assert.strictEqual(crypto.createHash('sha256').update(m[0]).digest('hex'), LOGIC0[p], p + ' logic changed');
 }));
-c('H17 HTML size <= 102400 bytes (14 pages)', () => ALL.forEach((p) => { const n = Buffer.byteLength(rd(p), 'utf8'); assert.ok(n <= 102400, p + ' ' + n); }));
+c('H17 HTML size <= 102400 bytes (17 pages)', () => ALL.forEach((p) => { const n = Buffer.byteLength(rd(p), 'utf8'); assert.ok(n <= 102400, p + ' ' + n); }));
 
-// ---- 全14ページ横断（構文・ID・リンク・JSON-LD・FAQ・共通CSS・375px）----
-c('H18 inline scripts syntax (14 pages)', () => ALL.forEach((p) => {
+// ---- 全17ページ横断（構文・ID・リンク・JSON-LD・FAQ・共通CSS・375px）----
+c('H18 inline scripts syntax (17 pages)', () => ALL.forEach((p) => {
   [...rd(p).matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)].forEach((m) => {
     if (/ld\+json/.test(m[1])) { JSON.parse(m[2]); return; }
     if (/\ssrc=/.test(m[1])) return;
@@ -294,7 +297,7 @@ c('H18 inline scripts syntax (14 pages)', () => ALL.forEach((p) => {
   });
   ['site-config.js', 'links-config.js', 'es-word-counter/links-config.js', 'nisa-simulator/links-config.js', 'living-cost-simulator/links-config.js', 'scholarship/links-config.js'].forEach((f) => new vm.Script(rd(f), { filename: f }));
 }));
-c('H19 ids, anchors, relative links, FAQ == JSON-LD (14 pages)', () => ALL.forEach((p) => {
+c('H19 ids, anchors, relative links, FAQ == JSON-LD (17 pages)', () => ALL.forEach((p) => {
   const raw = rd(p); const h = raw.replace(/<!--[\s\S]*?-->/g, '');
   const body = h.slice(h.indexOf('<body'));
   const ids = [...body.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
@@ -328,7 +331,7 @@ c('H19 ids, anchors, relative links, FAQ == JSON-LD (14 pages)', () => ALL.forEa
     qs.forEach((q, i) => { assert.strictEqual(faq.mainEntity[i].name, q[0], p + ' Q' + i); assert.strictEqual(plain(faq.mainEntity[i].acceptedAnswer.text), q[1], p + ' A' + i); });
   }
 }));
-c('H20 shared CSS identical and 375px static overflow check (14 pages)', () => {
+c('H20 shared CSS identical and 375px static overflow check (17 pages)', () => {
   const base = ds(rd('index.html'));
   ALL.forEach((p) => {
     const h = rd(p);

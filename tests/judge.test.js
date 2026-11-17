@@ -205,8 +205,8 @@ pages.forEach(([p, url, link]) => {
 c('x-sitemap', () => {
   const sm = rd('sitemap.xml');
   const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 14);
-  assert.deepStrictEqual(locs.slice().sort(), pages.map((x) => x[1]).concat(['living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/', 'about/', 'tools/', 'privacy/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'scholarship/'].map((x) => BASE + x)).sort());
+  assert.strictEqual(locs.length, 17);
+  assert.deepStrictEqual(locs.slice().sort(), pages.map((x) => x[1]).concat(['living-cost-simulator/', 'es-word-counter/', 'nisa-simulator/', 'about/', 'tools/', 'privacy/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/', 'scholarship/'].map((x) => BASE + x)).sort());
 });
 c('x-readme-lines', () => {
   const lines = rd('links-config.js').split(/\r?\n/);

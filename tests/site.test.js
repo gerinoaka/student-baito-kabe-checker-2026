@@ -1,5 +1,5 @@
 'use strict';
-// サイト全体テスト（全14ページ。DIRS は当初の6ツール、新ページは各セクションで追加）。依存ゼロ。
+// サイト全体テスト（全17ページ。DIRS は当初の6ツール、新ページは各セクションで追加）。依存ゼロ。
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -32,12 +32,12 @@ c('X02 related links', () => {
 c('X03 sitemap == canonicals', () => {
   const locs = [...rd('sitemap.xml').matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
   const can = PAGES.map((p) => rd(p).match(/<link rel="canonical" href="([^"]*)"/)[1]);
-  assert.strictEqual(locs.length, 14);
+  assert.strictEqual(locs.length, 17);
   assert.deepStrictEqual(can.slice().sort(), DIRS.map((d) => BASE + d).sort());
-  const extra = ['about/', 'tools/', 'privacy/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'scholarship/'];
+  const extra = ['about/', 'tools/', 'privacy/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/', 'scholarship/'];
   assert.deepStrictEqual(locs.slice().sort(), can.concat(extra.map((d) => BASE + d)).sort());
   extra.forEach((d) => assert.strictEqual(rd(d + 'index.html').match(/<link rel="canonical" href="([^"]*)"/)[1], BASE + d, d));
-  assert.strictEqual(new Set(locs).size, 14);
+  assert.strictEqual(new Set(locs).size, 17);
 });
 c('X04 no stray root files in subfolders', () => {
   DIRS.slice(1).forEach((d) => ['sitemap.xml', 'robots.txt', '.nojekyll'].forEach((f) => assert.ok(!fs.existsSync(path.join(root, d, f)), d + f)));
@@ -73,7 +73,8 @@ const NEW_DIRS = ['about/', 'tools/', 'privacy/'];
 const NEW_PAGES = NEW_DIRS.map((d) => d + 'index.html');
 const ALL_PAGES = PAGES.concat(NEW_PAGES);
 const TOOL_DIRS = DIRS.concat(['scholarship/']);   // ツールのフォルダ（奨学金は6ページの DIRS には入れず、フェーズ4で足す）
-const GUIDE_DIRS = ['guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/'];
+const GUIDE_DIRS = ['guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/'];
+const GDATE = (d) => (['guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/'].includes(d) ? '2026-11-19' : '2026-11-17');   // 公開日・更新日（新3本は 2026-11-19）
 const stripComments = (h) => h.replace(/<!--[\s\S]*?-->/g, '');
 const ldBlocks = (h) => [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
 const resolves = (page, href) => fs.existsSync(path.join(path.resolve(path.dirname(path.join(root, page)), href), 'index.html'));
@@ -260,7 +261,10 @@ const GCFG = {
   'guides/150-wall-guide/': { tools: ['../../', '../../shift-limit/'], hosts: GOV, must: ['5日以内', '14日以内', '連続2回', '特定親族特別控除', '63万円', '136万円', '159万円', '197万円', '事業主の証明', '被扶養者'], not: ['何度でも扶養に残れる'] },
   'guides/kakemochi-tax-guide/': { tools: ['../../kakemochi/'], hosts: GOV, must: ['乙欄', '源泉徴収票', '5年間', '3週間程度', '1か月〜1か月半程度', 'マイナンバーカード', '新規発行', '令和7年（2025年）10月1日', '令和13年12月31日'], not: [] },
   'guides/es-star-method/': { tools: ['../../es-word-counter/'], hosts: GOV.concat(ESMEDIA), must: ['経験則', '保証', '推測', '整理例', '320字', '360字', '提出画面'], not: [] },
-  'guides/student-nisa-start/': { tools: ['../../nisa-simulator/'], hosts: GOV, must: ['元本割れ', '保証されません', '勧誘', '697,240', '600,000', '1,800万円', '1月1日時点で18歳以上', '10月1日', '9月30日', '1人1口座'], not: ['おすすめ', 'SBI', '楽天', 'マネックス', '松井', 'auカブコム', '野村', '大和', 'ゆうちょ', '親の同意は不要', '親権者の同意は不要'] }
+  'guides/student-nisa-start/': { tools: ['../../nisa-simulator/'], hosts: GOV, must: ['元本割れ', '保証されません', '勧誘', '697,240', '600,000', '1,800万円', '1月1日時点で18歳以上', '10月1日', '9月30日', '1人1口座'], not: ['おすすめ', 'SBI', '楽天', 'マネックス', '松井', 'auカブコム', '野村', '大和', 'ゆうちょ', '親の同意は不要', '親権者の同意は不要'] },
+  'guides/nenmatsu-chosei-miss/': { tools: ['../../kakemochi/'], hosts: GOV, must: ['扶養控除等申告書', '年末調整', '還付申告', '5年間', '令和13年12月31日', '1か月以内', '源泉徴収票', '要確認', '乙欄'], not: ['必ず戻る'] },
+  'guides/kokuho-150-cost/': { tools: ['../../', '../../shift-limit/'], hosts: GOV, must: ['いくらかは', '所得割', '均等割', '前年', '14日以内', '自治体の例', '150万円未満', '130万円未満', '通勤手当', '連続2回', '事業主の証明'], not: ['月額', '円くらい', '円程度', '何度でも扶養に残れる', '扶養のままの方が得'] },
+  'guides/baito-nisa-monthly/': { tools: ['../../nisa-simulator/'], hosts: GOV, must: ['元本割れ', '保証されません', '勧誘', '税・手数料は含み', '仮定の例', '123,466', '187,990', '254,451', '246,932', '375,981', '508,901'], not: ['おすすめ', 'SBI', '楽天', 'マネックス', '松井', 'auカブコム', '野村', '大和', 'ゆうちょ', '元本保証'] }
 };
 const BANNED = ['落ちない', '必ず', '絶対', '確実', '間違いなく', '100%', '最強', '最安', '儲か', '損しない', '誰でも', '受かる', '合格できる', '通過できる', '業界最大'];
 const SELLER = '学生バイトお役立ちツール 運営事務局';
@@ -297,7 +301,7 @@ c('G03 JSON-LD Article/Breadcrumb/FAQPage', () => GUIDE_DIRS.forEach((d) => {
   assert.strictEqual(art.headline, plain(attr(h, /<h1>([\s\S]*?)<\/h1>/)));
   assert.ok(art.headline.length <= 110, d + ' headline');
   assert.strictEqual(art.author.name, SELLER); assert.strictEqual(art.publisher.name, SELLER);
-  assert.strictEqual(art.datePublished, '2026-11-17'); assert.strictEqual(art.dateModified, '2026-11-17');
+  assert.strictEqual(art.datePublished, GDATE(d)); assert.strictEqual(art.dateModified, GDATE(d));
   assert.strictEqual(art.mainEntityOfPage['@id'], BASE + d);
   assert.strictEqual(art.description, attr(h, /<meta name="description" content="([^"]*)"/));
   assert.strictEqual(crumb['@type'], 'BreadcrumbList');
@@ -370,9 +374,9 @@ c('G06 structure', () => GUIDE_DIRS.forEach((d) => {
 c('G07 always-visible band / meta / disclaimer', () => GUIDE_DIRS.forEach((d) => {
   const h = gh(d);
   const band = attr(h, /(<div class="band"[\s\S]*?<\/div>)/);
-  assert.ok(/目安|仮定の試算/.test(band) && /(最終確認日|最終更新日) 2026-11-17/.test(band), d + ' band');
-  assert.ok(h.includes('公開日 2026-11-17') && h.includes('学生バイトお役立ちツール 運営事務局'), d + ' meta');
-  const src = attr(h, /(<details class="acc" id="sources">[\s\S]*?<\/details>)/); assert.ok(/確認日 2026-11-17|公開前に原文/.test(src) || /目安/.test(src), d + ' sources note');
+  assert.ok(/目安|仮定の試算/.test(band) && new RegExp('(最終確認日|最終更新日) ' + GDATE(d)).test(band), d + ' band');
+  assert.ok(h.includes('公開日 ' + GDATE(d)) && h.includes('学生バイトお役立ちツール 運営事務局'), d + ' meta');
+  const src = attr(h, /(<details class="acc" id="sources">[\s\S]*?<\/details>)/); assert.ok(new RegExp('確認日 ' + GDATE(d) + '|公開前に原文').test(src) || /目安/.test(src), d + ' sources note');
   const disc = attr(h, /(<section class="card" id="disc"[\s\S]*?<\/section>)/); assert.ok(/目安|保証|助言|勧誘/.test(disc), d + ' disc');
   const before = h.slice(0, h.indexOf('<details class="acc toc"'));
   assert.ok(before.includes('class="band"') && before.includes('class="pts"'), d + ' band/pts before toc');
@@ -407,6 +411,25 @@ c('G10 nisa risk notice visible and prominent', () => {
   const r = plain(attr(m, /(<p class="risk"[\s\S]*?<\/p>)/));
   ['元本割れ', '保証されません', '勧誘', '推奨', '仮定'].forEach((w) => assert.ok(r.includes(w), 'risk ' + w));
   assert.ok(!/class="pr-|id="prCards"/.test(h));
+});
+c('G10b baito-nisa-monthly: 4 notices prominent, table == formula, no brand', () => {
+  const h = gh('guides/baito-nisa-monthly/'); const m = mainOf(h);
+  const i = m.indexOf('class="risk"'); assert.ok(i > 0 && i < m.indexOf('id="toc"'), 'risk before toc');
+  const r = plain(attr(m, /(<p class="risk"[\s\S]*?<\/p>)/));
+  ['元本割れの可能性', '利回りは保証されません', '勧誘', '推奨', '税・手数料は含みません', '仮定'].forEach((w) => assert.ok(r.includes(w), 'risk ' + w));
+  assert.ok(/元本割れ/.test(plain(attr(h, /(<div class="band"[\s\S]*?<\/div>)/))), 'band');
+  assert.ok(m.indexOf('<p class="note">') > m.indexOf('id="s2"') && m.indexOf('<p class="note">') < m.indexOf('<table'), 'note above table');
+  const fv = (P, R, y) => { const n = y * 12; if (R === 0) return P * n; const i2 = Math.pow(1 + R / 100, 1 / 12) - 1; return Math.round(P * (Math.pow(1 + i2, n) - 1) / i2); };
+  const tbl = plain(attr(m, /(<table[\s\S]*?<\/table>)/));
+  [5000, 10000].forEach((P) => [2, 3, 4].forEach((y) => { [0, 3].forEach((R) => assert.ok(tbl.includes(fv(P, R, y).toLocaleString('en-US') + '円'), 'cell ' + P + '/' + y + '/' + R)); }));
+  assert.ok(!/class="pr-|id="prCards"/.test(h));
+});
+c('G10c kokuho-150-cost: no concrete premium amounts', () => {
+  const k = plain(mainOf(gh('guides/kokuho-150-cost/')));
+  assert.ok(/いくらかは[^。]*自治体/.test(k) || /自治体で違/.test(k));
+  const yenHits = [...k.matchAll(/(\d[\d,]*)(万)?円/g)].map((x) => x[0]);
+  yenHits.forEach((x) => assert.ok(x === '150万円' || x === '130万円', 'unexpected yen amount ' + x));
+  assert.ok(!/月[◯〇0-9]+円|[0-9]円くらい/.test(k));
 });
 c('G11 es: not assertive about outcome', () => {
   const h = gh('guides/es-star-method/'); const m = plain(mainOf(h));
