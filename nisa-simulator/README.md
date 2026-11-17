@@ -37,7 +37,7 @@
   - shoken1: url 行 38 ／ shoken2: url 行 45 ／ book: url 行 52
 - ASP 提携前に、管理画面で「年齢条件」「禁止表現」「素材ルール」を確認する。提携先は登録済みのネット証券に限る。
 - PR表記（label）は変更しない。リンクには `rel="sponsored nofollow noopener"` が付く。証券カードは「今の年齢」が18歳以上のときのみ表示。
-- AdSense 等を使う場合は `index.html` の `<div class="ad-slot">`（コメント AD-SLOT-1。ページ末尾・`data-slot="content-end"`。PRカードとは離れた位置）に広告コードを入れ、`hidden` を外す。自動広告だけなら何もしない（ルートの README の「AdSense と GA4」）。
+- AdSense は site-config.js で導入済み（自動広告のみ）。手動枠を使う場合は `index.html` の `<div class="ad-slot">`（コメント AD-SLOT-1。ページ末尾・`data-slot="content-end"`。PRカードとは離れた位置）に広告コードを入れ、`hidden` を外す。自動広告だけなら何もしない（ルートの README の「AdSense と GA4」）。
 
 ## 7 公開前チェックリスト
 - [ ] 金融庁などの公式ページで制度の数値（120万円・1,800万円・18歳要件）を再確認

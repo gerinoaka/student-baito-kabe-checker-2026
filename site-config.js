@@ -19,7 +19,7 @@
  */
 window.SITE_CONFIG = {
   // ↓ 貼るのはこの2行だけ
-  ADSENSE_CLIENT: '',
+  ADSENSE_CLIENT: 'ca-pub-5481087816228542',
   GA4_ID: 'G-3P5TMV0N6Z'
 };
 

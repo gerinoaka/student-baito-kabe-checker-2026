@@ -30,8 +30,8 @@
   - `internet`: 通信費が手取りの6%超
   - `creditCard`: 新社会人・学生モード（上記条件がないとき）
   - `bank`: 新社会人モードで空き枠があるとき
-- 広告コード（AdSense 等）を入れる場合は、`index.html` の `AD-SLOT-1` の div（ページ末尾・`data-slot="content-end"`。PRカードとは離れた位置）の `hidden` を外して中に貼る。自動広告だけなら何もしない（ルートの README の「AdSense と GA4」）。
-- GA4 は導入済み（site-config.js）。AdSense など新しい外部サービスを追加するときは、プライバシーポリシーの外部送信先の表も必ず更新する。
+- AdSense は site-config.js で導入済み（自動広告のみ）。手動枠を使う場合は、`index.html` の `AD-SLOT-1` の div（ページ末尾・`data-slot="content-end"`。PRカードとは離れた位置）の `hidden` を外して中に貼る。自動広告だけなら何もしない（ルートの README の「AdSense と GA4」）。
+- GA4・AdSense は導入済み（site-config.js。AdSense は自動広告のみ）。新しい外部サービスを追加するときは、プライバシーポリシーの外部送信先の表も必ず更新する。
 
 ## 5. 計算根拠と更新が必要な項目
 - 料率（`RATE`）: 健保 東京4.925%、全国平均4.95%、支援金0.115%、厚年9.15%、雇用0.5%（本人負担）。

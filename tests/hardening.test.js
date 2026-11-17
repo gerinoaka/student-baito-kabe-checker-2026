@@ -36,7 +36,7 @@ const META = {
   'guides/student-nisa-start/index.html': ['大学生が新NISAを始める前に｜月5,000円の試算例と口座開設', '大学生が新NISAを始める前の基礎知識。月5,000円・年3%・10年の試算例（元本60万円、評価額約70万円）、口座開設の条件、1人1口座と金融機関変更のルールを整理。元本割れの可能性があり、結果は保証されません。', 'nisa'],
   'about/index.html': ['運営者情報・計算方針・広告表記｜学生バイトお役立ちツール', '学生バイトお役立ちツールの運営者情報・計算方針・広告（PR）表記・免責をまとめたページです。数字は公式の一次情報を確認して作り、結果は目安として表示します。連絡先とプライバシーポリシーへのリンクもあります。', 'default'],
   'tools/index.html': ['学生向け無料ツール一覧｜バイトの税金・新生活・就活・奨学金', '年末調整・扶養・確定申告・還付の確認から、新生活の手取り、就活のES、奨学金の返済まで、学生向けの無料ツールと解説記事を目的別に一覧にしました。入力内容は送信されず、結果はすべて目安です。', 'default'],
-  'privacy/index.html': ['プライバシーポリシー・外部送信先一覧｜学生バイトお役立ちツール', '当サイトのプライバシーポリシーです。入力内容は送信しません。閲覧時のGoogleアナリティクス、広告計測のA8.net、Xシェア時のXへの送信について、送信先・情報・停止方法を一覧で説明します。', 'default'],
+  'privacy/index.html': ['プライバシーポリシー・外部送信先一覧｜学生バイトお役立ちツール', '当サイトのプライバシーポリシーです。入力内容は送信しません。Googleアナリティクスと広告配信のGoogle AdSense、広告計測のA8.net、Xシェア時のXへの送信について、送信先・情報・停止方法を説明します。', 'default'],
 };
 // 着手前（2026-11-18 の総点検の前）に採った <script id="logic"> の SHA-256（手順0）
 const LOGIC0 = {
@@ -87,8 +87,8 @@ c('H02 privacy required words and links', () => {
   ['株式会社ファンコミュニケーションズ', 'A8.net', 'IPアドレス', 'ユーザーエージェント', 'Cookie', '閲覧中のページのURL', '広告の表示・クリック・成果', '（A8.net サイト内）をご確認ください', 'x.com', 'オプトアウト', 'Google AdSense', 'Google アナリティクス', '学生バイトお役立ちツール 運営事務局', 'gakusei.kabe.checker@gmail.com', '電気通信事業法']
     .forEach((w) => assert.ok(h.includes(w), 'privacy missing ' + w));
   const hrefs = [...h.matchAll(/<a\b[^>]*?\bhref="([^"]*)"/g)].map((m) => m[1]);
-  const ext = hrefs.filter((x) => /^https?:/.test(x)).sort();
-  assert.deepStrictEqual(ext, ['https://policies.google.com/privacy', 'https://policies.google.com/technologies/partner-sites', 'https://tools.google.com/dlpage/gaoptout']);
+  const ext = [...new Set(hrefs.filter((x) => /^https?:/.test(x)))].sort();
+  assert.deepStrictEqual(ext, ['https://adssettings.google.com', 'https://policies.google.com/privacy', 'https://policies.google.com/technologies/ads', 'https://policies.google.com/technologies/partner-sites', 'https://tools.google.com/dlpage/gaoptout', 'https://www.aboutads.info']);
   assert.ok(!hrefs.some((x) => /a8\.net/i.test(x)), 'A8 URL in href');
   ['innerHTML', 'localStorage', 'sessionStorage', 'fetch(', 'XMLHttpRequest', 'sendBeacon', 'indexedDB', 'eval(', 'document.write'].forEach((w) => assert.ok(!h.includes(w), 'forbidden ' + w));
 });
@@ -118,7 +118,7 @@ c('H05 site-config.js behaviour (no real network)', () => {
   assert.ok(/^\s*GA4_ID:/.test(lines[22]), '23行目 ' + lines[22]);
   assert.ok(!rd('site-config.js').includes('anonymize_ip'));
   const shipped = runConfig().win.SITE_CONFIG;
-  assert.strictEqual(shipped.ADSENSE_CLIENT, ''); assert.ok(shipped.GA4_ID === '' || /^G-[A-Z0-9]{4,12}$/.test(shipped.GA4_ID), 'GA4_ID format');
+  assert.ok(shipped.ADSENSE_CLIENT === '' || /^ca-pub-\d{10,20}$/.test(shipped.ADSENSE_CLIENT), 'ADSENSE_CLIENT format'); assert.ok(shipped.GA4_ID === '' || /^G-[A-Z0-9]{4,12}$/.test(shipped.GA4_ID), 'GA4_ID format');
   // 空（出荷状態）: script 0・dataLayer/gtag なし
   let r = runConfig({ ADSENSE_CLIENT: '', GA4_ID: '' });
   assert.strictEqual(r.added.length, 0); assert.ok(!('dataLayer' in r.win) && !('gtag' in r.win));
@@ -147,6 +147,14 @@ c('H06 ads.txt / privacy consistency', () => {
     assert.ok(exists, 'ads.txt needed');
     const pub = cfg.ADSENSE_CLIENT.trim().replace(/^ca-/, '');
     assert.ok(rd('ads.txt').includes('google.com, ' + pub + ', DIRECT, f08c47fec0942fa0'));
+  }
+  if (hasAd) {
+    assert.strictEqual(rd('ads.txt'), 'google.com, ' + cfg.ADSENSE_CLIENT.trim().replace(/^ca-/, '') + ', DIRECT, f08c47fec0942fa0\n', 'ads.txt exact one line');
+    assert.ok(!rd('sitemap.xml').includes('ads.txt'), 'sitemap has no ads.txt');
+    const pv = rd('privacy/index.html');
+    ['Google AdSense', 'https://adssettings.google.com', 'www.aboutads.info', 'https://policies.google.com/technologies/ads', '第三者配信事業者', '入力した金額・文章'].forEach((w) => assert.ok(pv.includes(w), 'privacy missing ' + w));
+    assert.ok(!pv.includes('AdSense（広告配信）は、現在は利用していません'));
+    TOOLS.concat(['about/index.html']).forEach((p) => assert.ok(!rd(p).includes('Google AdSense は利用していません') && rd(p).includes('Google AdSense（Google LLC）も利用しています'), p + ' summary AdSense'));
   }
   if (hasAd || hasGa) {
     assert.ok(!rd('privacy/index.html').includes('導入していません'), 'privacy says not introduced');
