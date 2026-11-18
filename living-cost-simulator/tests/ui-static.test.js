@@ -89,7 +89,7 @@ ok('N08-title', html.includes('<title>新卒の手取り計算2026｜初任給�
   ok('N08-desc', html.includes('<meta name="description" content="' + D + '">'));
   ok('N08-ogt', html.includes('<meta property="og:title" content="新卒の手取り計算2026｜初任給と新生活の家賃・生活費を試算">'));
   ok('N08-ogd', html.includes('<meta property="og:description" content="' + D + '">'));
-  ok('N08-h1', html.includes('<h1>新卒の手取り計算＆一人暮らし生活費シミュレーター（令和8年度）</h1>'));
+  ok('N08-h1', html.replace(/<wbr>|<span class="nw">|<\/span>/g, '').includes('<h1>新卒の手取り計算＆一人暮らし生活費シミュレーター（令和8年度）</h1>'));
   ok('N08-canon', html.includes('<link rel="canonical" href="' + NEW_BASE + '">') && html.includes('<meta property="og:url" content="' + NEW_BASE + '">'));
 }
 
@@ -193,7 +193,7 @@ ok('N08-title', html.includes('<title>新卒の手取り計算2026｜初任給�
   const css = html.match(/<style>([\s\S]*?)<\/style>/)[1];
   const fixed = [...css.matchAll(/(^|[{};,])\s*([^{}]*)\{([^{}]*)\}/g)].filter((m) => /(^|[;{])\s*(min-)?width\s*:\s*\d{3,}px/.test(m[3])).map((m) => m[2].trim());
   ok('X-fixed-width', fixed.every((s) => /^table$/.test(s)), fixed.join(' | '));
-  ok('X-script-src', JSON.stringify([...html.matchAll(/<script[^>]*\ssrc="([^"]*)"/g)].map((m) => m[1])) === '["links-config.js","../site-config.js"]');
+  ok('X-script-src', JSON.stringify([...html.matchAll(/<script[^>]*\ssrc="([^"]*)"/g)].map((m) => m[1])) === '["links-config.js","../assets/ui-motion.js","../site-config.js"]');
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
   const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
   ok('X-dup-id', dup.length === 0, dup.join(','));

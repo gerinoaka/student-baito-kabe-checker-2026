@@ -155,7 +155,7 @@ c('X13 new pages structure', () => NEW_PAGES.forEach((p) => {
   assert.strictEqual((h.match(/<nav\b/g) || []).length, 1, p + ' nav');
   assert.strictEqual((h.match(/<h1\b/g) || []).length, 1, p + ' h1');
   const sc = [...h.matchAll(/<script\b([^>]*)>/g)]; assert.ok(sc.length > 0);
-  sc.forEach((s) => assert.ok(/type="application\/ld\+json"/.test(s[1]) || /^\s*src="(\.\.\/)*site-config\.js"\s+defer\s*$/.test(s[1]), p + ' script ' + s[1]));
+  sc.forEach((s) => assert.ok(/type="application\/ld\+json"/.test(s[1]) || /^\s*src="(\.\.\/)*(?:site-config|assets\/ui-motion)\.js"\s+defer\s*$/.test(s[1]), p + ' script ' + s[1]));
   ['innerHTML', 'outerHTML', 'insertAdjacentHTML', 'document.write', 'eval(', 'localStorage', 'sessionStorage', 'fetch(', 'XMLHttpRequest', 'sendBeacon', 'indexedDB']
     .forEach((w) => assert.ok(!h.includes(w), p + ' forbidden ' + w));
   assert.ok(!/outline:\s*(none|0)/.test(h), p + ' outline');

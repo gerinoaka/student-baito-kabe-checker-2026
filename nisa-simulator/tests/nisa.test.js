@@ -85,7 +85,7 @@ t('x-jsonld', () => {
   const vis = [...faq.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((x) => x[1]);
   assert.strictEqual(vis.length, 7);
   assert.deepStrictEqual(ld[1].mainEntity.map((q) => q.acceptedAnswer.text), vis);
-  assert.deepStrictEqual(ld[1].mainEntity.map((q) => q.name), [...faq.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((x) => x[1]));
+  assert.deepStrictEqual(ld[1].mainEntity.map((q) => q.name), [...faq.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((x) => x[1].replace(/<wbr>/g, '')));
 });
 t('x-size', () => assert.ok(Buffer.byteLength(html, 'utf8') <= 102400));
 t('x-sister', () => {

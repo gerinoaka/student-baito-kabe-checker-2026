@@ -33,34 +33,60 @@
 <style>
 /*ds:start v1*/
 :root{color-scheme:light dark;
---bg:#f8fafc;--card:#fff;--soft:#f1f5f9;--fg:#0f172a;--sub:#475569;
---primary:#1a56c4;--on-primary:#fff;--primary-soft:#e8f0fd;
+--bg:#f8fafc;--card:#fff;--soft:#f1f5f9;--fg:#181c26;--sub:#475569;
+--primary:#1d4ed8;--on-primary:#fff;--primary-soft:#dbeafe;
+--cat-tax:#2563eb;--cat-tax-soft:#dbeafe;
+--cat-life:#ea580c;--cat-life-soft:#ffedd5;
+--cat-job:#7c3aed;--cat-job-soft:#ede9fe;
+--cat-asset:#059669;--cat-asset-soft:#d1fae5;
 --track:#e2e8f0;--tick:#64748b;
 --ok-bg:#dcfce7;--ok-fg:#166534;--ng-bg:#fee2e2;--ng-fg:#991b1b;--wn-bg:#fef3c7;--wn-fg:#92400e;--nt-bg:#e2e8f0;--nt-fg:#334155;
 --ok:#15803d;--wn:#b45309;--ng:#dc2626;
---shadow:0 1px 2px rgba(15,23,42,.04),0 4px 16px rgba(15,23,42,.05);
---shadow-hero:0 1px 2px rgba(15,23,42,.05),0 10px 28px rgba(15,23,42,.08);
+--shadow:0 1px 3px rgba(24,28,38,.05),0 6px 20px rgba(24,28,38,.06);
+--shadow-hero:0 2px 4px rgba(24,28,38,.06),0 14px 34px rgba(24,28,38,.10);
 --r-card:20px;--r-in:16px;--r-pill:999px;
 --s1:8px;--s2:16px;--s3:20px;--s4:24px;--s5:32px;
---ring:#1a56c4;--t:.18s}
+--ring:#2563eb;--t:.18s}
 @media(prefers-color-scheme:dark){:root{
 --bg:#0b1220;--card:#111a2e;--soft:#16213a;--fg:#e5edf8;--sub:#a9b6c9;
 --primary:#60a5fa;--on-primary:#0b1220;--primary-soft:#172554;
+--cat-tax:#60a5fa;--cat-tax-soft:#172554;
+--cat-life:#fb923c;--cat-life-soft:#431407;
+--cat-job:#a78bfa;--cat-job-soft:#2e1065;
+--cat-asset:#34d399;--cat-asset-soft:#064e3b;
 --track:#26324a;--tick:#94a3b8;
 --ok-bg:#14532d;--ok-fg:#bbf7d0;--ng-bg:#7f1d1d;--ng-fg:#fecaca;--wn-bg:#78350f;--wn-fg:#fde68a;--nt-bg:#1e293b;--nt-fg:#cbd5e1;
 --ok:#4ade80;--wn:#fbbf24;--ng:#f87171;
---shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.3);
---shadow-hero:0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.4);
+--shadow:0 1px 2px rgba(0,0,0,.35),0 6px 20px rgba(0,0,0,.35);
+--shadow-hero:0 2px 4px rgba(0,0,0,.4),0 14px 34px rgba(0,0,0,.48);
 --ring:#93c5fd}}
+[data-cat="tax"]{--primary:#1d4ed8;--primary-soft:#dbeafe;--ring:#2563eb;--cat-accent:#2563eb}
+[data-cat="life"]{--primary:#c2410c;--primary-soft:#ffedd5;--ring:#ea580c;--cat-accent:#c2410c}
+[data-cat="job"]{--primary:#6d28d9;--primary-soft:#ede9fe;--ring:#7c3aed;--cat-accent:#7c3aed}
+[data-cat="asset"]{--primary:#047857;--primary-soft:#d1fae5;--ring:#059669;--cat-accent:#059669}
+@media(prefers-color-scheme:dark){
+[data-cat="tax"]{--primary:#60a5fa;--primary-soft:#172554;--ring:#93c5fd;--cat-accent:#60a5fa}
+[data-cat="life"]{--primary:#fb923c;--primary-soft:#431407;--ring:#fdba74;--cat-accent:#fb923c}
+[data-cat="job"]{--primary:#c4b5fd;--primary-soft:#2e1065;--ring:#ddd6fe;--cat-accent:#a78bfa}
+[data-cat="asset"]{--primary:#34d399;--primary-soft:#064e3b;--ring:#6ee7b7;--cat-accent:#34d399}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;-webkit-tap-highlight-color:transparent}
-.w{max-width:640px;margin:0 auto;padding:0 16px 96px}
-h1{font-size:1.375rem;line-height:1.4;font-weight:700;margin:12px 0 8px;letter-spacing:.01em;font-feature-settings:"palt"}
-h2{font-size:1.05rem;font-weight:700;margin:0 0 8px}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.75 -apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","Yu Gothic",Meiryo,system-ui,sans-serif;font-variant-numeric:tabular-nums;word-break:normal;overflow-wrap:break-word;line-break:strict;-webkit-tap-highlight-color:transparent}
+@supports(word-break:auto-phrase){body{word-break:auto-phrase}}
+.w{max-width:700px;margin:0 auto;padding:0 16px 96px}
+.nw{white-space:nowrap;display:inline-block}
+h1,h2,h3,.ct,summary{text-wrap:balance}
+h1,h2,h3,.ct,summary,.eyebrow,.qjump a,.navb a,.pill,.chip,.dot,.btn,.btn-ghost,.band a,.g-now,.fband strong,.fband-tag,.pv,.qjump-chip,.mq-item,.rel-t,.pr-tag,.seg span{word-break:keep-all}
+@supports(word-break:auto-phrase){h1,h2,h3,.ct,summary,.tl a strong{word-break:auto-phrase}}
+code,.src,.url,a[href^="http"]{overflow-wrap:anywhere}
+p,li,dd,dt,td,th{text-wrap:pretty}
+h1{font-size:clamp(1.25rem,3.6vw,1.6rem);line-height:1.4;font-weight:800;margin:10px 0;letter-spacing:.01em;font-feature-settings:"palt"}
+h2{font-size:clamp(1.02rem,2.6vw,1.15rem);font-weight:700;margin:0 0 8px}
 h3{font-size:1rem;margin:14px 0 4px}
-.ct{font-size:1.05rem;font-weight:700;margin:0 0 12px;font-feature-settings:"palt"}
+.ct{font-size:clamp(1.02rem,2.6vw,1.15rem);font-weight:800;margin:0 0 12px;font-feature-settings:"palt";display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ct::before{content:"";width:4px;height:1.1em;border-radius:2px;background:var(--cat-accent,var(--primary));flex:none}
+summary>h2,summary>h3{min-width:0}
 summary h2,summary h3{display:inline;font-size:1.05rem;margin:0;font-feature-settings:"palt"}
 a{color:var(--primary)}
 ul,ol{padding-left:1.3em}
@@ -70,74 +96,92 @@ button:disabled{opacity:.5;cursor:not-allowed}
 :focus-visible{outline:3px solid var(--ring);outline-offset:2px}
 .skip{position:absolute;left:-999px;top:0;z-index:9;padding:8px 12px;background:var(--primary);color:var(--on-primary)}
 .skip:focus{left:0}
+.eyebrow{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;margin:12px 0 2px;padding:4px 12px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.78rem;font-weight:800;line-height:1.4}
+.eyebrow>span{min-width:0;max-width:100%}
+.eyebrow-dot{width:7px;height:7px;border-radius:50%;background:var(--cat-accent,var(--primary));flex:none}
+.qjump{display:flex;gap:8px;margin:8px -16px 12px;padding:2px 16px;overflow-x:auto;scrollbar-width:none}
+.qjump::-webkit-scrollbar{display:none}
+.qjump a{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:var(--r-pill);background:var(--card);color:var(--fg);box-shadow:var(--shadow);font-size:.82rem;font-weight:700;text-decoration:none;white-space:nowrap;border-top:3px solid var(--cat-accent,var(--primary));transition:transform var(--t),box-shadow var(--t)}
+.qjump a:hover{transform:translateY(-2px);box-shadow:var(--shadow-hero)}
+.qjump-chip{padding:2px 7px;border-radius:var(--r-pill);background:var(--soft);color:var(--sub);font-size:.75rem;font-weight:800}
+.mq{overflow:hidden;margin:0 0 4px;padding:8px 0;border-radius:var(--r-in);background:var(--card);box-shadow:var(--shadow)}
+.mq-track{display:flex;width:max-content;animation:mq-s 36s linear infinite}
+.mq-set{display:flex;flex:none}
+.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}
+.mq-item{display:inline-flex;align-items:center;gap:6px;margin-right:12px;padding:4px 12px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-size:.8rem;font-weight:700;white-space:nowrap}
+.mq-item strong{color:var(--primary)}
+.mq-item--lead{background:var(--primary);color:var(--on-primary)}
+.mq-note{margin:0 0 var(--s2);font-size:.75rem;line-height:1.5;color:var(--sub)}
+@keyframes mq-s{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .navb{display:flex;gap:8px;margin:12px -16px 0;padding:0 16px;overflow-x:auto;scrollbar-width:none}
 .navb::-webkit-scrollbar{display:none}
-.navb a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-size:.875rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.navb a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-size:.875rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:background var(--t),color var(--t)}
 .navb a[aria-current=page]{background:var(--primary);color:var(--on-primary)}
 .band{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:0 0 var(--s2);font-size:.85rem;line-height:1.5}
 .band a{flex:none;display:inline-flex;align-items:center;min-height:44px;margin:-8px 0;color:var(--wn-fg);font-weight:700;white-space:nowrap}
 .warn{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.9rem;font-weight:700}
 .note{background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:8px 14px;margin:12px 0 0;font-size:.875rem}
-.card{background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);padding:var(--s3);margin:0 0 var(--s2)}
-.rc{box-shadow:var(--shadow-hero);padding:var(--s4)}
+.card{position:relative;background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);padding:var(--s3);margin:0 0 var(--s2);border-top:4px solid var(--cat-accent,var(--primary))}
+.rc{box-shadow:var(--shadow-hero);padding:var(--s4);border-top-width:5px}
 .panel{background:var(--soft);border-radius:var(--r-in);padding:var(--s2)}
 @media(max-width:400px){.card{padding:var(--s2)}.rc{padding:var(--s3)}}
 .kpi-l{margin:0;font-size:.8125rem;font-weight:700;color:var(--sub)}
-.big{margin:2px 0 4px;font-size:2.25rem;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+.big{margin:2px 0 4px;font-size:clamp(2rem,6vw,2.5rem);font-weight:800;line-height:1.2;letter-spacing:-.01em}
 .big small{margin-left:4px;font-size:1rem;font-weight:700;letter-spacing:0}
-@media(min-width:400px){.big{font-size:2.5rem}}
-.mid{margin:2px 0;font-size:1.375rem;font-weight:700;line-height:1.3}
+.mid{margin:2px 0;font-size:1.375rem;font-weight:800;line-height:1.3}
 .sumline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 4px}
-.stats{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:12px 0 0;padding:0}
-.stats[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
+.stats{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 0;padding:0}
+.stats[data-cols="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
 .stats>*{min-width:0;margin:0;padding:8px 12px;border-radius:var(--r-in);background:var(--soft)}
 .stats dt,.stats .k{display:block;font-size:.8125rem;font-weight:700;color:var(--sub)}
 .stats dd,.stats .v{display:block;margin:0;font-weight:700}
-.hint{font-size:.875rem;line-height:1.6;color:var(--sub);margin:6px 0 0}
+.hint{font-size:.875rem;line-height:1.65;color:var(--sub);margin:6px 0 0}
 .stale{font-size:.875rem;color:var(--sub);margin:8px 0 0}
 .confirm{font-size:.875rem;color:var(--sub);margin:12px 0 0}
 .confirm a,.risk a{display:inline-flex;align-items:center;min-height:44px}
 .risk{margin:12px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--wn-bg);color:var(--wn-fg);font-size:.875rem;line-height:1.6}
 .risk a{color:var(--wn-fg);font-weight:700}
 .safe{margin:8px 0 0;padding:8px 14px;border-radius:var(--r-in);background:var(--ok-bg);color:var(--ok-fg);font-size:.875rem;font-weight:700;line-height:1.6}
-.pill{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:2px 12px;border-radius:var(--r-pill);font-weight:700;font-size:.9rem;line-height:1.3}
+.pill{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:2px 12px;border-radius:var(--r-pill);font-weight:700;font-size:.9rem;line-height:1.3;max-width:100%}
 .pill--ok{background:var(--ok-bg);color:var(--ok-fg)}
 .pill--ng{background:var(--ng-bg);color:var(--ng-fg)}
 .pill--wn{background:var(--wn-bg);color:var(--wn-fg)}
 .pill--nt{background:var(--nt-bg);color:var(--nt-fg)}
-.dot{margin-left:8px;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.75rem;font-weight:700}
+.dot{margin-left:8px;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.75rem;font-weight:700;white-space:nowrap}
 .fld{margin:0 0 var(--s2)}
 label.l{display:block;font-weight:700;margin:0 0 6px}
 .num{position:relative}
-.num input{display:block;width:100%;min-height:56px;margin:0;padding:0 44px 0 16px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;-moz-appearance:textfield;appearance:textfield}
+.num input{display:block;width:100%;min-height:56px;margin:0;padding:0 44px 0 16px;border:2px solid transparent;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;-moz-appearance:textfield;appearance:textfield}
+.num input:focus{border-color:var(--cat-accent,var(--primary));background:var(--card)}
 .num input::-webkit-outer-spin-button,.num input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .num .unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--sub);font-weight:700;pointer-events:none}
 .num--sm input{min-height:48px;font-size:1.125rem;text-align:right}
 .num input[aria-invalid=true],.stepper input[aria-invalid=true],textarea[aria-invalid=true]{box-shadow:inset 0 0 0 2px var(--ng)}
 select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit}
-textarea{display:block;width:100%;min-height:168px;padding:12px 14px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;line-height:1.7;resize:vertical}
+textarea{display:block;width:100%;min-height:168px;padding:12px 14px;border:2px solid transparent;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;line-height:1.7;resize:vertical}
+textarea:focus{border-color:var(--cat-accent,var(--primary));background:var(--card)}
 .err{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:6px 12px;margin:8px 0 0;font-size:.9rem;font-weight:700}
 .err::before{content:"\26A0  "}
 .range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:44px;margin:4px 0 0;padding:0;background:transparent;cursor:pointer;--pct:0%}
-.range::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
-.range::-moz-range-track{height:8px;border-radius:4px;background:linear-gradient(to right,var(--primary) var(--pct),var(--track) var(--pct))}
-.range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-10px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
-.range::-moz-range-thumb{box-sizing:border-box;width:28px;height:28px;border-radius:50%;background:var(--card);border:3px solid var(--primary);box-shadow:0 1px 3px rgba(15,23,42,.25)}
+.range::-webkit-slider-runnable-track{height:10px;border-radius:5px;background:linear-gradient(90deg,var(--cat-accent,var(--primary)),var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-moz-range-track{height:10px;border-radius:5px;background:linear-gradient(90deg,var(--cat-accent,var(--primary)),var(--primary) var(--pct),var(--track) var(--pct))}
+.range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-9px;border-radius:50%;background:var(--card);border:3px solid var(--cat-accent,var(--primary));box-shadow:0 1px 4px rgba(24,28,38,.25)}
+.range::-moz-range-thumb{box-sizing:border-box;width:28px;height:28px;border-radius:50%;background:var(--card);border:3px solid var(--cat-accent,var(--primary));box-shadow:0 1px 4px rgba(24,28,38,.25)}
 .range.is-empty::-webkit-slider-thumb{border-color:var(--tick)}
 .range.is-empty::-moz-range-thumb{border-color:var(--tick)}
 .range:disabled{opacity:.5;cursor:not-allowed}
-.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 0}
-.chips[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
-.chips[data-cols="6"]{grid-template-columns:repeat(6,1fr)}
-@media(max-width:359px){.chips[data-cols="4"]{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:374px){.chips[data-cols="6"]{grid-template-columns:repeat(3,1fr)}}
+.chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:8px 0 0}
+.chips[data-cols="4"]{grid-template-columns:repeat(4,minmax(0,1fr))}
+.chips[data-cols="6"]{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-width:359px){.chips[data-cols="4"]{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.chips[data-cols="6"]{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .chip{min-height:44px;min-width:44px;padding:0 6px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-weight:700;white-space:nowrap;transition:background var(--t),color var(--t)}
 .chip[aria-pressed=true]{background:var(--primary);color:var(--on-primary)}
 .chip[aria-pressed=true]::before{content:"\2713  "}
 .chips[data-cols="6"] .chip[aria-pressed=true]::before{content:"\2713"}
-.seg-group{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;border:0;margin:0 0 var(--s2);padding:0;min-width:0}
-.seg-group[data-cols="3"]{grid-template-columns:repeat(3,1fr)}
-.seg-group[data-cols="4"]{grid-template-columns:repeat(4,1fr)}
+.seg-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;margin:0 0 var(--s2);padding:0;min-width:0}
+.seg-group[data-cols="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}
+.seg-group[data-cols="4"]{grid-template-columns:repeat(4,minmax(0,1fr))}
 .seg-group legend{padding:0;margin:0 0 8px;font-weight:700}
 .seg{position:relative;display:block;min-width:0}
 .seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
@@ -165,11 +209,11 @@ textarea{display:block;width:100%;min-height:168px;padding:12px 14px;border:0;bo
 .gauge{position:relative;height:64px;margin:12px 12px 4px}
 .g-now{position:absolute;top:0;white-space:nowrap;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.8rem;font-weight:700;line-height:1.5}
 .g-track{position:absolute;left:0;right:0;top:28px;height:14px;border-radius:7px;background:var(--track);overflow:hidden}
-.g-fill{width:0;height:100%;border-radius:7px;background:var(--ok);transition:width var(--t)}
+.g-fill{width:0;height:100%;border-radius:7px;background:var(--cat-accent,var(--ok));transition:width .25s ease}
 .g-fill[data-tone=wn]{background:var(--wn)}
 .g-fill[data-tone=ng]{background:var(--ng)}
 .g-tick{position:absolute;top:24px;width:2px;height:22px;margin-left:-1px;background:var(--tick)}
-.g-thumb{position:absolute;top:24px;left:0;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--card);border:4px solid var(--primary);transition:left var(--t)}
+.g-thumb{position:absolute;top:24px;left:0;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--card);border:4px solid var(--cat-accent,var(--primary));transition:left .25s ease}
 .g-labels{position:absolute;left:0;right:0;top:48px;height:16px;font-size:.72rem;line-height:16px;color:var(--sub)}
 .g-labels span{position:absolute;transform:translateX(-50%);white-space:nowrap}
 .gauge--bar{height:40px;margin:8px 0 4px}
@@ -193,7 +237,7 @@ textarea{display:block;width:100%;min-height:168px;padding:12px 14px;border:0;bo
 .tw{overflow-x:auto;margin:8px 0}
 table{border-collapse:collapse;width:100%;min-width:400px;font-size:.88rem}
 th,td{padding:8px 10px;text-align:left;vertical-align:top}
-th{color:var(--sub);font-weight:700}
+th{color:var(--sub);font-weight:700;white-space:nowrap}
 td.n{text-align:right;white-space:nowrap}
 tbody tr:nth-child(even){background:var(--soft)}
 caption{text-align:left;font-weight:700;padding:4px 0}
@@ -216,23 +260,47 @@ dl.g dd{margin:2px 0 0}
 .ad-label{font-size:.75rem;color:var(--sub);padding:4px}
 .rel{margin:var(--s5) 0 0}
 .rel-t{margin:0 0 8px;font-size:1.05rem;font-weight:700;font-feature-settings:"palt"}
-.rel .tools,.rel .sisters{background:var(--card);border-radius:var(--r-card);padding:8px;margin:0 0 var(--s2)}
-.rel h2{margin:8px 12px 4px;font-size:.8125rem;color:var(--sub)}
-.tl{list-style:none;padding:0;margin:0;display:grid;gap:4px}
-.tl a{position:relative;display:block;min-height:56px;padding:10px 36px 10px 12px;border-radius:var(--r-in);color:var(--fg);text-decoration:none;transition:background var(--t)}
+.rel .tools,.rel .sisters{background:var(--card);border-radius:var(--r-card);padding:10px;margin:0 0 var(--s2);box-shadow:var(--shadow)}
+.rel h2{margin:8px 12px 6px;font-size:.8125rem;color:var(--sub)}
+.tl{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.tl>li{min-width:0}
+.tl a{position:relative;display:block;min-height:60px;padding:12px 40px 12px 14px;border-radius:var(--r-in);background:var(--soft);color:var(--fg);text-decoration:none;border-left:4px solid var(--cat-accent,var(--primary));transition:background var(--t),transform .2s ease}
+.tl a:has([data-cat="tax"]){border-left-color:var(--cat-tax)}
+.tl a:has([data-cat="life"]){border-left-color:var(--cat-life)}
+.tl a:has([data-cat="job"]){border-left-color:var(--cat-job)}
+.tl a:has([data-cat="asset"]){border-left-color:var(--cat-asset)}
 .tl a::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;margin-top:-4px;border-top:2px solid var(--sub);border-right:2px solid var(--sub);transform:rotate(45deg)}
-.tl a:hover{background:var(--soft)}
-.tl a strong{display:block;font-size:.95rem;line-height:1.5}
-.tl a span{display:block;font-size:.8125rem;color:var(--sub)}
+.tl a:hover{background:var(--card);box-shadow:var(--shadow)}
+.tl a strong{display:block;font-size:.95rem;line-height:1.45}
+.tl a>span{display:block;font-size:.8125rem;color:var(--sub);margin-top:2px}
+.tl a .pv{display:inline-block;max-width:100%;margin-top:6px;padding:3px 10px;border-radius:12px;background:var(--primary-soft);color:var(--primary);font-size:.75rem;font-weight:800;line-height:1.4}
+.tl a .pv[data-cat=tax]{background:#dbeafe;color:#1d4ed8}
+.tl a .pv[data-cat=life]{background:#ffedd5;color:#c2410c}
+.tl a .pv[data-cat=job]{background:#ede9fe;color:#6d28d9}
+.tl a .pv[data-cat=asset]{background:#d1fae5;color:#047857}
+@media(prefers-color-scheme:dark){
+.tl a .pv[data-cat=tax]{background:#172554;color:#93c5fd}
+.tl a .pv[data-cat=life]{background:#431407;color:#fdba74}
+.tl a .pv[data-cat=job]{background:#2e1065;color:#c4b5fd}
+.tl a .pv[data-cat=asset]{background:#064e3b;color:#6ee7b7}}
 .tl a[aria-current=page]{background:var(--primary-soft)}
 .tl a[aria-current=page]::after{display:none}
+.fband{margin:var(--s4) 0 var(--s2);padding:16px 20px;border-radius:var(--r-card);background:#181c26;color:#f8fafc;box-shadow:var(--shadow-hero);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+.fband:hover{transform:translateY(-3px) scale(1.008)}
+.fband strong{display:block;font-size:.95rem;color:#fff}
+.fband span{display:block;font-size:.8rem;color:#cbd5e1;margin-top:2px}
+.fband-pills{display:flex;flex-wrap:wrap;gap:6px}
+.fband-tag{display:inline-flex;align-items:center;padding:4px 10px;border-radius:var(--r-pill);background:rgba(255,255,255,.12);color:#fff;font-size:.75rem;font-weight:700;white-space:nowrap}
+.rv{opacity:0;transform:translateY(12px);transition:opacity .4s ease,transform .4s ease}
+.rv.is-in{opacity:1;transform:none}
 footer{font-size:.85rem;color:var(--sub);margin-top:var(--s4)}
 .foot-links{margin:0 0 var(--s1)}
 .foot-links a{display:inline-flex;align-items:center;min-height:44px}
 footer h2{font-size:1rem;margin:12px 0 6px}
-.livebar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:640px;min-height:56px;margin:0 auto;padding:0 16px env(safe-area-inset-bottom);background:var(--card);box-shadow:0 -4px 16px rgba(15,23,42,.12);font-weight:700}
+.livebar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:700px;min-height:56px;margin:0 auto;padding:0 16px env(safe-area-inset-bottom);background:var(--card);box-shadow:0 -4px 16px rgba(15,23,42,.12);font-weight:700}
 .livebar button{flex:none;min-height:44px;padding:0 16px;border-radius:var(--r-pill);background:var(--primary);color:var(--on-primary);font-weight:700}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}.rv{opacity:1!important;transform:none!important}.mq{overflow-x:auto}.mq-track{width:auto}.mq-set[aria-hidden=true]{display:none}}
+@media print{.rv{opacity:1!important;transform:none!important}}
 /*ds:end*/
 .ad-slot{margin:var(--s5) 0 var(--s2)}
 .chart{display:block;width:100%;height:auto;margin:12px 0 0}
@@ -247,7 +315,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 .pr-imp{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
 </style>
 </head>
-<body>
+<body data-cat="asset">
 <a class="skip" href="#main">本文へ移動</a>
 <div class="w">
 <header>
@@ -256,7 +324,8 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <a href="./" aria-current="page">奨学金返済</a>
 <a href="#toolsH">ほかのツール</a>
 </nav>
-<h1>奨学金（JASSO）返済シミュレーター</h1>
+<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span>資産形成・奨学金｜<wbr>大学生向け無料計算ツール・登録不要</span></p>
+<h1>奨学金（JASSO）<wbr>返済シミュレーター</h1>
 <div class="band" role="note"><span>目安です。対象：令和8年度の返還年数算出表・貸与利率／最終確認日 2026-11-17<br>※当サイトはプロモーション（PR）を含みます</span><a href="#legal" data-open="legal">免責</a></div>
 <noscript><p class="warn">このツールはJavaScriptが必要です。有効にしてご利用ください。</p></noscript>
 </header>
@@ -393,7 +462,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <details class="acc" id="tableAcc"><summary><h2>返還の推移（年ごとの表）</h2></summary>
 <section id="table"><div class="tw"><table><caption>年ごとの残高（目安）</caption>
 <thead><tr><th scope="col">返還から</th><th scope="col">年月と年齢</th><th scope="col">残高</th></tr></thead><tbody id="tblBody"></tbody></table></div></section></details>
-<details class="acc" id="bandsAcc"><summary><h2>返還年数の算出表（全16区分）</h2></summary>
+<details class="acc" id="bandsAcc"><summary><h2>返還年数の<wbr>算出表（全16区分）</h2></summary>
 <section id="bands"><div class="tw"><table><caption>返還年数算出表（令和8年度）</caption>
 <thead><tr><th scope="col">区分</th><th scope="col">貸与総額</th><th scope="col">基準額</th></tr></thead><tbody>
 <tr><td class="n">1</td><td>200,000円以下</td><td class="n">30,000円</td></tr>
@@ -425,7 +494,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <li>令和8年度の第二種の利率（基本月額）: 固定 令和8年4月 2.722%・5月 2.922%・6月 2.922%・7〜10月 3.000%／見直し 4月 1.874%・5月 2.000%・6月 1.900%・7月 2.000%・8月 2.200%・9月 2.400%・10月 2.274%。11月〜翌3月終了分は確認できていません。増額部分は基本利率に0.2%などが加わるため対象外です。</li>
 <li>併用は、合算した総額で返還年数を決め、各奨学金を自分の元本で計算して足す解釈です。</li>
 <li>逆算モードは算出表に従わない任意の額での試算です。返還が50年（600回）を超える場合は計算しません。</li>
-<li>確認先: JASSO（返還のてびき・返還例・利率のページ）。最終確認日 2026-11-17。</li>
+<li>確認先: JASSO（返還のてびき・返還例・利率のページ）。<span class="nw">最終確認日 2026-11-17</span>。</li>
 </ul>
 </section></details>
 </div>
@@ -434,7 +503,7 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <p class="shw"><a id="shareX" class="sh" href="https://x.com/intent/tweet" target="_blank" rel="noopener noreferrer">結果をXでシェア<span class="sr">（新しいタブで開きます）</span></a></p>
 <p class="hint">投稿文に金額・年齢は入りません。</p>
 <div class="pr-wrap">
-<h3 class="ct">返済後の家計を整えたい方へ（PR）</h3>
+<h3 class="ct">返済後の<wbr>家計を<wbr>整えたい<wbr>方へ<wbr>（PR）</h3>
 <fieldset class="seg-group" data-cols="2"><legend>年齢（任意）</legend>
 <label class="seg"><input type="radio" name="age" id="ageU"><span>18歳未満</span></label>
 <label class="seg"><input type="radio" name="age" id="ageA"><span>18歳以上<small>高校生を除く</small></span></label></fieldset>
@@ -451,14 +520,14 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <div class="acc-body"><p>借入総額から、卒業後の毎月の返還額・返還回数・完済年齢・総返還額をすぐ計算します。第一種（無利子）・第二種（有利子）・併用に対応し、「奨学金は何歳で完済できる？」「JASSOの返還は月いくら？」を目安で確認できます。入力はこの端末の中だけで計算し、送信しません。</p></div></details>
 <details class="acc"><summary><h2>よくある質問</h2></summary>
 <section id="faq" class="faq">
-<h3>奨学金（JASSO）の返済は、毎月いくらくらいになりますか？</h3><p>借入総額と、第一種（無利子）か第二種（有利子）かで決まります。例えば第一種で総額300万円なら、返還年数は17年（204回）、月額は14,705円です。第二種は利率に応じた利息が加わります。実際の額は JASSO の返還のてびきや返還例で確認してください。</p>
-<h3>奨学金は何歳で完済できますか？</h3><p>貸与が終わった月の翌月から数えて7か月目に返還が始まり、その後は毎月返します。完済は、貸与終了時の年齢に、7か月と返還回数を足した時点が目安です。例えば22歳3月に貸与が終わり156回（13年）で返す場合、最後の返還は35歳6か月ごろです。留年・早期終了・返還の猶予などは考慮していません。</p>
+<h3>奨学金（JASSO）の<wbr>返済は、<wbr>毎月いくらくらいになりますか？</h3><p>借入総額と、第一種（無利子）か第二種（有利子）かで決まります。例えば第一種で総額300万円なら、返還年数は17年（204回）、月額は14,705円です。第二種は利率に応じた利息が加わります。実際の額は JASSO の返還のてびきや返還例で確認してください。</p>
+<h3>奨学金は<wbr>何歳で<wbr>完済できますか？</h3><p>貸与が終わった月の翌月から数えて7か月目に返還が始まり、その後は毎月返します。完済は、貸与終了時の年齢に、7か月と返還回数を足した時点が目安です。例えば22歳3月に貸与が終わり156回（13年）で返す場合、最後の返還は35歳6か月ごろです。留年・早期終了・返還の猶予などは考慮していません。</p>
 <h3>返還年数はどう決まりますか？</h3><p>貸与総額に応じて、JASSO の算出表で決まります。総額を区分ごとの基準額で割り、小数点以下を切り捨てた年数が返還年数で、月賦の返還回数は年数×12回です。総額が340万円を超えると20年になります。表どおりのため、総額が増えて年数が短くなる箇所があります（20万円は6年、20万1円は5年）。全16区分はこのページの算出表で確認できます。</p>
-<h3>第一種と第二種の違いは何ですか？</h3><p>第一種は無利子、第二種は有利子で、どちらも返還が必要です。第二種は在学中は利子がつきません。第二種の利率は貸与終了時に決まり、基本月額分の上限は年3.0%です。利率固定方式と、おおむね5年ごとに見直す利率見直し方式があり、申込時に選びます。</p>
-<h3>第一種と第二種の両方を借りている場合はどう計算しますか？</h3><p>併用を選び、それぞれの借入総額を入れてください。JASSO のページには、貸与終了月が同じ場合は返還年数を合算した総額で算出すると書かれています。このツールは、合算した総額で返還年数を決め、第一種と第二種をそれぞれの借入額で計算して月額を足します。この計算方法はツール側の解釈による目安で、月賦と半年賦併用の配分は計算しません。</p>
-<h3>計算結果が JASSO の返還例と少し違うのはなぜですか？</h3><p>第二種は、元利均等返還の標準的な式（月利は年利÷12）で計算しています。JASSO が公表している返還例と比べると、0.4〜1.2%ほど低く出ることがあります。据置期間（返還開始まで）の利息などの扱いが、公開されている情報から確認できていないためです。このツールの数字は目安とし、正確な額は JASSO の返還シミュレーションや返還のてびきで確認してください。</p>
-<h3>毎月の返還額から、完済までの期間を計算できますか？</h3><p>「月額から期間」を選び、毎月返せる額を入れると、返還回数と完済の時期が出ます。ただし実際の返還は算出表で決まるため、表と違う額での試算は、早く返した場合などの目安です。毎月の額が第二種の利息以下だと完済できないため、その場合は結果を出しません。</p>
-<h3>返すのが難しくなったときはどうすればよいですか？</h3><p>月々の返還額を減らす減額返還や、返還期限を延ばす返還期限猶予の制度があります。第一種（2017年度以降の採用者）には所得連動返還方式もあります。このツールでは計算しないため、条件や期間は JASSO の案内で確認してください。</p>
+<h3>第一種と<wbr>第二種の<wbr>違いは<wbr>何ですか？</h3><p>第一種は無利子、第二種は有利子で、どちらも返還が必要です。第二種は在学中は利子がつきません。第二種の利率は貸与終了時に決まり、基本月額分の上限は年3.0%です。利率固定方式と、おおむね5年ごとに見直す利率見直し方式があり、申込時に選びます。</p>
+<h3>第一種と<wbr>第二種の<wbr>両方を<wbr>借りている<wbr>場合はどう<wbr>計算しますか？</h3><p>併用を選び、それぞれの借入総額を入れてください。JASSO のページには、貸与終了月が同じ場合は返還年数を合算した総額で算出すると書かれています。このツールは、合算した総額で返還年数を決め、第一種と第二種をそれぞれの借入額で計算して月額を足します。この計算方法はツール側の解釈による目安で、月賦と半年賦併用の配分は計算しません。</p>
+<h3>計算結果が JASSO の<wbr>返還例と<wbr>少し違うのはなぜですか？</h3><p>第二種は、元利均等返還の標準的な式（月利は年利÷12）で計算しています。JASSO が公表している返還例と比べると、0.4〜1.2%ほど低く出ることがあります。据置期間（返還開始まで）の利息などの扱いが、公開されている情報から確認できていないためです。このツールの数字は目安とし、正確な額は JASSO の返還シミュレーションや返還のてびきで確認してください。</p>
+<h3>毎月の<wbr>返還額から、<wbr>完済までの<wbr>期間を<wbr>計算できますか？</h3><p>「月額から期間」を選び、毎月返せる額を入れると、返還回数と完済の時期が出ます。ただし実際の返還は算出表で決まるため、表と違う額での試算は、早く返した場合などの目安です。毎月の額が第二種の利息以下だと完済できないため、その場合は結果を出しません。</p>
+<h3>返すのが<wbr>難しくなったときはどうすればよいですか？</h3><p>月々の返還額を減らす減額返還や、返還期限を延ばす返還期限猶予の制度があります。第一種（2017年度以降の採用者）には所得連動返還方式もあります。このツールでは計算しないため、条件や期間は JASSO の案内で確認してください。</p>
 </section></details>
 <details class="acc"><summary><h2>用語解説</h2></summary>
 <section id="terms">
@@ -480,15 +549,15 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <details class="acc" id="sourcesAcc"><summary><h2>一次情報</h2></summary>
 <section id="sources">
 <ul>
-<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/henkan_kikan/index.html" target="_blank" rel="noopener noreferrer">返還年数算出表</a>（確認日 2026-11-17）</li>
-<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/kappu/index.html" target="_blank" rel="noopener noreferrer">割賦方法・返還開始時期</a>（確認日 2026-11-17）</li>
-<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/kappu/sample/daigaku.html" target="_blank" rel="noopener noreferrer">返還例</a>（確認日 2026-11-17）</li>
-<li><a href="https://www.jasso.go.jp/shogakukin/about/taiyo/taiyo_2shu/riritsu_santei.html" target="_blank" rel="noopener noreferrer">第二種の利率の算定方法・令和8年度利率</a>（確認日 2026-11-17）</li>
-<li><a href="https://www.jasso.go.jp/shogakukin/about/taiyo/index.html" target="_blank" rel="noopener noreferrer">奨学金の種類</a>（確認日 2026-11-17）</li>
-<li><a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/index.html" target="_blank" rel="noopener noreferrer">返還が困難なとき</a>（確認日 2026-11-17）</li>
-<li><a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/gengaku/index.html" target="_blank" rel="noopener noreferrer">減額返還</a>（確認日 2026-11-17）</li>
-<li><a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/yuyo/index.html" target="_blank" rel="noopener noreferrer">返還期限猶予</a>（確認日 2026-11-17）</li>
-<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/flow/__icsFiles/afieldfile/2025/09/19/r7_henkannotebiki_shosai.pdf" target="_blank" rel="noopener noreferrer">返還のてびき（PDF）</a>（確認日 2026-11-17）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/henkan_kikan/index.html" target="_blank" rel="noopener noreferrer">返還年数算出表</a>（<span class="nw">確認日 2026-11-17</span>）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/kappu/index.html" target="_blank" rel="noopener noreferrer">割賦方法・返還開始時期</a>（<span class="nw">確認日 2026-11-17</span>）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/henkan_hoshiki/kappu/sample/daigaku.html" target="_blank" rel="noopener noreferrer">返還例</a>（<span class="nw">確認日 2026-11-17</span>）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/about/taiyo/taiyo_2shu/riritsu_santei.html" target="_blank" rel="noopener noreferrer">第二種の利率の算定方法・令和8年度利率</a>（<span class="nw">確認日 2026-11-17</span>）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/about/taiyo/index.html" target="_blank" rel="noopener noreferrer">奨学金の種類</a>（<span class="nw">確認日 2026-11-17</span>）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/index.html" target="_blank" rel="noopener noreferrer">返還が困難なとき</a>（<span class="nw">確認日 2026-11-17</span>）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/gengaku/index.html" target="_blank" rel="noopener noreferrer">減額返還</a>（<span class="nw">確認日 2026-11-17</span>）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan_konnan/yuyo/index.html" target="_blank" rel="noopener noreferrer">返還期限猶予</a>（<span class="nw">確認日 2026-11-17</span>）</li>
+<li><a href="https://www.jasso.go.jp/shogakukin/henkan/houhou/flow/__icsFiles/afieldfile/2025/09/19/r7_henkannotebiki_shosai.pdf" target="_blank" rel="noopener noreferrer">返還のてびき（PDF）</a>（<span class="nw">確認日 2026-11-17</span>）</li>
 </ul>
 <p class="hint">利息の起算・端数・最終回の調整は、公開ページで確認できた範囲では不明のため目安としています。</p>
 </section></details>
@@ -502,21 +571,22 @@ footer h2{font-size:1rem;margin:12px 0 6px}
 <section class="tools" aria-labelledby="toolsH">
 <h2 id="toolsH">学生バイトお役立ちツール</h2>
 <ul class="tl">
-<li><a href="../"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span></a></li>
-<li><a href="../kakemochi/"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span></a></li>
-<li><a href="../shift-limit/"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span></a></li>
+<li><a href="../"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span><span class="pv" data-cat="tax">例：19〜22歳・年収108万円→150万円の壁まで約42万円</span></a></li>
+<li><a href="../kakemochi/"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span><span class="pv" data-cat="tax">例：甲欄90万円＋乙欄60万円（月5万円・源泉3.063%）→還付目安18,372円</span></a></li>
+<li><a href="../shift-limit/"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span><span class="pv" data-cat="tax">例：時給1,100円・累計0円・残り12か月→150万円未満まで月113時間（週26.0時間）</span></a></li>
 </ul>
 </section>
 <section class="sisters" id="sisters" aria-labelledby="sistersH">
 <h2 id="sistersH">姉妹ツール</h2>
 <ul class="tl">
-<li><a href="../living-cost-simulator/"><strong>手取り＆一人暮らし生活費シミュレーター</strong><span>返還額を引いた毎月使えるお金を計算</span></a></li>
-<li><a href="../nisa-simulator/"><strong>大学生からの新NISA・バイト代積立シミュレーター</strong><span>余裕資金での積立の将来額を試算</span></a></li>
-<li><a href="./" aria-current="page"><strong>奨学金（JASSO）返済シミュレーター</strong><span>月々の返還額と完済年齢を計算（このページ）</span></a></li>
-<li><a href="../es-word-counter/"><strong>ES文字数カウント＆ガクチカ構成チェッカー</strong><span>ESの文字数と構成をチェック</span></a></li>
+<li><a href="../living-cost-simulator/"><strong>手取り＆<span class="nw">一人暮らし</span>生活費シミュレーター</strong><span>返還額を引いた毎月使えるお金を計算</span><span class="pv" data-cat="life">例：新社会人・額面月22万円（東京・賞与なし）→手取り約18.6万円・家賃目安5.2万円（手取りの28%）</span></a></li>
+<li><a href="../nisa-simulator/"><strong>大学生からの新NISA・バイト代積立シミュレーター</strong><span>余裕資金での積立の将来額を試算</span><span class="pv" data-cat="asset">例：月1万円×10年・年3%の仮定→約139万円（元本120万円）</span></a></li>
+<li><a href="./" aria-current="page"><strong>奨学金（JASSO）返済シミュレーター</strong><span>月々の返還額と完済年齢を計算（このページ）</span><span class="pv" data-cat="asset">例：第一種（無利子）300万円→標準17年・月14,705円</span></a></li>
+<li><a href="../es-word-counter/"><strong>ES文字数カウント＆ガクチカ構成チェッカー</strong><span>ESの文字数と構成をチェック</span><span class="pv" data-cat="job">例：400字制限・368字入力→達成92%</span></a></li>
 </ul>
 </section>
 </aside>
+<div class="fband" role="region" aria-label="サイト案内"><div><strong>大学生向けの無料計算・シミュレーター集</strong><span>登録不要・端末内だけで計算し外部送信しません</span></div><div class="fband-pills"><span class="fband-tag nw">登録不要</span><span class="fband-tag nw">令和8年分</span><span class="fband-tag nw">一次情報確認済</span></div></div>
 <footer>
 <p class="foot-links"><a href="#legal" data-open="legal">免責事項・プライバシーの要約</a> ／ <a href="../privacy/">プライバシーポリシー</a> ／ <a href="../about/">運営者情報</a> ／ <a href="../tools/">ツール一覧</a> ／ 連絡先: gakusei.kabe.checker@gmail.com</p>
 <details class="acc" id="legal"><summary>免責事項・プライバシー（要約）</summary>
@@ -941,6 +1011,7 @@ recalc();
 hashOpen();
 })();
 </script>
+<script src="../assets/ui-motion.js" defer></script>
 <script src="../site-config.js" defer></script>
 </body>
 </html>

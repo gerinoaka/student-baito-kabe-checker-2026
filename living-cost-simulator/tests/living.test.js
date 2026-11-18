@@ -231,7 +231,7 @@ c('I1-jsonld', () => {
   const faq = html.match(/<section id="faq"[\s\S]*?<\/section>/)[0];
   const vis = [...faq.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((x) => x[1].replace(/<[^>]+>/g, ''));
   assert.deepStrictEqual(ld[1].mainEntity.map((q) => q.acceptedAnswer.text), vis);
-  const qs = [...faq.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((x) => x[1]);
+  const qs = [...faq.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((x) => x[1].replace(/<wbr>/g, ''));
   assert.deepStrictEqual(ld[1].mainEntity.map((q) => q.name), qs);
   assert.strictEqual(qs.length, 8);
 });
@@ -239,7 +239,7 @@ c('I1-size', () => assert.ok(Buffer.byteLength(html, 'utf8') <= 102400, 'size ' 
 c('I1-noinner', () => { assert.ok(!/innerHTML|outerHTML|insertAdjacentHTML|document\.write|eval\(/.test(html)); });
 c('I1-script-src', () => {
   const srcs = [...html.matchAll(/<script[^>]*\ssrc="([^"]*)"/g)].map((x) => x[1]);
-  assert.deepStrictEqual(srcs, ['links-config.js', '../site-config.js']);
+  assert.deepStrictEqual(srcs, ['links-config.js', '../assets/ui-motion.js', '../site-config.js']);
 });
 c('I1-external-urls', () => {
   let s = html.replace(/<script(?![^>]*ld\+json)[\s\S]*?<\/script>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '');

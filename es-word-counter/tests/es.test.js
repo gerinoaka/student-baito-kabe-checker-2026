@@ -123,7 +123,7 @@ c('M01', () => assert.ok(Buffer.byteLength(html, 'utf8') <= 102400));
 c('M02', () => assert.ok(!/innerHTML|insertAdjacentHTML|localStorage|sessionStorage|document\.write|eval\(|fetch\(|XMLHttpRequest|sendBeacon|indexedDB/.test(html)));
 c('M03', () => {
   const src = [...html.matchAll(/<script[^>]*\ssrc="([^"]*)"/g)].map((x) => x[1]);
-  assert.deepStrictEqual(src, ['links-config.js', '../site-config.js']);
+  assert.deepStrictEqual(src, ['links-config.js', '../assets/ui-motion.js', '../site-config.js']);
   assert.ok(![...html.matchAll(/<link\b[^>]*>/g)].some((x) => /href="https?:/.test(x[0]) && !/rel="canonical"/.test(x[0])));
   assert.ok(!/<img\b/.test(html));
 });
@@ -131,8 +131,8 @@ c('M04', () => {
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((x) => JSON.parse(x[1]));
   assert.strictEqual(ld.length, 2); assert.strictEqual(ld[0]['@type'], 'WebApplication'); assert.strictEqual(ld[1]['@type'], 'FAQPage');
   const faq = html.match(/<section id="faq"[\s\S]*?<\/section>/)[0];
-  const qs = [...faq.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((x) => x[1]);
-  const as = [...faq.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((x) => x[1].replace(/<[^>]+>/g, ''));
+  const qs = [...faq.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((x) => x[1].replace(/<wbr>/g, ''));
+  const as =[...faq.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((x) => x[1].replace(/<[^>]+>/g, ''));
   assert.deepStrictEqual(ld[1].mainEntity.map((q) => q.name), qs);
   assert.deepStrictEqual(ld[1].mainEntity.map((q) => q.acceptedAnswer.text), as);
   assert.ok(qs.length >= 6 && qs.length <= 8);

@@ -144,7 +144,7 @@ pages.forEach(([p, url, link]) => {
     const vis = [...faq.matchAll(/<p>([\s\S]*?)<\/p>/g)].map((x) => x[1].replace(/<[^>]+>/g, ''));
     const jl = ld[1].mainEntity.map((q) => q.acceptedAnswer.text);
     assert.deepStrictEqual(jl, vis);
-    const qs = [...faq.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((x) => x[1]);
+    const qs = [...faq.matchAll(/<h3>([\s\S]*?)<\/h3>/g)].map((x) => x[1].replace(/<wbr>/g, ''));
     assert.deepStrictEqual(ld[1].mainEntity.map((q) => q.name), qs);
   });
   c('x-size ' + p, () => assert.ok(Buffer.byteLength(h, 'utf8') <= 102400, 'size ' + Buffer.byteLength(h, 'utf8')));

@@ -91,7 +91,7 @@ Object.keys(HASH).forEach((p) => {
     assert.strictEqual(h.match(/<meta property="og:title" content="([^"]*)"/)[1], H.title);
     assert.strictEqual(h.match(/<meta property="og:description" content="([^"]*)"/)[1], H.desc);
     assert.strictEqual(h.match(/<link rel="canonical" href="([^"]*)"/)[1], H.url);
-    assert.strictEqual(h.match(/<h1>([\s\S]*?)<\/h1>/)[1], H.h1);
+    assert.strictEqual(h.match(/<h1>([\s\S]*?)<\/h1>/)[1].replace(/<wbr>/g, ''), H.h1);
     assert.strictEqual((h.match(/<meta name="theme-color"/g) || []).length, 2);
   });
   c('S08 logic hash ' + p, () => {

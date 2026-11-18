@@ -78,7 +78,7 @@ t('N08', () => {
   assert.ok(html.includes('<meta name="description" content="' + D + '">'));
   assert.ok(html.includes('<meta property="og:title" content="' + T + '">'));
   assert.ok(html.includes('<meta property="og:description" content="' + D + '">'));
-  assert.ok(html.includes('<h1>大学生からの新NISA・バイト代積立シミュレーター</h1>'));
+  assert.ok(html.replace(/<wbr>/g, '').includes('<h1>大学生からの新NISA・バイト代積立シミュレーター</h1>'));
   assert.ok(html.includes('<meta name="theme-color" content="#f8fafc">\n<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">'));
 });
 t('N09', () => {

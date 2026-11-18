@@ -273,7 +273,7 @@ t('M02 meta', () => {
   assert.ok(html.includes('<meta property="og:image" content="https://gakusei-tools.com/og/scholarship.png">'));
   assert.ok(/<html lang="ja">/.test(html) && /<meta charset="utf-8">/.test(html) && /name="viewport"/.test(html) && /name="robots" content="index,follow"/.test(html));
   assert.ok(html.includes('<!-- 公開URL: ' + BASE + ' （canonical と og:url の2か所） -->'));
-  assert.strictEqual(attr(html, /<h1>([^<]+)<\/h1>/), '奨学金（JASSO）返済シミュレーター');
+  assert.strictEqual(attr(html.replace(/<wbr>/g, ''), /<h1>([^<]+)<\/h1>/), '奨学金（JASSO）返済シミュレーター');
 });
 t('M03 JSON-LD', () => {
   const b = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
@@ -311,7 +311,7 @@ t('M06 forbidden / structure', () => {
   assert.ok(html.includes('<meta name="theme-color" content="#f8fafc">\n<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">'));
   assert.strictEqual((html.match(/name="theme-color"/g) || []).length, 2);
   assert.ok(html.includes('<a class="skip" href="#main">') && html.includes('<main id="main">'));
-  [...html.matchAll(/<script\b([^>]*)>/g)].forEach((s) => assert.ok(/type="application\/ld\+json"|src="links-config\.js"|src="\.\.\/site-config\.js" defer|id="logic"|id="ui"/.test(s[1]), 'script ' + s[1]));
+  [...html.matchAll(/<script\b([^>]*)>/g)].forEach((s) => assert.ok(/type="application\/ld\+json"|src="links-config\.js"|src="\.\.\/(?:assets\/ui-motion|site-config)\.js" defer|id="logic"|id="ui"/.test(s[1]), 'script ' + s[1]));
 });
 t('M07 shared css == root', () => {
   const css = (h) => attr(h, /(\/\*ds:start v1\*\/[\s\S]*?\/\*ds:end\*\/)/);
