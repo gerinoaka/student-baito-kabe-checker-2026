@@ -32,12 +32,12 @@ c('X02 related links', () => {
 c('X03 sitemap == canonicals', () => {
   const locs = [...rd('sitemap.xml').matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
   const can = PAGES.map((p) => rd(p).match(/<link rel="canonical" href="([^"]*)"/)[1]);
-  assert.strictEqual(locs.length, 22);
+  assert.strictEqual(locs.length, 23);
   assert.deepStrictEqual(can.slice().sort(), DIRS.map((d) => BASE + d).sort());
-  const extra = ['about/', 'tools/', 'privacy/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/', 'guides/gensen-choshu-hyo/', 'guides/kinro-gakusei-kojo/', 'guides/student-juminzei/', 'guides/oya-kojo-daigakusei/', 'guides/fuyo-kojo-shinkokusho/', 'scholarship/'];
+  const extra = ['about/', 'tools/', 'privacy/', 'guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/', 'guides/gensen-choshu-hyo/', 'guides/kinro-gakusei-kojo/', 'guides/student-juminzei/', 'guides/oya-kojo-daigakusei/', 'guides/fuyo-kojo-shinkokusho/', 'guides/gakusei-nofu-tokurei/', 'scholarship/'];
   assert.deepStrictEqual(locs.slice().sort(), can.concat(extra.map((d) => BASE + d)).sort());
   extra.forEach((d) => assert.strictEqual(rd(d + 'index.html').match(/<link rel="canonical" href="([^"]*)"/)[1], BASE + d, d));
-  assert.strictEqual(new Set(locs).size, 22);
+  assert.strictEqual(new Set(locs).size, 23);
 });
 c('X04 no stray root files in subfolders', () => {
   DIRS.slice(1).forEach((d) => ['sitemap.xml', 'robots.txt', '.nojekyll'].forEach((f) => assert.ok(!fs.existsSync(path.join(root, d, f)), d + f)));
@@ -73,10 +73,11 @@ const NEW_DIRS = ['about/', 'tools/', 'privacy/'];
 const NEW_PAGES = NEW_DIRS.map((d) => d + 'index.html');
 const ALL_PAGES = PAGES.concat(NEW_PAGES);
 const TOOL_DIRS = DIRS.concat(['scholarship/']);   // ツールのフォルダ（奨学金は6ページの DIRS には入れず、フェーズ4で足す）
-const GUIDE_DIRS = ['guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/', 'guides/gensen-choshu-hyo/', 'guides/kinro-gakusei-kojo/', 'guides/student-juminzei/', 'guides/oya-kojo-daigakusei/', 'guides/fuyo-kojo-shinkokusho/'];
+const GUIDE_DIRS = ['guides/150-wall-guide/', 'guides/kakemochi-tax-guide/', 'guides/es-star-method/', 'guides/student-nisa-start/', 'guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/', 'guides/gensen-choshu-hyo/', 'guides/kinro-gakusei-kojo/', 'guides/student-juminzei/', 'guides/oya-kojo-daigakusei/', 'guides/fuyo-kojo-shinkokusho/', 'guides/gakusei-nofu-tokurei/'];
 const SEASON = ['guides/gensen-choshu-hyo/', 'guides/kinro-gakusei-kojo/', 'guides/student-juminzei/', 'guides/oya-kojo-daigakusei/'];
 const FUYO = 'guides/fuyo-kojo-shinkokusho/';   // 2026-11-23 追加（扶養控除等申告書の書き方・令和9年分）
-const GDATE = (d) => (d === FUYO ? '2026-11-23' : SEASON.includes(d) ? '2026-11-22' : ['guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/'].includes(d) ? '2026-11-19' : '2026-11-17');   // 公開日・更新日（11-19 の3本、11-22 の季節4本）
+const NOFU = 'guides/gakusei-nofu-tokurei/';   // 2026-11-24 追加（国民年金の学生納付特例）
+const GDATE = (d) => (d === NOFU ? '2026-11-24' : d === FUYO ? '2026-11-23' : SEASON.includes(d) ? '2026-11-22' : ['guides/nenmatsu-chosei-miss/', 'guides/kokuho-150-cost/', 'guides/baito-nisa-monthly/'].includes(d) ? '2026-11-19' : '2026-11-17');   // 公開日・更新日（11-19 の3本、11-22 の季節4本）
 const stripComments = (h) => h.replace(/<!--[\s\S]*?-->/g, '');
 const ldBlocks = (h) => [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
 const resolves = (page, href) => fs.existsSync(path.join(path.resolve(path.dirname(path.join(root, page)), href), 'index.html'));
@@ -272,7 +273,8 @@ const GCFG = {
   'guides/kinro-gakusei-kojo/': { tools: ['../../', '../../kakemochi/'], hosts: GOV_SEASON, must: ['27万円', '26万円', '89万円', '163万円', '178万円', '143万円', '134万円', '扶養控除等（異動）申告書', '乙欄', '660,000', '23,000', '17,000', '43,000', '調整控除'], not: ['必ず戻る', '全員が対象', '確実に非課税', '130万円まで非課税です', '年調未済'] },
   'guides/student-juminzei/': { tools: ['../../', '../../shift-limit/'], hosts: GOV_SEASON, must: ['119万円', '110万円', '178万円', '143万円', '1級地', '均等割', '所得割', '5,000円', '令和8年度', '令和9年度', '410,000', '13,000', '560,000', '500,000'], not: ['必ず戻る', '全員が対象', '確実に非課税', '130万円まで非課税です', '年調未済'] },
   'guides/oya-kojo-daigakusei/': { tools: ['../../', '../../shift-limit/'], hosts: GOV_SEASON, must: ['特定親族特別控除', '特定扶養控除', '136万円', '159万円', '197万円', '63万円', '150万円未満', '12月31日', '19歳以上23歳未満', '63,000', '126,000', '21,000', '42,000', '1,231,000'], not: ['必ず戻る', '全員が対象', '確実に非課税', '130万円まで非課税です', '年調未済'] },
-  'guides/fuyo-kojo-shinkokusho/': { tools: ['../../', '../../kakemochi/'], hosts: GOV_SEASON, must: ['扶養控除等（異動）申告書', '令和9年分', '勤労学生', '163万円', '89万円', '74万円', '760,000', '890,000', '900,000', '1か所', '簡易な申告書', '源泉控除対象親族', '専修学校', '最初の給与'], not: ['必ず戻る', '全員が対象', '確実に非課税', '130万円まで非課税です', '年調未済', '給料が多い方', '給与が多い方'] }
+  'guides/fuyo-kojo-shinkokusho/': { tools: ['../../', '../../kakemochi/'], hosts: GOV_SEASON, must: ['扶養控除等（異動）申告書', '令和9年分', '勤労学生', '163万円', '89万円', '74万円', '760,000', '890,000', '900,000', '1か所', '簡易な申告書', '源泉控除対象親族', '専修学校', '最初の給与'], not: ['必ず戻る', '全員が対象', '確実に非課税', '130万円まで非課税です', '年調未済', '給料が多い方', '給与が多い方'] },
+  'guides/gakusei-nofu-tokurei/': { tools: ['../../', '../../shift-limit/'], hosts: ['www.nenkin.go.jp', 'www.nta.go.jp'], must: ['学生納付特例', '128万円', '17,920円', '2年1か月', '10年以内', '3年度目', 'マイナポータル', '受給資格期間', '障害基礎年金', '社会保険料控除', '令和7年', '194万円', '1,283,600', '1,278,000'], not: ['必ず戻る', '全員が対象', '確実に', '親の所得で', '払わなくてよい'] }
 };
 const BANNED = ['落ちない', '必ず', '絶対', '確実', '間違いなく', '100%', '最強', '最安', '儲か', '損しない', '誰でも', '受かる', '合格できる', '通過できる', '業界最大'];
 const SELLER = '学生バイトお役立ちツール 運営事務局';
@@ -489,10 +491,10 @@ const SECONDARY = ['moneyforward', 'yayoi', 'mmea.biz', 'limo.media', 'freee', '
 const sid = (d) => d.replace(/^guides\//, '').replace(/\/$/, '');
 const sentences = (h) => { const m = mainOf(h); const out = [];
   [...m.matchAll(/<(p|li)\b[^>]*>([\s\S]*?)<\/\1>/g)].forEach((x) => plain(x[2]).split('。').forEach((s) => out.push(s))); return out; };
-c('T1 ds identical to about, canonical/og:url/sitemap, lastmod, sitemap 22, tools 4 links + ItemList 19', () => {
+c('T1 ds identical to about, canonical/og:url/sitemap, lastmod, sitemap 23, tools 4 links + ItemList 20', () => {
   const base = css(rd('about/index.html'));
   const sm = rd('sitemap.xml'); const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 22); assert.strictEqual(new Set(locs).size, 22);
+  assert.strictEqual(locs.length, 23); assert.strictEqual(new Set(locs).size, 23);
   const tools = stripComments(rd('tools/index.html'));
   SEASON.forEach((d) => {
     const h = gh(d);
@@ -503,7 +505,7 @@ c('T1 ds identical to about, canonical/og:url/sitemap, lastmod, sitemap 22, tool
     const blk = sm.match(new RegExp('<loc>' + (BASE + d).replace(/[.\/]/g, '\\$&') + '</loc>\\s*<lastmod>([^<]*)</lastmod>')); assert.ok(blk, d + ' lastmod'); assert.strictEqual(blk[1], '2026-11-22');
     assert.ok(tools.includes('href="../' + d + '"'), d + ' in tools');
   });
-  assert.strictEqual(ldBlocks(rd('tools/index.html'))[0].mainEntity.numberOfItems, 19);
+  assert.strictEqual(ldBlocks(rd('tools/index.html'))[0].mainEntity.numberOfItems, 20);
 });
 c('T2 og:image png exists and matches the plan', () => SEASON.forEach((d) => {
   const h = gh(d); const og = attr(h, /<meta property="og:image" content="([^"]*)"/);
@@ -581,7 +583,7 @@ c('T9 banned words, hedging counts', () => SEASON.forEach((d) => {
 c('T10 cross links: 3-6 internal article links, >=1 to a new article, existing guides link to new', () => {
   SEASON.forEach((d) => {
     const m = mainOf(gh(d));
-    const hs = [...new Set([...m.matchAll(/<a\b[^>]*?\bhref="(\.\.\/[a-z0-9-]+\/)"/g)].map((x) => x[1]))].filter((x) => x !== '../' + sid(FUYO) + '/');   // 2026-11-23 に足した FUYO への1文リンクは公開時の本数に数えない
+    const hs = [...new Set([...m.matchAll(/<a\b[^>]*?\bhref="(\.\.\/[a-z0-9-]+\/)"/g)].map((x) => x[1]))].filter((x) => x !== '../' + sid(FUYO) + '/' && x !== '../' + sid(NOFU) + '/');   // 2026-11-23 の FUYO、2026-11-24 の NOFU への1文リンクは公開時の本数に数えない
     assert.ok(hs.length >= 3 && hs.length <= 6, d + ' internal links ' + hs.length);
     hs.forEach((x) => assert.ok(rsl(d + 'index.html', x), d + ' -> ' + x));
     assert.ok(hs.filter((x) => SEASON.some((s) => '../' + sid(s) + '/' === x) && x !== '../' + sid(d) + '/').length >= 1, d + ' links to a new article');
@@ -598,17 +600,17 @@ c('T11 FAQ is 3 Q&A and equals JSON-LD', () => SEASON.forEach((d) => {
 }));
 
 // ---- 扶養控除等申告書の書き方（2026-11-23 追加）。F1〜F11（季節4本の T1〜T11 相当）----
-c('F1 ds identical to about, canonical/og:url/sitemap lastmod 2026-11-23, sitemap 22, tools link + ItemList 19 + count text', () => {
+c('F1 ds identical to about, canonical/og:url/sitemap lastmod 2026-11-23, sitemap 23, tools link + ItemList 20 + count text', () => {
   const h = gh(FUYO); assert.strictEqual(css(h), css(rd('about/index.html')));
   assert.strictEqual(attr(h, /<link rel="canonical" href="([^"]*)"/), BASE + FUYO);
   assert.strictEqual(attr(h, /<meta property="og:url" content="([^"]*)"/), BASE + FUYO);
   const sm = rd('sitemap.xml'); const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 22); assert.strictEqual(new Set(locs).size, 22); assert.strictEqual(locs[locs.length - 1], BASE + FUYO);
+  assert.strictEqual(locs.length, 23); assert.strictEqual(new Set(locs).size, 23); assert.strictEqual(locs[locs.length - 2], BASE + FUYO);
   const lm = (d) => { const b = sm.match(new RegExp('<loc>' + (BASE + d).replace(/[.\/]/g, '\\$&') + '</loc>\\s*<lastmod>([^<]*)</lastmod>')); assert.ok(b, d + ' lastmod'); return b[1]; };
   assert.strictEqual(lm(FUYO), '2026-11-23');
   SEASON.forEach((d) => assert.strictEqual(lm(d), '2026-11-22', d + ' lastmod unchanged'));
   const t = stripComments(rd('tools/index.html')); assert.ok(t.includes('href="../' + FUYO + '"'));
-  const ld = ldBlocks(rd('tools/index.html'))[0].mainEntity; assert.strictEqual(ld.numberOfItems, 19); assert.strictEqual(ld.itemListElement.length, 19);
+  const ld = ldBlocks(rd('tools/index.html'))[0].mainEntity; assert.strictEqual(ld.numberOfItems, 20); assert.strictEqual(ld.itemListElement.length, 20);
   assert.strictEqual(ld.itemListElement[18].url, BASE + FUYO); assert.strictEqual(ld.itemListElement[18].position, 19);
   assert.ok(t.includes('全' + GUIDE_DIRS.length + '本') && t.includes('解説記事' + GUIDE_DIRS.length + '本'), 'guide count text');
   const art = ldBlocks(h)[0]; assert.strictEqual(art.datePublished, '2026-11-23'); assert.strictEqual(art.dateModified, '2026-11-23');
@@ -688,6 +690,88 @@ c('F11 FAQ is 3 Q&A, equals JSON-LD and the plan', () => {
   assert.strictEqual(qs.length, 3); assert.strictEqual(faq.mainEntity.length, 3);
   qs.forEach((q, i) => { assert.strictEqual(faq.mainEntity[i].name, q[0]); assert.strictEqual(faq.mainEntity[i].acceptedAnswer.text, q[1]); assert.ok(!/&[a-z]+;|<wbr>/.test(q[0] + q[1])); });
   assert.deepStrictEqual(qs.map((q) => q[0]), ['親の扶養に入っています。親の名前やマイナンバーを書く必要はありますか？', '年の途中で、給与収入が163万円を超えそうになったらどうしますか？', '扶養控除等申告書を出し忘れたら、どうなりますか？']);
+});
+
+// ---- 学生納付特例（2026-11-24 追加）。N1〜N10（F1〜F11 相当）----
+c('N1 ds identical to about, canonical/og:url, sitemap lastmod 2026-11-24 (last), tools link + ItemList 20 + count text, dates', () => {
+  const h = gh(NOFU); assert.strictEqual(css(h), css(rd('about/index.html')));
+  assert.strictEqual(attr(h, /<link rel="canonical" href="([^"]*)"/), BASE + NOFU);
+  assert.strictEqual(attr(h, /<meta property="og:url" content="([^"]*)"/), BASE + NOFU);
+  const sm = rd('sitemap.xml'); const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
+  assert.strictEqual(locs[locs.length - 1], BASE + NOFU);
+  const b = sm.match(new RegExp('<loc>' + (BASE + NOFU).replace(/[.\/]/g, '\\$&') + '</loc>\\s*<lastmod>([^<]*)</lastmod>')); assert.ok(b); assert.strictEqual(b[1], '2026-11-24');
+  const t = stripComments(rd('tools/index.html')); assert.ok(t.includes('href="../' + NOFU + '"'));
+  const ld = ldBlocks(rd('tools/index.html'))[0].mainEntity; assert.strictEqual(ld.itemListElement[19].url, BASE + NOFU); assert.strictEqual(ld.itemListElement[19].position, 20);
+  assert.ok(t.includes('全' + GUIDE_DIRS.length + '本') && t.includes('解説記事' + GUIDE_DIRS.length + '本'), 'guide count text');
+  const art = ldBlocks(h)[0]; assert.strictEqual(art.datePublished, '2026-11-24'); assert.strictEqual(art.dateModified, '2026-11-24');
+  assert.ok(h.includes('<span class="nw">公開日 2026-11-24</span> ／ <span class="nw">最終確認日 2026-11-24</span>'), 'meta line');
+  assert.ok(h.includes('最終更新日: <span class="nw">2026-11-24</span>'), 'footer date');
+});
+c('N2 og:image kabe.png, alt, nav label', () => {
+  const h = gh(NOFU); assert.strictEqual(attr(h, /<meta property="og:image" content="([^"]*)"/), BASE + 'og/kabe.png');
+  assert.strictEqual(attr(h, /<meta property="og:image:alt" content="([^"]*)"/), '国民年金の学生納付特例の解説のイメージ画像');
+  assert.ok(h.includes('<a href="./" aria-current="page">学生納付特例</a>'));
+  assert.ok(h.includes('<body data-cat="tax">'));
+});
+c('N3 sources: nenkin/nta only, planned URLs, hint', () => {
+  const h = stripComments(gh(NOFU)); const src = attr(h, /(<details class="acc" id="sources">[\s\S]*?<\/details>)/);
+  const ext = [...src.matchAll(/<a\b[^>]*href="(https?:[^"]*)"/g)].map((m) => m[1]);
+  assert.ok(ext.length >= 7, 'ext ' + ext.length);
+  ext.forEach((x) => assert.ok(['www.nenkin.go.jp', 'www.nta.go.jp'].includes(new URL(x).hostname), x));
+  ['menjo/20150514.html', 'menjo/20150402-01.html', 'menjoyuyo/gakusei.html', 'gakutokutaisyouko.html', 'hatachi-tetsuduki.html', 'hokenryo/hokenryo.html', 'hokenryo/zenno.html', 'menjo/20150331.html', '20250527-03.html', 'shotoku/1130.htm', 'shotoku/1410.htm'].forEach((u) => assert.ok(ext.some((x) => x.endsWith(u)), 'source ' + u));
+  assert.ok(src.includes('<p class="hint">最終確認日 2026-11-24。日本年金機構・国税庁の案内をもとにしています。'), 'hint');
+});
+c('N4 band text + PR, go-d PR on both tool cards, no ad markup', () => {
+  const h = gh(NOFU); const markup = h.replace(/<style>[\s\S]*?<\/style>/, '');
+  ['links-config.js', 'px.a8.net', 'a8mat', 'rel="sponsored', 'class="pr-', 'prCards', 'ad-slot'].forEach((w) => assert.ok(!markup.includes(w), 'has ' + w));
+  const band = attr(h, /(<div class="band"[\s\S]*?<\/div>)/);
+  assert.ok(band.includes('目安です。対象：国民年金保険料 令和8年度（2026年4月〜2027年3月）／最終確認日 2026-11-24<br>※当サイトのツールにはプロモーション（PR）を含みます') && band.includes('href="../../about/#disclaimer"'), 'band');
+  const go = [...mainOf(h).matchAll(/<a class="go" href="[^"]*">[\s\S]*?<\/a>/g)].map((m) => m[0]);
+  assert.strictEqual(go.length, 4); go.forEach((g) => assert.ok(g.includes('結果によってPR（広告）が表示されることがあります'), 'go-d PR'));
+});
+c('N5 income table: R7 salary deduction (別表第五 4,000-yen steps) vs 1,280,000', () => {
+  const inc = (x) => { if (x <= 1900000) return x - 650000; const b = Math.floor(x / 4000) * 4000; return b * 0.7 - 80000; };
+  const fmt = (n) => n.toLocaleString('en-US');
+  const sec = attr(gh(NOFU), /(<section class="card" id="s2"[\s\S]*?<\/section>)/);
+  const rows = [...sec.matchAll(/<tr><td>([^<]*)<\/td><td>([^<]*)<\/td><td>([^<]*)<\/td><\/tr>/g)].map((m) => [m[1], m[2], m[3]]);
+  const X = [1500000, 1900000, 1940000, 1950000]; assert.strictEqual(rows.length, X.length);
+  X.forEach((x, i) => { const v = Math.round(inc(x)); assert.deepStrictEqual(rows[i], [fmt(x) + '円', fmt(v) + '円', v <= 1280000 ? '以下' : '超える']); });
+  assert.strictEqual(Math.round(inc(1943999)), 1278000); assert.ok(Math.round(inc(1944000)) > 1280000);   // 境目は194万円前後
+});
+c('N6 text length, banned words, hedging', () => {
+  const h = gh(NOFU); const body = plain(mainOf(h)); assert.ok(body.length >= 3000 && body.length <= 5000, 'main ' + body.length);
+  assert.ok(plain(attr(h, /(<article class="art">[\s\S]*?<\/article>)/)).length >= 2200, 'article');
+  BANNED.forEach((x) => assert.ok(!body.includes(x), x));
+  assert.ok((body.match(/目安/g) || []).length >= 4, '目安');
+});
+c('N7 unconfirmed points are not written', () => {
+  const body = plain(mainOf(gh(NOFU)));
+  ['202万円', '令和9年度分は128万円', '令和8年中の所得で審査', 'はがきを返すだけ', '返送期限', '科目履修生は対象外', '通信制は対象外', '時効', '2年を過ぎると納付できない', '親が追納', '厚生労働省', 'デジタル庁'].forEach((w) => assert.ok(!body.includes(w), 'has ' + w));
+  assert.ok(body.includes('令和9年度分（2027年4月〜）の基準') && body.includes('この記事では扱いません'), 'R9 not covered');
+  const s5 = attr(gh(NOFU), /(<section class="card" id="s5"[\s\S]*?<\/section>)/); assert.ok(s5.includes('<tr><td>あとから納める（追納）</td><td>10年以内ならできる</td><td>—</td></tr>'), 'tsuino row');
+});
+c('N8 cross links: planned 4 internal articles, digits-free link text in the new article, existing guides link to it once', () => {
+  const m = mainOf(gh(NOFU));
+  const hs = [...new Set([...m.matchAll(/<a\b[^>]*?\bhref="(\.\.\/[a-z0-9-]+\/)"/g)].map((x) => x[1]))];
+  assert.ok(hs.length >= 3 && hs.length <= 6, 'internal links ' + hs.length);
+  ['oya-kojo-daigakusei', '150-wall-guide', 'kokuho-150-cost', 'gensen-choshu-hyo'].forEach((x) => assert.ok(hs.includes('../' + x + '/'), 'missing ' + x));
+  hs.forEach((x) => assert.ok(rsl(NOFU + 'index.html', x), '-> ' + x));
+  [...m.matchAll(/<a\b[^>]*?\bhref="\.\.\/[a-z0-9-]+\/"[^>]*>([^<]*)<\/a>/g)].forEach((x) => assert.ok(!/\d/.test(x[1]), 'link text has digits ' + x[1]));
+  ['guides/oya-kojo-daigakusei/', 'guides/150-wall-guide/'].forEach((d) => {
+    const mm = mainOf(gh(d)); assert.strictEqual((mm.match(/href="\.\.\/gakusei-nofu-tokurei\/"/g) || []).length, 1, d + ' -> nofu');
+    assert.ok(mm.includes('<a href="../gakusei-nofu-tokurei/">大学生の国民年金（学生納付特例）</a>'), d + ' link text');
+  });
+});
+c('N9 FAQ is 3 Q&A, equals JSON-LD and the plan', () => {
+  const h = gh(NOFU); const faq = ldBlocks(h)[2]; const sec = attr(h, /(<section class="card" id="faq"[\s\S]*?<\/section>)/);
+  const qs = [...sec.matchAll(/<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)].map((m) => [plain(m[1]), plain(m[2])]);
+  assert.strictEqual(qs.length, 3); assert.strictEqual(faq.mainEntity.length, 3);
+  qs.forEach((q, i) => { assert.strictEqual(faq.mainEntity[i].name, q[0]); assert.strictEqual(faq.mainEntity[i].acceptedAnswer.text, q[1]); assert.ok(!/&[a-z]+;|<wbr>/.test(q[0] + q[1])); });
+  assert.deepStrictEqual(qs.map((q) => q[0]), ['親の収入が多いと、学生納付特例は使えませんか？', '申請を忘れていました。あとからでも間に合いますか？', '学生納付特例の期間は、あとで払わないといけませんか？']);
+});
+c('N10 fixed facts present as written by the source', () => {
+  const body = plain(mainOf(gh(NOFU)));
+  ['月17,920円', '月18,290円', '16,980円', '17,510円', '約2万円', 'おおむね2〜3か月後', '4月から翌年3月までの1年度分', '家族の所得の多寡は問われず', '3月末にはがき形式の申請書', '街角の年金相談センターではできません', '付加年金と国民年金基金は利用できません', '払った時点で判定'].forEach((w) => assert.ok(body.includes(w), 'missing ' + w));
 });
 
 console.log('pass ' + pass + ' / fail ' + fail);
