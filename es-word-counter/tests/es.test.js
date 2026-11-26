@@ -141,7 +141,7 @@ c('M05', () => {
   assert.strictEqual(html.match(/<link rel="canonical" href="([^"]*)"/)[1], BASE);
   assert.strictEqual(html.match(/<meta property="og:url" content="([^"]*)"/)[1], BASE);
   const locs = [...rdP('sitemap.xml').matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 26);
+  assert.strictEqual(locs.length, 27);
   assert.ok(locs.includes(BASE));
   assert.ok(rdP('robots.txt').includes('Sitemap: ' + SITE + 'sitemap.xml'));
   assert.ok(fs.existsSync(path.join(root, '..', '.nojekyll')));

@@ -16,7 +16,7 @@ const attr = (h, re) => { const m = h.match(re); assert.ok(m, 'missing ' + re); 
 const ldBlocks = (h) => [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
 
 const TOOLS = ['index.html', 'kakemochi/index.html', 'shift-limit/index.html', 'living-cost-simulator/index.html', 'es-word-counter/index.html', 'nisa-simulator/index.html', 'scholarship/index.html'];
-const GUIDES = ['guides/150-wall-guide/index.html', 'guides/kakemochi-tax-guide/index.html', 'guides/es-star-method/index.html', 'guides/student-nisa-start/index.html', 'guides/nenmatsu-chosei-miss/index.html', 'guides/kokuho-150-cost/index.html', 'guides/baito-nisa-monthly/index.html', 'guides/gensen-choshu-hyo/index.html', 'guides/kinro-gakusei-kojo/index.html', 'guides/student-juminzei/index.html', 'guides/oya-kojo-daigakusei/index.html', 'guides/fuyo-kojo-shinkokusho/index.html', 'guides/gakusei-nofu-tokurei/index.html', 'guides/furusato-gakusei/index.html', 'guides/kanpu-shinkoku-sumaho/index.html'];
+const GUIDES = ['guides/150-wall-guide/index.html', 'guides/kakemochi-tax-guide/index.html', 'guides/es-star-method/index.html', 'guides/student-nisa-start/index.html', 'guides/nenmatsu-chosei-miss/index.html', 'guides/kokuho-150-cost/index.html', 'guides/baito-nisa-monthly/index.html', 'guides/gensen-choshu-hyo/index.html', 'guides/kinro-gakusei-kojo/index.html', 'guides/student-juminzei/index.html', 'guides/oya-kojo-daigakusei/index.html', 'guides/fuyo-kojo-shinkokusho/index.html', 'guides/gakusei-nofu-tokurei/index.html', 'guides/furusato-gakusei/index.html', 'guides/kanpu-shinkoku-sumaho/index.html', 'guides/gensen-todokanai/index.html'];
 const INFO = ['about/index.html', 'tools/index.html', 'privacy/index.html'];
 const ALL = TOOLS.concat(GUIDES, INFO);
 const rel = (p) => (p === 'index.html' ? '' : p.startsWith('guides/') ? '../../' : '../');
@@ -45,6 +45,7 @@ const META = {
   'guides/gakusei-nofu-tokurei/index.html': ['学生納付特例とは？20歳の大学生の申請方法・期限・追納（令和8年度）', '20歳の大学生の国民年金は、学生納付特例を申請すると在学中の保険料の納付が猶予されます。所得の基準、マイナポータルなどでの申請方法、2年1か月前までのさかのぼり、追納を日本年金機構の案内で整理。', 'kabe'],
   'guides/furusato-gakusei/index.html': ['大学生のふるさと納税は意味ない？得する人・しない人（2026年）', '大学生も寄附はできますが、税金が減るのは所得税か住民税の所得割を払っている人だけ。所得割がかからなければ寄附はほぼ自己負担です。総務省の計算式と給与150万円の計算例で分かれ目を整理しました。', 'kabe'],
   'guides/kanpu-shinkoku-sumaho/index.html': ['学生の確定申告（還付申告）をスマホでするやり方：令和8年分の手順', 'バイト代から引かれた所得税は、還付申告で戻ることがあります。スマホとマイナンバーカードで申告する手順を、国税庁の案内をもとに準備・入力・送信・振込の確認まで整理しました。', 'kakemochi'],
+  'guides/gensen-todokanai/index.html': ['源泉徴収票が届かない・なくした大学生の対処法（令和8年分）', 'バイト先から源泉徴収票が届かない、なくしたときの対処を、国税庁の案内と所得税法で整理しました。交付期限、勤務先への頼み方と記録の残し方、再発行、税務署への不交付の届出、確定申告との関係まで確認できます。', 'kakemochi'],
   'about/index.html': ['運営者情報・計算方針・広告表記｜学生バイトお役立ちツール', '学生バイトお役立ちツールの運営者情報・計算方針・広告（PR）表記・免責をまとめたページです。数字は公式の一次情報を確認して作り、結果は目安として表示します。連絡先とプライバシーポリシーへのリンクもあります。', 'default'],
   'tools/index.html': ['学生向け無料ツール一覧｜バイトの税金・新生活・就活・奨学金', '年末調整・扶養・確定申告・還付の確認から、新生活の手取り、就活のES、奨学金の返済まで、学生向けの無料ツールと解説記事を目的別に一覧にしました。入力内容は送信されず、結果はすべて目安です。', 'default'],
   'privacy/index.html': ['プライバシーポリシー・外部送信先一覧｜学生バイトお役立ちツール', '当サイトのプライバシーポリシーです。入力内容は送信しません。Googleアナリティクスと広告配信のGoogle AdSense、広告計測のA8.net、Xシェア時のXへの送信について、送信先・情報・停止方法を説明します。', 'default'],
@@ -89,7 +90,7 @@ c('H01 privacy page', () => {
   assert.strictEqual(b[0]['@type'], 'WebPage'); assert.strictEqual(b[1]['@type'], 'BreadcrumbList');
   assert.strictEqual(ds(h), ds(rd('index.html')));
   const sm = rd('sitemap.xml'); const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 26); assert.ok(locs.includes(BASE + 'privacy/'));
+  assert.strictEqual(locs.length, 27); assert.ok(locs.includes(BASE + 'privacy/'));
   assert.ok(h.includes('.tw table.ext{min-width:640px}'));
   assert.ok(h.includes('<script src="../site-config.js" defer></script>\n</body>'));
 });
