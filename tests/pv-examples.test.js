@@ -19,6 +19,7 @@ const SHIFT = logic('shift-limit/index.html', 'SHIFT');
 const LIVING = logic('living-cost-simulator/index.html', 'LIVING');
 const NISA = logic('nisa-simulator/index.html', 'NISA');
 const SCHOLAR = logic('scholarship/index.html', 'SCHOLAR');
+const FURU = logic('furusato-calc/index.html', 'FURU');
 const ES = logic('es-word-counter/index.html', 'ES');
 
 let pass = 0, fail = 0;
@@ -49,7 +50,8 @@ const E = {
   es: '例：400字制限・' + esCnt + '字入力→達成' + esPg.pct + '%',
   nisa: '例：月1万円×10年・年3%の仮定→約' + NISA.fmtMan(nisa10.finalValue) + '万円（元本' + NISA.fmtMan(nisa10.principal) + '万円）',
   sch: '例：第一種（無利子）300万円→標準' + sch.years + '年・月' + comma(sch.monthly) + '円',
-  nisa5: '例：月5千円×10年・年3%の仮定→約' + NISA.fmtMan(nisa5.finalValue) + '万円（元本' + NISA.fmtMan(nisa5.principal) + '万円）'
+  nisa5: '例：月5千円×10年・年3%の仮定→約' + NISA.fmtMan(nisa5.finalValue) + '万円（元本' + NISA.fmtMan(nisa5.principal) + '万円）',
+  furu: '例：給与150万円・社会保険料0円→自己負担2,000円で済む寄附は約' + comma(FURU.calc({ salary: '1500000', shaho: '0', donation: '', kinro: false }).max.shown) + '円まで'
 };
 const CHIP = {
   tax: '例：年収' + man(1080000) + '万円→150万円まで約' + man(kabe.health.remain) + '万円',

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="google-adsense-account" content="ca-pub-5481087816228542">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ふるさと納税・住民税の所得割 かんたん計算（学生・低年収向け）｜2026年の寄附</title>
+<meta name="description" content="給与収入220万円までの大学生・低年収の人向けに、2026年中のふるさと納税で自己負担2,000円で済む寄附の目安と、令和9年度の住民税の所得割を計算します。地方税法・国税庁・総務省の一次情報に基づく目安で、寄附をすすめるものではありません。">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f8fafc">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+<!-- 公開URL: https://gakusei-tools.com/furusato-calc/ （canonical と og:url の2か所） -->
+<link rel="canonical" href="https://gakusei-tools.com/furusato-calc/">
+<meta property="og:title" content="ふるさと納税・住民税の所得割 かんたん計算（学生・低年収向け）｜2026年の寄附">
+<meta property="og:description" content="給与収入220万円までの大学生・低年収の人向けに、2026年中のふるさと納税で自己負担2,000円で済む寄附の目安と、令和9年度の住民税の所得割を計算します。地方税法・国税庁・総務省の一次情報に基づく目安で、寄附をすすめるものではありません。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gakusei-tools.com/furusato-calc/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="学生バイトお役立ちツール">
+<meta property="og:image" content="https://gakusei-tools.com/og/kabe.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ふるさと納税・住民税の所得割 かんたん計算のイメージ画像">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ふるさと納税・住民税の所得割 かんたん計算（学生・低年収向け）｜2026年の寄附">
+<meta name="twitter:description" content="給与収入220万円までの大学生・低年収の人向けに、2026年中のふるさと納税で自己負担2,000円で済む寄附の目安と、令和9年度の住民税の所得割を計算します。地方税法・国税庁・総務省の一次情報に基づく目安で、寄附をすすめるものではありません。">
+<meta name="twitter:image" content="https://gakusei-tools.com/og/kabe.png">
+<meta name="twitter:image:alt" content="ふるさと納税・住民税の所得割 かんたん計算のイメージ画像">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b5fa5'/%3E%3Cpath d='M6 15l10-8 10 8v10H6z' fill='%23fff'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ふるさと納税・住民税の所得割 かんたん計算（学生・低年収向け）","url":"https://gakusei-tools.com/furusato-calc/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"大学生でも、ふるさと納税で税金は減りますか？","acceptedAnswer":{"@type":"Answer","text":"税金が減るのは、住民税の所得割や所得税を払っている人だけです。2026年の収入が給与だけで単身なら、給与収入119万円以下では住民税の所得割も所得税もかからない見込みで、寄附しても税金は減りません。"}},{"@type":"Question","name":"給与収入150万円だと、自己負担2,000円で済む寄附はいくらまでですか？","acceptedAnswer":{"@type":"Answer","text":"社会保険料0円・勤労学生控除なしの計算例では、住民税の所得割は30,500円、特例分の上限は6,100円で、自己負担2,000円で済む寄附は約8,700円までが目安です。勤労学生控除を受けると所得割が下がり、約2,800円までになります。"}},{"@type":"Question","name":"計算結果と、実際の控除額が違うことはありますか？","acceptedAnswer":{"@type":"Answer","text":"あります。市区町村の端数処理（100円未満の切り捨て）や、給与以外の所得、扶養する家族の有無などで変わります。正確な上限は、お住まいの市区町村の住民税の担当部署で確認してください。"}}]}</script>
+<style>
+/*ds:start v1*/
+:root{color-scheme:light dark;--bg:#f5f2f0;--card:#fff;--soft:#ede9e4;--fg:#181c26;--sub:#475569;--primary:#1d4ed8;--on-primary:#fff;--primary-soft:#dbeafe;--cat-tax:#2563eb;--cat-life:#ea580c;--cat-job:#7c3aed;--cat-asset:#059669;--track:#dfd9d2;--tick:#64748b;--ok-bg:#dcfce7;--ok-fg:#166534;--ng-bg:#fee2e2;--ng-fg:#991b1b;--wn-bg:#fef3c7;--wn-fg:#92400e;--nt-bg:#e2ddd7;--nt-fg:#334155;--ok:#15803d;--wn:#b45309;--ng:#dc2626;--shadow:0 4px 14px rgba(24,20,16,.04),0 18px 44px rgba(24,20,16,.07);--shadow-hero:0 8px 24px rgba(24,20,16,.06),0 28px 64px rgba(24,20,16,.11);--r-card:24px;--r-in:16px;--r-pill:999px;--s1:10px;--s2:20px;--s3:28px;--s4:36px;--s5:48px;--ring:#2563eb;--t:.18s}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1220;--card:#111a2e;--soft:#16213a;--fg:#e5edf8;--sub:#a9b6c9;--primary:#60a5fa;--on-primary:#0b1220;--primary-soft:#172554;--cat-tax:#60a5fa;--cat-life:#fb923c;--cat-job:#a78bfa;--cat-asset:#34d399;--track:#26324a;--tick:#94a3b8;--ok-bg:#14532d;--ok-fg:#bbf7d0;--ng-bg:#7f1d1d;--ng-fg:#fecaca;--wn-bg:#78350f;--wn-fg:#fde68a;--nt-bg:#1e293b;--nt-fg:#cbd5e1;--ok:#4ade80;--wn:#fbbf24;--ng:#f87171;--shadow:0 2px 8px rgba(0,0,0,.35),0 14px 36px rgba(0,0,0,.38);--shadow-hero:0 6px 18px rgba(0,0,0,.45),0 24px 56px rgba(0,0,0,.52);--ring:#93c5fd}}
+[data-cat="tax"]{--primary:#1d4ed8;--primary-soft:#dbeafe;--ring:#2563eb}[data-cat="life"]{--primary:#c2410c;--primary-soft:#ffedd5;--ring:#ea580c}[data-cat="job"]{--primary:#6d28d9;--primary-soft:#ede9fe;--ring:#7c3aed}[data-cat="asset"]{--primary:#047857;--primary-soft:#d1fae5;--ring:#059669}@media(prefers-color-scheme:dark){[data-cat="tax"]{--primary:#60a5fa;--primary-soft:#172554;--ring:#60a5fa}[data-cat="life"]{--primary:#fb923c;--primary-soft:#431407;--ring:#fb923c}[data-cat="job"]{--primary:#c4b5fd;--primary-soft:#2e1065;--ring:#a78bfa}[data-cat="asset"]{--primary:#34d399;--primary-soft:#064e3b;--ring:#34d399}}*{box-sizing:border-box}[hidden]{display:none!important}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}body{position:relative;margin:0;background:var(--bg);color:var(--fg);font:16px/1.75 system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;font-variant-numeric:tabular-nums;word-break:normal;overflow-wrap:break-word;line-break:strict;-webkit-tap-highlight-color:transparent}body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(at 10% 8%,#2563eb17,transparent 42%),radial-gradient(at 90% 12%,#ea580c14,transparent 40%),radial-gradient(at 85% 82%,#7c3aed14,transparent 45%),radial-gradient(at 14% 86%,#05966912,transparent 44%)}@supports(word-break:auto-phrase){body{word-break:auto-phrase}}.w{max-width:1080px;margin:0 auto;padding:12px 24px 112px}@media(max-width:600px){.w{padding:6px 16px 96px}}.nw{white-space:nowrap;display:inline-block}h1,h2,h3,.ct,summary,.hero-h{text-wrap:balance;font-feature-settings:"palt"}h1,h2,h3,.ct,summary,.hero-h,.eyebrow,.qjump a,.navb a,.pill,.chip,.dot,.btn,.btn-ghost,.band a,.g-now,.fband strong,.fband-tag,.fband>a,.pv,.qjump-chip,.mq-item,.rel-t,.pr-tag,.seg span{word-break:keep-all}@supports(word-break:auto-phrase){h1,h2,h3,.ct,summary,.hero-h,.tl a strong,.qjump-chip{word-break:auto-phrase}}code,.src,.url,a[href^="http"]{overflow-wrap:anywhere}p,li,dd,dt,td,th{text-wrap:pretty}.hero-h{margin:12px 0 10px;font-size:clamp(2rem,5vw,3.6rem);font-weight:900;line-height:1.18;letter-spacing:-.025em}.hero-em{background:linear-gradient(135deg,var(--cat-tax),var(--cat-job) 52%,var(--cat-life));-webkit-background-clip:text;background-clip:text;color:transparent}h1{font-size:clamp(1.45rem,3.8vw,2.2rem);line-height:1.35;font-weight:900;margin:10px 0 14px;letter-spacing:-.015em}.hero-h+h1{font-size:clamp(1.08rem,2vw,1.32rem);font-weight:800;color:var(--sub);margin:0 0 14px}h2{font-size:clamp(1.08rem,2.4vw,1.25rem);font-weight:800;margin:0 0 10px}h3{font-size:1.02rem;margin:16px 0 6px}.ct{font-size:clamp(1.08rem,2.4vw,1.28rem);font-weight:800;margin:0 0 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.ct::before{content:"";width:5px;height:1.15em;border-radius:3px;background:var(--ring);flex:none}summary>h2,summary>h3{min-width:0}summary h2,summary h3{display:inline;font-size:1.06rem;margin:0}a{color:var(--primary)}ul,ol{padding-left:1.3em}button{font:inherit;border:0;cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}:focus-visible{outline:3px solid var(--ring);outline-offset:2px}.skip{position:absolute;left:-999px;top:0;z-index:9;padding:8px 12px;background:var(--primary);color:var(--on-primary)}.skip:focus{left:0}header{margin-bottom:var(--s3)}.eyebrow{display:inline-flex;align-items:center;flex-wrap:wrap;gap:7px;margin:8px 0 4px;padding:6px 14px;border-radius:var(--r-pill);background:var(--card);color:var(--primary);box-shadow:var(--shadow);font-size:.8rem;font-weight:800;line-height:1.4}.eyebrow>span{min-width:0;max-width:100%}.eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--ring);flex:none}.qjump{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:18px 0;padding:0}.qjump a{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-height:156px;padding:22px 24px;border-radius:var(--r-card);background:var(--card);color:var(--fg);box-shadow:var(--shadow);text-decoration:none;border-top:6px solid var(--ring);transition:transform var(--t),box-shadow var(--t)}.qjump a:hover{transform:translateY(-4px);box-shadow:var(--shadow-hero)}.qjump a>span:first-child{order:1;display:inline-flex;align-items:center;gap:7px;align-self:flex-start;padding:4px 12px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.82rem;font-weight:800}.qjump a>span:first-child::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ring);flex:none}.ql{order:2;display:block;margin:2px 0}.qk{display:block;font-size:.78rem;font-weight:700;color:var(--sub);line-height:1.35}.qv{display:block;font-size:clamp(1.55rem,3.4vw,2.3rem);font-weight:900;line-height:1.15;letter-spacing:-.02em;color:var(--fg)}.qv small{margin-left:3px;font-size:.58em;font-weight:800;color:var(--ring)}.qjump-chip{order:3;display:block;padding:6px 10px;border-radius:12px;background:var(--soft);color:var(--sub);font-size:.75rem;font-weight:800;line-height:1.4;white-space:normal}.qjump a.qw{grid-column:1/-1;flex-direction:row;align-items:center;min-height:60px;padding:14px 22px}@media(max-width:520px){.qjump{gap:10px}.qjump a{min-height:132px;padding:14px 12px;gap:6px;border-radius:20px}.qjump a>span:first-child{padding:3px 9px;font-size:.74rem}.qk{font-size:.7rem}.qv{font-size:1.3rem}.qjump-chip{padding:4px 8px;font-size:.68rem}.qjump a.qw{flex-direction:column;align-items:flex-start;min-height:auto}}.mq{overflow:hidden;margin-bottom:6px;padding:10px 0;border-radius:var(--r-in);background:var(--card);box-shadow:var(--shadow)}.mq-track{display:flex;width:max-content;animation:mq-s 36s linear infinite}.mq-set{display:flex;flex:none}.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}.mq-item{display:inline-flex;align-items:center;gap:6px;margin-right:12px;padding:4px 12px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-size:.8rem;font-weight:700;white-space:nowrap}.mq-item strong{color:var(--primary)}.mq-item--lead{background:var(--primary);color:var(--on-primary)}.mq-note{margin:0 0 var(--s2);font-size:.75rem;line-height:1.5;color:var(--sub)}@keyframes mq-s{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.navb{display:flex;align-items:center;gap:6px;margin:4px 0 18px;padding:6px;border-radius:var(--r-pill);background:var(--card);box-shadow:var(--shadow);overflow-x:auto;scrollbar-width:none;width:fit-content;max-width:100%}.navb::-webkit-scrollbar{display:none}.navb a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:var(--r-pill);color:var(--fg);font-size:.875rem;font-weight:800;text-decoration:none;white-space:nowrap;transition:background var(--t),color var(--t)}.navb a:hover{background:var(--soft)}.navb a[aria-current=page]{background:var(--primary);color:var(--on-primary)}.band{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--wn-bg);color:var(--wn-fg);border-radius:var(--r-in);padding:10px 16px;margin-bottom:var(--s2);font-size:.85rem;line-height:1.55}.band a{flex:none;display:inline-flex;align-items:center;min-height:44px;margin:-8px 0;color:var(--wn-fg);font-weight:700;white-space:nowrap}.warn,.note{border-radius:var(--r-in);padding:10px 16px;margin-top:12px}.warn{background:var(--ng-bg);color:var(--ng-fg);font-size:.9rem;font-weight:700}.note{background:var(--wn-bg);color:var(--wn-fg);font-size:.875rem}.card{position:relative;background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);padding:var(--s3);margin-bottom:var(--s3);border-top:5px solid var(--ring)}.rc{box-shadow:var(--shadow-hero);padding:var(--s4);border-top-width:6px}.panel{background:var(--soft);border-radius:var(--r-in);padding:var(--s2)}@media(max-width:520px){.card{padding:20px 18px;margin-bottom:18px}.rc{padding:24px 20px}}@media(min-width:920px){main:has(>#result){display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:24px;align-items:start}main:has(>#result)>*{grid-column:1/-1}main>#input,main>#s1,main>#cond,main>#s2{grid-column:1;margin:0}main>#result{grid-column:2;grid-row:1;position:sticky;top:20px;margin:0}main:has(>#s2)>#result{grid-row:1/span 2}main:has(>#cat-job){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}main:has(>#cat-job)>*{grid-column:1/-1;margin:0}main>#cat-job,main>#cat-asset{grid-column:span 1}}.kpi-l{margin:0;font-size:.8125rem;font-weight:700;color:var(--sub)}.big{margin:2px 0 4px;font-size:clamp(2.1rem,6vw,2.75rem);font-weight:900;line-height:1.18;letter-spacing:-.02em}.big small{margin-left:4px;font-size:1rem;font-weight:700;letter-spacing:0}.mid{margin:2px 0;font-size:1.45rem;font-weight:800;line-height:1.3}.sumline{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:4px}.stats{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px;padding:0}.stats[data-cols="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}.stats>*{min-width:0;margin:0;padding:10px 14px;border-radius:var(--r-in);background:var(--soft)}.stats dt,.stats .k{display:block;font-size:.8125rem;font-weight:700;color:var(--sub)}.stats dd,.stats .v{display:block;margin:0;font-weight:700}.hint{font-size:.875rem;line-height:1.65;color:var(--sub);margin:6px 0 0}.stale{font-size:.875rem;color:var(--sub);margin:8px 0 0}.confirm{font-size:.875rem;color:var(--sub);margin:12px 0 0}.confirm a,.risk a{display:inline-flex;align-items:center;min-height:44px}.risk{margin-top:12px;padding:10px 14px;border-radius:var(--r-in);background:var(--wn-bg);color:var(--wn-fg);font-size:.875rem;line-height:1.6}.risk a{color:var(--wn-fg);font-weight:700}.safe{margin-top:8px;padding:10px 14px;border-radius:var(--r-in);background:var(--ok-bg);color:var(--ok-fg);font-size:.875rem;font-weight:700;line-height:1.6}.pill{display:inline-flex;align-items:center;gap:4px;min-height:32px;padding:2px 12px;border-radius:var(--r-pill);font-weight:700;font-size:.9rem;line-height:1.3;max-width:100%}.pill--ok{background:var(--ok-bg);color:var(--ok-fg)}.pill--ng{background:var(--ng-bg);color:var(--ng-fg)}.pill--wn{background:var(--wn-bg);color:var(--wn-fg)}.pill--nt{background:var(--nt-bg);color:var(--nt-fg)}.dot{margin-left:8px;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.75rem;font-weight:700;white-space:nowrap}.fld{margin-bottom:var(--s2)}label.l{display:block;font-weight:700;margin-bottom:6px}.num{position:relative}.num input{display:block;width:100%;min-height:58px;margin:0;padding:0 44px 0 16px;border:2px solid transparent;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:800;appearance:textfield}.num input:focus,textarea:focus{border-color:var(--ring);background:var(--card)}.num input::-webkit-outer-spin-button,.num input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}.num .unit{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--sub);font-weight:700;pointer-events:none}.num--sm input{min-height:48px;font-size:1.125rem;text-align:right}.num input[aria-invalid=true],.stepper input[aria-invalid=true],textarea[aria-invalid=true]{box-shadow:inset 0 0 0 2px var(--ng)}select{width:100%;min-height:48px;padding:0 12px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit}textarea{display:block;width:100%;min-height:168px;padding:14px 16px;border:2px solid transparent;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;line-height:1.75;resize:vertical}.err{background:var(--ng-bg);color:var(--ng-fg);border-radius:var(--r-in);padding:6px 12px;margin-top:8px;font-size:.9rem;font-weight:700}.err::before{content:"\26A0  "}.range{appearance:none;display:block;width:100%;height:44px;margin-top:4px;padding:0;background:transparent;cursor:pointer;--pct:0%}.range::-webkit-slider-runnable-track{height:10px;border-radius:5px;background:linear-gradient(90deg,var(--ring),var(--primary) var(--pct),var(--track) var(--pct))}.range::-moz-range-track{height:10px;border-radius:5px;background:linear-gradient(90deg,var(--ring),var(--primary) var(--pct),var(--track) var(--pct))}.range::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-9px;border-radius:50%;background:var(--card);border:3px solid var(--ring);box-shadow:0 1px 4px rgba(24,28,38,.25)}.range::-moz-range-thumb{box-sizing:border-box;width:28px;height:28px;border-radius:50%;background:var(--card);border:3px solid var(--ring);box-shadow:0 1px 4px rgba(24,28,38,.25)}.range.is-empty::-webkit-slider-thumb{border-color:var(--tick)}.range.is-empty::-moz-range-thumb{border-color:var(--tick)}.range:disabled{opacity:.5;cursor:not-allowed}.chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}.chips[data-cols="4"]{grid-template-columns:repeat(4,minmax(0,1fr))}.chips[data-cols="6"]{grid-template-columns:repeat(6,minmax(0,1fr))}@media(max-width:359px){.chips[data-cols="4"]{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:420px){.chips[data-cols="6"]{grid-template-columns:repeat(3,minmax(0,1fr))}}.chip{min-height:44px;min-width:44px;padding:0 6px;border-radius:var(--r-pill);background:var(--soft);color:var(--fg);font-weight:700;white-space:nowrap;transition:background var(--t),color var(--t)}.chip[aria-pressed=true]{background:var(--primary);color:var(--on-primary)}.chip[aria-pressed=true]::before{content:"\2713  "}.chips[data-cols="6"] .chip[aria-pressed=true]::before{content:"\2713"}.seg-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;border:0;margin:0 0 var(--s2);padding:0;min-width:0}.seg-group[data-cols="3"]{grid-template-columns:repeat(3,minmax(0,1fr))}.seg-group[data-cols="4"]{grid-template-columns:repeat(4,minmax(0,1fr))}.seg-group legend{padding:0;margin-bottom:8px;font-weight:700}.seg{position:relative;display:block;min-width:0}.seg input{position:absolute;opacity:0;width:1px;height:1px;margin:0}.seg span{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:50px;padding:6px 8px;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font-weight:700;font-size:.95rem;text-align:center;line-height:1.35;cursor:pointer;transition:background var(--t),color var(--t)}.seg small{font-size:.8rem;font-weight:400}.seg input:checked+span{background:var(--primary);color:var(--on-primary)}.seg input:checked+span::before{content:"\2713";position:absolute;top:4px;right:8px;font-size:.75rem}.seg input:focus-visible+span{outline:3px solid var(--ring);outline-offset:2px}.stepper{display:flex;align-items:center;gap:12px}.stepper button{flex:none;width:52px;height:52px;border-radius:50%;background:var(--soft);color:var(--fg);font-size:1.5rem;font-weight:700;line-height:1}.stepper input{width:72px;min-height:52px;border:0;border-radius:var(--r-in);background:var(--soft);color:var(--fg);font:inherit;font-size:1.5rem;font-weight:700;text-align:center}.stepper .unit{color:var(--sub);font-weight:700}.cb{display:flex;align-items:center;gap:10px;min-height:44px;margin-bottom:var(--s1)}.cb input{flex:none;width:22px;height:22px;margin:0;accent-color:var(--primary)}.cb--sw input{appearance:none;position:relative;width:46px;height:28px;border-radius:14px;background:var(--tick);cursor:pointer;transition:background var(--t)}.cb--sw input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--card);transition:left var(--t)}.cb--sw input:checked{background:var(--primary)}.cb--sw input:checked::after{left:21px}.btn,.btn-ghost,.sh,.pr-cta{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;padding:0 18px;border-radius:var(--r-in);font-weight:800;text-decoration:none;text-align:center}.btn{background:var(--primary);color:var(--on-primary)}.btn-ghost{background:var(--soft);color:var(--primary)}.btn-text{min-height:44px;padding:0 12px;background:none;color:var(--primary);font-weight:700}.sh{background:var(--fg);color:var(--bg)}.go-row{display:grid;gap:8px;margin-top:var(--s2)}.gauge{position:relative;height:64px;margin:12px 12px 4px}.g-now{position:absolute;top:0;white-space:nowrap;padding:2px 8px;border-radius:var(--r-pill);background:var(--primary-soft);color:var(--primary);font-size:.8rem;font-weight:700;line-height:1.5}.g-track{position:absolute;left:0;right:0;top:28px;height:14px;border-radius:7px;background:var(--track);overflow:hidden}.g-fill{width:0;height:100%;border-radius:7px;background:var(--ring);transition:width .25s ease}.g-fill[data-tone=wn]{background:var(--wn)}.g-fill[data-tone=ng]{background:var(--ng)}.g-tick{position:absolute;top:24px;width:2px;height:22px;margin-left:-1px;background:var(--tick)}.g-thumb{position:absolute;top:24px;left:0;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:var(--card);border:4px solid var(--ring);transition:left .25s ease}.g-labels{position:absolute;left:0;right:0;top:48px;height:16px;font-size:.72rem;line-height:16px;color:var(--sub)}.g-labels span{position:absolute;transform:translateX(-50%);white-space:nowrap}.gauge--bar{height:40px;margin:8px 0 4px}.gauge--bar .g-track{top:0}.gauge--bar .g-tick{top:-4px}.gauge--bar .g-labels{top:20px}.g-cap{margin:6px 0 0;font-size:.875rem;color:var(--sub)}.acc{background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);margin-bottom:var(--s2)}.acc>summary{display:flex;align-items:center;gap:8px;min-height:60px;padding:0 24px;cursor:pointer;list-style:none;font-weight:800}.acc>summary::-webkit-details-marker{display:none}.acc>summary::after{content:"";flex:none;margin:0 4px 4px auto;width:9px;height:9px;border-right:2px solid var(--sub);border-bottom:2px solid var(--sub);transform:rotate(45deg);transition:transform var(--t)}.acc[open]>summary::after{margin-bottom:-4px;transform:rotate(-135deg)}.acc-body,.acc>section{padding:0 24px 24px}.acc-list{background:var(--card);border-radius:var(--r-card);box-shadow:var(--shadow);margin-bottom:var(--s3);overflow:hidden}.acc-list>.acc{margin:0;border-radius:0;background:none;box-shadow:none}.acc-list>.acc:not(:first-child){border-top:1px solid var(--soft)}.acc--inline{background:var(--soft);border-radius:var(--r-in);box-shadow:none}.acc--inline>summary{min-height:48px;padding:0 16px}.acc--inline>.acc-body{padding:0 16px 16px}@media(max-width:400px){.acc>summary{padding:0 16px}.acc-body,.acc>section{padding:0 16px 16px}}.tw{overflow-x:auto;margin:8px 0}table{border-collapse:collapse;width:100%;min-width:400px;font-size:.88rem}th,td{padding:8px 10px;text-align:left;vertical-align:top}th{color:var(--sub);font-weight:700;white-space:nowrap}td.n{text-align:right;white-space:nowrap}tbody tr:nth-child(even){background:var(--soft)}caption{text-align:left;font-weight:700;padding:4px 0}.faq h3{margin:14px 0 0}.faq p{margin:4px 0}dl.g dt{font-weight:700;margin:12px 0 0}dl.g dd{margin:2px 0 0}.shw{margin-bottom:4px}.pr-wrap{margin-top:var(--s3)}.pr-note{margin-bottom:8px;font-size:.875rem;line-height:1.6;color:var(--sub)}.pr-card{background:var(--soft);border-radius:var(--r-in);padding:var(--s2);margin-top:12px}.pr-card h3,.pr-card h4{margin:6px 0;font-size:1rem}.pr-card p{margin:4px 0;font-size:.9rem}.pr-tag{display:inline-block;font-size:.8125rem;font-weight:700;color:var(--sub)}.pr-tag::before{content:"\3010"}.pr-tag::after{content:"\3011"}.pr-disc{display:inline;margin-left:4px;font-size:.8125rem;color:var(--sub)}.pr-cta{min-height:48px;margin-top:10px;background:var(--card);color:var(--primary)}.ad-slot{min-height:250px;margin-bottom:var(--s2);display:flex;align-items:flex-start;justify-content:center;border-radius:var(--r-in)}.ad-label{font-size:.75rem;color:var(--sub);padding:4px}.rel{margin-top:var(--s5)}.rel-t{margin-bottom:12px;font-size:1.2rem;font-weight:800}.rel .tools,.rel .sisters{background:var(--card);border-radius:var(--r-card);padding:18px;margin-bottom:var(--s2);box-shadow:var(--shadow)}.rel h2{margin:4px 8px 10px;font-size:.85rem;color:var(--sub)}.tl{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}@media(min-width:720px){.tl{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.tl>li:only-child{grid-column:1/-1}.rel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}.rel-t{grid-column:1/-1;margin:0}.rel .tools,.rel .sisters{margin:0}.rel .tl{grid-template-columns:minmax(0,1fr)}}.tl>li{min-width:0}.tl a{position:relative;display:block;min-height:68px;padding:16px 42px 16px 18px;border-radius:var(--r-in);background:var(--soft);color:var(--fg);text-decoration:none;border-top:4px solid var(--ring);transition:background var(--t),transform .2s ease}.tl a:has([data-cat="tax"]){border-top-color:var(--cat-tax)}.tl a:has([data-cat="life"]){border-top-color:var(--cat-life)}.tl a:has([data-cat="job"]){border-top-color:var(--cat-job)}.tl a:has([data-cat="asset"]){border-top-color:var(--cat-asset)}.tl a::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;margin-top:-4px;border-top:2px solid var(--sub);border-right:2px solid var(--sub);transform:rotate(45deg)}.tl a:hover{background:var(--card);box-shadow:var(--shadow)}.tl a strong{display:block;font-size:1rem;line-height:1.45}.tl a>span{display:block;font-size:.825rem;color:var(--sub);margin-top:3px}.tl a .pv{display:inline-block;max-width:100%;margin-top:8px;padding:4px 12px;border-radius:12px;background:var(--primary-soft);color:var(--primary);font-size:.76rem;font-weight:800;line-height:1.4}.tl a[aria-current=page]{background:var(--primary-soft)}.tl a[aria-current=page]::after{display:none}@keyframes fpop{0%{opacity:0;transform:translateY(14px) scale(.72)}70%{opacity:1;transform:translateY(-3px) scale(1.06)}100%{opacity:1;transform:none}}.fband{position:relative;overflow:hidden;margin:var(--s5) 0 var(--s3);padding:32px;border-radius:var(--r-card);background:radial-gradient(at 88% 18%,#2563eb47,transparent 48%),radial-gradient(at 12% 88%,#7c3aed38,transparent 50%),#12141b;color:#f8fafc;box-shadow:0 20px 50px rgba(10,12,18,.26);border:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}.fband:hover{transform:translateY(-3px)}.fband>div:first-child{flex:1 1 16rem;min-width:0}.fband strong{display:block;margin:10px 0 6px;font-size:clamp(1.18rem,2.6vw,1.5rem);font-weight:900;line-height:1.35;color:#fff}.fband span{display:block;font-size:.86rem;line-height:1.65;color:#cbd5e1}.fband-pills{display:flex;flex-wrap:wrap;gap:8px}.fband-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r-pill);background:rgba(255,255,255,.12);color:#fff;font-size:.76rem;font-weight:800;white-space:nowrap;border:1px solid rgba(255,255,255,.14)}.fband-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:#60a5fa;flex:none}.fband-tag:nth-child(2)::before{background:#fb923c}.fband-tag:nth-child(3)::before{background:#a78bfa}.fband-tag:nth-child(4)::before{background:#34d399}.fband.rv .fband-tag{opacity:0;transform:translateY(14px) scale(.72)}.fband.is-in .fband-tag{animation:fpop .55s cubic-bezier(.34,1.56,.64,1) both}.fband.is-in .fband-tag:nth-child(2){animation-delay:.08s}.fband.is-in .fband-tag:nth-child(3){animation-delay:.16s}.fband.is-in .fband-tag:nth-child(4){animation-delay:.24s}.fband>a{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 22px;border-radius:var(--r-pill);background:#fff;color:#12141b;font-size:.92rem;font-weight:800;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform var(--t),background var(--t)}.fband>a::after{content:"\2192";font-weight:900}.fband>a:hover{transform:translateY(-2px) scale(1.03);background:#dbeafe}@media(max-width:520px){.fband{padding:24px 20px}.fband>a{width:100%}}.rv{opacity:0;transform:translateY(14px);transition:opacity .42s ease,transform .42s ease}.rv.is-in{opacity:1;transform:none}footer{font-size:.85rem;color:var(--sub);margin-top:var(--s4)}.foot-links{margin-bottom:var(--s1)}.foot-links a{display:inline-flex;align-items:center;min-height:44px}footer h2{font-size:1rem;margin:12px 0 6px}.livebar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1080px;min-height:56px;margin:0 auto;padding:0 16px env(safe-area-inset-bottom);background:var(--card);box-shadow:0 -4px 16px rgba(15,23,42,.12);font-weight:700}.livebar button{flex:none;min-height:44px;padding:0 16px;border-radius:var(--r-pill);background:var(--primary);color:var(--on-primary);font-weight:700}@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}.rv,.fband.rv .fband-tag{opacity:1!important;transform:none!important}.mq{overflow-x:auto}.mq-track{width:auto}.mq-set[aria-hidden=true]{display:none}}@media print{.rv,.fband.rv .fband-tag{opacity:1!important;transform:none!important}}
+/*ds:end*/
+.tn{display:block;font-size:.8rem;font-weight:400;color:var(--sub);margin-top:2px}
+.steps{margin:0;padding-left:1.4em}
+#tblWrap table{min-width:0}
+.steps li{margin:6px 0}
+</style>
+</head>
+<body data-cat="tax">
+<a class="skip" href="#main">本文へ移動</a>
+<div class="w">
+<header>
+<nav class="navb" aria-label="サイト内ツール">
+<a href="../">年収の壁</a>
+<a href="./" aria-current="page">ふるさと納税の目安</a>
+<a href="#toolsH">ほかのツール</a>
+</nav>
+<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span><span>バイト・税金｜<wbr>大学生向け無料計算ツール・登録不要</span></p>
+<h1>ふるさと納税・<wbr>住民税の所得割 <wbr>かんたん計算<wbr>（学生・低年収向け）</h1>
+<div class="band" role="note"><span>目安です。対象：2026年中の寄附（令和9年度の住民税・令和8年分の所得税）／最終確認日 2026-11-26<br>※当サイトのツールにはプロモーション（PR）を含みます</span><a href="#legal" data-open="legal">免責</a></div>
+<noscript><p class="warn">このツールはJavaScriptが必要です。有効にしてご利用ください。</p></noscript>
+</header>
+<main id="main">
+<p class="hint" id="lead">2026年の給与収入から、令和9年度の住民税の所得割と、ふるさと納税で自己負担が2,000円で済む寄附の目安を計算します。寄附をすすめるツールではなく、ふるさと納税サイトへのリンクや、寄附をすすめる広告枠は置いていません（サイト共通の広告が表示されることがあります）。</p>
+<section id="input" class="card">
+<h2 class="ct">2026年の収入を入れる</h2>
+<div class="fld"><label class="l" for="salary">2026年の給与収入（すべての勤務先の合計・税金などが引かれる前の額）</label>
+<div class="num"><input id="salary" type="text" inputmode="numeric" autocomplete="off" value="1500000" aria-describedby="e-salary h-salary"><span class="unit">円</span></div>
+<p class="err" id="e-salary" role="alert" hidden></p>
+<div class="chips" id="sChips" data-cols="6" data-t="salary">
+<button type="button" class="chip" aria-pressed="false" data-v="1000000" aria-label="100万円">100万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="1200000" aria-label="120万円">120万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="1300000" aria-label="130万円">130万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="1500000" aria-label="150万円">150万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="1800000" aria-label="180万円">180万</button>
+<button type="button" class="chip" aria-pressed="false" data-v="2000000" aria-label="200万円">200万</button>
+</div>
+<p class="hint" id="h-salary">収入が給与だけの人が対象です。給与が220万円を超える人や、給与以外の収入がある人は計算できません。</p></div>
+<div class="fld"><label class="l" for="shaho">社会保険料（2026年に自分で払った額・給与から引かれた額）</label>
+<div class="num"><input id="shaho" type="text" inputmode="numeric" autocomplete="off" value="0" aria-describedby="e-shaho h-shaho"><span class="unit">円</span></div>
+<p class="err" id="e-shaho" role="alert" hidden></p>
+<p class="hint" id="h-shaho">国民年金・国民健康保険・給与から引かれた健康保険料や厚生年金保険料などです。親が払った分は、払った親の控除になるため入れません。国民年金が学生納付特例なら、その分は0円です。</p></div>
+<fieldset class="seg-group" data-cols="2"><legend>勤労学生控除</legend>
+<label class="seg"><input type="radio" name="kinro" id="kinroN" checked><span>受けない</span></label>
+<label class="seg"><input type="radio" name="kinro" id="kinroY"><span>受ける<small>学生で条件に当てはまる</small></span></label></fieldset>
+<p class="hint">勤労学生控除は、令和8年分は合計所得金額89万円以下（給与だけなら163万円以下）などが条件です。条件は<a href="../guides/kinro-gakusei-kojo/">勤労学生控除の解説</a>で確認できます。</p>
+<div class="fld"><label class="l" for="donation">寄附の予定額（2026年中の合計・入力は任意）</label>
+<div class="num"><input id="donation" type="text" inputmode="numeric" autocomplete="off" value="" placeholder="例：10000" aria-describedby="e-donation h-donation"><span class="unit">円</span></div>
+<p class="err" id="e-donation" role="alert" hidden></p>
+<p class="hint" id="h-donation">入れると、その額を寄附したときの控除と自己負担の目安も出します。</p></div>
+</section>
+
+<section id="result" aria-labelledby="resultH" data-state="ready" data-stale="false">
+<p id="liveSr" class="sr" aria-live="polite" aria-atomic="true"></p>
+<div class="card rc" id="resultCard">
+<h2 class="ct" id="resultH">試算結果（目安）</h2>
+<p class="sumline"><span class="pill pill--ok" id="okBadge">○ 所得割がかかる見込み</span><span class="pill pill--ng" id="ngBadge" hidden>× 所得割はかからない見込み</span></p>
+<p class="kpi-l" id="rLabel">自己負担2,000円で済む寄附の目安（2026年中の合計）</p>
+<p class="big" id="rBig"></p>
+<p class="hint" id="rSub"></p>
+<dl class="stats" id="stats" data-cols="2">
+<div><dt>住民税の所得割（令和9年度）</dt><dd id="stWari"></dd><span class="tn">調整控除の後・寄附をしない場合</span></div>
+<div><dt>特例分の上限</dt><dd id="stCap"></dd><span class="tn">所得割×20%</span></div>
+<div><dt>特例分の割合</dt><dd id="stRate"></dd><span class="tn" id="stRateN"></span></div>
+<div><dt>所得税（令和8年分）</dt><dd id="stIt"></dd><span class="tn">復興特別所得税を含む</span></div>
+</dl>
+<p class="warn" id="hikazeiMsg" hidden>住民税の所得割はかからない見込みです（総所得金額等が45万円以下）。所得税もかからないため、寄附しても税金は減らず、寄附額がそのまま自己負担になります。住民税の均等割は、寄附をしても減りません。</p>
+<p class="warn" id="zeroMsg" hidden>社会保険料などの控除で住民税の課税所得が0円になるため、所得割はかからない見込みです。所得税もかからないため、寄附しても税金は減らず、寄附額がそのまま自己負担になります。</p>
+<p class="note" id="adjMsg" hidden>所得割が、非課税になる基準（総所得金額等45万円）のすぐ上にあるため、法律の調整で所得割が少なくなっています。寄附をしても、控除はほとんど受けられず、自己負担は2,000円を超えます。</p>
+<p class="note" id="kinroMsg" hidden>合計所得金額が89万円を超えるため、勤労学生控除は受けられない計算です（給与だけなら163万円超）。控除なしで計算しています。</p>
+<p class="note" id="itMsg" hidden>所得税がかかる収入帯のため、特例分の割合は84.895%です。ワンストップ特例では、所得税の分も住民税から引かれます（申告特例控除額）。確定申告をする場合は、所得税からも控除されますが、所得税が少ないと、所得税から引ける額がその分小さくなり、自己負担が2,000円を超えることがあります（下の表）。</p>
+<div class="tw" id="tblWrap"><table><caption>寄附したときの控除と自己負担（目安）</caption>
+<thead><tr><th scope="col">寄附額・受け方</th><th scope="col">控除される額</th><th scope="col">自己負担</th></tr></thead>
+<tbody id="tblBody"></tbody></table></div>
+<p class="hint">控除される額は、住民税の基本分・特例分（ワンストップ特例では申告特例控除額を含む）と、確定申告の場合の所得税の減少分の合計です。実際の額は、市区町村の計算（100円未満の切り捨てなど）で少し変わります。</p>
+<p class="stale" id="staleNote" hidden>入力が途中のため、直前の結果を表示しています</p>
+<p class="confirm">正確な上限は、お住まいの市区町村の住民税の担当部署で確認できます（総務省の案内）。<a href="#basis" data-open="basisAcc">計算の前提</a></p>
+<p class="hint" id="nextLinks">ふるさと納税の仕組みと注意点は<a href="../guides/furusato-gakusei/">大学生のふるさと納税の解説</a>、住民税がかかる収入の目安は<a href="../guides/student-juminzei/">大学生の住民税の解説</a>にまとめています。</p>
+</div>
+</section>
+
+<div class="acc-list">
+<details class="acc" id="stepsAcc"><summary><h2>計算の内訳</h2></summary>
+<section id="steps"><ol class="steps" id="stepList"></ol>
+<p class="hint">金額は端数処理（100円未満の切り捨て）の前の値です。</p></section></details>
+<details class="acc" id="basisAcc"><summary><h2>計算の前提と対象</h2></summary>
+<section id="basis">
+<ul>
+<li>対象は、2026年の収入が給与だけで、給与収入が220万円以下の人です。単身で扶養する家族がいない、2027年1月1日に18歳以上、障害者・寡婦・ひとり親に当たらない人を前提にしています。</li>
+<li>給与所得は、令和8年分の特例（給与収入220万円以下なら給与所得控除74万円）で計算します。住民税（令和9年度）にも同じ74万円が使われます（江東区の案内）。</li>
+<li>住民税は、基礎控除43万円・勤労学生控除26万円・社会保険料控除で課税所得を出し（1,000円未満切り捨て）、所得割10%から調整控除（人的控除の差5万円、勤労学生は＋1万円と課税所得の少ない方×5%）を引きます。</li>
+<li>総所得金額等が45万円以下なら所得割はかかりません（地方税法 附則第3条の3。単身・扶養なしの場合）。この基準のすぐ上では、所得割が「総所得金額等−45万円」までに抑えられる調整があり、ツールはこれも計算に入れています。</li>
+<li>特例分は（寄附額−2,000円）×割合で、上限は所得割（調整控除の後）の20%です。割合は、住民税の課税所得から人的控除差調整額（5万円、勤労学生は6万円に、所得税の基礎控除104万円−48万円＝56万円を足した額）を引いた額がマイナスなら90%、0以上なら84.895%です（地方税法第37条の2第11項・附則第5条の6）。</li>
+<li>ワンストップ特例の申告特例控除額は、特例分の割合が84.895%のときだけ、特例分×5.105/84.895で計算します。割合が90%のとき（所得税がかからない収入帯）は、申告特例控除額を計算に入れていません。</li>
+<li>所得税は、基礎控除104万円・勤労学生控除27万円・社会保険料控除を引いた課税所得（1,000円未満切り捨て）×5%×1.021で計算します。確定申告の寄附金控除は（寄附額−2,000円）で、総所得金額等の40%までの寄附が対象です。</li>
+<li>住民税の基本分は（寄附額−2,000円）×10%で、総所得金額等の30%までの寄附が対象です。控除の合計は所得割の額までです。</li>
+<li>住民税の均等割・森林環境税は、寄附をしても減りません。均等割がかかる基準は、お住まいの地域で違います。</li>
+<li>確認先: 総務省・国税庁・地方税法・租税特別措置法・江東区の案内。<span class="nw">最終確認日 2026-11-26</span>。</li>
+</ul>
+</section></details>
+<details class="acc"><summary><h2>よくある質問</h2></summary>
+<section id="faq" class="faq">
+<h3>大学生でも、ふるさと納税で税金は減りますか？</h3><p>税金が減るのは、住民税の所得割や所得税を払っている人だけです。2026年の収入が給与だけで単身なら、給与収入119万円以下では住民税の所得割も所得税もかからない見込みで、寄附しても税金は減りません。</p>
+<h3>給与収入150万円だと、自己負担2,000円で済む寄附はいくらまでですか？</h3><p>社会保険料0円・勤労学生控除なしの計算例では、住民税の所得割は30,500円、特例分の上限は6,100円で、自己負担2,000円で済む寄附は約8,700円までが目安です。勤労学生控除を受けると所得割が下がり、約2,800円までになります。</p>
+<h3>計算結果と、実際の控除額が違うことはありますか？</h3><p>あります。市区町村の端数処理（100円未満の切り捨て）や、給与以外の所得、扶養する家族の有無などで変わります。正確な上限は、お住まいの市区町村の住民税の担当部署で確認してください。</p>
+</section></details>
+<details class="acc" id="sourcesAcc"><summary><h2>一次情報</h2></summary>
+<section id="sources">
+<ul>
+<li><a href="https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html" target="_blank" rel="noopener noreferrer">総務省 ふるさと納税ポータル「税金の控除について」</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1155.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1155 ふるさと納税（寄附金控除）</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1199.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1199 基礎控除</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1410.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1410 給与所得控除</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1175.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1175 勤労学生控除</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1130.htm" target="_blank" rel="noopener noreferrer">国税庁 No.1130 社会保険料控除</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm" target="_blank" rel="noopener noreferrer">国税庁 No.2260 所得税の税率</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+<li><a href="https://laws.e-gov.go.jp/law/325AC0000000226" target="_blank" rel="noopener noreferrer">e-Gov法令検索 地方税法（第34条・第35条・第37条・第37条の2・附則第3条の3・第5条の6・第7条の2）</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+<li><a href="https://laws.e-gov.go.jp/law/332AC0000000026" target="_blank" rel="noopener noreferrer">e-Gov法令検索 租税特別措置法（第29条の4・第41条の16の2）</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+<li><a href="https://www.city.koto.lg.jp/060502/kurashi/zekin/kuminze/kaise/9kaisei.html" target="_blank" rel="noopener noreferrer">江東区「令和9年度 特別区民税・都民税の主な改正点」</a>（<span class="nw">確認日 2026-11-26</span>）</li>
+</ul>
+<p class="hint">市区町村の端数処理や、給与以外の所得がある場合の扱いは計算に入れていません。</p>
+</section></details>
+</div>
+</main>
+
+<aside class="rel" aria-label="関連ツール">
+<p class="rel-t">関連ツール</p>
+<section class="tools" aria-labelledby="toolsH">
+<h2 id="toolsH">学生バイトお役立ちツール</h2>
+<ul class="tl">
+<li><a href="../"><strong>学生バイトの年収の壁チェッカー2026</strong><span>178万・150万など4つの壁を一発判定</span><span class="pv" data-cat="tax">例：19〜22歳・年収108万円→150万円の壁まで約42万円</span></a></li>
+<li><a href="../kakemochi/"><strong>掛け持ちバイトの源泉徴収・還付金チェッカー2026</strong><span>源泉徴収と年税額から還付の目安を計算</span><span class="pv" data-cat="tax">例：甲欄90万円＋乙欄60万円（月5万円・源泉3.063%）→還付目安18,372円</span></a></li>
+<li><a href="../shift-limit/"><strong>時給×シフト逆算計算機2026</strong><span>壁まであと何時間働けるかを計算</span><span class="pv" data-cat="tax">例：時給1,100円・累計0円・残り12か月→150万円未満まで月113時間（週26.0時間）</span></a></li>
+</ul>
+</section>
+<section class="sisters" id="sisters" aria-labelledby="sistersH">
+<h2 id="sistersH">姉妹ツール</h2>
+<ul class="tl">
+<li><a href="../living-cost-simulator/"><strong>手取り＆<span class="nw">一人暮らし</span>生活費シミュレーター</strong><span>手取りと生活費の目安を計算</span><span class="pv" data-cat="life">例：新社会人・額面月22万円（東京・賞与なし）→手取り約18.6万円・家賃目安5.2万円（手取りの28%）</span></a></li>
+<li><a href="../scholarship/"><strong>奨学金（JASSO）返済シミュレーター</strong><span>月々の返還額と完済年齢を計算</span><span class="pv" data-cat="asset">例：第一種（無利子）300万円→標準17年・月14,705円</span></a></li>
+<li><a href="../nisa-simulator/"><strong>大学生からの新NISA・バイト代積立シミュレーター</strong><span>積立の将来額を試算</span><span class="pv" data-cat="asset">例：月1万円×10年・年3%の仮定→約139万円（元本120万円）</span></a></li>
+<li><a href="../es-word-counter/"><strong>ES文字数カウント＆ガクチカ構成チェッカー</strong><span>ESの文字数と構成をチェック</span><span class="pv" data-cat="job">例：400字制限・368字入力→達成92%</span></a></li>
+</ul>
+</section>
+</aside>
+<div class="fband" role="region" aria-label="サイト案内"><div><div class="fband-pills"><span class="fband-tag nw">登録不要</span><span class="fband-tag nw">令和8年分</span><span class="fband-tag nw">端末内計算</span><span class="fband-tag nw">一次情報確認済</span></div><strong>大学生向けの無料計算・シミュレーター集</strong><span>登録不要・端末内だけで計算し外部送信しません</span></div><a class="nw" href="../tools/">全ツール一覧を見る</a></div>
+<footer>
+<p class="foot-links"><a href="#legal" data-open="legal">免責事項・プライバシーの要約</a> ／ <a href="../privacy/">プライバシーポリシー</a> ／ <a href="../about/">運営者情報</a> ／ <a href="../tools/">ツール一覧</a> ／ 連絡先: gakusei.kabe.checker@gmail.com</p>
+<details class="acc" id="legal"><summary>免責事項・プライバシー（要約）</summary>
+<div class="acc-body">
+<section id="disclaimer">
+<h2>免責事項</h2>
+<ul><li>本ツールは一般的な情報提供で、個別の税務の助言や寄附の勧誘ではありません。結果は目安で、控除の上限はお住まいの市区町村の住民税の担当部署で確認してください。</li>
+<li>税制や計算方法は変更されることがあります。</li>
+<li>本ツールの利用により生じた損害について、運営者は責任を負いません。</li></ul>
+</section>
+<section id="privacy">
+<h2>プライバシーポリシー（要約）</h2>
+<ul><li>入力した金額などは、お使いの端末（ブラウザ）の中で計算するだけで、運営者のサーバーへ送信・保存しません。当サイト自体は、入力内容を Cookie やブラウザの保存領域に保存しません。</li>
+<li>アクセス状況の分析のため、Google アナリティクス 4（Google LLC）を利用しています。ページを開いたときに、閲覧ページのURL・リファラー・IPアドレス・ブラウザや端末の情報・Cookie などの識別子・ページ内の操作（スクロール・外部リンクのクリックなど）が Google に送信されます。入力した金額・文章などは送信されません。広告の配信・表示のため、Google AdSense（Google LLC）も利用しています。閲覧ページのURL・IPアドレス・ブラウザや端末の情報・Cookie などの識別子が Google に送信され、Google を含む第三者配信事業者が Cookie を使い、過去のアクセス情報に基づいて広告を配信します。Google の広告設定や www.aboutads.info で無効にできます（詳しくはプライバシーポリシーをご覧ください）。</li>
+<li>連絡先: gakusei.kabe.checker@gmail.com</li>
+<li>送信先の一覧・停止（オプトアウト）の方法は、<a href="../privacy/">プライバシーポリシー</a>をご覧ください。</li>
+</ul>
+</section>
+</div></details>
+</footer>
+</div>
+<script id="logic">
+var FURU=(function(){
+'use strict';
+var BASE='https://gakusei-tools.com/furusato-calc/';
+var DATA={LAST_CONFIRMED:'2026-11-26',TAX_YEAR:'令和9年度',INCOME_YEAR:'令和8年分',DONATION_YEAR:2026};
+// 一次情報: 租税特別措置法29条の4・41条の16の2、所得税法86条・82条・2条1項32号（2026-12-01施行版）、地方税法34条・35条・37条・37条の2・314条の3・314条の6・附則3条の3・5条の6・7条の2・7条の3（2027-01-01施行版）
+var K={MAX_SALARY:2200000,MAX_SHAHO:2200000,MAX_DON:10000000,
+ KISO_J:430000,KINRO_J:260000,KISO_I:1040000,KINRO_I:270000,KINRO_LIMIT:890000,HIKAZEI:450000,
+ JINTEKI_KISO:50000,JINTEKI_KINRO:10000,KISO_I_BASE:480000,
+ R_J:0.10,ADJ_R:0.05,CAP_R:0.20,R90:0.90,R85:0.84895,SHINKOKU:5.105/84.895,BASE_R:0.10,BASE_CAP:0.30,IT_CAP:0.40,IT_R:0.05,FUKKO:1.021,SELF:2000};
+var E_INT='数字（整数）で入力してください',E_SAL='0〜220万円で入力してください（220万円を超える場合は、このツールの対象外です）';
+var E_SH='0〜220万円で入力してください',E_DON='0〜1,000万円で入力してください',E_REQ='給与収入を入力してください';
+function parseYen(s){
+ if(s===null||s===undefined)return null;
+ var t=String(s).replace(/[０-９]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-0xFEE0);});
+ t=t.replace(/[,，\s　]/g,'').replace(/円$/,'');
+ if(t==='')return null;
+ return /^\d+$/.test(t)?Number(t):NaN;}
+function f1000(x){return Math.floor(x/1000)*1000;}
+// 令和8年分の給与所得（措置法29条の4第1項・第2項。給与収入220万円以下のみ）
+function kyuyo(s){
+ if(s<741000)return 0;
+ if(s<2191000)return s-740000;
+ if(s<2193000)return 1451000;
+ if(s<2196000)return 1453000;
+ if(s<2200000)return 1456000;
+ return 1460000;}
+function check(o){
+ var e={},s=parseYen(o.salary),h=parseYen(o.shaho),d=parseYen(o.donation);
+ if(s===null)e.salary=E_REQ;else if(isNaN(s))e.salary=E_INT;else if(s>K.MAX_SALARY)e.salary=E_SAL;
+ if(h===null)h=0;else if(isNaN(h))e.shaho=E_INT;else if(h>K.MAX_SHAHO)e.shaho=E_SH;
+ if(d!==null){if(isNaN(d))e.donation=E_INT;else if(d>K.MAX_DON)e.donation=E_DON;}
+ if(Object.keys(e).length)return {ok:false,errors:e};
+ return {ok:true,salary:s,shaho:h,donation:d,kinro:!!o.kinro};}
+// 住民税（令和9年度）と所得税（令和8年分）の計算の土台
+function basis(salary,shaho,kinro){
+ var G=kyuyo(salary),kinroOK=!!kinro&&G<=K.KINRO_LIMIT;
+ var hikazei=G<=K.HIKAZEI;
+ var T=f1000(Math.max(0,G-K.KISO_J-shaho-(kinroOK?K.KINRO_J:0)));
+ var A0=T*K.R_J,jin=K.JINTEKI_KISO+(kinroOK?K.JINTEKI_KINRO:0);
+ var adj=Math.min(jin,T)*K.ADJ_R;
+ var A=hikazei?0:Math.max(0,A0-adj);
+ var L=G-K.HIKAZEI;
+ var wari=hikazei?0:Math.max(0,Math.min(A,L));
+ var J=jin+(K.KISO_I-K.KISO_I_BASE);
+ var X=T-J,rate=(T>0&&X>=0)?K.R85:K.R90;
+ var itT=f1000(Math.max(0,G-K.KISO_I-shaho-(kinroOK?K.KINRO_I:0)));
+ return {salary:salary,shaho:shaho,G:G,kinro:!!kinro,kinroOK:kinroOK,kinroOut:!!kinro&&!kinroOK,hikazei:hikazei,T:T,A0:A0,adj:adj,A:A,L:L,wari:wari,
+  adjBand:!hikazei&&A>L,J:J,X:X,rate:rate,cap:A*K.CAP_R,itT:itT,itTax:itT*5105/100000};}
+// 寄附 D 円のときの控除額。mode: 'onestop'（ワンストップ特例）/'kakutei'（確定申告）
+function benefit(b,D,mode){
+ var r={D:D,mode:mode,base:0,tokurei:0,shinkoku:0,credit:0,jumin:0,it:0,total:0,burden:D};
+ if(!(D>K.SELF))return r;
+ var bb=Math.min(D,b.G*K.BASE_CAP)-K.SELF;
+ r.base=bb>0?bb*K.BASE_R:0;
+ r.tokurei=b.A>0?Math.min((D-K.SELF)*b.rate,b.cap):0;
+ r.shinkoku=(mode==='onestop'&&b.rate===K.R85)?r.tokurei*K.SHINKOKU:0;
+ r.credit=Math.min(r.base+r.tokurei+r.shinkoku,b.A);
+ var after=b.hikazei?0:Math.max(0,Math.min(b.A-r.credit,b.L));
+ r.jumin=b.wari-after;
+ if(mode==='kakutei'&&b.itT>0){
+  var kj=Math.min(D,b.G*K.IT_CAP)-K.SELF;
+  var t2=f1000(Math.max(0,b.G-K.KISO_I-b.shaho-(b.kinroOK?K.KINRO_I:0)-Math.max(0,kj)));
+  r.it=(b.itT-t2)*5105/100000;}
+ r.total=r.jumin+r.it;r.burden=D-r.total;
+ return r;}
+// 自己負担2,000円で済む寄附の目安（総務省の計算式: 特例分の上限÷特例分の割合＋2,000円）
+function maxDonation(b){
+ if(!(b.wari>0)||!(b.cap>0))return {none:true,exact:0,shown:0};
+ var ex=K.SELF+Math.floor(b.cap/b.rate+1e-9);
+ var sh=Math.floor(ex/100)*100;
+ return {none:false,exact:ex,shown:sh<=K.SELF?ex:sh};}
+function calc(o){
+ var c=check(o);if(!c.ok)return c;
+ var b=basis(c.salary,c.shaho,c.kinro),m=maxDonation(b);
+ var res={ok:true,b:b,max:m,atMax:null,atDon:null};
+ if(!m.none)res.atMax={onestop:benefit(b,m.shown,'onestop'),kakutei:benefit(b,m.shown,'kakutei')};
+ if(c.donation!==null)res.atDon={onestop:benefit(b,c.donation,'onestop'),kakutei:benefit(b,c.donation,'kakutei')};
+ return res;}
+return {BASE:BASE,DATA:DATA,K:K,parseYen:parseYen,kyuyo:kyuyo,check:check,basis:basis,benefit:benefit,maxDonation:maxDonation,calc:calc};
+})();
+</script>
+<script id="ui">
+(function(){
+'use strict';
+var F=FURU,K=FURU.K;
+function $(id){return document.getElementById(id);}
+var FIELDS=['salary','shaho','donation'];
+var has=false;
+function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+function yen(n){return fmt(Math.round(n))+'円';}
+function setErr(id,msg){var e=$('e-'+id),i=$(id);e.textContent=msg||'';e.hidden=!msg;if(msg)i.setAttribute('aria-invalid','true');else i.removeAttribute('aria-invalid');}
+function show(id,on){$(id).hidden=!on;}
+function el(t,x){var e=document.createElement(t);if(x!==null&&x!==undefined)e.textContent=x;return e;}
+function row(D,label,r){
+ var tr=el('tr');var th=el('th',yen(D));th.setAttribute('scope','row');var sp=el('span',label);sp.className='tn';th.appendChild(sp);tr.appendChild(th);
+ var a=el('td',yen(r.total));a.className='n';tr.appendChild(a);
+ var b=el('td',yen(r.burden));b.className='n';tr.appendChild(b);
+ return tr;}
+function syncChips(){
+ var v=F.parseYen($('salary').value),bs=$('sChips').children,i;
+ for(i=0;i<bs.length;i++)bs[i].setAttribute('aria-pressed',(typeof v==='number'&&Number(bs[i].getAttribute('data-v'))===v)?'true':'false');}
+function steps(res){
+ var b=res.b,m=res.max,L=[],jin=K.JINTEKI_KISO+(b.kinroOK?K.JINTEKI_KINRO:0);
+ L.push('給与所得：給与収入'+yen(b.salary)+'から給与所得控除を引いて'+yen(b.G)+'（令和8年分の特例。給与収入220万円以下は最低74万円）');
+ if(b.hikazei){
+  L.push('総所得金額等が'+yen(b.G)+'で45万円以下のため、住民税の所得割はかかりません（単身・扶養なしの場合）。所得税もかかりません。');
+  return L;}
+ L.push('住民税の課税所得：'+yen(b.G)+'−基礎控除430,000円'+(b.shaho>0?'−社会保険料'+yen(b.shaho):'')+(b.kinroOK?'−勤労学生控除260,000円':'')+'＝'+yen(b.T)+'（1,000円未満切り捨て）');
+ if(b.T<=0){L.push('課税所得が0円のため、住民税の所得割はかかりません。');return L;}
+ L.push('所得割（調整控除の前）：'+yen(b.T)+'×10%＝'+yen(b.A0));
+ L.push('調整控除：'+yen(Math.min(jin,b.T))+'×5%＝'+yen(b.adj)+' → 所得割'+yen(b.A)+(b.adjBand?'。非課税の基準のすぐ上のため、さらに「総所得金額等−45万円」の'+yen(b.wari)+'までに抑えられます':''));
+ L.push('特例分の上限：'+yen(b.A)+'×20%＝'+yen(b.cap));
+ L.push('特例分の割合：課税所得'+yen(b.T)+'−人的控除差調整額'+yen(b.J)+'＝'+(b.X<0?'−'+yen(-b.X)+'（マイナス）→ 90%':yen(b.X)+'（0以上）→ 84.895%'));
+ if(!m.none)L.push('自己負担2,000円で済む寄附：'+yen(b.cap)+'÷'+(b.rate===K.R85?'84.895%':'90%')+'＋2,000円＝'+yen(m.exact)+'（表示は100円未満を切り捨てて約'+yen(m.shown)+'）');
+ return L;}
+function render(res){
+ var b=res.b,m=res.max,zero=!(b.wari>0),tb=$('tblBody'),sl=$('stepList'),sr;
+ show('okBadge',!zero);show('ngBadge',zero);
+ if(zero){
+  $('rBig').textContent='なし';
+  $('rSub').textContent='住民税の所得割も所得税もかからない見込みのため、寄附しても税金は減りません。';
+  sr='所得割はかからない見込みです。寄附しても税金は減りません。';
+ }else{
+  $('rBig').textContent='約'+yen(m.shown);
+  $('rSub').textContent='この額までなら、ワンストップ特例を使うと自己負担はおおむね2,000円です（計算上の上限は'+yen(m.exact)+'）。';
+  sr='自己負担2,000円で済む寄附の目安は約'+yen(m.shown)+'です。住民税の所得割は'+yen(b.wari)+'です。';}
+ show('hikazeiMsg',b.hikazei);
+ show('zeroMsg',!b.hikazei&&zero);
+ show('adjMsg',b.adjBand);
+ show('kinroMsg',b.kinroOut);
+ show('itMsg',!zero&&b.rate===K.R85);
+ $('stWari').textContent=yen(b.wari);
+ $('stCap').textContent=yen(b.hikazei?0:b.cap);
+ $('stRate').textContent=zero?'—':(b.rate===K.R85?'84.895%':'90%');
+ $('stRateN').textContent=zero?'所得割がないため計算しません':(b.rate===K.R85?'所得税がかかる収入帯':'所得税がかからない収入帯');
+ $('stIt').textContent=b.itTax>0?'約'+yen(Math.floor(b.itTax)):'0円';
+ tb.textContent='';
+ if(res.atMax){tb.appendChild(row(m.shown,'ワンストップ特例',res.atMax.onestop));tb.appendChild(row(m.shown,'確定申告',res.atMax.kakutei));}
+ if(res.atDon&&!(res.atMax&&res.atDon.onestop.D===m.shown)){tb.appendChild(row(res.atDon.onestop.D,'ワンストップ特例',res.atDon.onestop));tb.appendChild(row(res.atDon.kakutei.D,'確定申告',res.atDon.kakutei));}
+ show('tblWrap',tb.children.length>0);
+ sl.textContent='';steps(res).forEach(function(t){sl.appendChild(el('li',t));});
+ $('liveSr').textContent=sr;}
+function recalc(){
+ var o={salary:$('salary').value,shaho:$('shaho').value,donation:$('donation').value,kinro:$('kinroY').checked};
+ var res=F.calc(o);
+ syncChips();
+ FIELDS.forEach(function(f){setErr(f,res.ok?'':(res.errors[f]||''));});
+ if(!res.ok){
+  $('result').setAttribute('data-stale',has?'true':'false');
+  show('staleNote',has);
+  if(!has){$('rBig').textContent='—';$('rSub').textContent='入力を確認してください。';}
+  return;}
+ has=true;$('result').setAttribute('data-stale','false');show('staleNote',false);
+ render(res);}
+FIELDS.forEach(function(f){$(f).addEventListener('input',recalc);});
+['kinroN','kinroY'].forEach(function(id){$(id).addEventListener('change',recalc);});
+$('sChips').addEventListener('click',function(e){
+ var t=e.target;
+ while(t&&t!==this&&!(t.getAttribute&&t.getAttribute('data-v')))t=t.parentNode;
+ if(!t||t===this)return;
+ $('salary').value=t.getAttribute('data-v');recalc();});
+function openFor(n){while(n&&n.nodeType===1){if(n.tagName==='DETAILS')n.open=true;n=n.parentNode;}}
+document.addEventListener('click',function(e){
+ var t=e.target;
+ while(t&&t.nodeType===1){
+  if(t.getAttribute('data-open')){var d=$(t.getAttribute('data-open'));if(d&&d.tagName==='DETAILS')d.open=true;return;}
+  t=t.parentNode;}});
+function hashOpen(){
+ var id=(typeof location==='object'&&location.hash)?location.hash.slice(1):'';
+ if(!id)return;
+ try{id=decodeURIComponent(id);}catch(x){}
+ openFor($(id));}
+window.addEventListener('hashchange',hashOpen);
+recalc();
+hashOpen();
+})();
+</script>
+<script src="../assets/ui-motion.js" defer></script>
+<script src="../site-config.js" defer></script>
+</body>
+</html>

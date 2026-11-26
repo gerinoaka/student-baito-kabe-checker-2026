@@ -89,7 +89,7 @@ c('H01 privacy page', () => {
   assert.strictEqual(b[0]['@type'], 'WebPage'); assert.strictEqual(b[1]['@type'], 'BreadcrumbList');
   assert.strictEqual(ds(h), ds(rd('index.html')));
   const sm = rd('sitemap.xml'); const locs = [...sm.matchAll(/<loc>([^<]*)<\/loc>/g)].map((x) => x[1]);
-  assert.strictEqual(locs.length, 25); assert.ok(locs.includes(BASE + 'privacy/'));
+  assert.strictEqual(locs.length, 26); assert.ok(locs.includes(BASE + 'privacy/'));
   assert.ok(h.includes('.tw table.ext{min-width:640px}'));
   assert.ok(h.includes('<script src="../site-config.js" defer></script>\n</body>'));
 });
